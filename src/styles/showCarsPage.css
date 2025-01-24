@@ -1,0 +1,12 @@
+.main-containee{
+  display: flex;
+  flex-direction: column;
+  columns: 1;
+
+}
+
+.car-card-container{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
