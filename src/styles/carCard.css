@@ -1,0 +1,56 @@
+.car-card {
+    width: 100vh;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .car-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 8px #878484ec;
+  }
+  
+  .car-card-overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  
+  .car-name {
+    font-size: 1.5rem;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+  }
+  
+  .car-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .price {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .passengers {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-right: 5px;
+  }
+  
