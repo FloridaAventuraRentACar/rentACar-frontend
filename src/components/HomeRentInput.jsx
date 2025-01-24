@@ -1,31 +1,50 @@
 import { useState , useEffect } from 'react'
 import '../styles/homeRentInput.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function HomeRentInput() {
   const [pickupLocation, setPickupLocation] = useState('')
   const [returnLocation, setReturnLocation] = useState('')
-  const [startDate, setStartDate] = useState('')
-  const [endDate, setEndDate] = useState('')
+  const [pickupDate, setPickupDate] = useState('')
+  const [pickupTime , setPickupTime] = useState('')
+  const [returnDate, setReturnDate] = useState('')
+  const [returnTime, setReturnTime] = useState('')
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     resetStates()
   }, [])
 
   const handleSubmit = (e) => {
-    //fetch al backend
+    e.preventDefault();
+    //Metodo para chequear que lo ingresado sea valido
+    
+    const queryData = [ 
+      pickupLocation,
+      returnLocation,
+      pickupDate,
+      pickupTime,
+      returnDate,
+      returnTime
+    ]
+    navigate('/cars', { state: { fetchedData: queryData } });
+    console.log('submit')
   }
 
   const resetStates = () => {
     setPickupLocation('')
     setReturnLocation('')
-    setStartDate('')
-    setEndDate('')
+    setPickupDate('')
+    setPickupTime('')
+    setReturnDate('')
+    setReturnTime('')
   }
 
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="form">
-        <div className="location">
+        <div className="horizontal-center location">
 
           <div className="form-group">
             <label htmlFor="pickupLocation" className="form-label">
@@ -35,6 +54,7 @@ export default function HomeRentInput() {
               className='form-input'
               id="pickupLocation" 
               value={pickupLocation} 
+              
               onChange={(e) => setPickupLocation(e.target.value)}
               required
             >
@@ -62,31 +82,61 @@ export default function HomeRentInput() {
             </select>
           </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="startDate" className="form-label">
-          Start Date
-          </label>
-          <input
-            type="date"
-            id="startDate"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            className="form-input"
-            required
-          />
+        <div className="horizontal-center pickup-return">
+          <div className="form-group">
+            <label htmlFor="pickupDate" className="form-label">
+            pickup Date
+            </label>
+            <input
+              type="date"
+              id="pickupDate"
+              value={pickupDate}
+              onChange={(e) => setPickupDate(e.target.value)}
+              className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="pickupTime" className="form-label">
+            Pickup time
+            </label>
+            <input
+              type="time"
+              id="pickupTime"
+              value={pickupTime}
+              onChange={(e) => setPickupTime(e.target.value)}
+              className="form-input"
+              required
+            />
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="endDate" className="form-label">
-            End Date
-          </label>
-          <input
-            type="date"
-            id="endDate"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            className="form-input"
-            required
-          />
+        <div className="horizontal-center pickup-return">
+          <div className="form-group">
+            <label htmlFor="returnDate" className="form-label">
+              return Date
+            </label>
+            <input
+              type="date"
+              id="returnDate"
+              value={returnDate}
+              onChange={(e) => setReturnDate(e.target.value)}
+              className="form-input"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="returnTime" className="form-label">
+              return time
+            </label>
+            <input
+              type="time"
+              id="returnTime"
+              value={returnTime}
+              onChange={(e) => setReturnTime(e.target.value)}
+              className="form-input"
+              required
+            />
+          </div>
         </div>
         <div className="form-group">
           <button type="submit" className="form-button">
