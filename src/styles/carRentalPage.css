@@ -1,0 +1,25 @@
+.car-rental-main-container{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-containter{
+    width: 50%;
+    height: 100%;
+}
+
+.car-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.info-container{
+    width: 50%;
+    height: 100%;
+    background-color: white;
+}
