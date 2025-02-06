@@ -1,68 +1,54 @@
-import { useEffect } from 'react';
+import { useEffect , useState} from 'react';
 import { useLocation } from 'react-router-dom'
 import {CarCard} from './CarCard.jsx'
 import '../styles/showCarsPage.css'
 import { NoAvailability } from './NoAvailability.jsx';
+import axios from 'axios';
+import {carsQuery} from '../utilities/CarsFetchSimulate.js'
 
 export function ShowCarsPage() {
+
+  const [cars, setCars] = useState(carsQuery);
     useEffect(() => {
-        //const data = availabilityQuery(fetchedData)
+        //availabilityQuery(fetchedData)
     })
 
-    const NoAvailability = true
     const location = useLocation(); //Este useState se usa para pasar datos entre componentes
     const { fetchedData } = location.state || {};
-    console.log(fetchedData[0]);
-
-    const availabilityQuery = (e) => {
-        //fetch al back 
-        return {}
+    const start = `${fetchedData[2]}T${fetchedData[3]}`
+    const end = `${fetchedData[4]}T${fetchedData[5]}`
+    const availabilityURL = `http://localhost:8080/availability?startDateTime=${start}&endDateTime=${end}`
+    const NoAvailability = true
+    
+    const availabilityQuery = async () => {
+      try {
+        const response = await axios.get(availabilityURL) 
+        setCars(response.data)
+        console.log(cars)
+        
+      } catch (error) {
+        console.log(error)
+      }
     }
-    
-    const cars = [
-        {
-          name: "Toyota Corolla",
-          pricePerDay: 50,
-          image: "https://www.autonation.com/~/media/Images/Landingpage%20-%20Car%20Research/2025-honda-pilot-sport.jpg", // Reemplázalo con una URL real
-          passengers: 5,
-        },
-        {
-          name: "Honda Civic",
-          pricePerDay: 60,
-          image: "https://www.autonation.com/~/media/Images/Landingpage%20-%20Car%20Research/2025-honda-pilot-sport.jpg",
-          passengers: 5,
-        },
-        {
-          name: "Ford Mustang",
-          pricePerDay: 120,
-          image: "https://www.autonation.com/~/media/Images/Landingpage%20-%20Car%20Research/2025-honda-pilot-sport.jpg",
-          passengers: 4,
-        },
-        {
-          name: "Chevrolet Tahoe",
-          pricePerDay: 80,
-          image: "https://www.autonation.com/~/media/Images/Landingpage%20-%20Car%20Research/2025-honda-pilot-sport.jpg",
-          passengers: 7,
-        },
-        {
-          name: "BMW X5",
-          pricePerDay: 150,
-          image: "https://www.autonation.com/~/media/Images/Landingpage%20-%20Car%20Research/2025-honda-pilot-sport.jpg",
-          passengers: 5,
-        },
-      ];
-    
+
+
       return (
-            <div className="main-container">
-              {cars.map((car, index) => (
+        <div className="show-cars-main-container">
+          {cars ? (
+              cars.map((car, index) => (
                 <CarCard
                   key={index} // Solo define la key aquí, ya que es suficiente para cada elemento de la lista
+                  id={car.id}
                   name={car.name}
                   pricePerDay={car.pricePerDay}
-                  image={car.image}
-                  passengers={car.passengers}
+                  image={car.imageUrl}
+                  passengers={car.passengersAmount}
                 />
-              ))}
-            </div>
+              ))
+            ) : (
+              <h1>Loading</h1>
+            )}
+        </div>
+
       );
 }
