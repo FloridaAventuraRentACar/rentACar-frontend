@@ -42,7 +42,7 @@ export default function HomeRentInput() {
   }
 
   return (
-    <div className="form-container">
+    <div className="home-form-container">
       <form onSubmit={handleSubmit} className="form">
         <div className="horizontal-center location">
 

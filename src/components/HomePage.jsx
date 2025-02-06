@@ -3,8 +3,8 @@ import HomeRentInput from './HomeRentInput'
 
 export function HomePage() {
     return (
-        <div className="main-container">
-            <div className="inner-container">
+        <div className="home-main-container">
+            <div className="home-inner-container">
             <h1 className="heading">
                 Welcome to Our Car Rental Service
             </h1>
