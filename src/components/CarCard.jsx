@@ -1,9 +1,17 @@
 import React from "react";
 import "../styles/carCard.css";
+import { useNavigate } from "react-router-dom";
 
-export function CarCard({ name, pricePerDay, image, passengers }){
+export function CarCard({ id, name, pricePerDay, image, passengers }){
+  const navigate = useNavigate()
+  
+  const handleClick = () => {
+    const carData = { id, name, pricePerDay, image, passengers };
+    navigate(`/cars/${name}`, { state: { carData } });
+  }
+
   return (
-    <div className="car-card" style={{ backgroundImage: `url(${image})` }}>
+    <div className="car-card" style={{ backgroundImage: `url(${image})` }} onClick={handleClick}>
       <div className="car-card-overlay">
         <h3 className="car-name">{name}</h3>
         <div className="car-card-footer">
