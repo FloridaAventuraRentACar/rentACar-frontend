@@ -1,6 +1,8 @@
-import { useState , useEffect } from 'react'
+import { useState , useEffect , useContext} from 'react'
 import '../styles/homeRentInput.css'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../context/AppContext'
+import { daysCalculate } from '../utilities/daysCalculate'
 
 export default function HomeRentInput() {
   const [pickupLocation, setPickupLocation] = useState('')
@@ -9,6 +11,7 @@ export default function HomeRentInput() {
   const [pickupTime , setPickupTime] = useState('')
   const [returnDate, setReturnDate] = useState('')
   const [returnTime, setReturnTime] = useState('')
+  const { daysBooked, setDaysBooked } = useContext(AppContext);
 
   const navigate = useNavigate()
 
@@ -21,15 +24,16 @@ export default function HomeRentInput() {
     //Metodo para chequear que lo ingresado sea valido
     
     const queryData = [ 
-      pickupLocation,
-      returnLocation,
-      pickupDate,
-      pickupTime,
-      returnDate,
-      returnTime
+      pickupLocation, //[0]
+      returnLocation, //[1]
+      pickupDate, //[2]
+      pickupTime, //[3]
+      returnDate, //[4]
+      returnTime //[5]
     ]
+    setDaysBooked(daysCalculate(pickupDate, returnDate, pickupTime, returnTime))
+
     navigate('/cars', { state: { fetchedData: queryData } });
-    console.log('submit')
   }
 
   const resetStates = () => {
@@ -39,6 +43,7 @@ export default function HomeRentInput() {
     setPickupTime('')
     setReturnDate('')
     setReturnTime('')
+    setDaysBooked(0)
   }
 
   return (

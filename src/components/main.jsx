@@ -5,6 +5,7 @@ import { HomePage } from './HomePage.jsx'
 import {  createBrowserRouter, RouterProvider} from 'react-router-dom';
 import {ShowCarsPage } from './ShowCarsPage.jsx'
 import { CarRentalPage } from './CarRentalPage.jsx'
+import { AppProvider } from '../context/AppContext.jsx';
 
 const router = createBrowserRouter([{
   path: '/',
@@ -20,6 +21,8 @@ const router = createBrowserRouter([{
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />;
+    <AppProvider>
+      <RouterProvider router={router} />;
+    </AppProvider>
   </StrictMode>
 )
