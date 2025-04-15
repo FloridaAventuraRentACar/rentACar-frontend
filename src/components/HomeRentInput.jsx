@@ -31,7 +31,7 @@ export default function HomeRentInput() {
       returnDate, //[4]
       returnTime //[5]
     ]
-    setDaysBooked(daysCalculate(pickupDate, returnDate, pickupTime, returnTime))
+    setDaysBooked(daysCalculate(pickupDate, returnDate, pickupTime, returnTime));
 
     navigate('/cars', { state: { fetchedData: queryData } });
   }

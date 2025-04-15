@@ -22,7 +22,7 @@ const router = createBrowserRouter([{
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AppProvider>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </AppProvider>
   </StrictMode>
 )
