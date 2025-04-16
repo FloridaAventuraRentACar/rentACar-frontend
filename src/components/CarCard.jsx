@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/carCard.css";
 import { useNavigate } from "react-router-dom";
 
-export function CarCard({ id, name, pricePerDay, image, passengers }){
+export function CarCard({ id, name, pricePerDay, image, passengers, suitcases}){
   const navigate = useNavigate()
   
   const handleClick = () => {

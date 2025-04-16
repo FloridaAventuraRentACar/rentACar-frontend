@@ -43,6 +43,7 @@ export function ShowCarsPage() {
                   pricePerDay={car.pricePerDay}
                   image={car.imageUrl}
                   passengers={car.passengersAmount}
+                  suitcases={car.suitcasesAmount}
                 />
               ))
             ) : (

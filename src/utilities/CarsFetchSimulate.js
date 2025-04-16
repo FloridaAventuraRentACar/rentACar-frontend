@@ -18,7 +18,7 @@ export const carsQuery = [
         "plate": "aaa456",
         "brand": "Volkswagen ",
         "model": "Tiguan",
-        "name": "Volkswagen  Tiguan",
+        "name": "Volkswagen Tiguan",
         "year": 2016,
         "color": "red",
         "passengersAmount": 6,

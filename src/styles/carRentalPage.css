@@ -1,25 +1,168 @@
-.car-rental-main-container{
+.car-rental-card {
+    max-width: 900px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .car-info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    
+  }
+  
+  .car-image {
+    width: 400px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #f3f3f3;
+    flex-shrink: 0;
+  }
+  
+  .car-description {
+    flex: 1; /* Ocupa el resto del espacio disponible */
     display: flex;
     flex-direction: column;
-    height: 200px;
-    width: 200px;
+    justify-content: center; /* Centra verticalmente el contenido */
+    position: relative;
+  }
+  
+  .car-name {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+  .car-subtitle {
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .car-specs {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 70px 80px; /* espacio entre filas y columnas */
+    justify-content: center; /* centra el grid horizontalmente */
+    font-size: 1.8em;
+    color: #444;
+    margin-top: 60px;
+  }
+  .insurance{
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+
+  .baby-seat{
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+  
+  .option {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.image-containter{
-    width: 50%;
-    height: 100%;
-}
-
-.car-image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.info-container{
-    width: 50%;
-    height: 100%;
-    background-color: white;
-}
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .option.selected {
+    border: 2px solid #000;
+  }
+  
+  .option-main {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el radio y el texto */
+  }
+  
+  .option-main input {
+    margin: 0;
+  }
+  
+  .option-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .option-text strong{
+    font-size: 1em;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .included-tag {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .price-tag {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+  }
+  
+  .mileage-box {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  .price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .price-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .price-info strong {
+    font-size: 1.4em;
+  }
+  
+  .price-info p {
+    margin: 5px 0;
+    font-size: 1em;
+  }
+  
+  .price-info a {
+    font-size: 0.9em;
+    text-decoration: underline;
+    color: #333;
+  }
+  
+  .next-button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .next-button:hover {
+    background-color: #e05500;
+  }
+  
