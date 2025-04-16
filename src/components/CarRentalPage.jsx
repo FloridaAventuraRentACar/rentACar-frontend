@@ -17,20 +17,37 @@ export function CarRentalPage() {
     const [babyAge, setBabyAge] = useState('none');
     const [selectedSunpass, setSelectedSunpass] = useState('no');
 
-    const [totalPrice, setTotalPrice] = useState(carData.pricePerDay);
+    const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
     const {daysBooked, setDaysBooked} = useContext(AppContext);
 
     const handleInsuranceClick = (selected) => {
+        if (!(selected === selectedInsurance)) {
+            if (selected === "deductible") {
+                setPricePerDay(pricePerDay - 15);
+                
+            }else{
+                setPricePerDay(pricePerDay + 15);
+            }
+        }
         setSelectedInsurance(selected);
     }
-
+    
     const handleBabySeatClick = (selected) => {
+        if (!(selected === selectedBabySeat)) {
+            if (selected === "no") {
+                setPricePerDay(pricePerDay - 3);
+                
+            }else{
+                setPricePerDay(pricePerDay + 3);
+            }
+        }
         setSelectedBabySeat(selected);
     }
     const handleBabyAgeChange = (event) => {
         setBabyAge(event.target.value);
     }
     const handleSunpassClick = (selected) => {
+        
         setSelectedSunpass(selected);
     }
 
@@ -167,11 +184,11 @@ export function CarRentalPage() {
       <div className="price-section">
         <div className="price-info">
             <div className="price-top">
-                <strong>${totalPrice} <span>/day</span></strong>
+                <strong>${pricePerDay} <span>/day</span></strong>
                 <p className="days-reserved">{daysBooked} days reserved</p>
 
             </div>
-          <p className="total-price">${totalPrice * daysBooked} total</p>
+          <p className="total-price">${pricePerDay * daysBooked} total</p>
           <a href="#">Price details</a>
         </div>
         <button className="next-button">Next</button>
