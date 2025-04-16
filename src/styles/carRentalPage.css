@@ -67,6 +67,10 @@
     margin-bottom: 10px;
     font-size: 1.1em;
   }
+  .sunpass{
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
   
   .option {
     display: flex;
@@ -116,14 +120,6 @@
     font-size: 0.9em;
   }
   
-  .mileage-box {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #ccc;
-    padding: 12px;
-    border-radius: 8px;
-  }
-  
   .price-section {
     display: flex;
     justify-content: space-between;
@@ -141,7 +137,7 @@
     font-size: 1.4em;
   }
   
-  .price-info p {
+  .total-price {
     margin: 5px 0;
     font-size: 1em;
   }
@@ -152,6 +148,22 @@
     color: #333;
   }
   
+  .price-top {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+
+  .days-reserved{
+
+    font-size: 0.7em;
+    position: relative;
+    top: 4px;
+    color: #0b0a0a77;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
   .next-button {
     background-color: #ff6600;
     color: white;

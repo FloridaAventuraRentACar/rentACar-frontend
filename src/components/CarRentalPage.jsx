@@ -15,6 +15,7 @@ export function CarRentalPage() {
     const [selectedInsurance, setSelectedInsurance] = useState('deductible');
     const [selectedBabySeat, setSelectedBabySeat] = useState('no');
     const [babyAge, setBabyAge] = useState('none');
+    const [selectedSunpass, setSelectedSunpass] = useState('no');
 
     const [totalPrice, setTotalPrice] = useState(carData.pricePerDay);
     const {daysBooked, setDaysBooked} = useContext(AppContext);
@@ -28,6 +29,9 @@ export function CarRentalPage() {
     }
     const handleBabyAgeChange = (event) => {
         setBabyAge(event.target.value);
+    }
+    const handleSunpassClick = (selected) => {
+        setSelectedSunpass(selected);
     }
 
   return ( 
@@ -129,10 +133,45 @@ export function CarRentalPage() {
             </label>
         </div>
 
+        <div className="sunpass">
+            <h3>Sunpass</h3>
+
+            <label 
+                className={`option ${selectedSunpass === "no" ? "selected" : ""}`} 
+                onClick={() => handleSunpassClick('no')}
+            >
+                <div className="option-main">
+                <input type="radio" name="sunpass" defaultChecked />
+                <div className="option-text">
+                    <strong>No sunpass</strong>
+                    <p>This means you are not traveling outside of Miami</p>
+                </div>
+                </div>
+                <span className="included-tag">Same price per day</span>
+            </label>
+
+            <label 
+                className={`option ${selectedSunpass === "yes" ? "selected" : ""}`}
+                onClick={() => handleSunpassClick('yes')}
+            >
+                <div className="option-main">
+                <input type="radio" name="sunpass" />
+                <div className="option-text">
+                    <strong>Include sunpass</strong>
+                    <p>This means you are traveling outside of Miami</p>
+                </div>
+                </div>
+                <span className="price-tag">+ $15 / day</span>
+            </label>
+        </div>
       <div className="price-section">
         <div className="price-info">
-          <strong>${totalPrice} <span>/day</span></strong>
-          <p>${totalPrice * daysBooked} total</p>
+            <div className="price-top">
+                <strong>${totalPrice} <span>/day</span></strong>
+                <p className="days-reserved">{daysBooked} days reserved</p>
+
+            </div>
+          <p className="total-price">${totalPrice * daysBooked} total</p>
           <a href="#">Price details</a>
         </div>
         <button className="next-button">Next</button>
