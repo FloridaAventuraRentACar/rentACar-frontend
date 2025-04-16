@@ -8,7 +8,7 @@ export function daysCalculate(startDate, endDate , startTime, endTime) {
     // Convertir la diferencia de milisegundos a horas
     const diferenciaHoras = diferenciaMilisegundos / (1000 * 60 * 60);
 
-    const days = Math.floor(diferenciaHoras / 24);
+    let days = Math.floor(diferenciaHoras / 24);
     if (diferenciaHoras % 24 > 6) {
         days++;
     }
