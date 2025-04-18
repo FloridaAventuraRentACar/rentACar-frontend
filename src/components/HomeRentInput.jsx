@@ -53,7 +53,7 @@ export default function HomeRentInput() {
 
           <div className="form-group">
             <label htmlFor="pickupLocation" className="form-label">
-              Pickup location
+              Ubicacion de entrega
             </label>
             <select 
               className='form-input'
@@ -63,15 +63,15 @@ export default function HomeRentInput() {
               onChange={(e) => setPickupLocation(e.target.value)}
               required
             >
-              <option id='default' value="" disabled selected>Select a pickup location</option>
-              <option value="Miami international airport">Miami international airport</option>
-              <option value="Fortlaurendale airport">Fortlaurendale airport</option>
+              <option id='default' value="" disabled selected>Selecciona una ubicacion de entrega</option>
+              <option value="Miami international airport">Aeropuerto internacion de Miami</option>
+              <option value="Fortlaurendale airport">Aeropuerto de Fortlaurendale</option>
               <option value="Downtown">Downtown</option>
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="returnLocation" className="form-label">
-              Return location
+              Ubicacion de devolucion
             </label>
             <select 
               className='form-input'
@@ -80,9 +80,9 @@ export default function HomeRentInput() {
               onChange={(e) => setReturnLocation(e.target.value)}
               required
             >
-              <option id='default' value="" disabled selected>Select a return location</option>
-              <option value="Miami international airport">Miami international airport</option>
-              <option value="Fortlaurendale airport">Fortlaurendale airport</option>
+              <option id='default' value="" disabled selected>Selecciona una ubicacion de de devolucion</option>
+              <option value="Miami international airport">Aeropuerto internacion de Miami</option>
+              <option value="Fortlaurendale airport">Aeropuerto de Fortlaurendale</option>
               <option value="Downtown">Downtown</option>
             </select>
           </div>
@@ -90,7 +90,7 @@ export default function HomeRentInput() {
         <div className="horizontal-center pickup-return">
           <div className="form-group">
             <label htmlFor="pickupDate" className="form-label">
-            pickup Date
+            Fecha de entrega
             </label>
             <input
               type="date"
@@ -103,7 +103,7 @@ export default function HomeRentInput() {
           </div>
           <div className="form-group">
             <label htmlFor="pickupTime" className="form-label">
-            Pickup time
+            Hora de entrega
             </label>
             <input
               type="time"
@@ -118,7 +118,7 @@ export default function HomeRentInput() {
         <div className="horizontal-center pickup-return">
           <div className="form-group">
             <label htmlFor="returnDate" className="form-label">
-              return Date
+              Fecha de devolucion
             </label>
             <input
               type="date"
@@ -131,7 +131,7 @@ export default function HomeRentInput() {
           </div>
           <div className="form-group">
             <label htmlFor="returnTime" className="form-label">
-              return time
+              Hora de devolucion
             </label>
             <input
               type="time"
@@ -145,7 +145,7 @@ export default function HomeRentInput() {
         </div>
         <div className="form-group">
           <button type="submit" className="form-button">
-            Show Cars
+            Mostrar autos
           </button>
         </div>
       </form>

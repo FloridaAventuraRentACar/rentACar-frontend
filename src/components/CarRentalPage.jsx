@@ -62,17 +62,17 @@ export function CarRentalPage() {
         <div className="car-description">
           <h2 className="car-name">{carData.name}</h2>
           <div className="car-specs">
-            <span>🚗 {carData.passengers} Seats</span>
-            <span>🧳 {carData.suitcases} suitcases</span>
-            <span>⚙️ Automatic</span>
-            <span>🚪 4 Doors</span>
+            <span>🚗 {carData.passengers} asientos</span>
+            <span>🧳 {carData.suitcases} valijas</span>
+            <span>⚙️ Automatico</span>
+            <span>🚪 4 Puertas</span>
            </div>
         </div>
       </div>
 
       
         <div className="insurance">
-            <h3>Insurance</h3>
+            <h3>Seguro</h3>
 
             <label 
                 className={`option ${selectedInsurance === "deductible" ? "selected" : ""}`} 
@@ -81,11 +81,11 @@ export function CarRentalPage() {
                 <div className="option-main">
                 <input type="radio" name="insurance" defaultChecked />
                 <div className="option-text">
-                    <strong>$500 deductible</strong>
-                    <p>You pay for the first $500, we cover the rest</p>
+                    <strong>Franquicia de $500</strong>
+                    <p>Tu pagas los primeros $500, nosotros cubrimos el resto</p>
                 </div>
                 </div>
-                <span className="included-tag">Same price per day</span>
+                <span className="included-tag">Mismo precio por dia</span>
             </label>
 
             <label 
@@ -95,16 +95,16 @@ export function CarRentalPage() {
                 <div className="option-main">
                 <input type="radio" name="insurance" />
                 <div className="option-text">
-                    <strong>Total insurance</strong>
-                    <p>We cover all the costs</p>
+                    <strong>Seguro total</strong>
+                    <p>Cubrimos todos los costos</p>
                 </div>
                 </div>
-                <span className="price-tag">+ $15 / day</span>
+                <span className="price-tag">+ $15 /dia</span>
             </label>
         </div>
 
         <div className="baby-seat">
-            <h3>Baby seat</h3>
+            <h3>Asiento de bebe</h3>
 
             <label 
                 className={`option ${selectedBabySeat === "no" ? "selected" : ""}`} 
@@ -113,11 +113,11 @@ export function CarRentalPage() {
                 <div className="option-main">
                 <input type="radio" name="baby seat" defaultChecked />
                 <div className="option-text">
-                    <strong>No baby seat</strong>
-                    <p>This means you don't have a baby seat</p>
+                    <strong>Sin asiento de bebe</strong>
+                    <p>Esto significa que no necesitas un asiento de bebe</p>
                 </div>
                 </div>
-                <span className="included-tag">Same price per day</span>
+                <span className="included-tag">Mismo precio por dia</span>
             </label>
 
             <label 
@@ -127,12 +127,12 @@ export function CarRentalPage() {
                 <div className="option-main">
                     <input type="radio" name="baby seat" />
                     <div className="option-text">
-                        <strong>Include baby seat</strong>
-                        <p>This means you have a baby and need a baby seat</p>
+                        <strong>Incluir asiento de bebe</strong>
+                        <p>Esto significa que necesitas un asiento de bebe</p>
                     </div>
                 </div>
                 <FormControl sx={{ m: 1, minWidth: 80 }}>
-                    <InputLabel id="baby-age-label">Baby age</InputLabel>
+                    <InputLabel id="baby-age-label">Edad</InputLabel>
                     <Select
                         labelId="baby-age-label"
                         id="baby-age-select"
@@ -146,7 +146,7 @@ export function CarRentalPage() {
                         <MenuItem value={3}>3</MenuItem>
                     </Select>
                 </FormControl>
-                <span className="price-tag">+ $3 / day</span>
+                <span className="price-tag">+ $3 /dia</span>
             </label>
         </div>
 
@@ -160,11 +160,11 @@ export function CarRentalPage() {
                 <div className="option-main">
                 <input type="radio" name="sunpass" defaultChecked />
                 <div className="option-text">
-                    <strong>No sunpass</strong>
-                    <p>This means you are not traveling outside of Miami</p>
+                    <strong>No voy a salir de Miami</strong>
+                    <p>Esto significa que no viajaras fuera de Miami con el coche</p>
                 </div>
                 </div>
-                <span className="included-tag">Same price per day</span>
+                <span className="included-tag">Mismo precio por dia</span>
             </label>
 
             <label 
@@ -172,24 +172,25 @@ export function CarRentalPage() {
                 onClick={() => handleSunpassClick('yes')}
             >
                 <div className="option-main">
-                <input type="radio" name="sunpass" />
-                <div className="option-text">
-                    <strong>Include sunpass</strong>
-                    <p>This means you are traveling outside of Miami</p>
+                    <input type="radio" name="sunpass" />
+                    <div className="option-text">
+                        <strong>Viajare fuera de Miami</strong>
+                        <p>Esto significa que realizaras algun viaje fuera de Miami con el coche</p>
+                    </div>
                 </div>
-                </div>
-                <span className="price-tag">+ $15 / day</span>
+                
+                <span className="price-tag">+ $15 /dia</span>
             </label>
         </div>
       <div className="price-section">
         <div className="price-info">
             <div className="price-top">
-                <strong>${pricePerDay} <span>/day</span></strong>
-                <p className="days-reserved">{daysBooked} days reserved</p>
+                <strong>${pricePerDay} <span>/dia</span></strong>
+                <p className="days-reserved">{daysBooked} dias reservados</p>
 
             </div>
           <p className="total-price">${pricePerDay * daysBooked} total</p>
-          <a href="#">Price details</a>
+          <a href="#">Detalles del precio</a>
         </div>
         <button className="next-button">Next</button>
       </div>

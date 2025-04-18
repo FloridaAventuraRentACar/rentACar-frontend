@@ -6,7 +6,7 @@ export function HomePage() {
         <div className="home-main-container">
             <div className="home-inner-container">
             <h1 className="heading">
-                Welcome to Our Car Rental Service
+                Bienvenido a Florida Aventura Rent A Car
             </h1>
             <HomeRentInput />
             </div>

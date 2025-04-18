@@ -15,7 +15,7 @@ export function CarCard({ id, name, pricePerDay, image, passengers, suitcases}){
       <div className="car-card-overlay">
         <h3 className="car-name">{name}</h3>
         <div className="car-card-footer">
-          <span className="price">${pricePerDay}/day</span>
+          <span className="price">${pricePerDay}/dia</span>
         </div>
       </div>
     </div>
