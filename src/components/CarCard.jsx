@@ -6,7 +6,7 @@ export function CarCard({ id, name, pricePerDay, image, passengers, suitcases}){
   const navigate = useNavigate()
   
   const handleClick = () => {
-    const carData = { id, name, pricePerDay, image, passengers };
+    const carData = { id, name, pricePerDay, image, passengers , suitcases};
     navigate(`/cars/${name}`, { state: { carData } });
   }
 
