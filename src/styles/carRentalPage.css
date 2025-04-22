@@ -37,12 +37,12 @@
   .car-name {
     font-size: 2.5em;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-
+    
   }
   .car-subtitle {
     color: #666;
@@ -56,18 +56,11 @@
     justify-content: center; /* centra el grid horizontalmente */
     font-size: 1.8em;
     color: #444;
-    margin-top: 60px;
+    margin-top: 80px;
   }
-  .insurance{
-    margin-bottom: 10px;
-    font-size: 1.1em;
-  }
-
-  .baby-seat{
-    margin-bottom: 10px;
-    font-size: 1.1em;
-  }
-  .sunpass{
+  
+  
+  .main-div{
     margin-bottom: 10px;
     font-size: 1.1em;
   }
@@ -126,6 +119,7 @@
     align-items: center;
     margin-top: 20px;
     flex-wrap: wrap;
+    position: relative;
   }
   
   .price-info {
@@ -164,6 +158,45 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
+  .reserve-info {
+    display: flex;
+    justify-content: space-between;
+    top: 5px;
+    gap: 50px; /* espacio entre entrega y devolución */
+    font-size: 0.95em;
+    margin-right: 20px;
+    color: #444;
+    position: relative;
+    
+  }
+  
+  .pickup-info,
+  .return-info {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .title {
+    font-weight: bold;
+    font-size: 1em;
+    color: #1111113e;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  }
+  
+  .location {
+    font-size: 0.95em;
+    color: #222;
+    margin-bottom: 2px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .date {
+    font-size: 0.9em;
+    color: #555;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
   .next-button {
     background-color: #ff6600;
     color: white;
