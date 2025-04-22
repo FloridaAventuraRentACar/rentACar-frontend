@@ -20,7 +20,15 @@ export function CarRentalPage() {
     const [travelLocationPrice, setTravelLocationPrice] = useState(0);
 
     const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
-    const {daysBooked, setDaysBooked} = useContext(AppContext);
+    const {
+        daysBooked,
+        pickupLocation,
+        returnLocation,
+        pickupDate,
+        pickupTime,
+        returnDate,
+        returnTime
+    } = useContext(AppContext);
 
     const handleInsuranceClick = (selected) => {
         if (!(selected === selectedInsurance)) {
@@ -241,13 +249,13 @@ export function CarRentalPage() {
         <div className="reserve-info">
             <div className='pickup-info'>
                 <strong className='title'>Entrega</strong>
-                <p className='location'>Miami international airport</p>
-                <p className='date'>20/02/2025 - 12:00</p>
+                <p className='location'>{pickupLocation}</p>
+                <p className='date'>{pickupDate} - {pickupTime}</p>
             </div>
             <div className='return-info'>
                 <strong className='title'>Devolucion</strong>
-                <p className='location'>Miami international airport</p>
-                <p className='date'>20/03/2025 - 10:00</p>
+                <p className='location'>{returnLocation}</p>
+                <p className='date'>{returnDate} - {returnTime}</p>
             </div>
         </div>
         <button className="next-button">Next</button>

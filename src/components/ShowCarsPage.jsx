@@ -1,22 +1,27 @@
-import { useEffect , useState} from 'react';
-import { useLocation } from 'react-router-dom'
+import { useContext, useEffect , useState} from 'react';
 import {CarCard} from './CarCard.jsx'
 import '../styles/showCarsPage.css'
 import { NoAvailability } from './NoAvailability.jsx';
 import axios from 'axios';
 import {carsQuery} from '../utilities/CarsFetchSimulate.js'
+import { AppContext } from '../context/AppContext'
 
 export function ShowCarsPage() {
 
-  const [cars, setCars] = useState(carsQuery);
+    const [cars, setCars] = useState(carsQuery);
     useEffect(() => {
         //availabilityQuery(fetchedData)
     })
 
-    const location = useLocation(); //Este useState se usa para pasar datos entre componentes
-    const { fetchedData } = location.state || {};
-    const start = `${fetchedData[2]}T${fetchedData[3]}`
-    const end = `${fetchedData[4]}T${fetchedData[5]}`
+    const {
+        pickupDate,
+        pickupTime,
+        returnDate,
+        returnTime
+      } = useContext(AppContext);
+
+    const start = `${pickupDate}T${pickupTime}`
+    const end = `${returnDate}T${returnTime}`
     const availabilityURL = `http://localhost:8080/availability?startDateTime=${start}&endDateTime=${end}`
     const NoAvailability = true
     
@@ -32,7 +37,7 @@ export function ShowCarsPage() {
     }
 
 
-      return (
+    return (
         <div className="show-cars-main-container">
           {cars ? (
               cars.map((car, index) => (
