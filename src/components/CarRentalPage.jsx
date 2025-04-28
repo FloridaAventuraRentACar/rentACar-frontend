@@ -47,15 +47,13 @@ export function CarRentalPage() {
             if (selected === "no") {
                 setPricePerDay(pricePerDay - 3);
                 
-            }else{
+            }else if(selectedBabySeat === "no"){
                 setPricePerDay(pricePerDay + 3);
             }
         }
         setSelectedBabySeat(selected);
     }
-    const handleBabyAgeChange = (event) => {
-        setBabyAge(event.target.value);
-    }
+
     const handleTravelLocationChange = (event) => {
         setTravelLocation(event.target.value);
         if (travelLocation === 'Florida') {
@@ -135,39 +133,52 @@ export function CarRentalPage() {
                     <div className="option-main">
                     <input type="radio" name="baby seat" defaultChecked />
                     <div className="option-text">
-                        <strong>Sin asiento de bebe</strong>
-                        <p>Esto significa que no necesitas un asiento de bebe</p>
+                        <strong>Sin asiento para niño</strong>
+                        <p>Esto significa que no necesitas un asiento para niño adicional</p>
                     </div>
                     </div>
                     <span className="included-tag">Mismo precio por dia</span>
                 </label>
 
                 <label 
-                    className={`option ${selectedBabySeat === "yes" ? "selected" : ""}`}
-                    onClick={() => handleBabySeatClick('yes')}
+                    className={`option ${selectedBabySeat === "baby-seat" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('baby-seat')}
                 >
                     <div className="option-main">
                         <input type="radio" name="baby seat" />
                         <div className="option-text">
                             <strong>Incluir asiento de bebe</strong>
-                            <p>Esto significa que necesitas un asiento de bebe</p>
+                            <p>Pensada para niños de hasta 1 año</p>
                         </div>
                     </div>
-                    <FormControl sx={{ m: 1, minWidth: 80 }}>
-                        <InputLabel id="baby-age-label">Edad</InputLabel>
-                        <Select
-                            labelId="baby-age-label"
-                            id="baby-age-select"
-                            value={babyAge}
-                            label="Baby Age"
-                            onChange={handleBabyAgeChange}
-                        >
-                            <MenuItem value={0}>0</MenuItem>
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <span className="price-tag">+ $3 /dia</span>
+                </label>
+
+                <label 
+                    className={`option ${selectedBabySeat === "toddler-seat" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('toddler-seat')}
+                >
+                    <div className="option-main">
+                        <input type="radio" name="baby seat" />
+                        <div className="option-text">
+                            <strong>Incluir Toddler seat</strong>
+                            <p>Pensada para niños de entre 1 y 4 años</p>
+                        </div>
+                    </div>
+                    <span className="price-tag">+ $3 /dia</span>
+                </label>
+
+                <label 
+                    className={`option ${selectedBabySeat === "booster-seat" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('booster-seat')}
+                >
+                    <div className="option-main">
+                        <input type="radio" name="baby seat" />
+                        <div className="option-text">
+                            <strong>Incluir Booster seat</strong>
+                            <p>Pensada para niños de entre 4 y 12 años</p>
+                        </div>
+                    </div>
                     <span className="price-tag">+ $3 /dia</span>
                 </label>
             </div>
