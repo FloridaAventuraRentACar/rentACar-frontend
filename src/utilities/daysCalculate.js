@@ -9,7 +9,7 @@ export function daysCalculate(startDate, endDate , startTime, endTime) {
     const diferenciaHoras = diferenciaMilisegundos / (1000 * 60 * 60);
 
     let days = Math.floor(diferenciaHoras / 24);
-    if (diferenciaHoras % 24 > 6) {
+    if (diferenciaHoras % 24 > 3) { 
         days++;
     }
 
