@@ -1,12 +1,12 @@
-.main-containee{
+.show-cars-main-container{
   display: flex;
   flex-direction: column;
-  columns: 1;
+  align-items: center;
+  justify-content: center;
 
 }
 
 .car-card-container{
   display: flex;
   justify-content: center;
-  padding-bottom: 30px;
 }
