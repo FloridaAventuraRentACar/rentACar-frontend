@@ -127,13 +127,15 @@
     flex-direction: column;
   }
   
-  .price-info strong {
-    font-size: 1.4em;
+  .price-per-day {
+    font-size: 1em;
+    margin-bottom: 7px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   
   .total-price {
     margin: 5px 0;
-    font-size: 1em;
+    font-size: 1.3em;
   }
   
   .price-info a {

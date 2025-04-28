@@ -239,11 +239,11 @@ export function CarRentalPage() {
       <div className="price-section">
         <div className="price-info">
             <div className="price-top">
-                <strong>${pricePerDay} <span>/dia</span></strong>
+                <p className="price-per-day">${pricePerDay} <span>/dia</span></p>
                 <p className="days-reserved">{daysBooked} dias reservados</p>
 
             </div>
-          <p className="total-price">${pricePerDay * daysBooked} total</p>
+          <strong className="total-price">${pricePerDay * daysBooked} total</strong>
           <a href="#">Detalles del precio</a>
         </div>
         <div className="reserve-info">
