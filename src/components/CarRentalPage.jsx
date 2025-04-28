@@ -106,20 +106,21 @@ export function CarRentalPage() {
                     </div>
                     <span className="included-tag">Mismo precio por dia</span>
                 </label>
-
-                <label 
-                    className={`option ${selectedInsurance === "total" ? "selected" : ""}`}
-                    onClick={() => handleInsuranceClick('total')}
-                >
-                    <div className="option-main">
-                    <input type="radio" name="insurance" />
-                    <div className="option-text">
-                        <strong>Seguro total</strong>
-                        <p>Cubrimos todos los costos</p>
-                    </div>
-                    </div>
-                    <span className="price-tag">+ $15 /dia</span>
-                </label>
+                {daysBooked >= 20 && (
+                    <label 
+                        className={`option ${selectedInsurance === "total" ? "selected" : ""}`}
+                        onClick={() => handleInsuranceClick('total')}
+                    >
+                        <div className="option-main">
+                        <input type="radio" name="insurance" />
+                        <div className="option-text">
+                            <strong>Seguro total</strong>
+                            <p>Cubrimos todos los costos</p>
+                        </div>
+                        </div>
+                        <span className="price-tag">+ $15 /dia</span>
+                    </label>
+                )}
             </div>
         </div>
 
