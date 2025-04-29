@@ -1,11 +1,12 @@
 import { useLocation } from 'react-router-dom'
 import '../styles/carRentalPage.css'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import locationPrices from '../utilities/locationPrices'
 
 export function CarRentalPage() {
 
@@ -14,12 +15,12 @@ export function CarRentalPage() {
 
     const [selectedInsurance, setSelectedInsurance] = useState('deductible');
     const [selectedBabySeat, setSelectedBabySeat] = useState('no');
-    const [babyAge, setBabyAge] = useState('none');
     const [selectedSunpass, setSelectedSunpass] = useState('no');
     const [travelLocation, setTravelLocation] = useState('none');
     const [travelLocationPrice, setTravelLocationPrice] = useState(0);
 
     const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
+
     const {
         daysBooked,
         pickupLocation,
@@ -29,6 +30,12 @@ export function CarRentalPage() {
         returnDate,
         returnTime
     } = useContext(AppContext);
+
+    const [totalPrice, setTotalPrice] = useState(pricePerDay * daysBooked);
+
+    useEffect(() => {
+        setTotalPrice(pricePerDay * daysBooked + travelLocationPrice);
+    }, [pricePerDay, travelLocationPrice]);
 
     const handleInsuranceClick = (selected) => {
         if (!(selected === selectedInsurance)) {
@@ -55,15 +62,20 @@ export function CarRentalPage() {
     }
 
     const handleTravelLocationChange = (event) => {
-        setTravelLocation(event.target.value);
-        if (travelLocation === 'Florida') {
-            setTravelLocationPrice(35);
-        }else if (condition) {
-            setTravelLocationPrice(35);
-        }
+
+        const newLocation = event.target.value;
+        const newLocationPrice = locationPrices[newLocation];
+
+        // Actualizamos travelLocation y travelLocationPrice
+        setTravelLocation(newLocation);
+        setTravelLocationPrice(newLocationPrice);
     }
+
     const handleSunpassClick = (selected) => {
-        
+        if (selected === "no") {
+            setTravelLocation('none');
+            setTravelLocationPrice(0);
+        }
         setSelectedSunpass(selected);
     }
 
@@ -213,20 +225,29 @@ export function CarRentalPage() {
                             <p>Debes seleccionar a donde tienes planeado viajar</p>
                         </div>
                     </div>
-                    <FormControl sx={{ m: 1, minWidth: 100 }}>
-                        <InputLabel id="travel-location-label">Donde</InputLabel>
-                        <Select
-                            labelId="travel-location-label"
-                            id="travel-location-select"
-                            value={travelLocation}
-                            label="Travel location"
-                            onChange={handleTravelLocationChange}
-                        >
-                            <MenuItem value={'Florida'}>Florida</MenuItem>
-                            <MenuItem value={'dsd'}>Keystone</MenuItem> 
-                        </Select>
-                    </FormControl>
-                    <span className="price-tag">+ $15 /dia</span>
+                    {selectedSunpass === "yes" && (
+                        <FormControl sx={{ m: 1, minWidth: 100 }}>
+                            <InputLabel id="travel-location-label">Donde</InputLabel>
+                            <Select
+                                labelId="travel-location-label"
+                                id="travel-location-select"
+                                value={travelLocation}
+                                label="Travel location"
+                                onChange={handleTravelLocationChange}
+                            >
+                                <MenuItem value={'Orlando'}>Orlando</MenuItem> 
+                                <MenuItem value={'KeyWest'}>KeyWest</MenuItem>
+                                <MenuItem value={'WestPalmBeach'}>West Palm Beach</MenuItem>
+                                <MenuItem value={'Daytona'}>Daytona</MenuItem>
+                                <MenuItem value={'ClearWater'}>Clearwater beach</MenuItem>
+                                <MenuItem value={'Isla morada'}>Isla morada</MenuItem>
+                                <MenuItem value={'Naples'}>Naples</MenuItem>
+                            </Select>
+                        </FormControl>
+                    )}
+                    {selectedSunpass === "yes" && (
+                        <span className="price-tag">+ ${travelLocationPrice} al total</span>
+                    )}
                 </label>
             </div>
         </div>
@@ -255,7 +276,7 @@ export function CarRentalPage() {
                 <p className="days-reserved">{daysBooked} dias reservados</p>
 
             </div>
-          <strong className="total-price">${pricePerDay * daysBooked} total</strong>
+          <strong className="total-price">${totalPrice} total</strong>
           <a href="#">Detalles del precio</a>
         </div>
         <div className="reserve-info">
