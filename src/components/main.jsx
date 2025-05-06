@@ -6,6 +6,7 @@ import {  createBrowserRouter, RouterProvider} from 'react-router-dom';
 import {ShowCarsPage } from './ShowCarsPage.jsx'
 import { CarRentalPage } from './CarRentalPage.jsx'
 import { AppProvider } from '../context/AppContext.jsx';
+import DriverForm from './DriverForm.jsx';
 
 const router = createBrowserRouter([{
   path: '/',
@@ -16,6 +17,9 @@ const router = createBrowserRouter([{
   },{
     path: '/cars/:name',
     element: <CarRentalPage />
+  },{
+    path: '/driver-form',
+    element: <DriverForm />
   }
 ]);
 

@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import '../styles/carRentalPage.css'
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
@@ -9,6 +9,12 @@ import Select from '@mui/material/Select';
 import locationPrices from '../utilities/locationPrices'
 
 export function CarRentalPage() {
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+      
+      navigate('/driver-form')
+    };
 
     const location = useLocation(); //Este useState se usa para pasar datos entre componentes
     const { carData } = location.state || {};
@@ -291,7 +297,7 @@ export function CarRentalPage() {
                 <p className='date'>{returnDate} - {returnTime}</p>
             </div>
         </div>
-        <button className="next-button">Next</button>
+        <button type="button" className="next-button" onClick={handleClick}>Next</button>
       </div>
     </div>
   );
