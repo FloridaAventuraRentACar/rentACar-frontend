@@ -1,0 +1,114 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.header{
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.formTitle{
+  margin-left: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f4f8;
+  border: none;
+  border-radius: 9999px; /* forma circular */
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  background-color: #dbeafe;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.backIcon {
+  width: 24px;
+  height: 24px;
+  color: #1d4ed8; /* azul intenso */
+}
+
+h2, h3, h4 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.fieldGroup {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+
+.input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+.additionalDriver {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.removeButton {
+  background-color: #dc3545;
+}
+
+.removeButton:hover {
+  background-color: #a71d2a;
+}
+.formButton{
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.ageCheckbox{
+  margin-right: 10px;
+}
