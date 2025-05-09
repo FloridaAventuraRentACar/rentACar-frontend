@@ -5,17 +5,19 @@ import * as Yup from 'yup';
 import styles from '../styles/DriverForm.module.css';
 import { Divider } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import RentalDetails from './RentalDetails.jsx';
+
 const driverSchema = Yup.object({
-  firstName: Yup.string().required('Required'),
-  lastName: Yup.string().required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.string().required('Required'),
-  licenseNumber: Yup.string().required('Required'),
-  birthDate: Yup.date().required('Required'),
-  nameOnLicense: Yup.string().required('Required'),
-  addressOnLicense: Yup.string().required('Required'),
-  licenseExpiry: Yup.date().required('Required'),
-  ageCheckbox: Yup.boolean().oneOf([true]).required('Required')
+  firstName: Yup.string().required('Obligatorio'),
+  lastName: Yup.string().required('Obligatorio'),
+  email: Yup.string().email('Debes ingresar un formato de mail valido').required('Obligatorio'),
+  phone: Yup.string().required('Obligatorio'),
+  licenseNumber: Yup.string().required('Obligatorio'),
+  birthDate: Yup.date().required('Obligatorio'),
+  nameOnLicense: Yup.string().required('Obligatorio'),
+  addressOnLicense: Yup.string().required('Obligatorio'),
+  licenseExpiry: Yup.date().required('Obligatorio'),
+  ageCheckbox: Yup.boolean().oneOf([true], "Debes tener mas de 25 años para manejar un vehiculo").required('Obligatorio')
 });
 
 const DriverForm = () => {
@@ -108,71 +110,78 @@ const DriverForm = () => {
   );
 
   return (
-    <div className={styles.container}>
-      <div className={styles.formContainer}>
-        <div className={styles.header}>
-          <button className={styles.backButton}>
-            <ArrowCircleLeftIcon className={styles.backIcon} />
-          </button>
-          <h2 className={styles.formTitle}>Volver a los detalles de la reserva</h2>
+    <div className={styles.background}>
+      <div className={styles.container}>
+        <div className={styles.formContainer}>
+          <div className={styles.header}>
+            <button className={styles.backButton}>
+              <ArrowCircleLeftIcon className={styles.backIcon} />
+            </button>
+            <h2 className={styles.formTitle}>Volver a los detalles de la reserva</h2>
+          </div>
+          <Divider />
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+          >
+            {({ values }) => (
+              <Form>
+                <h3 className={styles.sectionTitle}>Conductor principal</h3>
+                {renderFields('driver')}
+
+                <h3 className={styles.sectionTitle}>Conductores adicionales</h3>
+                <FieldArray name="additionalDrivers">
+                  {({ push, remove }) => (
+                    <div>
+                      {values.additionalDrivers.map((_, index) => (
+                        <div key={index} className={styles.driverBox}>
+                          <h4 className={styles.sectionTitle}>Conductor adicional {index + 1}</h4>
+                          {renderFields(`additionalDrivers[${index}]`)}
+                          <button
+                            type="button"
+                            className={styles.formButton}
+                            onClick={() => remove(index)}
+                          >
+                            Remover
+                          </button>
+                        </div>
+                      ))}
+                      <button
+                        type="button"
+                        className={styles.button}
+                        onClick={() =>
+                          push({
+                            firstName: '',
+                            lastName: '',
+                            email: '',
+                            phone: '',
+                            licenseNumber: '',
+                            birthDate: '',
+                            nameOnLicense: '',
+                            addressOnLicense: '',
+                            licenseExpiry: '',
+                          })
+                        }
+                      >
+                        Agregar conductor adicional
+                      </button>
+                    </div>
+                  )}
+                </FieldArray>
+
+                <br />
+                <button type="submit" className={`${styles.submitButton} ${styles.button}`}
+                >
+                  Confirmar reserva
+                </button>
+              </Form>
+            )}
+          </Formik>
         </div>
-        <Divider />
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-        >
-          {({ values }) => (
-            <Form>
-              <h3 className={styles.sectionTitle}>Conductor principal</h3>
-              {renderFields('driver')}
+      </div>
+      <div className={styles.rentalDetailsContainer}>
+        <RentalDetails />
 
-              <h3 className={styles.sectionTitle}>Conductores adicionales</h3>
-              <FieldArray name="additionalDrivers">
-                {({ push, remove }) => (
-                  <div>
-                    {values.additionalDrivers.map((_, index) => (
-                      <div key={index} className={styles.driverBox}>
-                        <h4 className={styles.sectionTitle}>Conductor adicional {index + 1}</h4>
-                        {renderFields(`additionalDrivers[${index}]`)}
-                        <button
-                          type="button"
-                          className={styles.formButton}
-                          onClick={() => remove(index)}
-                        >
-                          Remover
-                        </button>
-                      </div>
-                    ))}
-                    <button
-                      type="button"
-                      className={styles.formButton}
-                      onClick={() =>
-                        push({
-                          firstName: '',
-                          lastName: '',
-                          email: '',
-                          phone: '',
-                          licenseNumber: '',
-                          birthDate: '',
-                          nameOnLicense: '',
-                          addressOnLicense: '',
-                          licenseExpiry: '',
-                        })
-                      }
-                    >
-                      Agregar conductor adicional
-                    </button>
-                  </div>
-                )}
-              </FieldArray>
-
-              <br />
-              <button type="submit" className={styles.submitButton}>
-                Confirmar reserva
-              </button>
-            </Form>
-          )}
-        </Formik>
       </div>
     </div>
   );

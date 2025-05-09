@@ -297,7 +297,7 @@ export function CarRentalPage() {
                 <p className='date'>{returnDate} - {returnTime}</p>
             </div>
         </div>
-        <button type="button" className="next-button" onClick={handleClick}>Next</button>
+        <button type="button" className="next-button" onClick={handleClick}>Siguiente</button>
       </div>
     </div>
   );
