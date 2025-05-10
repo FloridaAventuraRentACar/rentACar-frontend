@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/carCard.css";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 
 export function CarCard({ id, name, pricePerDay, image, passengers, suitcases}){
+
   const navigate = useNavigate()
+  const {setCarData} = useContext(AppContext);
   
   const handleClick = () => {
     const carData = { id, name, pricePerDay, image, passengers , suitcases};
-    navigate(`/cars/${name}`, { state: { carData } });
+    setCarData(carData);
+    navigate(`/cars/${name}`,{});
   }
-
+  
   return (
     <div className="car-card" style={{ backgroundImage: `url(${image})` }} onClick={handleClick}>
       <div className="car-card-overlay">

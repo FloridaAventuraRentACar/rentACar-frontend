@@ -17,15 +17,12 @@ export function CarRentalPage() {
     };
 
     const location = useLocation(); //Este useState se usa para pasar datos entre componentes
-    const { carData } = location.state || {};
-
+    
     const [selectedInsurance, setSelectedInsurance] = useState('deductible');
     const [selectedBabySeat, setSelectedBabySeat] = useState('no');
     const [selectedSunpass, setSelectedSunpass] = useState('no');
     const [travelLocation, setTravelLocation] = useState('none');
     const [travelLocationPrice, setTravelLocationPrice] = useState(0);
-
-    const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
 
     const {
         daysBooked,
@@ -34,8 +31,11 @@ export function CarRentalPage() {
         pickupDate,
         pickupTime,
         returnDate,
-        returnTime
+        returnTime,
+        carData
     } = useContext(AppContext);
+
+    const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
 
     const [totalPrice, setTotalPrice] = useState(pricePerDay * daysBooked);
 
