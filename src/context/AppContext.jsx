@@ -11,13 +11,14 @@ export const AppProvider = ({ children }) => {
   const [pickupTime , setPickupTime] = useState('')
   const [returnDate, setReturnDate] = useState('')
   const [returnTime, setReturnTime] = useState('')
+  const [carData,setCarData] = useState({})
 
   return (
     <AppContext.Provider value={{ 
       daysBooked, setDaysBooked , pickupLocation, setPickupLocation, 
       returnLocation, setReturnLocation, pickupDate, setPickupDate, 
       pickupTime, setPickupTime, returnDate, setReturnDate, returnTime, 
-      setReturnTime}}>
+      setReturnTime, carData, setCarData }}>
       {children}
     </AppContext.Provider>
   );

@@ -111,15 +111,18 @@ const DriverForm = () => {
 
   return (
     <div className={styles.background}>
-      <div className={styles.container}>
+      <div className={styles.header}>
+
+        <button className={styles.backButton}>
+          <ArrowCircleLeftIcon className={styles.backIcon} />
+        </button>
+        <h2 className={styles.formTitle}>Volver a los detalles de la reserva</h2>
+
+      </div>
+      <Divider />
+      <div className={styles.mainContainer}>
+
         <div className={styles.formContainer}>
-          <div className={styles.header}>
-            <button className={styles.backButton}>
-              <ArrowCircleLeftIcon className={styles.backIcon} />
-            </button>
-            <h2 className={styles.formTitle}>Volver a los detalles de la reserva</h2>
-          </div>
-          <Divider />
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -139,7 +142,7 @@ const DriverForm = () => {
                           {renderFields(`additionalDrivers[${index}]`)}
                           <button
                             type="button"
-                            className={styles.formButton}
+                            className={`${styles.button} ${styles.removeButton}`}
                             onClick={() => remove(index)}
                           >
                             Remover
@@ -148,7 +151,7 @@ const DriverForm = () => {
                       ))}
                       <button
                         type="button"
-                        className={styles.button}
+                        className={`${styles.button} ${styles.addButton}`}
                         onClick={() =>
                           push({
                             firstName: '',
@@ -178,10 +181,10 @@ const DriverForm = () => {
             )}
           </Formik>
         </div>
-      </div>
-      <div className={styles.rentalDetailsContainer}>
-        <RentalDetails />
+        <div className={styles.rentalDetailsContainer}>
+          <RentalDetails />
 
+        </div>
       </div>
     </div>
   );
