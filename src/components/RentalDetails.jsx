@@ -1,42 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from '../styles/RentalDetails.module.css';
+import { AppContext } from '../context/AppContext';
+import { format, parseISO } from 'date-fns';
 
 const RentalDetails = () => {
+
+  const {carData, daysBooked, pickupLocation, pickupDate,pickupTime, returnLocation, returnDate, returnTime} = useContext(AppContext);
+
+  const parsePickupDate = parseISO(pickupDate);
+  const formattedPickupDate = format(parsePickupDate, 'eee, dd. MMM. yyyy');
+  
+  const parseReturnDate = parseISO(returnDate);
+  const formattedReturnDate = format(parseReturnDate, 'eee, dd. MMM. yyyy');
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <img
-          src="https://cdn.motor1.com/images/mgl/p0Z1A/s1/nissan-sentra-sr-2023.jpg"
+          src={carData.image}
           alt="Auto"
           className={styles.carImage}
         />
         <div>
-          <h3 className={styles.title}>Midsize (Nissan Sentra)</h3>
-          <p className={styles.subtitle}>o similar | ICAR</p>
-          <p className={styles.duration}>60 días de alquiler</p>
+          <h3 className={styles.title}>{carData.name}</h3>
+          <p className={styles.duration}>{daysBooked} días de alquiler</p>
         </div>
       </div>
 
       <div className={styles.details}>
         <div>
-          <p className={styles.label}>Recojo</p>
-          <p className={styles.location}>Miami Aeropuerto</p>
-          <p className={styles.datetime}>Fri, 16. May. 2025 | 12:30</p>
+          <p className={styles.label}>Entrega</p>
+          <p className={styles.location}>{pickupLocation}</p>
+          <p className={styles.datetime}>{formattedPickupDate} | {pickupTime}</p>
         </div>
         <div>
           <p className={styles.label}>Devolución</p>
-          <p className={styles.location}>Miami Aeropuerto</p>
-          <p className={styles.datetime}>Tue, 15. Jul. 2025 | 08:30</p>
+          <p className={styles.location}>{returnLocation}</p>
+          <p className={styles.datetime}>{formattedReturnDate} | {returnTime}</p>
         </div>
       </div>
 
       <div className={styles.summary}>
         <h4>Su resumen de reservas:</h4>
         <ul>
-          <li>✔ Línea directa de asistencia en carretera 24/7</li>
-          <li>✔ 4.284 millas están incluidos, cada milla adicional cuesta $192,08</li>
+          <li>✔ Asistente de carretera 24/7</li>
+          <li>✔ Millas ilimitadas dentro de Miami</li>
           <li>
-            ✔ Opción de pago: Mantente flexible - Paga al recoger tu vehículo, cancela y haz cambios en la reserva de forma gratuita hasta antes de la hora de recogida
+            ✔ Te entregamos y recojemos el auto donde lo necesite
           </li>
         </ul>
       </div>
