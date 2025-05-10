@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import locationPrices from '../utilities/locationPrices'
+import gasTankPrices from '../utilities/gasTankPrices';
 
 export function CarRentalPage() {
     const navigate = useNavigate()
@@ -23,6 +24,7 @@ export function CarRentalPage() {
     const [selectedSunpass, setSelectedSunpass] = useState('no');
     const [travelLocation, setTravelLocation] = useState('none');
     const [travelLocationPrice, setTravelLocationPrice] = useState(0);
+    const [selectedGasTank, setSelectedGasTank] = useState('full'); //Full or Empty(They pay the gas tank at checkout)
 
     const {
         daysBooked,
@@ -38,10 +40,17 @@ export function CarRentalPage() {
     const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
 
     const [totalPrice, setTotalPrice] = useState(pricePerDay * daysBooked);
+    
+    const gasTankPrice = () => {
+        if (selectedGasTank === "empty") {
+            return gasTankPrices[carData.carType];
+        }
+        return 0;
+    }
 
     useEffect(() => {
-        setTotalPrice(pricePerDay * daysBooked + travelLocationPrice);
-    }, [pricePerDay, travelLocationPrice]);
+        setTotalPrice(pricePerDay * daysBooked + travelLocationPrice + gasTankPrice());
+    }, [pricePerDay, travelLocationPrice, selectedGasTank]);
 
     const handleInsuranceClick = (selected) => {
         if (!(selected === selectedInsurance)) {
@@ -84,12 +93,22 @@ export function CarRentalPage() {
         }
         setSelectedSunpass(selected);
     }
-
+    const handleGasTankClick = (selected) => {
+        if (!(selected === selectedGasTank)) {
+            if (selected === "full") {
+                setSelectedGasTank('empty');
+            }else{
+                setSelectedGasTank('full');
+            }
+        }
+        setSelectedGasTank(selected);
+    }
+    
   return ( 
     <div className="car-rental-card">
       <div className="car-info">
         <img
-          src={carData.image} 
+          src={carData.imageUrl} 
           alt={carData.name}
           className="car-image"
         />
@@ -257,6 +276,36 @@ export function CarRentalPage() {
                 </label>
             </div>
         </div>
+        <div className="gas-tank main-div">
+            <h3>Tanque de nafta</h3>
+
+            <label 
+                className={`option ${selectedGasTank === "full" ? "selected" : ""}`} 
+                onClick={() => handleGasTankClick('full')}
+            >
+                <div className="option-main">
+                <input type="radio" name="gas-tank" defaultChecked />
+                <div className="option-text">
+                    <strong>Devolver tanque lleno</strong>
+                    <p>Esto significa que debes devolver el coche con el tanque de gasolina lleno</p>
+                </div>
+                </div>
+                <span className="included-tag">Mismo precio total</span>
+            </label>
+            <label 
+                className={`option ${selectedGasTank === "empty" ? "selected" : ""}`} 
+                onClick={() => handleGasTankClick('empty')}
+            >
+                <div className="option-main">
+                    <input type="radio" name="gas-tank" defaultChecked />
+                    <div className="option-text">
+                        <strong>No devolver tanque lleno</strong>
+                        <p>Puedes devolver el tanque como esté, pero se te cobrará el tanque completo</p>
+                    </div>
+                </div>
+                <span className="price-tag">+ ${gasTankPrices[carData.carType]} al total</span>
+            </label>
+        </div>   
 
         <div className="aditional-services">
             <div className="main-div">
