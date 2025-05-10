@@ -43,12 +43,7 @@ export function ShowCarsPage() {
               cars.map((car, index) => (
                 <CarCard
                   key={index} // Solo define la key aquí, ya que es suficiente para cada elemento de la lista
-                  id={car.id}
-                  name={car.name}
-                  pricePerDay={car.pricePerDay}
-                  image={car.imageUrl}
-                  passengers={car.passengersAmount}
-                  suitcases={car.suitcasesAmount}
+                  carData={car}
                 />
               ))
             ) : (
