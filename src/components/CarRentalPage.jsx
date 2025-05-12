@@ -297,7 +297,7 @@ export function CarRentalPage() {
                 onClick={() => handleGasTankClick('empty')}
             >
                 <div className="option-main">
-                    <input type="radio" name="gas-tank" defaultChecked />
+                    <input type="radio" name="gas-tank" />
                     <div className="option-text">
                         <strong>No devolver tanque lleno</strong>
                         <p>Puedes devolver el tanque como esté, pero se te cobrará el tanque completo</p>

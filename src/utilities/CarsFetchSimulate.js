@@ -11,7 +11,7 @@ export const carsQuery = [
         "manual": false,
         "suitcasesAmount": 7,
         "pricePerDay": 100.0,
-        "imageUrl": "https://vehicle-images.dealerinspire.com/3d2b-11001316/thumbnails/large/5FNYG1H79SB092588/289376cfb049b8e298dbbd6da4ad6c0b.png",
+        "imageUrl": "https://cdn.motor1.com/images/mgl/7nzBp/s1/2021-honda-pilot-front-quarter-tight.jpg",
         "carType": "SMALL"
     },
     {
