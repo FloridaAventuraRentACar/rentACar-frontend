@@ -314,10 +314,32 @@ export function CarRentalPage() {
                     className='option selected' 
                 >
                     <div className="option-main">
-                    <div className="option-text">
-                        <strong>Asistente de carretera</strong>
-                        <p>Te proveemos de una grua en caso que la necesites</p>
+                        <div className="option-text">
+                            <strong>Asistente de carretera</strong>
+                            <p>Te proveemos de una grua en caso que la necesites</p>
+                        </div>
                     </div>
+                    <span className="included-tag">Incluido</span>
+                </div>    
+                <div 
+                    className='option selected' 
+                >
+                    <div className="option-main">
+                        <div className="option-text">
+                            <strong>Conductor adicional</strong>
+                            <p>Puedes registrar hasta 1 conductor adicional al conductor principal sin cargo extra</p>
+                        </div>
+                    </div>
+                    <span className="included-tag">Incluido</span>
+                </div>    
+                <div 
+                    className='option selected' 
+                >
+                    <div className="option-main">
+                        <div className="option-text">
+                            <strong>Millas ilimitadas</strong>
+                            <p>Tienes millas ilimitadas dentro de Miami</p>
+                        </div>
                     </div>
                     <span className="included-tag">Incluido</span>
                 </div>    
