@@ -34,12 +34,12 @@ export function CarRentalPage() {
         pickupTime,
         returnDate,
         returnTime,
-        carData
+        carData,
+        totalPrice,
+        setTotalPrice
     } = useContext(AppContext);
 
     const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
-
-    const [totalPrice, setTotalPrice] = useState(pricePerDay * daysBooked);
     
     const gasTankPrice = () => {
         if (selectedGasTank === "empty") {
