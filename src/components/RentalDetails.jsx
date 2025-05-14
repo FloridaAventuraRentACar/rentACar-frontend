@@ -5,7 +5,7 @@ import { format, parseISO } from 'date-fns';
 
 const RentalDetails = () => {
 
-  const {carData, daysBooked, pickupLocation, pickupDate,pickupTime, returnLocation, returnDate, returnTime} = useContext(AppContext);
+  const {carData, daysBooked, pickupLocation, pickupDate,pickupTime, returnLocation, returnDate, returnTime, totalPrice} = useContext(AppContext);
 
   const parsePickupDate = parseISO(pickupDate);
   const formattedPickupDate = format(parsePickupDate, 'eee, dd. MMM. yyyy');
@@ -17,13 +17,17 @@ const RentalDetails = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <img
-          src={carData.image}
+          src={carData.imageUrl}
           alt="Auto"
           className={styles.carImage}
         />
         <div>
           <h3 className={styles.title}>{carData.name}</h3>
           <p className={styles.duration}>{daysBooked} días de alquiler</p>
+        </div>
+        <div className={styles.priceContainer}>
+          <p className={styles.priceText}>Precio total</p>
+          <p className={styles.totalPrice}>${totalPrice}</p>
         </div>
       </div>
 
