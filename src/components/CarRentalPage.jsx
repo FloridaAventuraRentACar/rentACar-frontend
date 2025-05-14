@@ -115,8 +115,8 @@ export function CarRentalPage() {
         <div className="car-description">
           <h2 className="car-name">{carData.name}</h2>
           <div className="car-specs">
-            <span>🚗 {carData.passengers} asientos</span>
-            <span>🧳 {carData.suitcases} valijas</span>
+            <span>🚗 {carData.passengersAmount} asientos</span>
+            <span>🧳 {carData.suitcasesAmount} valijas</span>
             <span>⚙️ Automatico</span>
             <span>🚪 4 Puertas</span>
            </div>

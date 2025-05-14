@@ -1,8 +1,7 @@
 .home-main-container {
     min-height: 100vh;
-    background-color: #f7fafc; 
+    background: #f7f7f889;  /* fallback for old browsers */
     padding: 48px 16px;
-    
 }
 
 .home-inner-container {
@@ -13,22 +12,12 @@
 
 .heading {
     font-size: 2.25rem;
-    font-weight: bold;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     text-align: center;
     color: #1a202c; 
     margin-bottom: 32px;
 }
 
-@media (min-width: 640px) {
-    .main-container {
-    padding-left: 24px;
-    padding-right: 24px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .main-container {
-    padding-left: 32px;
-    padding-right: 32px;
-    }
-}
