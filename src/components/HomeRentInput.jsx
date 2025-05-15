@@ -29,10 +29,15 @@ export default function HomeRentInput() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //Metodo para chequear que lo ingresado sea valido
-    
-    setDaysBooked(daysCalculate(pickupDate, returnDate, pickupTime, returnTime));
 
+    const daysBooked = daysCalculate(pickupDate, returnDate, pickupTime, returnTime);
+
+    if (daysBooked < 3) {
+      alert('El alquiler debe ser de minimo 3 dias');
+      return;
+    }
+
+    setDaysBooked(daysBooked);
     navigate('/cars');
   }
 
