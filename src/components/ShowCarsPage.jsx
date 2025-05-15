@@ -1,7 +1,7 @@
 import { useContext, useEffect , useState} from 'react';
 import {CarCard} from './CarCard.jsx'
 import '../styles/showCarsPage.css'
-import { NoAvailability } from './NoAvailability.jsx';
+import NoCarsAvailable from './NoCarsAvailable.jsx'
 import axios from 'axios';
 import {carsQuery} from '../utilities/CarsFetchSimulate.js'
 import { AppContext } from '../context/AppContext'
@@ -23,7 +23,7 @@ export function ShowCarsPage() {
     const start = `${pickupDate}T${pickupTime}`
     const end = `${returnDate}T${returnTime}`
     const availabilityURL = `http://localhost:8080/availability?startDateTime=${start}&endDateTime=${end}`
-    const NoAvailability = true
+
     
     const availabilityQuery = async () => {
       try {
@@ -40,12 +40,16 @@ export function ShowCarsPage() {
     return (
         <div className="show-cars-main-container">
           {cars ? (
-              cars.map((car, index) => (
-                <CarCard
-                  key={index} // Solo define la key aquí, ya que es suficiente para cada elemento de la lista
-                  carData={car}
-                />
-              ))
+              cars.length == 0 ? (
+                <NoCarsAvailable />
+              ) : (
+                cars.map((car, index) => (
+                  <CarCard
+                    key={index} // Solo define la key aquí, ya que es suficiente para cada elemento de la lista
+                    carData={car}
+                  />
+                ))
+              )
             ) : (
               <h1>Cargando</h1>
             )}

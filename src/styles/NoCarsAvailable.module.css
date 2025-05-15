@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  padding: 1rem;
+}
+
+.card {
+  background-color: #fff;
+  border: 2px solid #e74c3c;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  color: #e74c3c;
+  font-size: 24px;
+  margin-bottom: 1rem;
+  font-family:sans-serif;
+}
+
+.message {
+  color: #555;
+  font-size: 16px;
+}
