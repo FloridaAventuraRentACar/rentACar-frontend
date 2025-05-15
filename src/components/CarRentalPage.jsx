@@ -8,6 +8,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import locationPrices from '../utilities/locationPrices'
 import gasTankPrices from '../utilities/gasTankPrices';
+import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatReclineNormal';
+import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto';
+import LuggageIcon from '@mui/icons-material/Luggage';
+import SensorDoorIcon from '@mui/icons-material/SensorDoor';
 
 export function CarRentalPage() {
     const navigate = useNavigate()
@@ -115,10 +119,22 @@ export function CarRentalPage() {
         <div className="car-description">
           <h2 className="car-name">{carData.name}</h2>
           <div className="car-specs">
-            <span>🚗 {carData.passengersAmount} asientos</span>
-            <span>🧳 {carData.suitcasesAmount} valijas</span>
-            <span>⚙️ Automatico</span>
-            <span>🚪 4 Puertas</span>
+            <div className="seats">
+                <AirlineSeatReclineNormalIcon fontSize='large' className="seat-icon" />
+                <span>{carData.passengersAmount} asientos</span>
+            </div>
+            <div className="luggage">
+                <LuggageIcon fontSize='large' className="luggage-icon" />
+                <span>{carData.suitcasesAmount} valijas</span>
+            </div>
+            <div className="automatic">
+                <MotionPhotosAutoIcon fontSize='large' className="automatic-icon" />
+                <span>Automatico</span>
+            </div>
+            <div className="door">
+                <SensorDoorIcon fontSize='large' className="door-icon" />
+                <span>4 Puertas</span>
+            </div>
            </div>
         </div>
       </div>
