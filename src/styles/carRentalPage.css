@@ -35,6 +35,7 @@
   }
   
   .car-name {
+    white-space: nowrap;
     font-size: 2.5em;
     font-weight: bold;
     margin-bottom: 20px;
@@ -44,6 +45,7 @@
     transform: translateX(-50%);
     
   }
+
   .car-subtitle {
     color: #666;
     margin-bottom: 15px;
@@ -52,13 +54,28 @@
   .car-specs {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    gap: 70px 80px; /* espacio entre filas y columnas */
+    gap: 40px 80px; /* espacio entre filas y columnas */
     justify-content: center; /* centra el grid horizontalmente */
     font-size: 1.8em;
     color: #444;
-    margin-top: 80px;
+    margin-top: 100px;
   }
   
+  .seat-icon{
+    vertical-align: middle;  /* o 'sub' para un poco más abajo */
+  }
+
+  .automatic-icon{
+    vertical-align: middle;  /* o 'sub' para un poco más abajo */
+  }
+
+  .luggage-icon{
+    vertical-align: middle;  /* o 'sub' para un poco más abajo */
+  }
+  
+  .door-icon{
+    vertical-align: middle;  /* o 'sub' para un poco más abajo */
+  }
   
   .main-div{
     margin-bottom: 10px;

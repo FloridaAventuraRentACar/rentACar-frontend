@@ -1,25 +1,35 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import '../styles/carRentalPage.css'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import locationPrices from '../utilities/locationPrices'
+import gasTankPrices from '../utilities/gasTankPrices';
+import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatReclineNormal';
+import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto';
+import LuggageIcon from '@mui/icons-material/Luggage';
+import SensorDoorIcon from '@mui/icons-material/SensorDoor';
 
 export function CarRentalPage() {
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+      
+      navigate('/driver-form')
+    };
 
     const location = useLocation(); //Este useState se usa para pasar datos entre componentes
-    const { carData } = location.state || {};
-
+    
     const [selectedInsurance, setSelectedInsurance] = useState('deductible');
     const [selectedBabySeat, setSelectedBabySeat] = useState('no');
-    const [babyAge, setBabyAge] = useState('none');
     const [selectedSunpass, setSelectedSunpass] = useState('no');
     const [travelLocation, setTravelLocation] = useState('none');
     const [travelLocationPrice, setTravelLocationPrice] = useState(0);
+    const [selectedGasTank, setSelectedGasTank] = useState('full'); //Full or Empty(They pay the gas tank at checkout)
 
-    const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
     const {
         daysBooked,
         pickupLocation,
@@ -27,8 +37,24 @@ export function CarRentalPage() {
         pickupDate,
         pickupTime,
         returnDate,
-        returnTime
+        returnTime,
+        carData,
+        totalPrice,
+        setTotalPrice
     } = useContext(AppContext);
+
+    const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
+    
+    const gasTankPrice = () => {
+        if (selectedGasTank === "empty") {
+            return gasTankPrices[carData.carType];
+        }
+        return 0;
+    }
+
+    useEffect(() => {
+        setTotalPrice(pricePerDay * daysBooked + travelLocationPrice + gasTankPrice());
+    }, [pricePerDay, travelLocationPrice, selectedGasTank]);
 
     const handleInsuranceClick = (selected) => {
         if (!(selected === selectedInsurance)) {
@@ -47,43 +73,68 @@ export function CarRentalPage() {
             if (selected === "no") {
                 setPricePerDay(pricePerDay - 3);
                 
-            }else{
+            }else if(selectedBabySeat === "no"){
                 setPricePerDay(pricePerDay + 3);
             }
         }
         setSelectedBabySeat(selected);
     }
-    const handleBabyAgeChange = (event) => {
-        setBabyAge(event.target.value);
-    }
+
     const handleTravelLocationChange = (event) => {
-        setTravelLocation(event.target.value);
-        if (travelLocation === 'Florida') {
-            setTravelLocationPrice(35);
-        }else if (condition) {
-            setTravelLocationPrice(35);
-        }
-    }
-    const handleSunpassClick = (selected) => {
-        
-        setSelectedSunpass(selected);
+
+        const newLocation = event.target.value;
+        const newLocationPrice = locationPrices[newLocation];
+
+        // Actualizamos travelLocation y travelLocationPrice
+        setTravelLocation(newLocation);
+        setTravelLocationPrice(newLocationPrice);
     }
 
+    const handleSunpassClick = (selected) => {
+        if (selected === "no") {
+            setTravelLocation('none');
+            setTravelLocationPrice(0);
+        }
+        setSelectedSunpass(selected);
+    }
+    const handleGasTankClick = (selected) => {
+        if (!(selected === selectedGasTank)) {
+            if (selected === "full") {
+                setSelectedGasTank('empty');
+            }else{
+                setSelectedGasTank('full');
+            }
+        }
+        setSelectedGasTank(selected);
+    }
+    
   return ( 
     <div className="car-rental-card">
       <div className="car-info">
         <img
-          src={carData.image} 
+          src={carData.imageUrl} 
           alt={carData.name}
           className="car-image"
         />
         <div className="car-description">
           <h2 className="car-name">{carData.name}</h2>
           <div className="car-specs">
-            <span>🚗 {carData.passengers} asientos</span>
-            <span>🧳 {carData.suitcases} valijas</span>
-            <span>⚙️ Automatico</span>
-            <span>🚪 4 Puertas</span>
+            <div className="seats">
+                <AirlineSeatReclineNormalIcon fontSize='large' className="seat-icon" />
+                <span>{carData.passengersAmount} asientos</span>
+            </div>
+            <div className="luggage">
+                <LuggageIcon fontSize='large' className="luggage-icon" />
+                <span>{carData.suitcasesAmount} valijas</span>
+            </div>
+            <div className="automatic">
+                <MotionPhotosAutoIcon fontSize='large' className="automatic-icon" />
+                <span>Automatico</span>
+            </div>
+            <div className="door">
+                <SensorDoorIcon fontSize='large' className="door-icon" />
+                <span>4 Puertas</span>
+            </div>
            </div>
         </div>
       </div>
@@ -106,20 +157,21 @@ export function CarRentalPage() {
                     </div>
                     <span className="included-tag">Mismo precio por dia</span>
                 </label>
-
-                <label 
-                    className={`option ${selectedInsurance === "total" ? "selected" : ""}`}
-                    onClick={() => handleInsuranceClick('total')}
-                >
-                    <div className="option-main">
-                    <input type="radio" name="insurance" />
-                    <div className="option-text">
-                        <strong>Seguro total</strong>
-                        <p>Cubrimos todos los costos</p>
-                    </div>
-                    </div>
-                    <span className="price-tag">+ $15 /dia</span>
-                </label>
+                {daysBooked >= 20 && (
+                    <label 
+                        className={`option ${selectedInsurance === "total" ? "selected" : ""}`}
+                        onClick={() => handleInsuranceClick('total')}
+                    >
+                        <div className="option-main">
+                        <input type="radio" name="insurance" />
+                        <div className="option-text">
+                            <strong>Seguro total</strong>
+                            <p>Cubrimos todos los costos</p>
+                        </div>
+                        </div>
+                        <span className="price-tag">+ $15 /dia</span>
+                    </label>
+                )}
             </div>
         </div>
 
@@ -134,39 +186,52 @@ export function CarRentalPage() {
                     <div className="option-main">
                     <input type="radio" name="baby seat" defaultChecked />
                     <div className="option-text">
-                        <strong>Sin asiento de bebe</strong>
-                        <p>Esto significa que no necesitas un asiento de bebe</p>
+                        <strong>Sin asiento para niño</strong>
+                        <p>Esto significa que no necesitas un asiento para niño adicional</p>
                     </div>
                     </div>
                     <span className="included-tag">Mismo precio por dia</span>
                 </label>
 
                 <label 
-                    className={`option ${selectedBabySeat === "yes" ? "selected" : ""}`}
-                    onClick={() => handleBabySeatClick('yes')}
+                    className={`option ${selectedBabySeat === "baby-seat" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('baby-seat')}
                 >
                     <div className="option-main">
                         <input type="radio" name="baby seat" />
                         <div className="option-text">
                             <strong>Incluir asiento de bebe</strong>
-                            <p>Esto significa que necesitas un asiento de bebe</p>
+                            <p>Pensada para niños de hasta 1 año</p>
                         </div>
                     </div>
-                    <FormControl sx={{ m: 1, minWidth: 80 }}>
-                        <InputLabel id="baby-age-label">Edad</InputLabel>
-                        <Select
-                            labelId="baby-age-label"
-                            id="baby-age-select"
-                            value={babyAge}
-                            label="Baby Age"
-                            onChange={handleBabyAgeChange}
-                        >
-                            <MenuItem value={0}>0</MenuItem>
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <span className="price-tag">+ $3 /dia</span>
+                </label>
+
+                <label 
+                    className={`option ${selectedBabySeat === "toddler-seat" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('toddler-seat')}
+                >
+                    <div className="option-main">
+                        <input type="radio" name="baby seat" />
+                        <div className="option-text">
+                            <strong>Incluir Toddler seat</strong>
+                            <p>Pensada para niños de entre 1 y 4 años</p>
+                        </div>
+                    </div>
+                    <span className="price-tag">+ $3 /dia</span>
+                </label>
+
+                <label 
+                    className={`option ${selectedBabySeat === "booster-seat" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('booster-seat')}
+                >
+                    <div className="option-main">
+                        <input type="radio" name="baby seat" />
+                        <div className="option-text">
+                            <strong>Incluir Booster seat</strong>
+                            <p>Pensada para niños de entre 4 y 12 años</p>
+                        </div>
+                    </div>
                     <span className="price-tag">+ $3 /dia</span>
                 </label>
             </div>
@@ -201,23 +266,62 @@ export function CarRentalPage() {
                             <p>Debes seleccionar a donde tienes planeado viajar</p>
                         </div>
                     </div>
-                    <FormControl sx={{ m: 1, minWidth: 100 }}>
-                        <InputLabel id="travel-location-label">Donde</InputLabel>
-                        <Select
-                            labelId="travel-location-label"
-                            id="travel-location-select"
-                            value={travelLocation}
-                            label="Travel location"
-                            onChange={handleTravelLocationChange}
-                        >
-                            <MenuItem value={'Florida'}>Florida</MenuItem>
-                            <MenuItem value={'dsd'}>Keystone</MenuItem> 
-                        </Select>
-                    </FormControl>
-                    <span className="price-tag">+ $15 /dia</span>
+                    {selectedSunpass === "yes" && (
+                        <FormControl sx={{ m: 1, minWidth: 100 }}>
+                            <InputLabel id="travel-location-label">Donde</InputLabel>
+                            <Select
+                                labelId="travel-location-label"
+                                id="travel-location-select"
+                                value={travelLocation}
+                                label="Travel location"
+                                onChange={handleTravelLocationChange}
+                            >
+                                <MenuItem value={'Orlando'}>Orlando</MenuItem> 
+                                <MenuItem value={'KeyWest'}>KeyWest</MenuItem>
+                                <MenuItem value={'WestPalmBeach'}>West Palm Beach</MenuItem>
+                                <MenuItem value={'Daytona'}>Daytona</MenuItem>
+                                <MenuItem value={'ClearWater'}>Clearwater beach</MenuItem>
+                                <MenuItem value={'Isla morada'}>Isla morada</MenuItem>
+                                <MenuItem value={'Naples'}>Naples</MenuItem>
+                            </Select>
+                        </FormControl>
+                    )}
+                    {selectedSunpass === "yes" && (
+                        <span className="price-tag">+ ${travelLocationPrice} al total</span>
+                    )}
                 </label>
             </div>
         </div>
+        <div className="gas-tank main-div">
+            <h3>Tanque de nafta</h3>
+
+            <label 
+                className={`option ${selectedGasTank === "full" ? "selected" : ""}`} 
+                onClick={() => handleGasTankClick('full')}
+            >
+                <div className="option-main">
+                <input type="radio" name="gas-tank" defaultChecked />
+                <div className="option-text">
+                    <strong>Devolver tanque lleno</strong>
+                    <p>Esto significa que debes devolver el coche con el tanque de gasolina lleno</p>
+                </div>
+                </div>
+                <span className="included-tag">Mismo precio total</span>
+            </label>
+            <label 
+                className={`option ${selectedGasTank === "empty" ? "selected" : ""}`} 
+                onClick={() => handleGasTankClick('empty')}
+            >
+                <div className="option-main">
+                    <input type="radio" name="gas-tank" />
+                    <div className="option-text">
+                        <strong>No devolver tanque lleno</strong>
+                        <p>Puedes devolver el tanque como esté, pero se te cobrará el tanque completo</p>
+                    </div>
+                </div>
+                <span className="price-tag">+ ${gasTankPrices[carData.carType]} al total</span>
+            </label>
+        </div>   
 
         <div className="aditional-services">
             <div className="main-div">
@@ -226,10 +330,32 @@ export function CarRentalPage() {
                     className='option selected' 
                 >
                     <div className="option-main">
-                    <div className="option-text">
-                        <strong>Asistente de carretera</strong>
-                        <p>Te proveemos de una grua en caso que la necesites</p>
+                        <div className="option-text">
+                            <strong>Asistente de carretera</strong>
+                            <p>Te proveemos de una grua en caso que la necesites</p>
+                        </div>
                     </div>
+                    <span className="included-tag">Incluido</span>
+                </div>    
+                <div 
+                    className='option selected' 
+                >
+                    <div className="option-main">
+                        <div className="option-text">
+                            <strong>Conductor adicional</strong>
+                            <p>Puedes registrar hasta 1 conductor adicional al conductor principal sin cargo extra</p>
+                        </div>
+                    </div>
+                    <span className="included-tag">Incluido</span>
+                </div>    
+                <div 
+                    className='option selected' 
+                >
+                    <div className="option-main">
+                        <div className="option-text">
+                            <strong>Millas ilimitadas</strong>
+                            <p>Tienes millas ilimitadas dentro de Miami</p>
+                        </div>
                     </div>
                     <span className="included-tag">Incluido</span>
                 </div>    
@@ -243,7 +369,7 @@ export function CarRentalPage() {
                 <p className="days-reserved">{daysBooked} dias reservados</p>
 
             </div>
-          <strong className="total-price">${pricePerDay * daysBooked} total</strong>
+          <strong className="total-price">${totalPrice} total</strong>
           <a href="#">Detalles del precio</a>
         </div>
         <div className="reserve-info">
@@ -258,7 +384,7 @@ export function CarRentalPage() {
                 <p className='date'>{returnDate} - {returnTime}</p>
             </div>
         </div>
-        <button className="next-button">Next</button>
+        <button type="button" className="next-button" onClick={handleClick}>Siguiente</button>
       </div>
     </div>
   );

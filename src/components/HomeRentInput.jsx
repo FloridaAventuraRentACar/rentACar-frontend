@@ -29,10 +29,15 @@ export default function HomeRentInput() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //Metodo para chequear que lo ingresado sea valido
-    
-    setDaysBooked(daysCalculate(pickupDate, returnDate, pickupTime, returnTime));
 
+    const daysBooked = daysCalculate(pickupDate, returnDate, pickupTime, returnTime);
+
+    if (daysBooked < 3) {
+      alert('El alquiler debe ser de minimo 3 dias');
+      return;
+    }
+
+    setDaysBooked(daysBooked);
     navigate('/cars');
   }
 
@@ -66,7 +71,12 @@ export default function HomeRentInput() {
               <option id='default' value="" disabled selected>Selecciona una ubicacion de entrega</option>
               <option value="Miami international airport">Aeropuerto internacion de Miami</option>
               <option value="Fortlaurendale airport">Aeropuerto de Fortlaurendale</option>
-              <option value="Downtown">Downtown</option>
+              <option value="Brickel">Brickel</option>
+              <option value="Sunny Isles">Sunny Isles</option>
+              <option value="Hallandale">Hallandale</option>
+              <option value="South Beach">South Beach</option>
+              <option value="Bal Harbour">Bal Harbour</option>
+              <option value="North Miami">North Miami</option>
             </select>
           </div>
           <div className="form-group">
@@ -80,10 +90,15 @@ export default function HomeRentInput() {
               onChange={(e) => setReturnLocation(e.target.value)}
               required
             >
-              <option id='default' value="" disabled selected>Selecciona una ubicacion de de devolucion</option>
+              <option id='default' value="" disabled selected>Selecciona una ubicacion de entrega</option>
               <option value="Miami international airport">Aeropuerto internacion de Miami</option>
               <option value="Fortlaurendale airport">Aeropuerto de Fortlaurendale</option>
-              <option value="Downtown">Downtown</option>
+              <option value="Brickel">Brickel</option>
+              <option value="Sunny Isles">Sunny Isles</option>
+              <option value="Hallandale">Hallandale</option>
+              <option value="South Beach">South Beach</option>
+              <option value="Bal Harbour">Bal Harbour</option>
+              <option value="North Miami">North Miami</option>
             </select>
           </div>
         </div>

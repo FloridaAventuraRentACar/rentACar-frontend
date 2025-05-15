@@ -1,0 +1,106 @@
+.container {
+    max-width: 400px;
+    width: 600px;
+    height: 30rem;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: sans-serif;
+    padding: 1rem;
+}
+  
+.header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    
+}
+
+.priceContainer {
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.priceText {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #2c3e50; /* gris oscuro */
+}   
+
+.totalPrice {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #2c3e50; /* gris oscuro */
+}
+
+.carImage {
+    width: 40%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.duration {
+    font-size: 0.9rem;
+    color: #3b82f6;
+    margin-top: 0.5rem;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.label {
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 0.25rem;
+}
+
+.location {
+    font-weight: bold;
+    color: #000;
+}
+
+.datetime {
+    color: #555;
+}
+
+.summary {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.summary h4 {
+    margin-bottom: 0.5rem;
+}
+
+.summary ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.summary li {
+    margin-bottom: 0.5rem;
+}
+  
