@@ -1,8 +1,9 @@
-import { useEffect , useContext} from 'react'
+import { useEffect , useContext, useState} from 'react'
 import '../styles/homeRentInput.css'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { daysCalculate } from '../utilities/daysCalculate'
+import { calculateMinTime } from '../utilities/CalculateMinTime'
 
 export default function HomeRentInput() {
   const {
@@ -21,10 +22,13 @@ export default function HomeRentInput() {
     setDaysBooked
   } = useContext(AppContext);
 
+  const [minTime,setMinTime] = useState('');
+
   const navigate = useNavigate()
 
   useEffect(() => {
     resetStates()
+    setMinTime(calculateMinTime());
   }, [])
 
   const handleSubmit = (e) => {
@@ -114,6 +118,7 @@ export default function HomeRentInput() {
               onChange={(e) => setPickupDate(e.target.value)}
               className="form-input"
               required
+              min={new Date().toISOString().split("T")[0]}
             />
           </div>
           <div className="form-group">
@@ -127,6 +132,7 @@ export default function HomeRentInput() {
               onChange={(e) => setPickupTime(e.target.value)}
               className="form-input"
               required
+              min={minTime}
             />
           </div>
         </div>
@@ -142,6 +148,7 @@ export default function HomeRentInput() {
               onChange={(e) => setReturnDate(e.target.value)}
               className="form-input"
               required
+              min={new Date().toISOString().split("T")[0]}
             />
           </div>
           <div className="form-group">
