@@ -6,6 +6,7 @@ import { daysCalculate } from '../utilities/daysCalculate'
 import { calculateMinTime } from '../utilities/CalculateMinTime'
 
 export default function HomeRentInput() {
+
   const {
     pickupLocation,
     setPickupLocation,

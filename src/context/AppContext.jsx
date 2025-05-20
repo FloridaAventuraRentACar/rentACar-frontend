@@ -14,13 +14,19 @@ export const AppProvider = ({ children }) => {
   const [carData,setCarData] = useState({})
   const [totalPrice, setTotalPrice] = useState(100);
   const [pricePerDay, setPricePerDay] = useState(100);
+  const [selectedInsurance, setSelectedInsurance] = useState('deductible');
+  const [selectedBabySeat, setSelectedBabySeat] = useState('no');
+  const [travelLocation, setTravelLocation] = useState(null);
+  const [selectedGasTank, setSelectedGasTank] = useState('full'); 
 
   return (
     <AppContext.Provider value={{ 
       daysBooked, setDaysBooked , pickupLocation, setPickupLocation, 
       returnLocation, setReturnLocation, pickupDate, setPickupDate, 
       pickupTime, setPickupTime, returnDate, setReturnDate, returnTime, 
-      setReturnTime, carData, setCarData, totalPrice, setTotalPrice, pricePerDay, setPricePerDay }}>
+      setReturnTime, carData, setCarData, totalPrice, setTotalPrice, pricePerDay, setPricePerDay, 
+      selectedInsurance, setSelectedInsurance, selectedBabySeat, setSelectedBabySeat, travelLocation, 
+      setTravelLocation, selectedGasTank, setSelectedGasTank}}>
       {children}
     </AppContext.Provider>
   );

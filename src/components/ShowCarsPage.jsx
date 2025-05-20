@@ -2,16 +2,16 @@ import { useContext, useEffect , useState} from 'react';
 import {CarCard} from './CarCard.jsx'
 import '../styles/showCarsPage.css'
 import NoCarsAvailable from './NoCarsAvailable.jsx'
-import axios from 'axios';
 import {carsQuery} from '../utilities/CarsFetchSimulate.js'
 import { AppContext } from '../context/AppContext'
+import { getAvailability } from '../services/RentalService.js'; 
 
 export function ShowCarsPage() {
 
-    const [cars, setCars] = useState(carsQuery);
+    const [cars, setCars] = useState([]);
     useEffect(() => {
-        //availabilityQuery(fetchedData)
-    })
+        checkAvailability();
+    }, []);
 
     const {
         pickupDate,
@@ -19,23 +19,20 @@ export function ShowCarsPage() {
         returnDate,
         returnTime
       } = useContext(AppContext);
-
-    const start = `${pickupDate}T${pickupTime}`
-    const end = `${returnDate}T${returnTime}`
-    const availabilityURL = `http://localhost:8080/availability?startDateTime=${start}&endDateTime=${end}`
-
     
-    const availabilityQuery = async () => {
-      try {
-        const response = await axios.get(availabilityURL) 
-        setCars(response.data)
-        console.log(cars)
-        
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    const checkAvailability = () => {
 
+      const start = `${pickupDate}T${pickupTime}`
+      const end = `${returnDate}T${returnTime}`
+      
+      getAvailability(start, end).then((response) => {
+          setCars(response.data)
+          //console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+    }
 
     return (
         <div className="show-cars-main-container">
