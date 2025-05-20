@@ -23,12 +23,8 @@ export function CarRentalPage() {
 
     const location = useLocation(); //Este useState se usa para pasar datos entre componentes
     
-    const [selectedInsurance, setSelectedInsurance] = useState('deductible');
-    const [selectedBabySeat, setSelectedBabySeat] = useState('no');
     const [selectedSunpass, setSelectedSunpass] = useState('no');
-    const [travelLocation, setTravelLocation] = useState('none');
     const [travelLocationPrice, setTravelLocationPrice] = useState(0);
-    const [selectedGasTank, setSelectedGasTank] = useState('full'); //Full or Empty(They pay the gas tank at checkout)
 
     const {
         daysBooked,
@@ -40,44 +36,52 @@ export function CarRentalPage() {
         returnTime,
         carData,
         totalPrice,
-        setTotalPrice
+        setTotalPrice,
+        selectedInsurance,
+        setSelectedInsurance,
+        selectedBabySeat,
+        setSelectedBabySeat,
+        travelLocation,
+        setTravelLocation,
+        selectedGasTank,
+        setSelectedGasTank
     } = useContext(AppContext);
 
-    const [pricePerDay, setPricePerDay] = useState(carData.pricePerDay);
-    
-    const gasTankPrice = () => {
+    const insuranceCharge = () => {
+        if (selectedInsurance === "deductible") {
+            return 0;
+        }
+        return 15 * daysBooked;
+    }
+
+    const babySeatCharge = () => {
+        if (selectedBabySeat === "no") {
+            return 0;
+        }
+        return 3 * daysBooked;
+    }
+
+    const gasTankCharge = () => {
         if (selectedGasTank === "empty") {
-            return gasTankPrices[carData.carType];
+            return gasTankPrices[carData.type];
         }
         return 0;
     }
 
     useEffect(() => {
-        setTotalPrice(pricePerDay * daysBooked + travelLocationPrice + gasTankPrice());
-    }, [pricePerDay, travelLocationPrice, selectedGasTank]);
+        setTotalPrice(carData.pricePerDay * daysBooked + insuranceCharge() + babySeatCharge() + travelLocationPrice + gasTankCharge());
+    }, [selectedInsurance, selectedBabySeat, travelLocationPrice, selectedGasTank]);
 
     const handleInsuranceClick = (selected) => {
-        if (!(selected === selectedInsurance)) {
-            if (selected === "deductible") {
-                setPricePerDay(pricePerDay - 15);
-                
-            }else{
-                setPricePerDay(pricePerDay + 15);
-            }
-        }
+    
         setSelectedInsurance(selected);
+
     }
     
     const handleBabySeatClick = (selected) => {
-        if (!(selected === selectedBabySeat)) {
-            if (selected === "no") {
-                setPricePerDay(pricePerDay - 3);
-                
-            }else if(selectedBabySeat === "no"){
-                setPricePerDay(pricePerDay + 3);
-            }
-        }
+
         setSelectedBabySeat(selected);
+
     }
 
     const handleTravelLocationChange = (event) => {
@@ -92,19 +96,13 @@ export function CarRentalPage() {
 
     const handleSunpassClick = (selected) => {
         if (selected === "no") {
-            setTravelLocation('none');
+            setTravelLocation(null);
             setTravelLocationPrice(0);
         }
         setSelectedSunpass(selected);
     }
+
     const handleGasTankClick = (selected) => {
-        if (!(selected === selectedGasTank)) {
-            if (selected === "full") {
-                setSelectedGasTank('empty');
-            }else{
-                setSelectedGasTank('full');
-            }
-        }
         setSelectedGasTank(selected);
     }
     
@@ -319,7 +317,7 @@ export function CarRentalPage() {
                         <p>Puedes devolver el tanque como esté, pero se te cobrará el tanque completo</p>
                     </div>
                 </div>
-                <span className="price-tag">+ ${gasTankPrices[carData.carType]} al total</span>
+                <span className="price-tag">+ ${gasTankPrices[carData.type]} al total</span>
             </label>
         </div>   
 
@@ -365,7 +363,7 @@ export function CarRentalPage() {
       <div className="price-section">
         <div className="price-info">
             <div className="price-top">
-                <p className="price-per-day">${pricePerDay} <span>/dia</span></p>
+                <p className="price-per-day">${carData.pricePerDay} <span>/dia</span></p>
                 <p className="days-reserved">{daysBooked} dias reservados</p>
 
             </div>
