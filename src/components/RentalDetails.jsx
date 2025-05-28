@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styles from '../styles/RentalDetails.module.css';
 import { AppContext } from '../context/AppContext';
 import { format, parseISO } from 'date-fns';
+import locationNames from '../utilities/locationNames';
 
 const RentalDetails = () => {
 
@@ -34,12 +35,12 @@ const RentalDetails = () => {
       <div className={styles.details}>
         <div>
           <p className={styles.label}>Entrega</p>
-          <p className={styles.location}>{pickupLocation}</p>
+          <p className={styles.location}>{locationNames[pickupLocation]}</p>
           <p className={styles.datetime}>{formattedPickupDate} | {pickupTime}</p>
         </div>
         <div>
           <p className={styles.label}>Devolución</p>
-          <p className={styles.location}>{returnLocation}</p>
+          <p className={styles.location}>{locationNames[returnLocation]}</p>
           <p className={styles.datetime}>{formattedReturnDate} | {returnTime}</p>
         </div>
       </div>

@@ -4,7 +4,7 @@ import '../styles/showCarsPage.css'
 import NoCarsAvailable from './NoCarsAvailable.jsx'
 import {carsQuery} from '../utilities/CarsFetchSimulate.js'
 import { AppContext } from '../context/AppContext'
-import { getAvailability } from '../services/RentalService.js'; 
+import { getAvailability } from '../services/rentalService.js'; 
 
 export function ShowCarsPage() {
 

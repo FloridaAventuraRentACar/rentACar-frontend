@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { daysCalculate } from '../utilities/daysCalculate'
 import { calculateMinTime } from '../utilities/CalculateMinTime'
+import { isSameDay } from 'date-fns';
 
 export default function HomeRentInput() {
 
@@ -23,14 +24,25 @@ export default function HomeRentInput() {
     setDaysBooked
   } = useContext(AppContext);
 
-  const [minTime,setMinTime] = useState('');
+  // const [minTime,setMinTime] = useState('');
 
   const navigate = useNavigate()
 
   useEffect(() => {
     resetStates()
-    setMinTime(calculateMinTime());
   }, [])
+
+  //Pendiente de resolver error de minTime
+
+  // useEffect(() => {
+  //   console.log(new Date(pickupDate))
+  //   console.log(new Date())
+  //   if(isSameDay(new Date(pickupDate), new Date())){
+  //     console.log('entro')
+  //     setMinTime(calculateMinTime());
+  //   }
+    
+  // }, [pickupDate])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,14 +86,14 @@ export default function HomeRentInput() {
               required
             >
               <option id='default' value="" disabled selected>Selecciona una ubicacion de entrega</option>
-              <option value="Miami international airport">Aeropuerto internacion de Miami</option>
-              <option value="Fortlaurendale airport">Aeropuerto de Fortlaurendale</option>
-              <option value="Brickel">Brickel</option>
-              <option value="Sunny Isles">Sunny Isles</option>
-              <option value="Hallandale">Hallandale</option>
-              <option value="South Beach">South Beach</option>
-              <option value="Bal Harbour">Bal Harbour</option>
-              <option value="North Miami">North Miami</option>
+              <option value="MIAMI_AIRPORT">Aeropuerto internacion de Miami</option>
+              <option value="FORTLAURENDALE_AIRPORT">Aeropuerto de Fortlaurendale</option>
+              <option value="BRICKEL">Brickel</option>
+              <option value="SUNNY_ISLES">Sunny Isles</option>
+              <option value="HALLANDALE">Hallandale</option>
+              <option value="SOUTH_BEACH">South Beach</option>
+              <option value="BAL_HARBOUR">Bal Harbour</option>
+              <option value="NORTH_MIAMI">North Miami</option>
             </select>
           </div>
           <div className="form-group">
@@ -95,15 +107,15 @@ export default function HomeRentInput() {
               onChange={(e) => setReturnLocation(e.target.value)}
               required
             >
-              <option id='default' value="" disabled selected>Selecciona una ubicacion de entrega</option>
-              <option value="Miami international airport">Aeropuerto internacion de Miami</option>
-              <option value="Fortlaurendale airport">Aeropuerto de Fortlaurendale</option>
-              <option value="Brickel">Brickel</option>
-              <option value="Sunny Isles">Sunny Isles</option>
-              <option value="Hallandale">Hallandale</option>
-              <option value="South Beach">South Beach</option>
-              <option value="Bal Harbour">Bal Harbour</option>
-              <option value="North Miami">North Miami</option>
+              <option id='default' value="" disabled selected>Selecciona una ubicacion de devolucion</option>
+              <option value="MIAMI_AIRPORT">Aeropuerto internacion de Miami</option>
+              <option value="FORTLAURENDALE_AIRPORT">Aeropuerto de Fortlaurendale</option>
+              <option value="BRICKEL">Brickel</option>
+              <option value="SUNNY_ISLES">Sunny Isles</option>
+              <option value="HALLANDALE">Hallandale</option>
+              <option value="SOUTH_BEACH">South Beach</option>
+              <option value="BAL_HARBOUR">Bal Harbour</option>
+              <option value="NORTH_MIAMI">North Miami</option>
             </select>
           </div>
         </div>
@@ -133,7 +145,7 @@ export default function HomeRentInput() {
               onChange={(e) => setPickupTime(e.target.value)}
               className="form-input"
               required
-              min={minTime}
+             // min={minTime}
             />
           </div>
         </div>

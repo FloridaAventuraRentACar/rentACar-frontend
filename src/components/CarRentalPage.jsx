@@ -12,6 +12,7 @@ import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatRecline
 import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto';
 import LuggageIcon from '@mui/icons-material/Luggage';
 import SensorDoorIcon from '@mui/icons-material/SensorDoor';
+import locationNames from '../utilities/locationNames.js';
 
 export function CarRentalPage() {
     const navigate = useNavigate()
@@ -48,27 +49,28 @@ export function CarRentalPage() {
     } = useContext(AppContext);
 
     const insuranceCharge = () => {
-        if (selectedInsurance === "deductible") {
+        if (selectedInsurance === "DEDUCTIBLE") {
             return 0;
         }
         return 15 * daysBooked;
     }
 
     const babySeatCharge = () => {
-        if (selectedBabySeat === "no") {
+        if (selectedBabySeat === "NONE") {
             return 0;
         }
         return 3 * daysBooked;
     }
 
     const gasTankCharge = () => {
-        if (selectedGasTank === "empty") {
+        if (selectedGasTank === "EMPTY") {
             return gasTankPrices[carData.type];
         }
         return 0;
     }
 
     useEffect(() => {
+        (pickupLocation);
         setTotalPrice(carData.pricePerDay * daysBooked + insuranceCharge() + babySeatCharge() + travelLocationPrice + gasTankCharge());
     }, [selectedInsurance, selectedBabySeat, travelLocationPrice, selectedGasTank]);
 
@@ -143,8 +145,8 @@ export function CarRentalPage() {
                 <h3>Seguro</h3>
 
                 <label 
-                    className={`option ${selectedInsurance === "deductible" ? "selected" : ""}`} 
-                    onClick={() => handleInsuranceClick('deductible')}
+                    className={`option ${selectedInsurance === "DEDUCTIBLE" ? "selected" : ""}`} 
+                    onClick={() => handleInsuranceClick('DEDUCTIBLE')}
                 >
                     <div className="option-main">
                     <input type="radio" name="insurance" defaultChecked />
@@ -157,8 +159,8 @@ export function CarRentalPage() {
                 </label>
                 {daysBooked >= 20 && (
                     <label 
-                        className={`option ${selectedInsurance === "total" ? "selected" : ""}`}
-                        onClick={() => handleInsuranceClick('total')}
+                        className={`option ${selectedInsurance === "TOTAL" ? "selected" : ""}`}
+                        onClick={() => handleInsuranceClick('TOTAL')}
                     >
                         <div className="option-main">
                         <input type="radio" name="insurance" />
@@ -178,8 +180,8 @@ export function CarRentalPage() {
                 <h3>Asiento de bebe</h3>
 
                 <label 
-                    className={`option ${selectedBabySeat === "no" ? "selected" : ""}`} 
-                    onClick={() => handleBabySeatClick('no')}
+                    className={`option ${selectedBabySeat === "NONE" ? "selected" : ""}`} 
+                    onClick={() => handleBabySeatClick('NONE')}
                 >
                     <div className="option-main">
                     <input type="radio" name="baby seat" defaultChecked />
@@ -192,8 +194,8 @@ export function CarRentalPage() {
                 </label>
 
                 <label 
-                    className={`option ${selectedBabySeat === "baby-seat" ? "selected" : ""}`}
-                    onClick={() => handleBabySeatClick('baby-seat')}
+                    className={`option ${selectedBabySeat === "BABY_SEAT" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('BABY_SEAT')}
                 >
                     <div className="option-main">
                         <input type="radio" name="baby seat" />
@@ -206,8 +208,8 @@ export function CarRentalPage() {
                 </label>
 
                 <label 
-                    className={`option ${selectedBabySeat === "toddler-seat" ? "selected" : ""}`}
-                    onClick={() => handleBabySeatClick('toddler-seat')}
+                    className={`option ${selectedBabySeat === "TODDLER_SEAT" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('TODDLER_SEAT')}
                 >
                     <div className="option-main">
                         <input type="radio" name="baby seat" />
@@ -220,8 +222,8 @@ export function CarRentalPage() {
                 </label>
 
                 <label 
-                    className={`option ${selectedBabySeat === "booster-seat" ? "selected" : ""}`}
-                    onClick={() => handleBabySeatClick('booster-seat')}
+                    className={`option ${selectedBabySeat === "BOOSTER_SEAT" ? "selected" : ""}`}
+                    onClick={() => handleBabySeatClick('BOOSTER_SEAT')}
                 >
                     <div className="option-main">
                         <input type="radio" name="baby seat" />
@@ -279,7 +281,7 @@ export function CarRentalPage() {
                                 <MenuItem value={'WestPalmBeach'}>West Palm Beach</MenuItem>
                                 <MenuItem value={'Daytona'}>Daytona</MenuItem>
                                 <MenuItem value={'ClearWater'}>Clearwater beach</MenuItem>
-                                <MenuItem value={'Isla morada'}>Isla morada</MenuItem>
+                                <MenuItem value={'IslaMorada'}>Isla morada</MenuItem>
                                 <MenuItem value={'Naples'}>Naples</MenuItem>
                             </Select>
                         </FormControl>
@@ -294,8 +296,8 @@ export function CarRentalPage() {
             <h3>Tanque de nafta</h3>
 
             <label 
-                className={`option ${selectedGasTank === "full" ? "selected" : ""}`} 
-                onClick={() => handleGasTankClick('full')}
+                className={`option ${selectedGasTank === "FULL" ? "selected" : ""}`} 
+                onClick={() => handleGasTankClick('FULL')}
             >
                 <div className="option-main">
                 <input type="radio" name="gas-tank" defaultChecked />
@@ -307,8 +309,8 @@ export function CarRentalPage() {
                 <span className="included-tag">Mismo precio total</span>
             </label>
             <label 
-                className={`option ${selectedGasTank === "empty" ? "selected" : ""}`} 
-                onClick={() => handleGasTankClick('empty')}
+                className={`option ${selectedGasTank === "EMPTY" ? "selected" : ""}`} 
+                onClick={() => handleGasTankClick('EMPTY')}
             >
                 <div className="option-main">
                     <input type="radio" name="gas-tank" />
@@ -373,12 +375,12 @@ export function CarRentalPage() {
         <div className="reserve-info">
             <div className='pickup-info'>
                 <strong className='title'>Entrega</strong>
-                <p className='location'>{pickupLocation}</p>
+                <p className='location'>{locationNames[pickupLocation]}</p>
                 <p className='date'>{pickupDate} - {pickupTime}</p>
             </div>
             <div className='return-info'>
                 <strong className='title'>Devolucion</strong>
-                <p className='location'>{returnLocation}</p>
+                <p className='location'>{locationNames[returnLocation]}</p>
                 <p className='date'>{returnDate} - {returnTime}</p>
             </div>
         </div>

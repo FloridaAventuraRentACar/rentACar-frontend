@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
 
@@ -6,34 +6,98 @@ import styles from '../styles/DriverForm.module.css';
 import { Divider } from '@mui/material';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import RentalDetails from './RentalDetails.jsx';
+import { postClientList } from '../services/clientService.js';
+import { postRental } from '../services/rentalService.js';
+import { AppContext } from '../context/AppContext.jsx';
 
 const driverSchema = Yup.object({
-  firstName: Yup.string().required('Obligatorio'),
-  lastName: Yup.string().required('Obligatorio'),
+  name: Yup.string().required('Obligatorio'),
+  surname: Yup.string().required('Obligatorio'),
   email: Yup.string().email('Debes ingresar un formato de mail valido').required('Obligatorio'),
   phone: Yup.string().required('Obligatorio'),
   licenseNumber: Yup.string().required('Obligatorio'),
-  birthDate: Yup.date().required('Obligatorio'),
-  nameOnLicense: Yup.string().required('Obligatorio'),
-  addressOnLicense: Yup.string().required('Obligatorio'),
-  licenseExpiry: Yup.date().required('Obligatorio'),
+  bornDate: Yup.date().required('Obligatorio'),
+  licenseName: Yup.string().required('Obligatorio'),
+  licenseAddress: Yup.string().required('Obligatorio'),
+  licenseExpirationDate: Yup.date().required('Obligatorio'),
   ageCheckbox: Yup.boolean().oneOf([true], "Debes tener mas de 25 años para manejar un vehiculo").required('Obligatorio')
 });
 
 const DriverForm = () => {
   
- 
+  const {
+    carData,
+    pickupLocation,
+    returnLocation,
+    pickupDate,
+    pickupTime,
+    returnDate,
+    returnTime,
+    selectedInsurance,
+    selectedBabySeat,
+    travelLocation,
+    selectedGasTank
+  } = useContext(AppContext);
+
+  const handleSubmit = async (values) => {
+    const clientsIds = await saveClientList(values);
+    saveRental(clientsIds);
+  }
+
+  const saveClientList = async (values) => {
+
+    try {
+
+      const clientList = [values.driver, ...values.additionalDrivers];
+      const response = await postClientList(clientList);
+      const clientsIds = response.data.map(client => client.id);
+
+      return clientsIds;
+
+    } catch (error) {
+      console.error('Error al guardar la lista:', error);
+      return null;
+    }
+};
+
+
+  const saveRental = async (clientIds) => {
+
+    const start = `${pickupDate}T${pickupTime}`
+    const end = `${returnDate}T${returnTime}`
+
+    const rental = {
+      carId: carData.id,
+      clientIds,
+      start,
+      end,
+      pickupLocation,
+      returnLocation,
+      insurance: selectedInsurance,
+      babySeat: selectedBabySeat,
+      travelLocation,
+      gasTank: selectedGasTank
+    }
+
+    try {
+      await postRental(rental);
+    } catch (error) {
+      console.error('Error al guardar la renta:', error);
+    }
+
+  }
+
   const initialValues = {
     driver: {
-      firstName: '',
-      lastName: '',
+      name: '',
+      surname: '',
       email: '',
       phone: '',
       licenseNumber: '',
-      birthDate: '',
-      nameOnLicense: '',
-      addressOnLicense: '',
-      licenseExpiry: '',
+      bornDate: '',
+      licenseName: '',
+      licenseAddress: '',
+      licenseExpirationDate: '',
       ageCheckbox: false
     },
     additionalDrivers: [],
@@ -48,14 +112,14 @@ const DriverForm = () => {
     <>
       <div className={styles.fieldGroup}>
         <label className={styles.label}>Nombre</label>
-        <Field className={styles.input} name={`${prefix}.firstName`} />
-        <ErrorMessage className={styles.error} name={`${prefix}.firstName`} component="div" />
+        <Field className={styles.input} name={`${prefix}.name`} />
+        <ErrorMessage className={styles.error} name={`${prefix}.name`} component="div" />
       </div>
 
       <div className={styles.fieldGroup}>
         <label className={styles.label}>Apellido</label>
-        <Field className={styles.input} name={`${prefix}.lastName`} />
-        <ErrorMessage className={styles.error} name={`${prefix}.lastName`} component="div" />
+        <Field className={styles.input} name={`${prefix}.surname`} />
+        <ErrorMessage className={styles.error} name={`${prefix}.surname`} component="div" />
       </div>
 
       <div className={styles.fieldGroup}>
@@ -78,26 +142,26 @@ const DriverForm = () => {
 
       <div className={styles.fieldGroup}>
         <label className={styles.label}>Fecha de nacimiento</label>
-        <Field className={styles.input} type="date" name={`${prefix}.birthDate`} />
-        <ErrorMessage className={styles.error} name={`${prefix}.birthDate`} component="div" />
+        <Field className={styles.input} type="date" name={`${prefix}.bornDate`} />
+        <ErrorMessage className={styles.error} name={`${prefix}.bornDate`} component="div" />
       </div>
 
       <div className={styles.fieldGroup}>
         <label className={styles.label}>Nombre en licencia de conducir</label>
-        <Field className={styles.input} name={`${prefix}.nameOnLicense`} />
-        <ErrorMessage className={styles.error} name={`${prefix}.nameOnLicense`} component="div" />
+        <Field className={styles.input} name={`${prefix}.licenseName`} />
+        <ErrorMessage className={styles.error} name={`${prefix}.licenseName`} component="div" />
       </div>
 
       <div className={styles.fieldGroup}>
         <label className={styles.label}>Direccion en licencia de conducir</label>
-        <Field className={styles.input} name={`${prefix}.addressOnLicense`} />
-        <ErrorMessage className={styles.error} name={`${prefix}.addressOnLicense`} component="div" />
+        <Field className={styles.input} name={`${prefix}.licenseAddress`} />
+        <ErrorMessage className={styles.error} name={`${prefix}.licenseAddress`} component="div" />
       </div>
 
       <div className={styles.fieldGroup}>
         <label className={styles.label}>Fecha de expiracion de licencia de conducir</label>
-        <Field className={styles.input} type="date" name={`${prefix}.licenseExpiry`} />
-        <ErrorMessage className={styles.error} name={`${prefix}.licenseExpiry`} component="div" />
+        <Field className={styles.input} type="date" name={`${prefix}.licenseExpirationDate`} />
+        <ErrorMessage className={styles.error} name={`${prefix}.licenseExpirationDate`} component="div" />
       </div>
       <div className={styles.checkbox}>
         <Field type="checkbox" name={`${prefix}.ageCheckbox`} className={styles.ageCheckbox} />
@@ -126,6 +190,7 @@ const DriverForm = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
+            onSubmit={handleSubmit}
           >
             {({ values }) => (
               <Form>
@@ -154,15 +219,15 @@ const DriverForm = () => {
                         className={`${styles.button} ${styles.addButton}`}
                         onClick={() =>
                           push({
-                            firstName: '',
-                            lastName: '',
+                            name: '',
+                            surname: '',
                             email: '',
                             phone: '',
                             licenseNumber: '',
-                            birthDate: '',
-                            nameOnLicense: '',
-                            addressOnLicense: '',
-                            licenseExpiry: '',
+                            bornDate: '',
+                            licenseName: '',
+                            licenseAddress: '',
+                            licenseExpirationDate: '',
                           })
                         }
                       >
