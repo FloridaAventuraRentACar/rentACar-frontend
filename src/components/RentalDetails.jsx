@@ -32,10 +32,6 @@ const RentalDetails = () => {
           <h3 className={styles.title}>{carData.name}</h3>
           <p className={styles.duration}>{daysBooked} días de alquiler</p>
         </div>
-        <div className={styles.priceContainer}>
-          <p className={styles.priceText}>Precio total</p>
-          <p className={styles.totalPrice}>${totalPrice}</p>
-        </div>
       </div>
 
       <div className={styles.details}>
@@ -58,6 +54,10 @@ const RentalDetails = () => {
           {selectedBabySeat !== 'NONE' && <li>✔ {babySeatNames[selectedBabySeat]}</li>}
           {travelLocation && <li> ✔ Viajaras a {travelLocationNames[travelLocation]} </li>}
         </ul>
+      </div>
+      <div className={styles.priceContainer}>
+        <p className={styles.priceText}>Precio total:</p>
+        <p className={styles.totalPrice}>${totalPrice}</p>
       </div>
     </div>
   );

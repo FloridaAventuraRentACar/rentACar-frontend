@@ -8,6 +8,7 @@
     overflow: hidden;
     font-family: sans-serif;
     padding: 1rem;
+    position: relative;
 }
   
 .header {
@@ -18,25 +19,33 @@
 }
 
 .priceContainer {
-    position: relative;
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
     margin-left: 20px;
-    margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    gap: 10px;
+    align-items: center;
+    border-width: 2px;
+    border-color: rgb(22, 22, 22);
+    border-style:solid;
+    border-radius: 10px;
+    padding-right:10px;
+    padding-left:10px;
+ 
 }
 
 .priceText {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #2c3e50; /* gris oscuro */
 }   
 
 .totalPrice {
   display: inline-block;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #2c3e50; /* gris oscuro */
+  font-size: 0.9rem;
+
+  color: #030303; /* gris oscuro */
 }
 
 .carImage {
