@@ -15,7 +15,7 @@ export const AppProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(100);
   const [pricePerDay, setPricePerDay] = useState(100);
   const [selectedInsurance, setSelectedInsurance] = useState('DEDUCTIBLE');
-  const [selectedBabySeat, setSelectedBabySeat] = useState('no');
+  const [selectedBabySeat, setSelectedBabySeat] = useState('NONE');
   const [travelLocation, setTravelLocation] = useState(null);
   const [selectedGasTank, setSelectedGasTank] = useState('FULL'); 
 
