@@ -3,10 +3,16 @@ import styles from '../styles/RentalDetails.module.css';
 import { AppContext } from '../context/AppContext';
 import { format, parseISO } from 'date-fns';
 import locationNames from '../utilities/locationNames';
+import insuranceNames from '../utilities/insuranceNames';
+import babySeatNames from '../utilities/babySeatNames';
+import travelLocationNames from '../utilities/travelLocationNames';
 
 const RentalDetails = () => {
 
-  const {carData, daysBooked, pickupLocation, pickupDate,pickupTime, returnLocation, returnDate, returnTime, totalPrice} = useContext(AppContext);
+  const {
+    carData, daysBooked, pickupLocation, pickupDate,pickupTime, returnLocation, returnDate, returnTime, 
+    totalPrice, selectedInsurance, selectedBabySeat, travelLocation
+  } = useContext(AppContext);
 
   const parsePickupDate = parseISO(pickupDate);
   const formattedPickupDate = format(parsePickupDate, 'eee, dd. MMM. yyyy');
@@ -48,11 +54,9 @@ const RentalDetails = () => {
       <div className={styles.summary}>
         <h4>Su resumen de reservas:</h4>
         <ul>
-          <li>✔ Asistente de carretera 24/7</li>
-          <li>✔ Millas ilimitadas dentro de Miami</li>
-          <li>
-            ✔ Te entregamos y recojemos el auto donde lo necesite
-          </li>
+          <li>✔ Seguro {insuranceNames[selectedInsurance]}</li>
+          {selectedBabySeat !== 'NONE' && <li>✔ {babySeatNames[selectedBabySeat]}</li>}
+          {travelLocation && <li> ✔ Viajaras a {travelLocationNames[travelLocation]} </li>}
         </ul>
       </div>
     </div>
