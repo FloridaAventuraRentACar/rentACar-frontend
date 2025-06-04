@@ -9,6 +9,7 @@ import RentalDetails from './RentalDetails.jsx';
 import { postClientList } from '../services/clientService.js';
 import { postRental } from '../services/rentalService.js';
 import { AppContext } from '../context/AppContext.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const driverSchema = Yup.object({
   name: Yup.string().required('Obligatorio'),
@@ -24,7 +25,8 @@ const driverSchema = Yup.object({
 });
 
 const DriverForm = () => {
-  
+  const navigate = useNavigate();
+
   const {
     carData,
     pickupLocation,
@@ -39,9 +41,18 @@ const DriverForm = () => {
     selectedGasTank
   } = useContext(AppContext);
 
+  const getClientsIds = (clients) => {
+    return clients.map(client => client.id);
+  }
+
   const handleSubmit = async (values) => {
-    const clientsIds = await saveClientList(values);
-    saveRental(clientsIds);
+
+    const saveClientsResponse = await saveClientList(values);
+    const clientsIds = getClientsIds(saveClientsResponse)
+
+    const rental = await saveRental(clientsIds);
+
+    navigate('/successful-rental', { state: { rental } });
   }
 
   const saveClientList = async (values) => {
@@ -50,9 +61,10 @@ const DriverForm = () => {
 
       const clientList = [values.driver, ...values.additionalDrivers];
       const response = await postClientList(clientList);
-      const clientsIds = response.data.map(client => client.id);
 
-      return clientsIds;
+      const clients = await response.data;
+
+      return clients;
 
     } catch (error) {
       console.error('Error al guardar la lista:', error);
@@ -80,7 +92,11 @@ const DriverForm = () => {
     }
 
     try {
-      await postRental(rental);
+
+      const response = await postRental(rental);
+
+      return response.data;
+
     } catch (error) {
       console.error('Error al guardar la renta:', error);
     }
