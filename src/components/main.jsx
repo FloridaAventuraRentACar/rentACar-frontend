@@ -8,6 +8,7 @@ import { CarRentalPage } from './CarRentalPage.jsx'
 import { AppProvider } from '../context/AppContext.jsx';
 import DriverForm from './DriverForm.jsx';
 import Layout  from './Layout.jsx';
+import SuccessfulRental from './SuccessfulRental.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/cars", element: <ShowCarsPage /> },
       { path: "/cars/:name", element: <CarRentalPage /> },
       { path: "/driver-form", element: <DriverForm /> },
+      { path: "/successful-rental", element: <SuccessfulRental /> }
     ],
   },
 ]);

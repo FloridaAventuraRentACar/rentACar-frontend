@@ -1,0 +1,214 @@
+.container {
+  max-width: 28rem;
+  margin: 4rem auto;
+  width: 100%;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #ecfdf5;
+  border: 1px solid #d1fae5;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.alertIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #16a34a;
+}
+
+.alertTitle {
+  font-weight: 700;
+  color: #065f46;
+  margin: 0;
+}
+
+.alertDescription {
+  color: #047857;
+  margin: 0.25rem 0 0;
+}
+
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.cardHeader {
+  background: linear-gradient(to right, #f0fdf4, #dcfce7);
+  padding: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin: 0.25rem 0 0;
+}
+
+.iconWrapper {
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #16a34a;
+}
+
+.cardContent {
+  padding: 1.5rem 1.5rem 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.box {
+  background-color: #f9fafb;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.valueMono {
+  font-family: monospace;
+  font-weight: bold;
+  color: #1f2937;
+  margin-top: 1rem;
+}
+
+.advice {
+  color: #616263;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2rem;
+  font-weight: 500
+}
+
+.row {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+}
+
+.rowIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+.value {
+  color: #1f2937;
+  font-weight: 700;
+  font-family: arial;
+  
+}
+
+.subLabel {
+  font-size: 0.875rem;
+  color: #6b7280e8;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.dateGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 0.2rem;
+  margin-bottom: -1rem;
+}
+
+.amountRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amountLabel {
+  font-weight: 1000;
+  color: #4b5563;
+  font-family: sans-serif;
+  font-size: 1.3rem;
+}
+
+.amount {
+  font-size: 1.7rem;
+  color: #1f2937;
+  font-family: impact;
+}
+
+.cardFooter {
+  padding: 1.5rem;
+  padding-top: 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.backButton {
+  width: 100%;
+  background-color: #0c0c0c;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  font-size: 1rem;
+}
+
+
+.supportText {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.phoneIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+}

@@ -51,8 +51,8 @@ const RentalDetails = () => {
         <h4>Su resumen de reservas:</h4>
         <ul>
           <li>✔ Seguro {insuranceNames[selectedInsurance]}</li>
-          {selectedBabySeat !== 'NONE' && <li>✔ {babySeatNames[selectedBabySeat]}</li>}
-          {travelLocation && <li> ✔ Viajaras a {travelLocationNames[travelLocation]} </li>}
+          {(selectedBabySeat !== 'NONE') && <li>✔ {babySeatNames[selectedBabySeat]}</li>}
+          {travelLocation && <li>✔ Viajaras a {travelLocationNames[travelLocation]} </li>}
         </ul>
       </div>
       <div className={styles.priceContainer}>
