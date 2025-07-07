@@ -1,28 +1,28 @@
 import styles from '../../styles/admin/RentalsGrid.module.css'
-import { sortRentalsByDate } from '../../utilities/sortRentalsByDate'
-import { rentalsFetchSimulate } from '../../utilities/rentalsFetchSimulate'
-import { getCurrentRentals } from '../../services/rentalService'
+import { sortRentalsByDate } from '../../utilities/functions/sortRentalsByDate'
+import { getCurrentRentals, getRentalById } from '../../services/rentalService'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function RentalsGrid() {
 
   const [rentals, setRentals] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     
-    fetchRentals();
-    setRentals(sortRentalsByDate(rentals));
+    fetchCurrentRentals();
+
   }, []);
 
-  const fetchRentals = async () => {
+  //Trae un resumen de los alquileres activos
+  const fetchCurrentRentals = async () => {
     const response = await getCurrentRentals();
-    console.log("Response:", response);
     const rentalsData = await response.data;
-    console.log("Rentals response:", rentalsData);
-    setRentals(rentalsData);
-  };
 
-  // const rentals = sortRentalsByDate(rentalsFetchSimulate) //Esta funcion ordena los Rentals de menor a mayor
+    setRentals(sortRentalsByDate(rentalsData));
+  };
 
   // Función para formatear fechas
   const formatDate = (dateString) => {
@@ -32,6 +32,11 @@ export default function RentalsGrid() {
       month: "2-digit",
       year: "numeric",
     })
+  }
+
+  const handleRentalDetailClick = async (rental) => {
+    
+    navigate("/admin/rentalDetail/" + rental.id);
   }
 
   return (
@@ -46,7 +51,12 @@ export default function RentalsGrid() {
                 {formatDate(rental.start)} - {formatDate(rental.end)}
               </div>
               <div className={styles.price}>${rental.totalPrice}</div>
-              <button className={styles.detailButton}>Ver detalle</button>
+              <button
+                className={styles.detailButton}
+                onClick={() => handleRentalDetailClick(rental)}
+              >
+                Ver detalle
+              </button>
             </div>
           </div>
         ))}

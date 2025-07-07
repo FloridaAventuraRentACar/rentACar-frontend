@@ -10,6 +10,7 @@ import DriverForm from './DriverForm.jsx';
 import Layout  from './Layout.jsx';
 import SuccessfulRental from './SuccessfulRental.jsx';
 import RentalsListPage  from './admin/RentalsListPage.jsx';
+import RentalAdminResume from './admin/RentalAdminResume.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       { path: "/cars/:name", element: <CarRentalPage /> },
       { path: "/driver-form", element: <DriverForm /> },
       { path: "/successful-rental", element: <SuccessfulRental /> },
-      { path: "/admin", element: <RentalsListPage /> }
+      { path: "/admin", element: <RentalsListPage /> },
+      { path: "/admin/rentalDetail/:id", element: <RentalAdminResume />}
     ],
   },
 ]);

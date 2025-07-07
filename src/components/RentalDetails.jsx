@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import styles from '../styles/RentalDetails.module.css';
 import { AppContext } from '../context/AppContext';
 import { format, parseISO } from 'date-fns';
-import locationNames from '../utilities/locationNames';
-import insuranceNames from '../utilities/insuranceNames';
-import babySeatNames from '../utilities/babySeatNames';
-import travelLocationNames from '../utilities/travelLocationNames';
+import locationNames from '../utilities/names/locationNames';
+import insuranceNames from '../utilities/names/insuranceNames';
+import babySeatNames from '../utilities/names/babySeatNames';
+import travelLocationNames from '../utilities/names/travelLocationNames';
 
 const RentalDetails = () => {
 
