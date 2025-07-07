@@ -12,7 +12,7 @@ import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatRecline
 import MotionPhotosAutoIcon from '@mui/icons-material/MotionPhotosAuto';
 import LuggageIcon from '@mui/icons-material/Luggage';
 import SensorDoorIcon from '@mui/icons-material/SensorDoor';
-import locationNames from '../utilities/locationNames.js';
+import locationNames from '../utilities/names/locationNames.js';
 
 export function CarRentalPage() {
     const navigate = useNavigate()

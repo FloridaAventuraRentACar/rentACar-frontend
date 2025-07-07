@@ -2,9 +2,8 @@ import { useEffect , useContext, useState} from 'react'
 import '../styles/homeRentInput.css'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
-import { daysCalculate } from '../utilities/daysCalculate'
-import { calculateMinTime } from '../utilities/CalculateMinTime'
-import { isSameDay } from 'date-fns';
+import { daysCalculate } from '../utilities/functions/daysCalculate'
+import { calculateMinTime } from '../utilities/functions/CalculateMinTime'
 
 export default function HomeRentInput() {
 

@@ -6,7 +6,7 @@ import styles from "../styles/SuccessfulRental.module.css"
 import { AppContext } from "../context/AppContext"
 import { useLocation, useNavigate } from "react-router-dom"
 import { format, parseISO } from 'date-fns';
-import {locationNames} from '../utilities/locationNames'
+import {locationNames} from '../utilities/names/locationNames'
 
 export default function SuccessfulRental() {
   const location = useLocation();
