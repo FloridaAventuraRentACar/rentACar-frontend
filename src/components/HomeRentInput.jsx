@@ -1,12 +1,10 @@
-import { useEffect , useContext, useState} from 'react'
-import '../styles/homeRentInput.css'
-import { useNavigate } from 'react-router-dom'
-import { AppContext } from '../context/AppContext'
-import { daysCalculate } from '../utilities/functions/daysCalculate'
-import { calculateMinTime } from '../utilities/functions/CalculateMinTime'
+import { useEffect, useContext } from "react";
+import styles from "../styles/HomeRentInput.module.css";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { daysCalculate } from "../utilities/functions/daysCalculate";
 
 export default function HomeRentInput() {
-
   const {
     pickupLocation,
     setPickupLocation,
@@ -20,73 +18,68 @@ export default function HomeRentInput() {
     setReturnDate,
     returnTime,
     setReturnTime,
-    setDaysBooked
+    setDaysBooked,
   } = useContext(AppContext);
 
-  // const [minTime,setMinTime] = useState('');
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
-    resetStates()
-  }, [])
-
-  //Pendiente de resolver error de minTime
-
-  // useEffect(() => {
-  //   console.log(new Date(pickupDate))
-  //   console.log(new Date())
-  //   if(isSameDay(new Date(pickupDate), new Date())){
-  //     console.log('entro')
-  //     setMinTime(calculateMinTime());
-  //   }
-    
-  // }, [pickupDate])
+    resetStates();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const daysBooked = daysCalculate(pickupDate, returnDate, pickupTime, returnTime);
+    const daysBooked = daysCalculate(
+      pickupDate,
+      returnDate,
+      pickupTime,
+      returnTime
+    );
 
     if (daysBooked < 3) {
-      alert('El alquiler debe ser de minimo 3 dias');
+      alert("El alquiler debe ser de mínimo 3 días");
       return;
     }
 
     setDaysBooked(daysBooked);
-    navigate('/cars');
-  }
+    navigate("/cars");
+  };
 
   const resetStates = () => {
-    setPickupLocation('')
-    setReturnLocation('')
-    setPickupDate('')
-    setPickupTime('')
-    setReturnDate('')
-    setReturnTime('')
-    setDaysBooked(0)
-  }
+    setPickupLocation("");
+    setReturnLocation("");
+    setPickupDate("");
+    setPickupTime("");
+    setReturnDate("");
+    setReturnTime("");
+    setDaysBooked(0);
+  };
 
   return (
-    <div className="home-form-container">
-      <form onSubmit={handleSubmit} className="form">
-        <div className="horizontal-center location">
-
-          <div className="form-group">
-            <label htmlFor="pickupLocation" className="form-label">
-              Ubicacion de entrega
+    <div className={styles.homeFormContainer}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={`${styles.horizontalCenter} ${styles.location}`}>
+          <div className={styles.formGroup}>
+            <label htmlFor="pickupLocation" className={styles.formLabel}>
+              Ubicación de entrega
             </label>
-            <select 
-              className='form-input'
-              id="pickupLocation" 
-              value={pickupLocation} 
-              
+            <select
+              className={styles.formInput}
+              id="pickupLocation"
+              value={pickupLocation}
               onChange={(e) => setPickupLocation(e.target.value)}
               required
             >
-              <option id='default' value="" disabled selected>Selecciona una ubicacion de entrega</option>
-              <option value="MIAMI_AIRPORT">Aeropuerto internacion de Miami</option>
-              <option value="FORTLAURENDALE_AIRPORT">Aeropuerto de Fortlaurendale</option>
+              <option value="" disabled selected>
+                Selecciona una ubicación de entrega
+              </option>
+              <option value="MIAMI_AIRPORT">
+                Aeropuerto internacional de Miami
+              </option>
+              <option value="FORTLAURENDALE_AIRPORT">
+                Aeropuerto de Fort Lauderdale
+              </option>
               <option value="BRICKEL">Brickel</option>
               <option value="SUNNY_ISLES">Sunny Isles</option>
               <option value="HALLANDALE">Hallandale</option>
@@ -95,20 +88,26 @@ export default function HomeRentInput() {
               <option value="NORTH_MIAMI">North Miami</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="returnLocation" className="form-label">
-              Ubicacion de devolucion
+          <div className={styles.formGroup}>
+            <label htmlFor="returnLocation" className={styles.formLabel}>
+              Ubicación de devolución
             </label>
-            <select 
-              className='form-input'
-              id="returnLocation" 
-              value={returnLocation} 
+            <select
+              className={styles.formInput}
+              id="returnLocation"
+              value={returnLocation}
               onChange={(e) => setReturnLocation(e.target.value)}
               required
             >
-              <option id='default' value="" disabled selected>Selecciona una ubicacion de devolucion</option>
-              <option value="MIAMI_AIRPORT">Aeropuerto internacion de Miami</option>
-              <option value="FORTLAURENDALE_AIRPORT">Aeropuerto de Fortlaurendale</option>
+              <option value="" disabled selected>
+                Selecciona una ubicación de devolución
+              </option>
+              <option value="MIAMI_AIRPORT">
+                Aeropuerto internacional de Miami
+              </option>
+              <option value="FORTLAURENDALE_AIRPORT">
+                Aeropuerto de Fort Lauderdale
+              </option>
               <option value="BRICKEL">Brickel</option>
               <option value="SUNNY_ISLES">Sunny Isles</option>
               <option value="HALLANDALE">Hallandale</option>
@@ -118,71 +117,70 @@ export default function HomeRentInput() {
             </select>
           </div>
         </div>
-        <div className="horizontal-center pickup-return">
-          <div className="form-group">
-            <label htmlFor="pickupDate" className="form-label">
-            Fecha de entrega
+        <div className={`${styles.horizontalCenter} ${styles.pickupReturn}`}>
+          <div className={styles.formGroup}>
+            <label htmlFor="pickupDate" className={styles.formLabel}>
+              Fecha de entrega
             </label>
             <input
               type="date"
               id="pickupDate"
               value={pickupDate}
               onChange={(e) => setPickupDate(e.target.value)}
-              className="form-input"
+              className={styles.formInput}
               required
               min={new Date().toISOString().split("T")[0]}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="pickupTime" className="form-label">
-            Hora de entrega
+          <div className={styles.formGroup}>
+            <label htmlFor="pickupTime" className={styles.formLabel}>
+              Hora de entrega
             </label>
             <input
               type="time"
               id="pickupTime"
               value={pickupTime}
               onChange={(e) => setPickupTime(e.target.value)}
-              className="form-input"
+              className={styles.formInput}
               required
-             // min={minTime}
             />
           </div>
         </div>
-        <div className="horizontal-center pickup-return">
-          <div className="form-group">
-            <label htmlFor="returnDate" className="form-label">
-              Fecha de devolucion
+        <div className={`${styles.horizontalCenter} ${styles.pickupReturn}`}>
+          <div className={styles.formGroup}>
+            <label htmlFor="returnDate" className={styles.formLabel}>
+              Fecha de devolución
             </label>
             <input
               type="date"
               id="returnDate"
               value={returnDate}
               onChange={(e) => setReturnDate(e.target.value)}
-              className="form-input"
+              className={styles.formInput}
               required
               min={new Date().toISOString().split("T")[0]}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="returnTime" className="form-label">
-              Hora de devolucion
+          <div className={styles.formGroup}>
+            <label htmlFor="returnTime" className={styles.formLabel}>
+              Hora de devolución
             </label>
             <input
               type="time"
               id="returnTime"
               value={returnTime}
               onChange={(e) => setReturnTime(e.target.value)}
-              className="form-input"
+              className={styles.formInput}
               required
             />
           </div>
         </div>
-        <div className="form-group">
-          <button type="submit" className="form-button">
+        <div className={styles.formGroup}>
+          <button type="submit" className={styles.formButton}>
             Mostrar autos
           </button>
         </div>
       </form>
     </div>
-  )
+  );
 }

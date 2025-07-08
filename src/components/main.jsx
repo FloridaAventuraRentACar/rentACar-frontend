@@ -1,6 +1,5 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import '../styles/homePage.css'
 import { HomePage } from './HomePage.jsx'
 import {  createBrowserRouter, RouterProvider} from 'react-router-dom';
 import {ShowCarsPage } from './ShowCarsPage.jsx'

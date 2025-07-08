@@ -1,0 +1,224 @@
+.carRentalCard {
+  max-width: 900px;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.carInfo {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.carImage {
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  flex-shrink: 0;
+}
+
+.carDescription {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.carName {
+  white-space: nowrap;
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carSubtitle {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.carSpecs {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 40px 80px;
+  justify-content: center;
+  font-size: 1.8em;
+  color: #444;
+  margin-top: 100px;
+}
+
+.seatIcon,
+.luggageIcon,
+.automaticIcon,
+.doorIcon {
+  vertical-align: middle;
+}
+
+.mainDiv {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.option.selected {
+  border: 2px solid #000;
+}
+
+.optionMain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.optionMain input {
+  margin: 0;
+}
+
+.optionText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.optionText strong {
+  font-size: 1em;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.includedTag {
+  color: green;
+  font-weight: bold;
+}
+
+.priceTag {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.9em;
+}
+
+.priceSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.priceInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricePerDay {
+  font-size: 1em;
+  margin-bottom: 7px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.totalPrice {
+  margin: 5px 0;
+  font-size: 1.3em;
+}
+
+.priceInfo a {
+  font-size: 0.9em;
+  text-decoration: underline;
+  color: #333;
+}
+
+.priceTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.daysReserved {
+  font-size: 0.7em;
+  position: relative;
+  top: 4px;
+  color: #0b0a0a77;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.reserveInfo {
+  display: flex;
+  justify-content: space-between;
+  top: 5px;
+  gap: 50px;
+  font-size: 0.95em;
+  margin-right: 20px;
+  color: #444;
+  position: relative;
+}
+
+.pickupInfo,
+.returnInfo {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1em;
+  color: #1111113e;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+}
+
+.location {
+  font-size: 0.95em;
+  color: #222;
+  margin-bottom: 2px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.date {
+  font-size: 0.9em;
+  color: #555;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.nextButton {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1em;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nextButton:hover {
+  background-color: #e05500;
+}
+
+.aditionalServices {
+  /* Estilos para sección de servicios adicionales si querés agregar extras */
+}
