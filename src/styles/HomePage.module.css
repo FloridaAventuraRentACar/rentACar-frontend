@@ -1,13 +1,12 @@
-.home-main-container {
+.homeMainContainer {
     min-height: 100vh;
-    background: #f7f7f889;  /* fallback for old browsers */
+    background: #f7f7f889; /* fallback for old browsers */
     padding: 48px 16px;
 }
 
-.home-inner-container {
+.homeInnerContainer {
     max-width: 1120px;
     margin: 0 auto;
-
 }
 
 .heading {
@@ -17,7 +16,6 @@
     font-weight: 400;
     font-style: normal;
     text-align: center;
-    color: #1a202c; 
+    color: #1a202c;
     margin-bottom: 32px;
 }
-
