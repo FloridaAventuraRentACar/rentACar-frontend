@@ -1,0 +1,75 @@
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  background-color: white;
+  color: #3b82f6;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+  position: fixed;
+  width: 15vh;
+  height: 6vh;
+}
+
+.backButton:hover {
+  background-color: #3b82f6;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.backButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.backButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.backButton.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.backButton.disabled:hover {
+  background-color: white;
+  color: #3b82f6;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+}
+
+.icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.backButton:hover .icon {
+  transform: translateX(-2px);
+}
+
+.text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  letter-spacing: 0.025em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .backButton {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}

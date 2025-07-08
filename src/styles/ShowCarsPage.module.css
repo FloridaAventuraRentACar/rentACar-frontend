@@ -1,4 +1,4 @@
-.show-cars-main-container{
+.showCarsMainContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,7 +6,7 @@
   padding: 2rem;
 }
 
-.car-card-container{
+.carCardContainer {
   display: flex;
   justify-content: center;
 }
