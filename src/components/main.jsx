@@ -10,6 +10,7 @@ import Layout  from './Layout.jsx';
 import SuccessfulRental from './SuccessfulRental.jsx';
 import RentalsListPage  from './admin/RentalsListPage.jsx';
 import RentalAdminResume from './admin/RentalAdminResume.jsx';
+import Login from './admin/Login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
       { path: "/driver-form", element: <DriverForm /> },
       { path: "/successful-rental", element: <SuccessfulRental /> },
       { path: "/admin", element: <RentalsListPage /> },
-      { path: "/admin/rentalDetail/:id", element: <RentalAdminResume />}
+      { path: "/admin/rentalDetail/:id", element: <RentalAdminResume />},
+      { path: "/admin/login", element: <Login /> }
     ],
   },
 ]);
