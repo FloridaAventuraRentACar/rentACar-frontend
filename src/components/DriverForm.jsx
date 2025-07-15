@@ -4,12 +4,12 @@ import * as Yup from 'yup';
 
 import styles from '../styles/DriverForm.module.css';
 import { Divider } from '@mui/material';
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import RentalDetails from './RentalDetails.jsx';
 import { postClientList } from '../services/clientService.js';
 import { postRental } from '../services/rentalService.js';
 import { AppContext } from '../context/AppContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import BackButton  from './BackButton.jsx';
 
 const driverSchema = Yup.object({
   name: Yup.string().required('Obligatorio'),
@@ -40,6 +40,10 @@ const DriverForm = () => {
     travelLocation,
     selectedGasTank
   } = useContext(AppContext);
+
+  const handleBackButtonClick = () => {
+    window.history.back();
+  }
 
   const getClientsIds = (clients) => {
     return clients.map(client => client.id);
@@ -193,10 +197,7 @@ const DriverForm = () => {
     <div className={styles.background}>
       <div className={styles.header}>
 
-        <button className={styles.backButton}>
-          <ArrowCircleLeftIcon className={styles.backIcon} />
-        </button>
-        <h2 className={styles.formTitle}>Volver a los detalles de la reserva</h2>
+        <BackButton onClick={handleBackButtonClick} />
 
       </div>
       <Divider />
