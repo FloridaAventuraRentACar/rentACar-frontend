@@ -18,24 +18,26 @@ import {
   ChevronRight,
 } from "lucide-react";
 import styles from "../styles/HomePage.module.css"; // Import CSS Module
+import HomeRentInput from "./HomeRentInput";
+import Header from "./Header";
 
 // Placeholder for HomeRentInput
-const HomeRentInput = () => {
-  return (
-    <div className={styles.homeRentInput}>
-      <input type="date" className={styles.homeRentInputField} defaultValue="2025-07-20" />
-      <input type="date" className={styles.homeRentInputField} defaultValue="2025-07-27" />
-      <select className={styles.homeRentInputSelect}>
-        <option>Selecciona un vehículo</option>
-        <option>Toyota Corolla</option>
-        <option>Nissan Altima</option>
-        <option>Ford Explorer</option>
-        <option>BMW 3 Series</option>
-      </select>
-      <button className={styles.homeRentInputButton}>Buscar</button>
-    </div>
-  );
-};
+// const HomeRentInput = () => {
+//   return (
+//     <div className={styles.homeRentInput}>
+//       <input type="date" className={styles.homeRentInputField} defaultValue="2025-07-20" />
+//       <input type="date" className={styles.homeRentInputField} defaultValue="2025-07-27" />
+//       <select className={styles.homeRentInputSelect}>
+//         <option>Selecciona un vehículo</option>
+//         <option>Toyota Corolla</option>
+//         <option>Nissan Altima</option>
+//         <option>Ford Explorer</option>
+//         <option>BMW 3 Series</option>
+//       </select>
+//       <button className={styles.homeRentInputButton}>Buscar</button>
+//     </div>
+//   );
+// };
 
 // Placeholder for Button
 const Button = ({ children, className, ...props }) => {
@@ -150,60 +152,14 @@ export default function HomePage() {
   return (
     <div className={styles.container}>
       {/* Header */}
-      <header
-        className={styles.header}
-        style={{
-          boxShadow: scrollY > 0 ? "0 4px 6px rgba(0, 0, 0, 0.1)" : "none",
-        }}
-      >
-        <div className={styles.headerContent}>
-          <div className={styles.logo}>Florida Aventura Rent a Car</div>
-
-          {/* Desktop Navigation */}
-          <nav className={styles.desktopNav}>
-            <a href="#inicio" className={styles.navLink}>
-              Inicio
-            </a>
-            <a href="#unidades" className={styles.navLink}>
-              Nuestras Unidades
-            </a>
-            <a href="#contacto" className={styles.navLink}>
-              Contacto
-            </a>
-            <Button className={styles.navButton}>Reservar</Button>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button className={styles.mobileMenuButton} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className={styles.icon} /> : <Menu className={styles.icon} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className={styles.mobileNav}>
-            <div className={styles.mobileNavLinks}>
-              <a href="#inicio" className={styles.navLink}>
-                Inicio
-              </a>
-              <a href="#unidades" className={styles.navLink}>
-                Nuestras Unidades
-              </a>
-              <a href="#contacto" className={styles.navLink}>
-                Contacto
-              </a>
-              <Button className={styles.navButtonFullWidth}>Reservar</Button>
-            </div>
-          </nav>
-        )}
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section id="inicio" className={styles.heroSection}>
         <div
           className={styles.heroBackground}
           style={{
-            backgroundImage: `url('/placeholder.svg?height=1080&width=1920')`,
+            backgroundImage: `url("https://di-uploads-pod17.dealerinspire.com/lokeyvolkswagen/uploads/2025/01/2025_volkswagen_atlas-cross-sport_4dr-suv_sel-premium-r-line_fq_oem_1_1600.jpg")`,
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
