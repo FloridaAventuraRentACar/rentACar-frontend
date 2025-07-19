@@ -1,3 +1,7 @@
+.background {
+  background-color: #fcfcfc;
+}
+
 .mainContainer{
   display: flex;
   margin-top: 20px;
@@ -9,6 +13,8 @@
   padding: 2rem;
   width: 100%;
   position: relative;
+  background-color: #a6afb4bd;
+  border-radius: 5%;
 }
 .rentalDetailsContainer{
   margin: 30px;
@@ -23,30 +29,6 @@
 .formTitle{
   margin-left: 10px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-.backButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f0f4f8;
-  border: none;
-  border-radius: 9999px; /* forma circular */
-  padding: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.backButton:hover {
-  background-color: #dbeafe;
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.backIcon {
-  width: 24px;
-  height: 24px;
-  color: #1d4ed8; /* azul intenso */
 }
 
 h2, h3, h4 {
