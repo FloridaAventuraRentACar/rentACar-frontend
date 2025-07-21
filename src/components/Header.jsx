@@ -111,7 +111,6 @@ export default function Header({ className = "" }) {
             className={styles.logoLink}
           >
             <div className={styles.logoImageWrapper}>
-              {/* Reemplazo de Image de next/image por <img> */}
               <img
                 src="/FloridaAventuraLogo.png"
                 alt="Florida Aventura Rent a Car Logo"
@@ -193,82 +192,7 @@ export default function Header({ className = "" }) {
               </a>
             </Button>
 
-            {/* Mobile Menu Trigger */}
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" className={styles.menuTriggerButton}>
-                  <Menu className={styles.menuIcon} />
-                  <span className="sr-only">Abrir menú</span>
-                </Button>
-              </SheetTrigger>
-              {isMobileMenuOpen && ( // Renderiza SheetContent solo si el menú está abierto
-                <SheetContent side="right" className={styles.sheetContent}>
-                  <div className={styles.mobileMenuInner}>
-                    {/* Mobile Menu Header */}
-                    <div className={styles.mobileMenuHeader}>
-                      <div className={styles.mobileLogoWrapper}>
-                        <div className={styles.mobileLogoImageWrapper}>
-                          {/* Reemplazo de Image de next/image por <img> */}
-                          <img
-                            src="/placeholder.svg?height=32&width=32&text=Logo"
-                            alt="Florida Aventura Logo"
-                            className={styles.mobileLogoImage}
-                          />
-                        </div>
-                        <div>
-                          <h2 className={styles.mobileLogoTitle}>Florida Aventura</h2>
-                          <p className={styles.mobileLogoSubtitle}>Rent a Car</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Mobile Navigation Links */}
-                    <nav className={styles.mobileNavLinks}>
-                      {navigationLinks.map((link) => (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          onClick={handleSmoothScroll}
-                          className={styles.mobileNavLink}
-                        >
-                          <span className={styles.mobileNavLinkText}>{link.label}</span>
-                        </a>
-                      ))}
-                    </nav>
-
-                    {/* Mobile Actions */}
-                    <div className={styles.mobileActions}>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className={styles.mobileWhatsappButtonFull}
-                      >
-                        <a
-                          href="" // Deja en blanco según lo solicitado
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.buttonContent}
-                        >
-                          <MessageCircle className={styles.icon} />
-                          <span>Contactar por WhatsApp</span>
-                        </a>
-                      </Button>
-
-                      <Button asChild className={styles.mobileReserveButtonFull}>
-                        <a
-                          href="#inicio"
-                          onClick={handleSmoothScroll}
-                          className={styles.buttonContent}
-                        >
-                          <Phone className={styles.icon} />
-                          <span>Reservar Ahora</span>
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </SheetContent>
-              )}
-            </Sheet>
+            
           </div>
         </div>
       </div>

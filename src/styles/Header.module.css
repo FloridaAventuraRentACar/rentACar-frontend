@@ -94,7 +94,6 @@
 }
 
 .logoTextWrapper {
-  display: none; /* hidden */
 }
 
 @media (min-width: 640px) {
@@ -109,6 +108,7 @@
   font-weight: 700; /* font-bold */
   color: var(--color-text-dark); /* text-gray-800 */
   transition: color 0.3s ease-in-out;
+  font-family: 'inter';
 }
 
 .logoLink:hover .logoTitle {
@@ -127,6 +127,7 @@
   line-height: 1rem;
   color: var(--color-text-light); /* text-gray-600 */
   margin-top: -0.25rem; /* -mt-1 */
+  font-family: 'inter';
 }
 
 @media (min-width: 1024px) {
