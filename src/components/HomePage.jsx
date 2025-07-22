@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import {
   Menu,
@@ -25,7 +24,7 @@ import Input from "./ui/Input";
 import Textarea from "./ui/TextArea";
 import Card from "./ui/Card";
 import CardContent from "./ui/CardContent";
-import {cars} from "../utilities/CarsToShow";
+import { cars } from "../utilities/CarsToShow";
 
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -36,8 +35,6 @@ export default function HomePage() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  
 
   const testimonials = [
     {
@@ -68,7 +65,9 @@ export default function HomePage() {
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentTestimonial(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
   };
 
   return (
@@ -93,8 +92,8 @@ export default function HomePage() {
             <span className={styles.heroSubtitle}>Con Estilo</span>
           </h1>
           <p className={styles.heroDescription}>
-            Descubre la ciudad del sol con nuestra flota premium de vehículos. Comodidad, seguridad y los mejores
-            precios garantizados.
+            Descubre la ciudad del sol con nuestra flota premium de vehículos.
+            Comodidad, seguridad y los mejores precios garantizados.
           </p>
 
           <div className={styles.heroInputContainer}>
@@ -109,7 +108,8 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Nuestras Unidades</h2>
             <p className={styles.sectionDescription}>
-              Desde autos económicos hasta vehículos de lujo, tenemos la opción perfecta para tu aventura en Miami
+              Desde autos económicos hasta vehículos de lujo, tenemos la opción
+              perfecta para tu aventura en Miami
             </p>
           </div>
 
@@ -131,7 +131,9 @@ export default function HomePage() {
                     <h3 className={styles.carName}>{car.name}</h3>
                     <div className={styles.carPriceActions}>
                       <span className={styles.carPrice}>{car.price}</span>
-                      <span className={styles.includes}>Impuestos y seguro incluidos en el precio</span>
+                      <span className={styles.includes}>
+                        Impuestos y seguro incluidos en el precio
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -147,7 +149,8 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>¿Por qué elegirnos?</h2>
             <p className={styles.sectionDescription}>
-              Más de 10 años de experiencia brindando el mejor servicio de alquiler de autos en Miami
+              Más de 10 años de experiencia brindando el mejor servicio de
+              alquiler de autos en Miami
             </p>
           </div>
 
@@ -158,7 +161,8 @@ export default function HomePage() {
               </div>
               <h3 className={styles.featureTitle}>Precios Competitivos</h3>
               <p className={styles.featureDescription}>
-                Los mejores precios del mercado con transparencia total, sin costos ocultos
+                Los mejores precios del mercado con transparencia total, sin
+                costos ocultos
               </p>
             </div>
 
@@ -167,7 +171,9 @@ export default function HomePage() {
                 <Clock className={styles.featureIcon} />
               </div>
               <h3 className={styles.featureTitle}>Atención 24/7</h3>
-              <p className={styles.featureDescription}>Soporte completo las 24 horas del día, los 7 días de la semana</p>
+              <p className={styles.featureDescription}>
+                Soporte completo las 24 horas del día, los 7 días de la semana
+              </p>
             </div>
 
             <div className={styles.featureItem}>
@@ -175,7 +181,9 @@ export default function HomePage() {
                 <Shield className={styles.featureIcon} />
               </div>
               <h3 className={styles.featureTitle}>Seguro Incluido</h3>
-              <p className={styles.featureDescription}>Seguro incluido en todos nuestros vehículos</p>
+              <p className={styles.featureDescription}>
+                Seguro incluido en todos nuestros vehículos
+              </p>
             </div>
 
             <div className={styles.featureItem}>
@@ -183,7 +191,9 @@ export default function HomePage() {
                 <Car className={styles.featureIcon} />
               </div>
               <h3 className={styles.featureTitle}>Flota Moderna</h3>
-              <p className={styles.featureDescription}>Vehículos nuevos y bien mantenidos para tu máxima comodidad</p>
+              <p className={styles.featureDescription}>
+                Vehículos nuevos y bien mantenidos para tu máxima comodidad
+              </p>
             </div>
           </div>
         </div>
@@ -193,9 +203,12 @@ export default function HomePage() {
       <section className={styles.sectionTestimonials}>
         <div className={styles.innerContainer}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Lo que dicen nuestros clientes</h2>
+            <h2 className={styles.sectionTitle}>
+              Lo que dicen nuestros clientes
+            </h2>
             <p className={styles.sectionDescription}>
-              Miles de clientes satisfechos confían en nosotros para sus aventuras en Miami
+              Miles de clientes satisfechos confían en nosotros para sus
+              aventuras en Miami
             </p>
           </div>
 
@@ -203,22 +216,36 @@ export default function HomePage() {
             <Card className={styles.testimonialCard}>
               <CardContent className={styles.testimonialCardContent}>
                 <div className={styles.testimonialRating}>
-                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className={styles.starIcon} />
-                  ))}
+                  {[...Array(testimonials[currentTestimonial].rating)].map(
+                    (_, i) => (
+                      <Star key={i} className={styles.starIcon} />
+                    )
+                  )}
                 </div>
-                <p className={styles.testimonialComment}>"{testimonials[currentTestimonial].comment}"</p>
+                <p className={styles.testimonialComment}>
+                  "{testimonials[currentTestimonial].comment}"
+                </p>
                 <div>
-                  <h4 className={styles.testimonialName}>{testimonials[currentTestimonial].name}</h4>
-                  <p className={styles.testimonialLocation}>{testimonials[currentTestimonial].location}</p>
+                  <h4 className={styles.testimonialName}>
+                    {testimonials[currentTestimonial].name}
+                  </h4>
+                  <p className={styles.testimonialLocation}>
+                    {testimonials[currentTestimonial].location}
+                  </p>
                 </div>
               </CardContent>
             </Card>
 
-            <button onClick={prevTestimonial} className={styles.carouselButtonLeft}>
+            <button
+              onClick={prevTestimonial}
+              className={styles.carouselButtonLeft}
+            >
               <ChevronLeft className={styles.icon} />
             </button>
-            <button onClick={nextTestimonial} className={styles.carouselButtonRight}>
+            <button
+              onClick={nextTestimonial}
+              className={styles.carouselButtonRight}
+            >
               <ChevronRight className={styles.icon} />
             </button>
           </div>
@@ -231,7 +258,8 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Contáctanos</h2>
             <p className={styles.sectionDescription}>
-              ¿Tienes preguntas? Estamos aquí para ayudarte a planificar tu próxima aventura
+              ¿Tienes preguntas? Estamos aquí para ayudarte a planificar tu
+              próxima aventura
             </p>
           </div>
 
@@ -245,21 +273,36 @@ export default function HomePage() {
                       <label htmlFor="fullName" className={styles.formLabel}>
                         Nombre completo
                       </label>
-                      <Input id="fullName" placeholder="Tu nombre" className={styles.inputFullWidth} />
+                      <Input
+                        id="fullName"
+                        placeholder="Tu nombre"
+                        className={styles.inputFullWidth}
+                      />
                     </div>
                     <div>
                       <label htmlFor="email" className={styles.formLabel}>
                         Email
                       </label>
-                      <Input id="email" type="email" placeholder="tu@email.com" className={styles.inputFullWidth} />
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="tu@email.com"
+                        className={styles.inputFullWidth}
+                      />
                     </div>
                     <div>
                       <label htmlFor="message" className={styles.formLabel}>
                         Mensaje
                       </label>
-                      <Textarea id="message" placeholder="¿En qué podemos ayudarte?" className={styles.textareaFullWidth} />
+                      <Textarea
+                        id="message"
+                        placeholder="¿En qué podemos ayudarte?"
+                        className={styles.textareaFullWidth}
+                      />
                     </div>
-                    <Button className={styles.submitButton}>Enviar mensaje</Button>
+                    <Button className={styles.submitButton}>
+                      Enviar mensaje
+                    </Button>
                   </form>
                 </CardContent>
               </Card>
@@ -267,7 +310,9 @@ export default function HomePage() {
 
             <div className={styles.contactInfoSection}>
               <div>
-                <h3 className={styles.contactInfoTitle}>Información de contacto</h3>
+                <h3 className={styles.contactInfoTitle}>
+                  Información de contacto
+                </h3>
                 <div className={styles.contactDetails}>
                   <div className={styles.contactItem}>
                     <Phone className={styles.contactIcon} />
@@ -280,14 +325,18 @@ export default function HomePage() {
                     <Mail className={styles.contactIcon} />
                     <div>
                       <p className={styles.contactLabel}>Email</p>
-                      <p className={styles.contactText}>info@floridaaventura.com</p>
+                      <p className={styles.contactText}>
+                        info@floridaaventura.com
+                      </p>
                     </div>
                   </div>
                   <div className={styles.contactItem}>
                     <MapPin className={styles.contactIcon} />
                     <div>
                       <p className={styles.contactLabel}>Dirección</p>
-                      <p className={styles.contactText}>123 Ocean Drive, Miami Beach, FL 33139</p>
+                      <p className={styles.contactText}>
+                        123 Ocean Drive, Miami Beach, FL 33139
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -310,7 +359,65 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+      <section className={styles.sectionContact}>
+        <div className={styles.innerContainer}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Politica de privacidad</h2>
+            <p className={styles.sectionDescription}>
+              <strong className={styles.boldText}>Introduccion</strong> <br/>
+              Nosotros, FLORIDA AVENTURA, estamos comprometidos a
+              proteger la privacidad de nuestros usuarios y, por lo tanto, esta
+              política de privacidad se ha creado para informarle sobre cómo
+              recopilamos, utilizamos y protegemos la información personal que
+              nos proporciona cuando utiliza nuestro sitio web de viajes.
+              <br /><strong className={styles.boldText}>Información que recopilamos</strong> <br/>
+              Recopilamos información personal de
+              nuestros usuarios cuando nos proporciona información como nombre,
+              dirección de correo electrónico, número de teléfono, domicilio,
+              información de pago, información de viaje, entre otros. Además,
+              también recopilamos información de navegación del usuario,
+              incluida la dirección IP, el tipo de navegador, el sistema
+              operativo y la URL de referencia. 
+              <br /><strong className={styles.boldText}>Uso de la información recopilada </strong> <br/>
+              La información personal que recopilamos se utiliza para
+              proporcionar y mejorar nuestros servicios, personalizar su
+              experiencia de usuario, procesar pagos, enviarle actualizaciones
+              sobre sus reservas y contactarlo sobre otros productos y servicios
+              que puedan ser de su interés. 
+              <br /><strong className={styles.boldText}>El intercambio de información  </strong> <br/>
+                No compartimos su información personal con terceros, excepto cuando
+              sea necesario para procesar pagos o proporcionar servicios
+              contratados por usted. Además, podemos compartir información no
+              identificable con terceros con fines de marketing, publicidad o
+              investigación de mercado. 
+              <br /><strong className={styles.boldText}>Cookies y tecnologías de seguimiento </strong> <br/>
+              Utilizamos cookies y otras tecnologías de seguimiento para mejorar
+              su experiencia de usuario en nuestro sitio web y con fines
+              analíticos. La información recopilada por estas tecnologías puede
+              incluir información de navegación, como las páginas visitadas y el
+              tiempo pasado en el sitio. 
+              <br /><strong className={styles.boldText}>Protección de información personal </strong> <br/> 
+              Toda la información personal que recopilamos se almacena de forma
+              segura y está protegida contra acceso o divulgación no
+              autorizados. Tomamos medidas de seguridad adecuadas para proteger
+              la información personal de nuestros usuarios. 
+              <br /><strong className={styles.boldText}>Derechos de los usuarios </strong> <br/> 
+              Tiene derecho a solicitar acceso a su información
+              personal, corregir información inexacta, solicitar la eliminación
+              de su información personal u optar por no recibir nuestras
+              comunicaciones de marketing. 
+              <br /><strong className={styles.boldText}>Cambios en esta política de privacidad </strong> <br/> 
+              Podemos actualizar esta política de privacidad de vez
+              en cuando para reflejar cambios en nuestras prácticas de
+              privacidad. Le recomendamos que consulte esta página
+              periódicamente para estar al tanto de cualquier cambio. 
+              <br /><strong className={styles.boldText}>Contacto </strong> <br/>
+              Si tiene alguna pregunta o inquietud sobre esta política de
+              privacidad, contáctenos en: floridaaventuraok@gmail.com
+            </p>
+          </div>
+        </div>
+      </section>
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.innerContainer}>
@@ -318,7 +425,8 @@ export default function HomePage() {
             <div>
               <h3 className={styles.footerLogo}>Florida Aventura Rent a Car</h3>
               <p className={styles.footerDescription}>
-                Tu compañero de confianza para explorar Miami con estilo y comodidad.
+                Tu compañero de confianza para explorar Miami con estilo y
+                comodidad.
               </p>
               <div className={styles.socialLinks}>
                 <Facebook className={styles.socialIcon} />
@@ -382,16 +490,19 @@ export default function HomePage() {
             <div>
               <h4 className={styles.footerHeading}>Contacto</h4>
               <div className={styles.footerContactDetails}>
-                <p>+1 (305) 123-4567</p>
-                <p>info@floridaaventura.com</p>
-                <p>123 Ocean Drive</p>
-                <p>Miami Beach, FL 33139</p>
+                <p>+1 (305) 773-1787</p>
+                <p>floridaaventuraok@gmail.com</p>
+                <p>Poner direccion de la oficina</p>
+                <p>Miami Beach, FL 33009</p>
               </div>
             </div>
           </div>
 
           <div className={styles.copyright}>
-            <p>&copy; {new Date().getFullYear()} Florida Aventura Rent a Car. Todos los derechos reservados.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Florida Aventura Rent a Car.
+              Todos los derechos reservados.
+            </p>
           </div>
         </div>
       </footer>
