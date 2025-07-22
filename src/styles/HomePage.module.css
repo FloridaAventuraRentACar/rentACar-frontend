@@ -296,6 +296,7 @@ html {
   max-width: 48rem; /* max-w-3xl */
   margin-left: auto;
   margin-right: auto;
+
 }
 
 /* --- Cars Grid --- */
@@ -358,9 +359,10 @@ html {
 
 .carName {
   font-size: 1.125rem; /* Slightly smaller for mobile */
-  font-weight: 700; /* font-bold */
+  font-weight: 1500; /* font-bold */
   color: #1f2937; /* text-gray-800 */
   margin-bottom: 0.5rem; /* mb-2 */
+  font-family: 'inter';
 }
 
 .carPriceActions {
@@ -972,4 +974,11 @@ html {
     min-width: 44px;
     min-height: 44px;
   }
+}
+
+.includes {
+  font-size: 0.8rem;
+  color: #66696d;
+  margin-top: 5px;
+  font-weight: bold;
 }

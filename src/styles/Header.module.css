@@ -93,9 +93,6 @@
   border-radius: 0.5rem; /* rounded-lg */
 }
 
-.logoTextWrapper {
-}
-
 @media (min-width: 640px) {
   .logoTextWrapper {
     display: block; /* sm:block */
@@ -274,8 +271,8 @@
 
 /* Icons */
 .icon {
-  width: 1rem; /* h-4 w-4 */
-  height: 1rem;
+  width: 1.5rem; /* h-4 w-4 */
+  height: 1.5rem;
 }
 
 .whatsappButton .icon {

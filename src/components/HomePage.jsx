@@ -20,55 +20,14 @@ import {
 import styles from "../styles/HomePage.module.css"; // Import CSS Module
 import HomeRentInput from "./HomeRentInput";
 import Header from "./Header";
-
-// Placeholder for HomeRentInput
-// const HomeRentInput = () => {
-//   return (
-//     <div className={styles.homeRentInput}>
-//       <input type="date" className={styles.homeRentInputField} defaultValue="2025-07-20" />
-//       <input type="date" className={styles.homeRentInputField} defaultValue="2025-07-27" />
-//       <select className={styles.homeRentInputSelect}>
-//         <option>Selecciona un vehículo</option>
-//         <option>Toyota Corolla</option>
-//         <option>Nissan Altima</option>
-//         <option>Ford Explorer</option>
-//         <option>BMW 3 Series</option>
-//       </select>
-//       <button className={styles.homeRentInputButton}>Buscar</button>
-//     </div>
-//   );
-// };
-
-// Placeholder for Button
-const Button = ({ children, className, ...props }) => {
-  return (
-    <button className={`${styles.button} ${className}`} {...props}>
-      {children}
-    </button>
-  );
-};
-
-// Placeholder for Input
-const Input = ({ className, ...props }) => {
-  return <input className={`${styles.input} ${className}`} {...props} />;
-};
-
-// Placeholder for Textarea
-const Textarea = ({ className, ...props }) => {
-  return <textarea className={`${styles.textarea} ${className}`} {...props} />;
-};
-
-// Placeholder for Card and CardContent
-const Card = ({ children, className }) => {
-  return <div className={`${styles.card} ${className}`}>{children}</div>;
-};
-
-const CardContent = ({ children, className }) => {
-  return <div className={`${styles.cardContent} ${className}`}>{children}</div>;
-};
+import Button from "./ui/Button";
+import Input from "./ui/Input";
+import Textarea from "./ui/TextArea";
+import Card from "./ui/Card";
+import CardContent from "./ui/CardContent";
+import {cars} from "../utilities/CarsToShow";
 
 export default function HomePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -78,44 +37,7 @@ export default function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const cars = [
-    {
-      name: "Toyota Corolla",
-      category: "Económico",
-      price: "$35/día",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "Nissan Altima",
-      category: "Intermedio",
-      price: "$45/día",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "Ford Explorer",
-      category: "SUV",
-      price: "$65/día",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "BMW 3 Series",
-      category: "Premium",
-      price: "$85/día",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "Jeep Wrangler",
-      category: "SUV",
-      price: "$70/día",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "Mercedes C-Class",
-      category: "Premium",
-      price: "$95/día",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-  ];
+  
 
   const testimonials = [
     {
@@ -209,7 +131,7 @@ export default function HomePage() {
                     <h3 className={styles.carName}>{car.name}</h3>
                     <div className={styles.carPriceActions}>
                       <span className={styles.carPrice}>{car.price}</span>
-                      <Button className={styles.viewMoreButton}>Ver más</Button>
+                      <span className={styles.includes}>Impuestos y seguro incluidos en el precio</span>
                     </div>
                   </div>
                 </CardContent>
@@ -253,7 +175,7 @@ export default function HomePage() {
                 <Shield className={styles.featureIcon} />
               </div>
               <h3 className={styles.featureTitle}>Seguro Incluido</h3>
-              <p className={styles.featureDescription}>Cobertura completa incluida en todos nuestros vehículos</p>
+              <p className={styles.featureDescription}>Seguro incluido en todos nuestros vehículos</p>
             </div>
 
             <div className={styles.featureItem}>
