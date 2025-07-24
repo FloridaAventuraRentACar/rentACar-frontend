@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/Header.module.css"; // Importa los estilos CSS Modules
+import styles from "../../styles/Header.module.css"; // Importa los estilos CSS Modules
 import { Menu, MessageCircle, Phone } from "lucide-react"; // Para los íconos
-import WhatsAppIcon from "./WhatsappIcon";
+import WhatsAppIcon from "../WhatsappIcon";
 
 // Componentes placeholder para Button, Sheet y sus sub-componentes
 // En un proyecto real, deberías tener tus propias implementaciones de estos componentes
@@ -149,7 +149,7 @@ export default function Header({ className = "" }) {
               className={styles.whatsappButton}
             >
               <a
-                href="https://wa.me/13057731787" // Deja en blanco según lo solicitado
+                href="https://wa.me/13057731787" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.buttonContent}

@@ -16,16 +16,14 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import styles from "../styles/HomePage.module.css"; // Import CSS Module
-import HomeRentInput from "./HomeRentInput";
+import styles from "../../styles/HomePage.module.css"; // Import CSS Module
+import HomeRentInput from "../HomeRentInput.jsx";
 import Header from "./Header";
-import Button from "./ui/Button";
-import Input from "./ui/Input";
-import Textarea from "./ui/TextArea";
-import Card from "./ui/Card";
-import CardContent from "./ui/CardContent";
-import { cars } from "../utilities/CarsToShow";
-import ContactUs from "./ContactUs.jsx";
+import Card from "../ui/Card.jsx";
+import CardContent from "../ui/CardContent.jsx";
+import { cars } from "../../utilities/CarsToShow.js";
+import ContactUs from "../ContactUs.jsx";
+import Footer from "./Footer.jsx";
 
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -314,95 +312,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Footer />
       
-      {/* Footer */}
-      <footer className={styles.footer}>
-        <div className={styles.innerContainer}>
-          <div className={styles.footerGrid}>
-            <div>
-              <h3 className={styles.footerLogo}>Florida Aventura Rent a Car</h3>
-              <p className={styles.footerDescription}>
-                Tu compañero de confianza para explorar Miami con estilo y
-                comodidad.
-              </p>
-              <div className={styles.socialLinks}>
-                <Facebook className={styles.socialIcon} />
-                <Instagram className={styles.socialIcon} />
-                <Twitter className={styles.socialIcon} />
-              </div>
-            </div>
-
-            <div>
-              <h4 className={styles.footerHeading}>Enlaces útiles</h4>
-              <ul className={styles.footerList}>
-                <li>
-                  <a href="#" className={styles.footerLink}>
-                    Términos y condiciones
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={styles.footerLink}>
-                    Política de privacidad
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={styles.footerLink}>
-                    Preguntas frecuentes
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={styles.footerLink}>
-                    Seguros
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className={styles.footerHeading}>Servicios</h4>
-              <ul className={styles.footerList}>
-                <li>
-                  <a href="#" className={styles.footerLink}>
-                    Alquiler diario
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={styles.footerLink}>
-                    Alquiler semanal
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={styles.footerLink}>
-                    Alquiler mensual
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={styles.footerLink}>
-                    Servicios corporativos
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className={styles.footerHeading}>Contacto</h4>
-              <div className={styles.footerContactDetails}>
-                <p>+1 (305) 773-1787</p>
-                <p>floridaaventuraok@gmail.com</p>
-                <p>Poner direccion de la oficina</p>
-                <p>Miami Beach, FL 33009</p>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.copyright}>
-            <p>
-              &copy; {new Date().getFullYear()} Florida Aventura Rent a Car.
-              Todos los derechos reservados.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

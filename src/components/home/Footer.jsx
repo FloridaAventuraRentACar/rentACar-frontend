@@ -1,0 +1,52 @@
+import styles from '../../styles/Footer.module.css';
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          {/* Frase empresarial */}
+          <div className={styles.brandSection}>
+            <h3 className={styles.brandTitle}>Florida Aventura Rent a Car</h3>
+            <p className={styles.brandSlogan}>
+              Tu compañero de confianza para explorar Miami con estilo y comodidad. 
+              Descubre la ciudad del sol con nuestra flota premium de vehículos.
+            </p>
+          </div>
+
+          {/* Información de contacto */}
+          <div className={styles.contactSection}>
+            <h4 className={styles.contactTitle}>Información de Contacto</h4>
+            <div className={styles.contactInfo}>
+              <div className={styles.contactItem}>
+                <span className={styles.contactLabel}>Teléfono:</span>
+                <span className={styles.contactValue}>+1 (305) 773-1787</span>
+              </div>
+              <div className={styles.contactItem}>
+                <span className={styles.contactLabel}>Email:</span>
+                <span className={styles.contactValue}>floridaaventuraok@gmail.com</span>
+              </div>
+              <div className={styles.contactItem}>
+                <span className={styles.contactLabel}>Dirección:</span>
+                <span className={styles.contactValue}>123 Ocean Drive, Miami Beach, FL 33139</span>
+              </div>
+              <div className={styles.contactItem}>
+                <span className={styles.contactLabel}>Horarios:</span>
+                <span className={styles.contactValue}>Lun - Dom: 8:00 AM - 8:00 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className={styles.copyright}>
+          <p className={styles.copyrightText}>
+            &copy; {currentYear} Florida Aventura Rent a Car. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
