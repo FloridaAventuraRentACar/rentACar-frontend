@@ -25,6 +25,7 @@ import Textarea from "./ui/TextArea";
 import Card from "./ui/Card";
 import CardContent from "./ui/CardContent";
 import { cars } from "../utilities/CarsToShow";
+import ContactUs from "./ContactUs.jsx";
 
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -251,114 +252,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+                
+      <ContactUs />
 
-      {/* Contacto */}
-      <section id="contacto" className={styles.sectionContact}>
-        <div className={styles.innerContainer}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Contáctanos</h2>
-            <p className={styles.sectionDescription}>
-              ¿Tienes preguntas? Estamos aquí para ayudarte a planificar tu
-              próxima aventura
-            </p>
-          </div>
-
-          <div className={styles.contactGrid}>
-            <div>
-              <Card className={styles.contactFormCard}>
-                <CardContent className={styles.cardContentPadding}>
-                  <h3 className={styles.formTitle}>Envíanos un mensaje</h3>
-                  <form className={styles.contactForm}>
-                    <div>
-                      <label htmlFor="fullName" className={styles.formLabel}>
-                        Nombre completo
-                      </label>
-                      <Input
-                        id="fullName"
-                        placeholder="Tu nombre"
-                        className={styles.inputFullWidth}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className={styles.formLabel}>
-                        Email
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="tu@email.com"
-                        className={styles.inputFullWidth}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="message" className={styles.formLabel}>
-                        Mensaje
-                      </label>
-                      <Textarea
-                        id="message"
-                        placeholder="¿En qué podemos ayudarte?"
-                        className={styles.textareaFullWidth}
-                      />
-                    </div>
-                    <Button className={styles.submitButton}>
-                      Enviar mensaje
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className={styles.contactInfoSection}>
-              <div>
-                <h3 className={styles.contactInfoTitle}>
-                  Información de contacto
-                </h3>
-                <div className={styles.contactDetails}>
-                  <div className={styles.contactItem}>
-                    <Phone className={styles.contactIcon} />
-                    <div>
-                      <p className={styles.contactLabel}>Teléfono</p>
-                      <p className={styles.contactText}>+1 (305) 123-4567</p>
-                    </div>
-                  </div>
-                  <div className={styles.contactItem}>
-                    <Mail className={styles.contactIcon} />
-                    <div>
-                      <p className={styles.contactLabel}>Email</p>
-                      <p className={styles.contactText}>
-                        info@floridaaventura.com
-                      </p>
-                    </div>
-                  </div>
-                  <div className={styles.contactItem}>
-                    <MapPin className={styles.contactIcon} />
-                    <div>
-                      <p className={styles.contactLabel}>Dirección</p>
-                      <p className={styles.contactText}>
-                        123 Ocean Drive, Miami Beach, FL 33139
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.hoursOfOperation}>
-                <h4 className={styles.hoursTitle}>Horarios de atención</h4>
-                <div className={styles.hoursList}>
-                  <p>Lunes - Viernes: 8:00 AM - 8:00 PM</p>
-                  <p>Sábados: 9:00 AM - 6:00 PM</p>
-                  <p>Domingos: 10:00 AM - 4:00 PM</p>
-                </div>
-              </div>
-
-              {/* Mapa embebido */}
-              <div className={styles.mapPlaceholder}>
-                <p>Mapa de Miami - Ubicación de la oficina</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <section className={styles.sectionContact}>
         <div className={styles.innerContainer}>
           <div className={styles.sectionHeader}>
@@ -418,6 +314,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.innerContainer}>
