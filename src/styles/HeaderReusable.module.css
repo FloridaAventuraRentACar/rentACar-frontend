@@ -1,0 +1,416 @@
+/* Header.module.css */
+
+/* Variables para colores, si quieres un control centralizado */
+:root {
+  --color-primary: #f97316; /* orange-500 */
+  --color-primary-hover: #ea580c; /* orange-600 */
+  --color-green: #22c55e; /* green-500 */
+  --color-green-hover-bg: #f0fdf4; /* green-50 */
+  --color-green-hover-border: #16a34a; /* green-600 */
+  --color-text-dark: #374151; /* gray-800 */
+  --color-text-medium: #4b5563; /* gray-700 */
+  --color-text-light: #6b7280; /* gray-600 */
+  --color-border: #e5e7eb; /* gray-200 */
+  --color-background-light: #f3f4f6; /* gray-100 */
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.9); /* bg-white/90 */
+  backdrop-filter: blur(4px); /* backdrop-blur-sm */
+
+}
+
+.headerScrolled {
+  background-color: rgba(255, 255, 255, 0.95); /* bg-white/95 */
+  backdrop-filter: blur(8px); /* backdrop-blur-md */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  border-bottom: 1px solid rgba(229, 231, 235, 0.2); /* border-b border-gray-200/20 */
+}
+
+.container {
+  max-width: 1280px; /* equivalent to container mx-auto */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 1.5rem; /* lg:px-6 */
+    padding-right: 1.5rem; /* lg:px-6 */
+  }
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem; /* h-16 */
+}
+
+@media (min-width: 1024px) {
+  .headerInner {
+    height: 5rem; /* lg:h-20 */
+  }
+}
+
+/* Logo */
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space-x-3 */
+  transition: transform 0.3s ease-in-out;
+}
+
+.logoLink:hover {
+  transform: scale(1.05); /* hover:scale-105 */
+}
+
+.logoImageWrapper {
+  position: relative;
+  width: 2.5rem; /* w-10 */
+  height: 2.5rem; /* h-10 */
+}
+
+@media (min-width: 1024px) {
+  .logoImageWrapper {
+    width: 3rem; /* lg:w-12 */
+    height: 3rem; /* lg:h-12 */
+  }
+}
+
+.logoImage {
+  width: 100%; /* fill */
+  height: 100%; /* fill */
+  object-fit: contain; /* object-contain */
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+@media (min-width: 640px) {
+  .logoTextWrapper {
+    display: block; /* sm:block */
+  }
+}
+
+.logoTitle {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 700; /* font-bold */
+  color: var(--color-text-dark); /* text-gray-800 */
+  transition: color 0.3s ease-in-out;
+  font-family: 'inter';
+}
+
+.logoLink:hover .logoTitle {
+  color: var(--color-primary); /* group-hover:text-orange-500 */
+}
+
+@media (min-width: 1024px) {
+  .logoTitle {
+    font-size: 1.25rem; /* lg:text-xl */
+    line-height: 1.75rem;
+  }
+}
+
+.logoSubtitle {
+  font-size: 0.75rem; /* text-xs */
+  line-height: 1rem;
+  color: var(--color-text-light); /* text-gray-600 */
+  margin-top: -0.25rem; /* -mt-1 */
+  font-family: 'inter';
+}
+
+@media (min-width: 1024px) {
+  .logoSubtitle {
+    font-size: 0.875rem; /* lg:text-sm */
+    line-height: 1.25rem;
+  }
+}
+
+/* Desktop Actions */
+.desktopActions {
+  display: none; /* hidden */
+  align-items: center;
+  gap: 1rem; /* space-x-4 */
+}
+
+@media (min-width: 1024px) {
+  .desktopActions {
+    display: flex; /* lg:flex */
+  }
+}
+
+/* Shared Button Styles (placeholders for Shadcn Button) */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem; /* rounded-md */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  padding: 0.5rem 1rem; /* default padding, can be overridden by size */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none; /* Ensure links styled as buttons don't have underline */
+  font-family: "inter";
+}
+
+.button:focus {
+  outline: 2px solid var(--color-primary); /* Basic focus ring */
+  outline-offset: 2px;
+}
+
+.buttonContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space-x-2 */
+}
+
+/* Button Variants */
+.button.outline {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text-medium);
+}
+
+.button.ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--color-text-medium);
+}
+
+/* Button Sizes */
+.button.sm {
+  height: 2.25rem; /* h-9 */
+  padding: 0 0.8rem; /* px-3 */
+}
+
+/* Specific Button Styles */
+.whatsappButton {
+  border-color: var(--color-green); /* border-green-500 */
+  color: var(--color-green); /* text-green-600 */
+  background-color: transparent; /* bg-transparent */
+}
+
+.whatsappButton:hover {
+  background-color: var(--color-green-hover-bg); /* hover:bg-green-50 */
+  border-color: var(--color-green-hover-border); /* hover:border-green-600 */
+}
+
+.whatsappText {
+  display: none; /* hidden */
+}
+
+@media (min-width: 1280px) {
+  .whatsappText {
+    display: inline; /* xl:inline */
+  }
+}
+
+
+/* Icons */
+.icon {
+  width: 1.5rem; /* h-4 w-4 */
+  height: 1.5rem;
+}
+
+.whatsappButton .icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.whatsappButton:hover .icon {
+  transform: scale(1.1); /* group-hover:scale-110 */
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  display: flex; /* flex */
+  align-items: center;
+  gap: 0.5rem; /* space-x-2 */
+}
+
+@media (min-width: 1024px) {
+  .mobileMenu {
+    display: none; /* lg:hidden */
+  }
+}
+
+.mobileWhatsappButton {
+  border-color: var(--color-green);
+  color: var(--color-green);
+  background-color: transparent; /* bg-transparent */
+  padding: 0.5rem; /* p-2 */
+}
+
+.mobileWhatsappButton:hover {
+  background-color: var(--color-green-hover-bg);
+}
+
+.menuTriggerButton {
+  padding: 0.5rem; /* p-2 */
+  color: var(--color-text-medium);
+}
+
+.menuTriggerButton:hover {
+  background-color: var(--color-background-light); /* hover:bg-gray-100 */
+}
+
+.menuIcon {
+  width: 1.25rem; /* h-5 w-5 */
+  height: 1.25rem;
+  color: var(--color-text-medium); /* text-gray-700 */
+}
+
+/* Sheet Content (Mobile Sidebar) */
+.sheetContent {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 300px; /* w-[300px] */
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  transition: transform 0.3s ease-out;
+  z-index: 60; /* Higher than header */
+  /* These will be controlled by JS for real animations,
+     but define initial state for clarity */
+  transform: translateX(100%);
+}
+
+.sheetContent-right {
+  right: 0;
+  /* You'd need JS to toggle this class for the slide-in/out effect */
+}
+
+/* Basic animation for the sheet content - requires JS to toggle a class */
+/* .sheetContent.open {
+  transform: translateX(0);
+} */
+
+@media (min-width: 640px) {
+  .sheetContent {
+    width: 350px; /* sm:w-[350px] */
+  }
+}
+
+.mobileMenuInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* h-full */
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.5rem; /* pb-6 */
+  border-bottom: 1px solid var(--color-border); /* border-b border-gray-200 */
+}
+
+.mobileLogoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space-x-3 */
+}
+
+.mobileLogoImageWrapper {
+  position: relative;
+  width: 2rem; /* w-8 */
+  height: 2rem; /* h-8 */
+}
+
+.mobileLogoImage {
+  width: 100%; /* fill */
+  height: 100%; /* fill */
+  object-fit: contain; /* object-contain */
+  border-radius: 0.25rem; /* rounded */
+}
+
+.mobileLogoTitle {
+  font-weight: 700; /* font-bold */
+  color: var(--color-text-dark); /* text-gray-800 */
+}
+
+.mobileLogoSubtitle {
+  font-size: 0.75rem; /* text-xs */
+  line-height: 1rem;
+  color: var(--color-text-light); /* text-gray-600 */
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* space-y-4 */
+  padding-top: 1.5rem; /* py-6 */
+  padding-bottom: 1.5rem; /* py-6 */
+  flex: 1; /* flex-1 */
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space-x-3 */
+  color: var(--color-text-medium); /* text-gray-700 */
+  padding: 0.75rem 1rem; /* px-4 py-3 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.mobileNavLink:hover {
+  color: var(--color-primary); /* hover:text-orange-500 */
+  background-color: var(--color-primary-hover-light); /* hover:bg-orange-50 */
+}
+
+/* Define --color-primary-hover-light if not already defined, e.g. for orange-50 */
+:root {
+  --color-primary-hover-light: #fff7ed; /* A light orange for hover background */
+}
+
+.mobileNavLinkText {
+  font-weight: 500; /* font-medium */
+}
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* space-y-4 */
+  padding-top: 1.5rem; /* pt-6 */
+  border-top: 1px solid var(--color-border); /* border-t border-gray-200 */
+}
+
+.mobileWhatsappButtonFull {
+  width: 100%; /* w-full */
+  border-color: var(--color-green);
+  color: var(--color-green);
+  background-color: transparent; /* bg-transparent */
+  justify-content: center; /* justify-center */
+}
+
+.mobileWhatsappButtonFull:hover {
+  background-color: var(--color-green-hover-bg);
+}
+
+.mobileReserveButtonFull {
+  width: 100%; /* w-full */
+  background-color: var(--color-primary);
+  color: white;
+  justify-content: center; /* justify-center */
+}
+
+.mobileReserveButtonFull:hover {
+  background-color: var(--color-primary-hover);
+}
+
+a{
+  text-decoration: none;
+}

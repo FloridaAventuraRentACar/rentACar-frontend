@@ -10,3 +10,7 @@
   display: flex;
   justify-content: center;
 }
+
+.carsContainer{
+  margin-top: 3%;
+}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../../styles/Header.module.css"; // Importa los estilos CSS Modules
-import { Menu, MessageCircle, Phone } from "lucide-react"; // Para los íconos
+import styles from "../../styles/HeaderReusable.module.css"; // Importa los estilos CSS Modules
 import WhatsAppIcon from "../WhatsappIcon";
 
 // Componentes placeholder para Button, Sheet y sus sub-componentes
@@ -24,7 +23,7 @@ const Button = ({ asChild, children, className, variant, size, ...props }) => {
   );
 };
 
-export default function Header({ className = "" }) {
+export default function HeaderReusable({ className = "" }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -78,21 +77,6 @@ export default function Header({ className = "" }) {
             </div>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className={styles.desktopNav}>
-            {navigationLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={handleSmoothScroll}
-                className={styles.navLink}
-              >
-                {link.label}
-                <span className={styles.navLinkUnderline}></span>
-              </a>
-            ))}
-          </nav>
-
           {/* Desktop Actions */}
           <div className={styles.desktopActions}>
             {/* WhatsApp Button */}
@@ -113,20 +97,6 @@ export default function Header({ className = "" }) {
               </a>
             </Button>
 
-            {/* Reserve Button */}
-            <Button
-              asChild
-              className={styles.reserveButton}
-            >
-              <a
-                href="#inicio"
-                onClick={handleSmoothScroll}
-                className={styles.buttonContent}
-              >
-                <Phone className={styles.icon} />
-                <span>Reservar</span>
-              </a>
-            </Button>
           </div>
 
           {/* Mobile Menu */}
