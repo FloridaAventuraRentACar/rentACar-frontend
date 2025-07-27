@@ -104,7 +104,7 @@
 
 .optionText strong {
   font-size: 1em;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .includedTag {
@@ -138,7 +138,7 @@
 .pricePerDay {
   font-size: 1em;
   margin-bottom: 7px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "arial", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 .totalPrice {
@@ -164,7 +164,7 @@
   top: 4px;
   color: #0b0a0a77;
   font-weight: bold;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .reserveInfo {
@@ -188,21 +188,21 @@
 .title {
   font-weight: bold;
   font-size: 1em;
-  color: #1111113e;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  color: #020202;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
 }
 
 .location {
   font-size: 0.95em;
   color: #222;
   margin-bottom: 2px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "inter", Courier, monospace;
 }
 
 .date {
   font-size: 0.9em;
   color: #555;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .nextButton {
@@ -213,12 +213,211 @@
   font-size: 1em;
   border-radius: 8px;
   cursor: pointer;
+  font-family: "inter";
 }
 
 .nextButton:hover {
   background-color: #e05500;
 }
 
-.aditionalServices {
-  /* Estilos para sección de servicios adicionales si querés agregar extras */
+/* Media Queries para Responsive */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .carRentalCard {
+    max-width: 95%;
+    margin: 15px auto;
+    padding: 15px;
+  }
+
+  .carInfo {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .carImage {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .carDescription {
+    width: 100%;
+    text-align: center;
+  }
+
+  .carName {
+    position: static;
+    transform: none;
+    font-size: 2.2em;
+    margin-bottom: 15px;
+  }
+
+  .carSpecs {
+    margin-top: 20px;
+    gap: 30px 60px;
+    font-size: 1.6em;
+  }
+
+  .priceSection {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .reserveInfo {
+    justify-content: space-around;
+    gap: 30px;
+    margin-right: 0;
+  }
+
+  .nextButton {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+  }
+}
+
+/* Mobile (hasta 768px) */
+@media (max-width: 768px) {
+  .carRentalCard {
+    max-width: 98%;
+    margin: 10px auto;
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .carInfo {
+    gap: 12px;
+  }
+
+  .carImage {
+    max-width: 300px;
+  }
+
+  .carName {
+    font-size: 1.8em;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .carSpecs {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    font-size: 1.4em;
+    margin-top: 15px;
+    justify-items: center;
+  }
+
+  .mainDiv {
+    font-size: 1em;
+  }
+
+  .option {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .optionMain {
+    width: 100%;
+  }
+
+  .optionText {
+    margin-left: 10px;
+  }
+
+  .optionText strong {
+    font-size: 0.95em;
+  }
+
+  .optionText p {
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+
+  .priceTag,
+  .includedTag {
+    align-self: flex-end;
+    margin-top: 5px;
+  }
+
+  .priceSection {
+    gap: 15px;
+  }
+
+  .priceInfo {
+    text-align: center;
+  }
+
+  .priceTop {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .reserveInfo {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .pickupInfo,
+  .returnInfo {
+    align-items: center;
+  }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media (max-width: 480px) {
+  .carRentalCard {
+    margin: 5px auto;
+    padding: 10px;
+  }
+
+  .carImage {
+    max-width: 280px;
+  }
+
+  .carName {
+    font-size: 1.6em;
+  }
+
+  .carSpecs {
+    font-size: 1.2em;
+    gap: 15px;
+  }
+
+  .option {
+    padding: 10px;
+  }
+
+  .optionText strong {
+    font-size: 0.9em;
+  }
+
+  .optionText p {
+    font-size: 0.85em;
+  }
+
+  .priceTag {
+    font-size: 0.8em;
+    padding: 3px 6px;
+  }
+
+  .totalPrice {
+    font-size: 1.2em;
+  }
+
+  .nextButton {
+    padding: 12px;
+    font-size: 1em;
+  }
+
+  /* Ajustar el FormControl de Material-UI para móvil */
+  .option .MuiFormControl-root {
+    min-width: 120px !important;
+    margin: 5px 0 !important;
+  }
 }

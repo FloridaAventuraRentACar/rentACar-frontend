@@ -429,7 +429,7 @@ export function CarRentalPage() {
             </p>
           </div>
           <div className={styles.returnInfo}>
-            <strong className={styles.title}>Devolucion</strong>
+            <div className={styles.title}>Devolucion</div>
             <p className={styles.location}>{locationNames[returnLocation]}</p>
             <p className={styles.date}>
               {returnDate} - {returnTime}
