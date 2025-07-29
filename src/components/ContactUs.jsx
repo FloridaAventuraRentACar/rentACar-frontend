@@ -7,30 +7,53 @@ import Card from "./ui/Card";
 import CardContent from "./ui/CardContent";
 import { useRef } from "react";
 import useEmailJs from "../hooks/useEmailJs";
+import contactUsHtml from "../utilities/emailHtml/contactUsHtml";
+import autoReplyHtml from "../utilities/emailHtml/autoReplyHtml";
+
 export default function ContactUs() {
   const formRef = useRef();
 
-  const { sendEmail, loading, success, error } = useEmailJs({
+  const contactUsEmail = useEmailJs({
     serviceId: import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
-    templateId: import.meta.env.VITE_CONTACT_US_TEMPLATE_ID,
+    templateId: import.meta.env.VITE_HTML_TEMPLATE_ID,
     publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
   });
 
+  const autoReplyEmail = useEmailJs({
+    serviceId: import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
+    templateId: import.meta.env.VITE_HTML_TEMPLATE_ID,
+    publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
+  });
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = formRef.current;
-    const templateParams = {
-      full_name: form.fullName.value,
-      email: form.email.value,
-      message: form.message.value,
+    const ContactUsTemplateParams = {
+      to_email: "floridaaventuraok@gmail.com",
+      html_message: contactUsHtml(form.fullName.value, form.message.value, form.email.value),
+      subject: "Nuevo mensaje de contacto",
     };
 
-    await sendEmail(templateParams);
-    if (success) {
-        alert("Correo enviado correctamente");
-    }else if(error){
-        alert("Error al enviar el correo");
+    await contactUsEmail.sendEmail(ContactUsTemplateParams);
+    if (contactUsEmail.success) {
+      alert("Correo enviado correctamente");
+    } else if (contactUsEmail.error) {
+      alert("Error al enviar el correo");
+    }
+
+    const AutoReplyTemplateParams = {
+      to_email: form.email.value,
+      html_message: autoReplyHtml(form.fullName.value),
+      subject: "¡Gracias por contactarnos!",
+    };
+
+    await autoReplyEmail.sendEmail(AutoReplyTemplateParams);
+    if (autoReplyEmail.success) {
+      console.log("Correo enviado correctamente");
+    } else if (autoReplyEmail.error) {
+      ;
     }
     form.reset();
   };
