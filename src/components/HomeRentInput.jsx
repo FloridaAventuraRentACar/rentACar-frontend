@@ -3,6 +3,7 @@ import styles from "../styles/HomeRentInput.module.css";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { daysCalculate } from "../utilities/functions/daysCalculate";
+import roundToNearestHalfHour  from "../utilities/functions/roundToNearestHalfHour";
 
 export default function HomeRentInput() {
   const {
@@ -140,8 +141,12 @@ export default function HomeRentInput() {
               type="time"
               id="pickupTime"
               value={pickupTime}
-              onChange={(e) => setPickupTime(e.target.value)}
+              onChange={(e) => {
+                const rounded = roundToNearestHalfHour(e.target.value);
+                setPickupTime(rounded);
+              }}
               className={styles.formInput}
+              step="1800"
               required
             />
           </div>
@@ -169,8 +174,12 @@ export default function HomeRentInput() {
               type="time"
               id="returnTime"
               value={returnTime}
-              onChange={(e) => setReturnTime(e.target.value)}
+              onChange={(e) => {
+                const rounded = roundToNearestHalfHour(e.target.value);
+                setReturnTime(rounded);
+              }}
               className={styles.formInput}
+              step="1800"
               required
             />
           </div>

@@ -1,29 +1,336 @@
 .container {
+  min-height: 100vh;
+  background-color: #f9fafb; /* bg-gray-50 */
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 60vh;
-  padding: 1rem;
+  justify-content: center;
+  padding: 2rem 1rem;
+  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.card {
-  background-color: #fff;
-  border: 2px solid #e74c3c;
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 500px;
+.content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+  padding: 3rem 2rem;
+  max-width: 600px;
+  width: 100%;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.content:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.iconContainer {
+  margin-bottom: 2rem;
+}
+
+.carIcon {
+  width: 4rem;
+  height: 4rem;
+  color: #f97316; /* text-orange-500 */
+  margin: 0 auto;
+  opacity: 0.8;
 }
 
 .title {
-  color: #e74c3c;
-  font-size: 24px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937; /* text-gray-800 */
   margin-bottom: 1rem;
-  font-family:sans-serif;
+  letter-spacing: 0.025em;
 }
 
-.message {
-  color: #555;
-  font-size: 16px;
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4b5563; /* text-gray-600 */
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.suggestions {
+  background-color: #fff7ed; /* bg-orange-50 */
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #fed7aa; /* border-orange-200 */
+}
+
+.suggestionsTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ea580c; /* text-orange-600 */
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.suggestionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.suggestionsList li {
+  font-size: 0.95rem;
+  color: #92400e; /* text-orange-800 */
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.suggestionsList li::before {
+  content: "•";
+  color: #f97316; /* text-orange-500 */
+  font-weight: bold;
+  position: absolute;
+  left: 0.5rem;
+}
+
+.homeButton {
+  width: 100%;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+  margin-bottom: 1.5rem;
+}
+
+.homeButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.homeButton:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.homeButton:hover::before {
+  left: 100%;
+}
+
+.homeButton:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+.homeButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2), 0 8px 20px rgba(249, 115, 22, 0.4);
+}
+
+.contactInfo {
+  border-top: 1px solid #e5e7eb; /* border-gray-200 */
+  padding-top: 1.5rem;
+}
+
+.contactText {
+  font-size: 0.95rem;
+  color: #6b7280; /* text-gray-500 */
+  margin: 0;
+  font-weight: 400;
+}
+
+.phoneNumber {
+  color: #f97316; /* text-orange-500 */
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.phoneNumber:hover {
+  color: #ea580c; /* hover:text-orange-600 */
+}
+
+/* Animation for component appearance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .content {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+  }
+
+  .carIcon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .suggestions {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .suggestionsTitle {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .suggestionsList li {
+    font-size: 0.875rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .homeButton {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.25rem;
+  }
+
+  .contactText {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .content {
+    padding: 2.5rem 2rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .homeButton {
+    font-size: 1.05rem;
+    padding: 0.9rem 1.75rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .content {
+    padding: 3.5rem 3rem;
+  }
+
+  .carIcon {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .suggestions {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .homeButton {
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
+  }
+}
+
+/* Touch-friendly improvements for mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  .homeButton {
+    min-height: 48px; /* Larger touch target for buttons */
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation: none;
+  }
+
+  .homeButton,
+  .phoneNumber {
+    transition: none;
+  }
+
+  .content:hover,
+  .homeButton:hover {
+    transform: none;
+  }
+}
+
+/* Focus within container */
+.content:focus-within {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Print styles */
+@media print {
+  .container {
+    background-color: white;
+  }
+
+  .content {
+    box-shadow: none;
+    border: 1px solid #000;
+    background: white;
+    backdrop-filter: none;
+  }
+
+  .homeButton {
+    background: #f97316 !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
 }

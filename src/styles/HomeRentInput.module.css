@@ -1,79 +1,323 @@
+/* HomeRentInput.module.css */
+
 .homeFormContainer {
-  background-color: white;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 24px 32px;
-  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+
+  margin: 2rem auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.homeFormContainer:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.5rem;
+}
+
+.horizontalCenter {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.location {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.pickupReturn {
+  
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  gap: 0.5rem;
 }
 
 .formLabel {
-  color: #4a4a4a;
-  font-size: 14px;
-  font-weight: bold;
-  font-family: 'Times New Roman', Times, serif;
-  margin-bottom: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.025em;
 }
 
 .formInput {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 100%;
-  padding: 8px 12px;
-  color: #4a4a4a;
-  font-size: 16px;
+  width: 90%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: 0.01em;
 }
 
 .formInput:focus {
-  outline: none;
-  box-shadow: 0px 0px 5px rgba(66, 153, 225, 0.5);
-  border-color: #3182ce;
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.formInput:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.formInput::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.formInput:invalid {
+  border-color: #ef4444;
+}
+
+.formInput:invalid:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .formButton {
-  background-color: #4299e1;
-  color: white;
-  font-weight: bold;
-  padding: 8px 16px;
+  width: 100%;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 1rem 2rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+.formButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .formButton:hover {
-  background-color: #2b6cb0;
+  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.formButton:hover::before {
+  left: 100%;
+}
+
+.formButton:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
 }
 
 .formButton:focus {
   outline: none;
-  box-shadow: 0px 0px 5px rgba(66, 153, 225, 0.5);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2), 0 8px 20px rgba(249, 115, 22, 0.4);
 }
 
-.horizontalCenter {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  max-width: 100%;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .homeFormContainer {
+    padding: 1.5rem;
+    margin: 1rem 1.25rem;
+    border-radius: 12px;
+  }
+
+  .horizontalCenter {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .location,
+  .pickupReturn {
+    grid-template-columns: 1fr;
+  }
+
+  .formInput {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .formButton {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .formLabel {
+    font-size: 0.8rem;
+  }
 }
 
-.location {
-  gap: 70px;
+@media (max-width: 480px) {
+  .homeFormContainer {
+    padding: 1rem;
+    margin: 1rem 1.25rem;
+  }
+
+  .form {
+    gap: 1rem;
+  }
+
+  .formInput {
+    padding: 0.625rem;
+    font-size: 0.9rem;
+  }
+
+  .formButton {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+  }
 }
 
-.pickupReturn {
-  gap: 130px;
-  margin-right: 130px;
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .location {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pickupReturn {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .homeFormContainer {
+    padding: 2.5rem;
+  }
+
+  .location {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pickupReturn {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .horizontalCenter {
+    gap: 1.5rem;
+  }
+}
+
+/* Select Dropdown Styling */
+.formInput[type="date"]::-webkit-calendar-picker-indicator,
+.formInput[type="time"]::-webkit-calendar-picker-indicator {
+  background-color: #f97316;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.formInput[type="date"]::-webkit-calendar-picker-indicator:hover,
+.formInput[type="time"]::-webkit-calendar-picker-indicator:hover {
+  background-color: #ea580c;
+}
+
+/* Custom Select Arrow */
+.formInput[type="select-one"] {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  appearance: none;
+  padding-right: 2.5rem;
+}
+
+/* Loading State */
+.formButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.formButton:disabled:hover {
+  background: #9ca3af;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Success State */
+.formInput.success {
+  border-color: #10b981;
+}
+
+.formInput.success:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Animation for form appearance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.homeFormContainer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Focus within container */
+.homeFormContainer:focus-within {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Font optimization for better rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Enhanced typography for select options */
+.formInput option {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  padding: 0.5rem;
 }

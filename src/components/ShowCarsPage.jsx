@@ -5,6 +5,7 @@ import NoCarsAvailable from "./NoCarsAvailable.jsx";
 import { carsQuery } from "../utilities/CarsFetchSimulate.js";
 import { AppContext } from "../context/AppContext";
 import { getAvailability } from "../services/rentalService.js";
+import HeaderReusable from "./ui/HeaderReusable.jsx";
 
 export function ShowCarsPage() {
   const [cars, setCars] = useState([]);
@@ -31,11 +32,16 @@ export function ShowCarsPage() {
 
   return (
     <div className={styles.showCarsMainContainer}>
+      <HeaderReusable />
       {cars ? (
         cars.length === 0 ? (
           <NoCarsAvailable />
         ) : (
-          cars.map((car, index) => <CarCard key={index} carData={car} />)
+          <div className={styles.carsContainer}>
+            {cars.map((car, index) => (
+              <CarCard key={index} carData={car} />
+            ))}
+          </div>
         )
       ) : (
         <h1>Cargando</h1>
