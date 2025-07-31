@@ -24,6 +24,7 @@ import CardContent from "../ui/CardContent.jsx";
 import { cars } from "../../utilities/CarsToShow.js";
 import ContactUs from "../ContactUs.jsx";
 import Footer from "./Footer.jsx";
+import testimonials from "../../utilities/testimonials.js";
 
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -34,30 +35,6 @@ export default function HomePage() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const testimonials = [
-    {
-      name: "María González",
-      rating: 5,
-      comment:
-        "Excelente servicio, el auto estaba impecable y el proceso fue muy rápido. Definitivamente volveré a alquilar con ellos.",
-      location: "Visitante de España",
-    },
-    {
-      name: "John Smith",
-      rating: 5,
-      comment:
-        "Great experience! The car was perfect for exploring Miami. Professional staff and competitive prices.",
-      location: "Tourist from New York",
-    },
-    {
-      name: "Carlos Rodríguez",
-      rating: 5,
-      comment:
-        "Atención al cliente excepcional. Me ayudaron con todo y el auto superó mis expectativas. Muy recomendado.",
-      location: "Local de Miami",
-    },
-  ];
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -148,8 +125,7 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>¿Por qué elegirnos?</h2>
             <p className={styles.sectionDescription}>
-              Más de 10 años de experiencia brindando el mejor servicio de
-              alquiler de autos en Miami
+              Atención personalizada, sin colas ni trámites — tu auto te espera en el aeropuerto.
             </p>
           </div>
 

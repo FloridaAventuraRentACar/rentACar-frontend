@@ -9,7 +9,7 @@ export const cars = [
       name: "Nissan Kick",
       category: "SUV",
       price: "$45/día",
-      image: "https://i.ibb.co/SDN2KC3n/250407-npa-kicks-carrousel1.jpg",
+      image: "https://i.ibb.co/Y7sMnBH8/el-nuevo-nissan-kicks-cuya-produccion-arranco-en-JTW4-VHZT6-FETHIGGTJJCUMJIQM.jpg",
     },
     {
       name: "Ford Explorer",
