@@ -30,31 +30,31 @@ export default function ContactUs() {
     e.preventDefault();
 
     const form = formRef.current;
-    const ContactUsTemplateParams = {
-      to_email: "floridaaventuraok@gmail.com",
-      html_message: contactUsHtml(form.fullName.value, form.message.value, form.email.value),
-      subject: "Nuevo mensaje de contacto",
-    };
 
-    await contactUsEmail.sendEmail(ContactUsTemplateParams);
-    if (contactUsEmail.success) {
-      alert("Correo enviado correctamente");
-    } else if (contactUsEmail.error) {
-      alert("Error al enviar el correo");
-    }
-
+    //Mail al cliente
     const AutoReplyTemplateParams = {
       to_email: form.email.value,
       html_message: autoReplyHtml(form.fullName.value),
       subject: "¡Gracias por contactarnos!",
     };
 
-    await autoReplyEmail.sendEmail(AutoReplyTemplateParams);
-    if (autoReplyEmail.success) {
-      console.log("Correo enviado correctamente");
-    } else if (autoReplyEmail.error) {
-      ;
+    const response = await autoReplyEmail.sendEmail(AutoReplyTemplateParams);
+    if (response) {
+      alert("Correo enviado correctamente");
+    } else {
+      alert("Error al enviar el correo");
+      return;
     }
+
+    //Mail a la empresa
+    const ContactUsTemplateParams = {
+      to_email: "floridaaventuraok@gmail.com",
+      html_message: contactUsHtml(form.fullName.value, form.message.value, form.email.value, form.phone.value),
+      subject: "Nuevo mensaje de contacto",
+    };
+
+    await contactUsEmail.sendEmail(ContactUsTemplateParams);
+    
     form.reset();
   };
 
@@ -100,6 +100,19 @@ export default function ContactUs() {
                         name="email"
                         type="email"
                         placeholder="tu@email.com"
+                        className={styles.inputFullWidth}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className={styles.formLabel}>
+                        Numero de telefono
+                      </label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="phone"
+                        placeholder="+1 (305) 773-1787"
                         className={styles.inputFullWidth}
                       />
                     </div>
@@ -149,7 +162,7 @@ export default function ContactUs() {
                     <div>
                       <p className={styles.contactLabel}>Dirección</p>
                       <p className={styles.contactText}>
-                        123 Ocean Drive, Miami Beach, FL 33139
+                        13499 Biscayne Blvd, North Miami, FL 33181
                       </p>
                     </div>
                   </div>
@@ -159,15 +172,8 @@ export default function ContactUs() {
               <div className={styles.hoursOfOperation}>
                 <h4 className={styles.hoursTitle}>Horarios de atención</h4>
                 <div className={styles.hoursList}>
-                  <p>Lunes - Viernes: 8:00 AM - 8:00 PM</p>
-                  <p>Sábados: 9:00 AM - 6:00 PM</p>
-                  <p>Domingos: 10:00 AM - 4:00 PM</p>
+                  <p>Lunes - Domingo: 9:00 AM - 9:00 PM</p>
                 </div>
-              </div>
-
-              {/* Mapa embebido */}
-              <div className={styles.mapPlaceholder}>
-                <p>Mapa de Miami - Ubicación de la oficina</p>
               </div>
             </div>
           </div>

@@ -30,11 +30,11 @@ export default function Footer() {
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactLabel}>Dirección:</span>
-                <span className={styles.contactValue}>123 Ocean Drive, Miami Beach, FL 33139</span>
+                <span className={styles.contactValue}>13499 Biscayne Blvd, North Miami, FL 33181</span>
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactLabel}>Horarios:</span>
-                <span className={styles.contactValue}>Lun - Dom: 8:00 AM - 8:00 PM</span>
+                <span className={styles.contactValue}>Lun - Dom: 9:00 AM - 9:00 PM</span>
               </div>
             </div>
           </div>

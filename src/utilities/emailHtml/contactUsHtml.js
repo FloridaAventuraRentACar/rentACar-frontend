@@ -1,4 +1,4 @@
-export function contactUsHtml(name , message , email) {
+export function contactUsHtml(name , message , email, phone) {
   return `
         <!DOCTYPE html>
 <html lang="es">
@@ -66,6 +66,10 @@ export function contactUsHtml(name , message , email) {
         <div class="content">
           <p class="label">Correo de contacto:</p>
           <p>${email}</p>
+        </div>
+        <div class="content">
+          <p class="label">Numero de telefono:</p>
+          <p>${phone}</p>
         </div>
       </div>
       <div class="footer">
