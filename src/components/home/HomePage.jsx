@@ -22,7 +22,7 @@ import Header from "./Header";
 import Card from "../ui/Card.jsx";
 import CardContent from "../ui/CardContent.jsx";
 import { cars } from "../../utilities/CarsToShow.js";
-import ContactUs from "../ContactUs.jsx";
+import ContactUs from "./ContactUs.jsx";
 import Footer from "./Footer.jsx";
 import testimonials from "../../utilities/testimonials.js";
 

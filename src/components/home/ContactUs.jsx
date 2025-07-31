@@ -1,14 +1,14 @@
-import styles from "../styles/ContactUs.module.css";
+import styles from "../../styles/ContactUs.module.css";
 import { Phone, Mail, MapPin } from "lucide-react";
-import Button from "./ui/Button";
-import Input from "./ui/Input";
-import Textarea from "./ui/TextArea";
-import Card from "./ui/Card";
-import CardContent from "./ui/CardContent";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
+import Textarea from "../ui/TextArea";
+import Card from "../ui/Card";
+import CardContent from "../ui/CardContent";
 import { useRef } from "react";
-import useEmailJs from "../hooks/useEmailJs";
-import contactUsHtml from "../utilities/emailHtml/contactUsHtml";
-import autoReplyHtml from "../utilities/emailHtml/autoReplyHtml";
+import useEmailJs from "../../hooks/useEmailJs";
+import contactUsHtml from "../../utilities/emailHtml/contactUsHtml";
+import autoReplyHtml from "../../utilities/emailHtml/autoReplyHtml";
 
 export default function ContactUs() {
   const formRef = useRef();
