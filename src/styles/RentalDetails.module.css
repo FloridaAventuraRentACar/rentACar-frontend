@@ -1,116 +1,229 @@
+/* RentalDetails.module.css */
+
 .container {
   max-width: 400px;
-  width: 600px;
-  height: 30rem;
-  border-radius: 12px;
-  background-color: #a6afb4bd;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: auto; /* Cambiamos de min-height fijo */
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
-  font-family: sans-serif;
-  padding: 1rem;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 2rem;
   position: relative;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.container:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px) scale(1.04);
 }
 
 .header {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.priceContainer {
-  position: absolute;
-  right: 5%;
-  bottom: 5%;
-  margin-left: 20px;
-  display: flex;
-  gap: 10px;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
   align-items: center;
-  border-width: 2px;
-  border-color: rgb(22, 22, 22);
-  border-style: solid;
-  border-radius: 10px;
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-.priceText {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.totalPrice {
-  display: inline-block;
-  font-size: 0.9rem;
-  color: #030303;
 }
 
 .carImage {
   width: 40%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.carImage:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.subtitle {
-  font-size: 0.85rem;
-  color: #555;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #1f2937; /* text-gray-800 */
+  letter-spacing: 0.025em;
 }
 
 .duration {
-  font-size: 0.9rem;
-  color: #3b82f6;
-  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #f97316; /* text-orange-500 */
+  margin: 0;
+  font-weight: 600;
+  background-color: #fff7ed; /* bg-orange-50 */
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  display: inline-block;
+  border: 1px solid #fed7aa; /* border-orange-200 */
 }
 
 .details {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.details > div {
+  flex: 1;
+  padding: 1rem;
+  background-color: #f9fafb; /* bg-gray-50 */
+  border-radius: 12px;
+  border: 1px solid #e5e7eb; /* border-gray-200 */
+  transition: all 0.3s ease;
+}
+
+.details > div:hover {
+  background-color: #f3f4f6; /* bg-gray-100 */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .label {
-  font-weight: bold;
-  color: #777;
-  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: #6b7280; /* text-gray-500 */
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .location {
-  font-weight: bold;
-  color: #000;
+  font-weight: 700;
+  color: #1f2937; /* text-gray-800 */
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
 }
 
 .datetime {
-  color: #555;
+  color: #4b5563; /* text-gray-600 */
+  font-size: 0.875rem;
+  font-weight: 500;
 }
 
 .summary {
-  border-top: 1px solid #e5e7eb;
-  padding-top: 1rem;
-  font-size: 0.9rem;
+  border-top: 2px solid #e5e7eb;
+  padding-top: 1.5rem;
+  margin-bottom: 0; /* Removemos el margin-bottom */
 }
 
 .summary h4 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1f2937; /* text-gray-800 */
+  letter-spacing: 0.025em;
 }
 
 .summary ul {
   list-style: none;
   padding-left: 0;
+  margin: 0;
 }
 
 .summary li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #374151; /* text-gray-700 */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #ecfdf5; /* bg-green-50 */
+  border-radius: 8px;
+  border-left: 3px solid #10b981; /* border-green-500 */
+}
+
+.summary li::before {
+  content: '✓';
+  color: #10b981; /* text-green-500 */
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.priceContainer {
+  /* Removemos position absolute para que fluya naturalmente */
+  position: static;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+  padding: 0.75rem 1rem; /* Reducimos el padding */
+  border-radius: 10px; /* Reducimos el border-radius */
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+  margin-top: 1.5rem; /* Agregamos margen superior para separarlo del resumen */
+  width: 100%;
+}
+
+.priceContainer:hover {
+  box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4); /* Reducimos el efecto hover */
+  transform: translateY(-1px) scale(1.01); /* Reducimos el scale */
+}
+
+.priceText {
+  font-size: 0.95rem; /* Reducimos el tamaño */
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.totalPrice {
+  font-size: 1.25rem; /* Reducimos significativamente el tamaño */
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.025em;
+}
+
+/* Animation for component appearance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Media Queries para Responsive */
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 450px;
+    padding: 2.5rem;
+  }
+  
+  .title {
+    font-size: 1.375rem;
+  }
+  
+  .priceContainer {
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .priceText {
+    font-size: 1rem;
+  }
+  
+  .totalPrice {
+    font-size: 1.375rem;
+  }
+}
 
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) {
@@ -118,14 +231,20 @@
     width: 100%;
     max-width: 600px;
     height: auto;
-    min-height: 25rem;
+    padding: 1.5rem;
   }
 
   .priceContainer {
-    position: static;
-    justify-content: center;
-    margin: 20px auto 0 auto;
-    width: fit-content;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .priceText {
+    font-size: 0.95rem;
+  }
+
+  .totalPrice {
+    font-size: 1.25rem;
   }
 }
 
@@ -135,62 +254,68 @@
     width: 100%;
     max-width: none;
     height: auto;
-    min-height: auto;
-    padding: 0.8rem;
-    border-radius: 8px;
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .summary {
+    text-align: center;
+    padding-top: 1.25rem;
+    margin-bottom: 0;
   }
 
   .header {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 0.8rem;
+    gap: 1rem;
   }
 
   .carImage {
     width: 60%;
     max-width: 200px;
+    border-radius: 10px;
   }
 
   .title {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    text-align: center;
   }
 
   .duration {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0.375rem 1rem;
   }
 
   .details {
     flex-direction: column;
     gap: 1rem;
-    text-align: center;
+    margin-bottom: 1.5rem;
   }
 
   .details > div {
-    padding: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    padding: 1rem;
+    text-align: center;
+    background-color: #f9fafb;
+    border-radius: 10px;
   }
 
   .label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .location {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .datetime {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
   }
 
-  .summary {
-    text-align: center;
-    padding-top: 0.8rem;
-  }
+ 
 
   .summary h4 {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 
   .summary ul {
@@ -198,78 +323,182 @@
     display: inline-block;
   }
 
+  .summary li {
+    font-size: 0.9rem;
+    padding: 0.625rem;
+    border-radius: 6px;
+  }
+
   .priceContainer {
-    margin: 15px auto 0 auto;
-    padding: 8px 12px;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    flex-direction: row; /* Mantenemos horizontal en mobile */
+    justify-content: space-between;
   }
 
   .priceText {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .totalPrice {
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.125rem;
   }
 }
 
 /* Mobile pequeño (hasta 480px) */
 @media (max-width: 480px) {
   .container {
-    padding: 0.6rem;
-    width: 95%;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 10px;
   }
 
   .header {
-    gap: 0.6rem;
+    gap: 0.75rem;
   }
 
   .carImage {
     width: 70%;
     max-width: 180px;
+    border-radius: 8px;
   }
 
   .title {
-    font-size: 1.1rem;
+    font-size: 1.125rem;
   }
 
   .duration {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
   }
 
   .details > div {
-    padding: 0.4rem;
+    padding: 0.75rem;
+    border-radius: 8px;
   }
 
   .label {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 
   .location {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .datetime {
     font-size: 0.8rem;
   }
 
+  .summary {
+    padding-top: 1rem;
+    margin-bottom: 0;
+  }
+
   .summary h4 {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .summary li {
     font-size: 0.85rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .priceContainer {
-    padding: 6px 10px;
+    margin-top: 1rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 8px;
+    width: 90%;
   }
 
   .priceText {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .totalPrice {
-    font-size: 0.9rem;
+    font-size: 1rem;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .carImage {
+    width: 40%;
+    max-width: 150px;
+  }
+
+  .details {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .summary {
+    padding-top: 1rem;
+  }
+
+  .priceContainer {
+    margin-top: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Touch-friendly improvements for mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  .container {
+    min-height: auto;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .container,
+  .carImage,
+  .details > div,
+  .priceContainer {
+    animation: none;
+    transition: none;
+  }
+
+  .container:hover,
+  .carImage:hover,
+  .details > div:hover,
+  .priceContainer:hover {
+    transform: none;
+  }
+}
+
+/* Focus within container */
+.container:focus-within {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Print styles */
+@media print {
+  .container {
+    box-shadow: none;
+    border: 1px solid #000;
+    background: white;
+    backdrop-filter: none;
+  }
+
+  .priceContainer {
+    background: #f97316 !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  .summary li {
+    background: #ecfdf5 !important;
+    border-left-color: #10b981 !important;
   }
 }
