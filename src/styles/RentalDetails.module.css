@@ -12,7 +12,7 @@
   overflow: hidden;
   font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
   padding: 2rem;
-  position: relative;
+  position: fixed;
   transition: all 0.3s ease;
   animation: fadeInUp 0.6s ease-out;
 }
