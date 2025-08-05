@@ -66,6 +66,14 @@
   display: inline-block;
 }
 
+.include{
+  font-size: 0.8rem;
+  color: rgba(15, 15, 15, 0.616);
+  margin-top: 10px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
 h2, h3, h4 {
   color: #1f2937; /* text-gray-800 */
   margin-bottom: 1rem;

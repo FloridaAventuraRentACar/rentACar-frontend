@@ -305,6 +305,7 @@ const DriverForm = () => {
                   {renderFields("driver")}
 
                   <h3 className={styles.sectionTitle}>Conductores adicionales</h3>
+                  <span className={styles.include}>Hasta un conductor adicional incluido en el precio</span>
                   <FieldArray name="additionalDrivers">
                     {({ push, remove }) => (
                       <div>
