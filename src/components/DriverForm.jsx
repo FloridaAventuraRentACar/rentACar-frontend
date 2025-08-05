@@ -1,15 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as Yup from "yup";
 
 import styles from "../styles/DriverForm.module.css";
-import { Divider } from "@mui/material";
 import RentalDetails from "./RentalDetails.jsx";
 import { postClientList } from "../services/clientService.js";
 import { postRental } from "../services/rentalService.js";
 import { AppContext } from "../context/AppContext.jsx";
 import { useNavigate } from "react-router-dom";
-import BackButton from "./BackButton.jsx";
 import useEmailJs from "../hooks/useEmailJs.js";
 import rentalConfirmationEmailhtml from "../utilities/emailHtml/rentalConfimationEmailHtml.js";
 
@@ -32,6 +30,7 @@ const driverSchema = Yup.object({
 
 const DriverForm = () => {
   const navigate = useNavigate();
+  const [additionalDriversCount, setAdditionalDriversCount] = useState(0);
 
   const { sendEmail } = useEmailJs({
     serviceId: import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
@@ -51,7 +50,13 @@ const DriverForm = () => {
     selectedBabySeat,
     travelLocation,
     selectedGasTank,
+    setTotalPrice,
+    daysBooked
   } = useContext(AppContext);
+  
+  useEffect(() => {
+    calculateTotalPrice(additionalDriversCount);
+  }, [additionalDriversCount]);
 
   const sendRentalConfimationEmail = async (rental) => {
     const ContactUsTemplateParams = {
@@ -72,10 +77,6 @@ const DriverForm = () => {
     };
 
     await sendEmail(ContactUsTemplateParams);
-  };
-
-  const handleBackButtonClick = () => {
-    window.history.back();
   };
 
   const getClientsIds = (clients) => {
@@ -131,6 +132,16 @@ const DriverForm = () => {
     } catch (error) {
       console.error("Error al guardar la renta:", error);
     }
+  };
+
+  const calculateTotalPrice = (addDriversCount) => {
+    const initialTotalPrice = daysBooked * carData.pricePerDay;
+    if (addDriversCount <= 1) {
+      setTotalPrice(initialTotalPrice);
+    } else {
+      //Si se agrego mas de un conductor adicional, el precio se aumenta en 5 dolares por dia por cada conductor adicional que se agrego
+      setTotalPrice(initialTotalPrice + (daysBooked * 5) * (addDriversCount - 1));
+    };
   };
 
   const initialValues = {
@@ -275,7 +286,6 @@ const DriverForm = () => {
 
   return (
     <div className={styles.background}>
-      
       <div className={styles.mainContainer}>
         <div className={styles.formContainer}>
           <Formik
@@ -283,62 +293,69 @@ const DriverForm = () => {
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
-            {({ values }) => (
-              <Form>
-                <h3 className={styles.sectionTitle}>Conductor principal</h3>
-                {renderFields("driver")}
+            {({ values }) => {
 
-                <h3 className={styles.sectionTitle}>Conductores adicionales</h3>
-                <FieldArray name="additionalDrivers">
-                  {({ push, remove }) => (
-                    <div>
-                      {values.additionalDrivers.map((_, index) => (
-                        <div key={index} className={styles.driverBox}>
-                          <h4 className={styles.sectionTitle}>
-                            Conductor adicional {index + 1}
-                          </h4>
-                          {renderFields(`additionalDrivers[${index}]`)}
-                          <button
-                            type="button"
-                            className={`${styles.button} ${styles.removeButton}`}
-                            onClick={() => remove(index)}
-                          >
-                            Remover
-                          </button>
-                        </div>
-                      ))}
-                      <button
-                        type="button"
-                        className={`${styles.button} ${styles.addButton}`}
-                        onClick={() =>
-                          push({
-                            name: "",
-                            surname: "",
-                            email: "",
-                            phone: "",
-                            licenseNumber: "",
-                            bornDate: "",
-                            licenseName: "",
-                            licenseAddress: "",
-                            licenseExpirationDate: "",
-                          })
-                        }
-                      >
-                        Agregar conductor adicional
-                      </button>
-                    </div>
-                  )}
-                </FieldArray>
+              if (values.additionalDrivers.length !== additionalDriversCount) {
+                setAdditionalDriversCount(values.additionalDrivers.length);
+              }
 
-                <br />
-                <button
-                  type="submit"
-                  className={`${styles.submitButton} ${styles.button}`}
-                >
-                  Confirmar reserva
-                </button>
-              </Form>
-            )}
+              return (
+                <Form>
+                  <h3 className={styles.sectionTitle}>Conductor principal</h3>
+                  {renderFields("driver")}
+
+                  <h3 className={styles.sectionTitle}>Conductores adicionales</h3>
+                  <FieldArray name="additionalDrivers">
+                    {({ push, remove }) => (
+                      <div>
+                        {values.additionalDrivers.map((_, index) => (
+                          <div key={index} className={styles.driverBox}>
+                            <h4 className={styles.sectionTitle}>
+                              Conductor adicional {index + 1}
+                            </h4>
+                            {renderFields(`additionalDrivers[${index}]`)}
+                            <button
+                              type="button"
+                              className={`${styles.button} ${styles.removeButton}`}
+                              onClick={() => remove(index)}
+                            >
+                              Remover
+                            </button>
+                          </div>
+                        ))}
+                        <button
+                          type="button"
+                          className={`${styles.button} ${styles.addButton}`}
+                          onClick={() => {
+                            push({
+                              name: "",
+                              surname: "",
+                              email: "",
+                              phone: "",
+                              licenseNumber: "",
+                              bornDate: "",
+                              licenseName: "",
+                              licenseAddress: "",
+                              licenseExpirationDate: "",
+                            });
+                          }}
+                        >
+                          Agregar conductor adicional
+                        </button>
+                      </div>
+                    )}
+                  </FieldArray>
+
+                  <br />
+                  <button
+                    type="submit"
+                    className={`${styles.submitButton} ${styles.button}`}
+                  >
+                    Confirmar reserva
+                  </button>
+                </Form>
+              );
+            }}
           </Formik>
         </div>
         <div className={styles.rentalDetailsContainer}>

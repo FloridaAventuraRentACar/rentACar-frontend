@@ -401,7 +401,7 @@ export function CarRentalPage() {
             <div className={styles.optionMain}>
               <div className={styles.optionText}>
                 <strong>Millas ilimitadas</strong>
-                <p>Tienes millas ilimitadas dentro de Miami</p>
+                <p>Tienes millas ilimitadas dentro de la florida</p>
               </div>
             </div>
             <span className={styles.includedTag}>Incluido</span>

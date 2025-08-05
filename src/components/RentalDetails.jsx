@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from '../styles/RentalDetails.module.css';
 import { AppContext } from '../context/AppContext';
 import { format, parseISO } from 'date-fns';
@@ -7,12 +7,13 @@ import insuranceNames from '../utilities/names/insuranceNames';
 import babySeatNames from '../utilities/names/babySeatNames';
 import travelLocationNames from '../utilities/names/travelLocationNames';
 
-const RentalDetails = () => {
+const RentalDetails = ({updatedPrice}) => {
 
   const {
     carData, daysBooked, pickupLocation, pickupDate,pickupTime, returnLocation, returnDate, returnTime, 
-    totalPrice, selectedInsurance, selectedBabySeat, travelLocation
+    totalPrice ,selectedInsurance, selectedBabySeat, travelLocation
   } = useContext(AppContext);
+  
 
   const parsePickupDate = parseISO(pickupDate);
   const formattedPickupDate = format(parsePickupDate, 'eee, dd. MMM. yyyy');
