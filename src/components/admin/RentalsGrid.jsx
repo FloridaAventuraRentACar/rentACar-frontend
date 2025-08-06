@@ -3,6 +3,8 @@ import { sortRentalsByDate } from '../../utilities/functions/sortRentalsByDate'
 import { getCurrentRentals, getRentalById } from '../../services/rentalService'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { parseISO, format } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 export default function RentalsGrid() {
 
@@ -26,12 +28,10 @@ export default function RentalsGrid() {
 
   // Función para formatear fechas
   const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString("es-ES", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    })
+
+    const parseDate = parseISO(dateString);
+
+    return format(parseDate, 'eee, dd. MMM. yyyy', { locale: es });
   }
 
   const handleRentalDetailClick = async (rental) => {
