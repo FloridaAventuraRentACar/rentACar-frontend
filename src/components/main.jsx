@@ -13,6 +13,7 @@ import RentalAdminResume from "./admin/RentalAdminResume.jsx";
 import Login from "./admin/Login.jsx";
 import { AuthProvider } from "../context/AuthContext.jsx";
 import ProtectedRoute from "./admin/ProtectedRoute.jsx";
+import CalendarPage from "./admin/CalendarPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/admin/calendar",
+        element: (
+          <ProtectedRoute>
+            <CalendarPage />
+          </ProtectedRoute>
+        )
+      }
     ],
   },
 ]);

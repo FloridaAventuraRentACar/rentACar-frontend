@@ -1,0 +1,296 @@
+/* Contenedor principal */
+.ganttContainer {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.currentMonth {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  min-width: 140px;
+  text-align: center;
+}
+
+/* Timeline wrapper */
+.timelineWrapper {
+  height: 500px;
+  position: relative;
+}
+
+/* Estilos globales para react-calendar-timeline */
+:global(.react-calendar-timeline .rct-sidebar) {
+  background: #f8fafc !important;
+  border-right: 1px solid #e2e8f0 !important;
+}
+
+:global(.react-calendar-timeline .rct-sidebar-row) {
+  background: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  font-weight: 500 !important;
+  color: #334155 !important;
+}
+
+:global(.react-calendar-timeline .rct-sidebar-row:hover) {
+  background: #f1f5f9 !important;
+}
+
+:global(.react-calendar-timeline .rct-header-root) {
+  background: #ffffff !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+:global(.react-calendar-timeline .rct-header) {
+  background: #ffffff !important;
+  color: #475569 !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+:global(.react-calendar-timeline .rct-dateHeader) {
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+:global(.react-calendar-timeline .rct-canvas) {
+  background: #ffffff !important;
+}
+
+:global(.react-calendar-timeline .rct-horizontal-lines .rct-hl-even) {
+  background: #f8fafc !important;
+}
+
+:global(.react-calendar-timeline .rct-horizontal-lines .rct-hl-odd) {
+  background: #ffffff !important;
+}
+
+/* Bloques de alquiler */
+.rentalBlock {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: white !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3) !important;
+}
+
+:global(.react-calendar-timeline .rct-item.rct-selected) .rentalBlock {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+  transform: scale(1.02) !important;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4) !important;
+}
+
+.rentalBlock:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4) !important;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background: #1f2937;
+  color: white;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: none;
+  pointer-events: none;
+  max-width: 280px;
+  overflow: hidden;
+}
+
+.tooltipContent {
+  padding: 16px;
+}
+
+.tooltipContent h4 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+.tooltipContent p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #d1d5db;
+  line-height: 1.4;
+}
+
+.tooltipContent p strong {
+  color: #f3f4f6;
+  font-weight: 500;
+}
+
+/* Estado vacío */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 32px;
+  text-align: center;
+  color: #64748b;
+}
+
+.emptyIcon {
+  font-size: 64px;
+  margin-bottom: 24px;
+  opacity: 0.6;
+}
+
+.emptyState h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 16px;
+  color: #64748b;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .header {
+    padding: 20px 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .header h2 {
+    font-size: 20px;
+  }
+  
+  .controls {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .timelineWrapper {
+    height: 400px;
+  }
+  
+  :global(.react-calendar-timeline .rct-sidebar) {
+    width: 150px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 20px;
+  }
+  
+  .header h2 {
+    font-size: 18px;
+  }
+  
+  .navButton {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .currentMonth {
+    font-size: 14px;
+    min-width: 120px;
+  }
+  
+  .timelineWrapper {
+    height: 350px;
+  }
+  
+  :global(.react-calendar-timeline .rct-sidebar) {
+    width: 120px !important;
+  }
+  
+  .tooltip {
+    max-width: 240px;
+  }
+  
+  .tooltipContent {
+    padding: 12px;
+  }
+  
+  .tooltipContent h4 {
+    font-size: 14px;
+  }
+  
+  .tooltipContent p {
+    font-size: 12px;
+  }
+}
+
+/* Mejoras adicionales para la timeline */
+:global(.react-calendar-timeline .rct-scroll) {
+  border-radius: 0 0 16px 16px;
+}
+
+:global(.react-calendar-timeline .rct-item) {
+  border-radius: 8px !important;
+}
+
+/* Líneas de tiempo más suaves */
+:global(.react-calendar-timeline .rct-vertical-lines .rct-vl) {
+  border-left: 1px solid #f1f5f9 !important;
+}
+
+:global(.react-calendar-timeline .rct-horizontal-lines .rct-hl) {
+  border-bottom: 1px solid #f1f5f9 !important;
+}
