@@ -4,7 +4,6 @@ import * as Yup from "yup";
 
 import styles from "../styles/DriverForm.module.css";
 import RentalDetails from "./RentalDetails.jsx";
-import { postClientList } from "../services/clientService.js";
 import { postRental } from "../services/rentalService.js";
 import { AppContext } from "../context/AppContext.jsx";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +29,6 @@ const driverSchema = Yup.object({
 
 const DriverForm = () => {
   const navigate = useNavigate();
-  const [additionalDriversCount, setAdditionalDriversCount] = useState(0);
 
   const { sendEmail } = useEmailJs({
     serviceId: import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
@@ -50,13 +48,9 @@ const DriverForm = () => {
     selectedBabySeat,
     travelLocation,
     selectedGasTank,
-    setTotalPrice,
-    daysBooked
+    additionalDriversCount,
+    setAdditionalDriversCount
   } = useContext(AppContext);
-  
-  useEffect(() => {
-    calculateTotalPrice(additionalDriversCount);
-  }, [additionalDriversCount]);
 
   const sendRentalConfimationEmail = async (rental) => {
     const ContactUsTemplateParams = {
@@ -79,42 +73,25 @@ const DriverForm = () => {
     await sendEmail(ContactUsTemplateParams);
   };
 
-  const getClientsIds = (clients) => {
-    return clients.map((client) => client.id);
-  };
-
   const handleSubmit = async (values) => {
-    const saveClientsResponse = await saveClientList(values);
-    const clientsIds = getClientsIds(saveClientsResponse);
 
-    const rental = await saveRental(clientsIds);
+    const clientList = [values.driver, ...values.additionalDrivers];
+
+    const rental = await saveRental(clientList);
 
     await sendRentalConfimationEmail(rental);
 
     navigate("/successful-rental", { state: { rental } });
   };
 
-  const saveClientList = async (values) => {
-    try {
-      const clientList = [values.driver, ...values.additionalDrivers];
-      const response = await postClientList(clientList);
 
-      const clients = await response.data;
-
-      return clients;
-    } catch (error) {
-      console.error("Error al guardar la lista:", error);
-      return null;
-    }
-  };
-
-  const saveRental = async (clientIds) => {
+  const saveRental = async (clientsToSave) => {
     const start = `${pickupDate}T${pickupTime}`;
     const end = `${returnDate}T${returnTime}`;
 
     const rental = {
       carId: carData.id,
-      clientIds,
+      clients: clientsToSave,
       start,
       end,
       pickupLocation,
@@ -132,16 +109,6 @@ const DriverForm = () => {
     } catch (error) {
       console.error("Error al guardar la renta:", error);
     }
-  };
-
-  const calculateTotalPrice = (addDriversCount) => {
-    const initialTotalPrice = daysBooked * carData.pricePerDay;
-    if (addDriversCount <= 1) {
-      setTotalPrice(initialTotalPrice);
-    } else {
-      //Si se agrego mas de un conductor adicional, el precio se aumenta en 5 dolares por dia por cada conductor adicional que se agrego
-      setTotalPrice(initialTotalPrice + (daysBooked * 5) * (addDriversCount - 1));
-    };
   };
 
   const initialValues = {

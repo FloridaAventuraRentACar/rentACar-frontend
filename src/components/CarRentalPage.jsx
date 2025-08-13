@@ -23,8 +23,6 @@ export function CarRentalPage() {
     navigate("/driver-form");
   };
 
-  const location = useLocation(); //Este useState se usa para pasar datos entre componentes
-
   const [selectedSunpass, setSelectedSunpass] = useState("no");
   const [travelLocationPrice, setTravelLocationPrice] = useState(0);
 
@@ -38,7 +36,6 @@ export function CarRentalPage() {
     returnTime,
     carData,
     totalPrice,
-    setTotalPrice,
     selectedInsurance,
     setSelectedInsurance,
     selectedBabySeat,
@@ -70,21 +67,20 @@ export function CarRentalPage() {
     return 0;
   };
 
-  useEffect(() => {
-    pickupLocation;
-    setTotalPrice(
-      carData.pricePerDay * daysBooked +
-        insuranceCharge() +
-        babySeatCharge() +
-        travelLocationPrice +
-        gasTankCharge()
-    );
-  }, [
-    selectedInsurance,
-    selectedBabySeat,
-    travelLocationPrice,
-    selectedGasTank,
-  ]);
+  // useEffect(() => {
+  //   setTotalPrice(
+  //     carData.pricePerDay * daysBooked +
+  //     insuranceCharge() +
+  //     babySeatCharge() +
+  //     travelLocationPrice +
+  //     gasTankCharge()
+  //   );
+  // }, [
+  //   selectedInsurance,
+  //   selectedBabySeat,
+  //   travelLocationPrice,
+  //   selectedGasTank,
+  // ]);
 
   const handleInsuranceClick = (selected) => {
     setSelectedInsurance(selected);

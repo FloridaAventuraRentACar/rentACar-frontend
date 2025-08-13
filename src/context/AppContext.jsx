@@ -1,5 +1,7 @@
-import { createContext } from "react";
+import { createContext, useMemo } from "react";
 import { useSessionState } from "../hooks/useSessionState"; // ajustá la ruta si es necesario
+import locationPrices from "../utilities/locationPrices";
+import gasTankPrices from "../utilities/gasTankPrices";
 
 export const AppContext = createContext();
 
@@ -12,12 +14,43 @@ export const AppProvider = ({ children }) => {
   const [returnDate, setReturnDate] = useSessionState("returnDate", '');
   const [returnTime, setReturnTime] = useSessionState("returnTime", '');
   const [carData, setCarData] = useSessionState("carData", {});
-  const [totalPrice, setTotalPrice] = useSessionState("totalPrice", 100);
   const [pricePerDay, setPricePerDay] = useSessionState("pricePerDay", 100);
   const [selectedInsurance, setSelectedInsurance] = useSessionState("selectedInsurance", 'DEDUCTIBLE');
   const [selectedBabySeat, setSelectedBabySeat] = useSessionState("selectedBabySeat", 'NONE');
   const [travelLocation, setTravelLocation] = useSessionState("travelLocation", null);
   const [selectedGasTank, setSelectedGasTank] = useSessionState("selectedGasTank", 'FULL');
+  const [additionalDriversCount, setAdditionalDriversCount] = useSessionState("additionalDriversCount", 0);
+  
+  const additionalDriverCharge = useMemo(() => {
+    return (additionalDriversCount > 1) ? ((additionalDriversCount - 1) * (5 * daysBooked)) : 0;
+  }, [additionalDriversCount, daysBooked]);
+
+  const insuranceCharge = useMemo(() => {
+    if (selectedInsurance === "DEDUCTIBLE") return 0;
+    return 15 * daysBooked;
+  }, [selectedInsurance, daysBooked]);
+
+  const babySeatCharge = useMemo(() => {
+    if (selectedBabySeat === "NONE") return 0;
+    return 3 * daysBooked;
+  }, [selectedBabySeat, daysBooked]);
+
+  const travelLocationPrice = useMemo(() => {
+    return travelLocation ? locationPrices[travelLocation] : 0;
+  }, [travelLocation]);
+
+  const gasTankCharge = useMemo(() => {
+    if (!carData?.type) return 0;
+    if (selectedGasTank === "EMPTY") {
+      return gasTankPrices[carData.type] || 0;
+    }
+    return 0;
+  }, [selectedGasTank, carData]);
+
+  const totalPrice = useMemo(() => {
+    const basePrice = (carData?.pricePerDay || 0) * daysBooked;
+    return basePrice + insuranceCharge + babySeatCharge + travelLocationPrice + gasTankCharge + additionalDriverCharge;
+  }, [carData, daysBooked, insuranceCharge, babySeatCharge, travelLocationPrice, gasTankCharge, additionalDriverCharge]);
 
   const clearRentalData = () => {
   const keys = [
@@ -39,12 +72,13 @@ export const AppProvider = ({ children }) => {
         returnDate, setReturnDate,
         returnTime, setReturnTime,
         carData, setCarData,
-        totalPrice, setTotalPrice,
+        totalPrice,
         pricePerDay, setPricePerDay,
         selectedInsurance, setSelectedInsurance,
         selectedBabySeat, setSelectedBabySeat,
         travelLocation, setTravelLocation,
         selectedGasTank, setSelectedGasTank,
+        additionalDriversCount, setAdditionalDriversCount,
         clearRentalData
       }}
     >

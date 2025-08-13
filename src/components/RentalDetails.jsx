@@ -7,14 +7,16 @@ import insuranceNames from '../utilities/names/insuranceNames';
 import babySeatNames from '../utilities/names/babySeatNames';
 import travelLocationNames from '../utilities/names/travelLocationNames';
 
-const RentalDetails = ({updatedPrice}) => {
+const RentalDetails = () => {
 
   const {
     carData, daysBooked, pickupLocation, pickupDate,pickupTime, returnLocation, returnDate, returnTime, 
     totalPrice ,selectedInsurance, selectedBabySeat, travelLocation
   } = useContext(AppContext);
   
-
+  useEffect(() => {
+    console.log("Precio total: " + totalPrice);
+  })
   const parsePickupDate = parseISO(pickupDate);
   const formattedPickupDate = format(parsePickupDate, 'eee, dd. MMM. yyyy');
   
