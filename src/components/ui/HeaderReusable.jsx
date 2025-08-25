@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/HeaderReusable.module.css"; // Importa los estilos CSS Modules
-import WhatsAppIcon from "../WhatsappIcon";
+import WhatsAppIcon from "../icons/WhatsappIcon";
 
 // Componentes placeholder para Button, Sheet y sus sub-componentes
 // En un proyecto real, deberías tener tus propias implementaciones de estos componentes

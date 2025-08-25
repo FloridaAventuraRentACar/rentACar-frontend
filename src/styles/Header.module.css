@@ -245,6 +245,17 @@
   background-color: var(--color-green-hover-bg); /* hover:bg-green-50 */
   border-color: var(--color-green-hover-border); /* hover:border-green-600 */
 }
+/* Specific Button Styles */
+.instagramButton{
+  border-color: #000000;
+  border-width: 1px; /* border-green-500 */
+  color: #000000; /* text-green-600 */
+  background-color: transparent; /* bg-transparent */
+}
+
+.instagramButton:hover {
+  border-color: #dc2743; /* hover:border-green-600 */
+}
 
 .whatsappText {
   display: none; /* hidden */

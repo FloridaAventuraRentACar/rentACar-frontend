@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Header.module.css"; // Importa los estilos CSS Modules
-import { Menu, MessageCircle, Phone } from "lucide-react"; // Para los íconos
-import WhatsAppIcon from "../WhatsappIcon";
+import { Phone, Instagram } from "lucide-react"; // Para los íconos
+import WhatsAppIcon from "../icons/WhatsappIcon";
 
 // Componentes placeholder para Button, Sheet y sus sub-componentes
-// En un proyecto real, deberías tener tus propias implementaciones de estos componentes
-// que no dependan de Shadcn UI o Tailwind.
 const Button = ({ asChild, children, className, variant, size, ...props }) => {
   if (asChild) {
     // Si asChild es true, esperamos que el primer hijo sea un elemento, como un <a>
@@ -95,6 +93,23 @@ export default function Header({ className = "" }) {
 
           {/* Desktop Actions */}
           <div className={styles.desktopActions}>
+            {/* Instagram Button */}
+            {/*<Button
+              asChild
+              variant="outline"
+              size="sm"
+              className={styles.instagramButton}
+            >
+              <a
+                href="https://www.instagram.com/floridaaventurarentacar?utm_source=ig_web_button_share_sheet&igsh=MWtxNnN6MTBhZ3NpZw==" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.buttonContent}
+              >
+                <InstagramIcon style={{ fontSize: '32px' }} />
+                <span className={styles.whatsappText}>WhatsApp</span>
+              </a>
+            </Button>*/}
             {/* WhatsApp Button */}
             <Button
               asChild

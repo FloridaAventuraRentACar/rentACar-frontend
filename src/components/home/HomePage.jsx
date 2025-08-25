@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Menu,
   X,
@@ -7,12 +7,6 @@ import {
   Clock,
   DollarSign,
   Car,
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Instagram,
-  Twitter,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -25,12 +19,15 @@ import { cars } from "../../utilities/CarsToShow.js";
 import ContactUs from "./ContactUs.jsx";
 import Footer from "./Footer.jsx";
 import testimonials from "../../utilities/testimonials.js";
+import { AppContext } from "../../context/AppContext.jsx";
 
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const {clearRentalData} = useContext(AppContext);
 
   useEffect(() => {
+    clearRentalData();
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
