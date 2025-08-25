@@ -1,14 +1,17 @@
 import styles from '../../styles/admin/RentalsGrid.module.css'
 import { sortRentalsByDate } from '../../utilities/functions/sortRentalsByDate'
-import { getCurrentRentals, getRentalById } from '../../services/rentalService'
+import { deleteRentalById, getCurrentRentals } from '../../services/rentalService'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { parseISO, format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import ConfirmationModal from '../ui/ConfirmationModal'
 
 export default function RentalsGrid() {
 
   const [rentals, setRentals] = useState([]);
+  const [showConfirmationComponent, setShowConfirmationComponent] = useState(false);
+  const [rentalIdToDelete, setRentalIdToDelete] = useState(null);
 
   const navigate = useNavigate();
 
@@ -16,7 +19,7 @@ export default function RentalsGrid() {
     
     fetchCurrentRentals();
 
-  }, []);
+  }, [showConfirmationComponent]);
 
   //Trae un resumen de los alquileres activos
   const fetchCurrentRentals = async () => {
@@ -39,6 +42,27 @@ export default function RentalsGrid() {
     navigate("/admin/rentalDetail/" + rental.id);
   }
 
+  const handleRentalDeleteClick = (rentalId) => {
+
+    setShowConfirmationComponent(true);
+    setRentalIdToDelete(rentalId);
+  }
+
+  const handleDelete = async () => {
+
+    try {
+      await deleteRentalById(rentalIdToDelete);
+    } catch (error) {
+      console.log("Error: " +error);
+    }
+    setShowConfirmationComponent(false);
+  }
+
+  const handleCancel = () => {
+
+    setShowConfirmationComponent(false);
+
+  }
   return (
     <div className={styles.container}>
       <div className={styles.cardList}>
@@ -65,7 +89,7 @@ export default function RentalsGrid() {
               </button>
               <button
                 className={styles.deleteButton + ' ' + styles.button}
-                onClick={() => handleRentalDetailClick(rental)}
+                onClick={() => handleRentalDeleteClick(rental.id)}
               >
                 X
               </button>
@@ -73,6 +97,13 @@ export default function RentalsGrid() {
           </div>
         ))}
       </div>
+      <ConfirmationModal 
+        message={"¿Estas seguro que quieres eliminar el alquiler?"} 
+        onConfirm={handleDelete} 
+        onCancel={handleCancel} 
+        isOpen={showConfirmationComponent} 
+        type={"danger"}
+      />
     </div>
   )
 }

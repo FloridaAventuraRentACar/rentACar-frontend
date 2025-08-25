@@ -24,3 +24,11 @@ export const getRentalById = (rentalId) => {
         }
     });
 };
+
+export const deleteRentalById = (rentalId) => {
+    return axios.delete(`${API_RENTALS}/${rentalId}`,{
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+};
