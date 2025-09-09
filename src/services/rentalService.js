@@ -32,3 +32,11 @@ export const deleteRentalById = (rentalId) => {
         }
     });
 };
+
+export const updateRental = (rental) => {
+    return axios.put(`${API_RENTALS}/${rental.id}`, rental, {
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+};

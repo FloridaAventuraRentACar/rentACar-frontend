@@ -14,9 +14,6 @@ const RentalDetails = () => {
     totalPrice ,selectedInsurance, selectedBabySeat, travelLocation
   } = useContext(AppContext);
   
-  useEffect(() => {
-    console.log("Precio total: " + totalPrice);
-  })
   const parsePickupDate = parseISO(pickupDate);
   const formattedPickupDate = format(parsePickupDate, 'eee, dd. MMM. yyyy');
   

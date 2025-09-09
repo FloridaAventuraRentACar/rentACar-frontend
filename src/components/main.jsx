@@ -36,7 +36,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/admin/rentalDetail/:id",
+        path: "/admin/rentals/view/:id",
+        element: (
+          <ProtectedRoute>
+            <RentalAdminResume isEditable={false} />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/rentals/edit/:id",
         element: (
           <ProtectedRoute>
             <RentalAdminResume />

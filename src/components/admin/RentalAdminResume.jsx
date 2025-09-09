@@ -1,101 +1,189 @@
-import { useEffect, useState } from "react";
-import styles from "../../styles/admin/RentalAdminResume.module.css";
-import { getRentalById } from "../../services/rentalService";
-import { useNavigate, useParams } from "react-router-dom";
-import insuranceNames from "../../utilities/names/insuranceNames";
-import babySeatNames from "../../utilities/names/babySeatNames";
-import { gasTankNames } from "../../utilities/names/gasTankNames";
-import locationNames from "../../utilities/names/locationNames";
-import { formatPhoneNumber } from "../../utilities/functions/formatPhoneNumber";
-import { formatDateAndHour } from "../../utilities/functions/formatDateAndHour";
-import { formatDate } from "../../utilities/functions/formatDate";
-import BackButton from "../BackButton";
+"use client"
 
-export default function RentalAdminResume() {
+import { useContext, useEffect, useState } from "react"
+import styles from "../../styles/admin/RentalAdminResume.module.css"
+import { getRentalById, updateRental } from "../../services/rentalService"
+import { useNavigate, useParams } from "react-router-dom"
+import insuranceNames from "../../utilities/names/insuranceNames"
+import babySeatNames from "../../utilities/names/babySeatNames"
+import { gasTankNames } from "../../utilities/names/gasTankNames"
+import locationNames from "../../utilities/names/locationNames"
+import { formatPhoneNumber } from "../../utilities/functions/formatPhoneNumber"
+import { formatDateAndHour } from "../../utilities/functions/formatDateAndHour"
+import { formatDate } from "../../utilities/functions/formatDate"
+import BackButton from "../BackButton"
+import { carNames } from "../../utilities/names/carNames"
+import ConfirmationModal from "../ui/ConfirmationModal"
+import travelLocationNames from "../../utilities/names/travelLocationNames"
+
+export default function RentalAdminResume({ isEditable = true }) {
   //capturo el id de la URL
-  const { id } = useParams();
-  const [rental, setRental] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const { id } = useParams()
+  const [rental, setRental] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [editedRental, setEditedRental] = useState(null)
+  const [cars, setCars] = useState(null)
+  const [showConfirmationComponent, setShowConfirmationComponent] = useState(false);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
-    fetchRentalDetails(id);
-  }, [id]);
+    fetchRentalDetails(id)
+    fetchCarNames()
+  }, [id])
 
+  useEffect(() => {
+    if (rental) {
+      setEditedRental({ ...rental })
+    }
+  }, [rental])
+
+  const fetchCarNames = async () => {
+    
+    setCars(await carNames())
+
+    console.log(" carNames: " + cars[2])
+  }
   //Trae toda la informacion del alquiler seleccionado
   const fetchRentalDetails = async (id) => {
     try {
-      const response = await getRentalById(id);
-      const fetchedRental = await response.data;
+      const response = await getRentalById(id)
+      const fetchedRental = await response.data
 
-      setRental(fetchedRental);
+      setRental(fetchedRental)
+      
     } catch (error) {
-      console.log("An error ocurred: " + error);
+      console.log("An error ocurred: " + error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
-  const onClick = () => {
-    navigate(`/admin`);
-  };
+  const navigateAdmin = () => {
+    navigate(`/admin`)
+  }
+
+//RESOLVER ERROR DE PRECIO TOTAL EN 0
+
+//Mostrar cartel de actualizacion exitosa o mostrar cartel de error al actualizar
+//Renderizar nuevamente el componente al guarda cambios para que se actualicen los datos
+
+  const handleSave = () => {
+    try {
+
+      updateRental(editedRental)
+      setShowConfirmationComponent(false)
+      navigateAdmin()
+      console.log("Alquiler actualizado con exito")
+      
+    } catch (error) {
+      alert("Error al actualizar el alquiler: " + error)
+      console.log("An error ocurred: " + error)
+      //mostrar mensaje de que alguna validacion fallo
+    }
+  }
+
+  const handleCancel = () => {
+    setShowConfirmationComponent(false);
+  }
+
+  const handleInputChange = (field, value, driverIndex = null) => {
+    if (driverIndex !== null) {
+      // Actualizar conductor específico
+      setEditedRental((prev) => ({
+        ...prev, 
+        clients: prev.clients.map((client, index) => (index === driverIndex ? { ...client, [field]: value } : client)),
+      }))
+    } else {
+      // Actualizar campo principal del rental
+      setEditedRental((prev) => ({
+        ...prev,
+        [field]: value,
+      }))
+    }
+  }
+
+  const renderField = (label, value, field, driverIndex = null, type = "text") => {
+    const isEditMode = isEditable
+    const currentValue =
+      driverIndex !== null ? editedRental?.clients[driverIndex]?.[field] || value : editedRental?.[field] || value
+
+    return (
+      <div className={styles.field}>
+        <span className={styles.label}>{label}:</span>
+        {isEditMode ? (
+          <input
+            type={type}
+            value={currentValue}
+            onChange={(e) => handleInputChange(field, e.target.value, driverIndex)}
+            className={styles.editInput}
+          />
+        ) : (
+          <span className={styles.value}>{value}</span>
+        )}
+      </div>
+    )
+  }
+
+  const renderSelectField = (label, value, field, options, driverIndex = null) => {
+    const isEditMode = isEditable
+    const currentValue =
+      driverIndex !== null ? editedRental?.clients[driverIndex]?.[field] || value : editedRental?.[field] || value
+
+    return (
+      <div className={styles.field}>
+        <span className={styles.label}>{label}:</span>
+        {isEditMode ? (
+          <select
+            value={currentValue}
+            onChange={(e) => handleInputChange(field, e.target.value, driverIndex)}
+            className={styles.editSelect}
+          >
+            {Object.entries(options).map(([key, displayValue]) => (
+              <option key={key} value={key}>
+                {displayValue}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <span className={styles.value}>{options[value] || value}</span>
+        )}
+      </div>
+    )
+  }
 
   if (loading) {
-    return <div className={styles.loading}>Cargando...</div>;
+    return <div className={styles.loading}>Cargando...</div>
   }
   if (!rental) {
-    return (
-      <div className={styles.failure}>
-        Error al traer la informacion del cliente
-      </div>
-    );
+    return <div className={styles.failure}>Error al traer la informacion del cliente</div>
   }
 
-  const mainDriver = rental.clients[0];
-  const additionalDrivers = rental.clients.slice(1);
+  const mainDriver = rental.clients[0]
+  const additionalDrivers = rental.clients.slice(1)
 
   return (
     <div className={styles.background}>
-      <BackButton onClick={onClick} />
+      <BackButton onClick={navigateAdmin} />
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>Detalles del Alquiler</h1>
+          <h1 className={styles.title}>{isEditable ? "Editar Alquiler" : "Detalles del Alquiler"}</h1>
+          {isEditable && <div className={styles.editBadge}>Modo Edición</div>}
         </div>
 
         {/* Información del Alquiler */}
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Información del Vehículo</h2>
           <div className={styles.grid}>
+            {renderSelectField("Vehículo", rental.carName, "carName" , cars)}
+            {renderField("Precio Total", `$${rental.totalPrice}`, "totalPrice", null, "number")}
             <div className={styles.field}>
-              <span className={styles.label}>Vehículo:</span>
-              <span className={styles.value}>{rental.carName}</span>
+              <span className={styles.label}>Dias de alquiler</span>
+              <span className={styles.value}>{rental.daysRented} dias</span>
             </div>
-            <div className={styles.field}>
-              <span className={styles.label}>Precio Total:</span>
-              <span className={styles.value}>${rental.totalPrice}</span>
-            </div>
-            <div className={styles.field}>
-              <span className={styles.label}>Días de Alquiler:</span>
-              <span className={styles.value}>{rental.daysRented} días</span>
-            </div>
-            <div className={styles.field}>
-              <span className={styles.label}>Seguro:</span>
-              <span className={styles.value}>
-                {insuranceNames[rental.insurance]}
-              </span>
-            </div>
-            <div className={styles.field}>
-              <span className={styles.label}>Asiento de Bebé:</span>
-              <span className={styles.value}>
-                {babySeatNames[rental.babySeat]}
-              </span>
-            </div>
-            <div className={styles.field}>
-              <span className={styles.label}>Tanque de Gasolina:</span>
-              <span className={styles.value}>
-                {gasTankNames[rental.gasTank]}
-              </span>
-            </div>
+            {renderSelectField("Seguro", rental.insurance, "insurance", insuranceNames)}
+            {renderSelectField("Asiento de Bebé", rental.babySeat, "babySeat", babySeatNames)}
+            {renderSelectField("Tanque de Gasolina", rental.gasTank, "gasTank", gasTankNames)}
           </div>
         </div>
 
@@ -103,36 +191,11 @@ export default function RentalAdminResume() {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Fechas y Ubicaciones</h2>
           <div className={styles.grid}>
-            <div className={styles.field}>
-              <span className={styles.label}>Fecha de entrega:</span>
-              <span className={styles.value}>
-                {formatDateAndHour(rental.start)}
-              </span>
-            </div>
-            <div className={styles.field}>
-              <span className={styles.label}>Fecha de devolucion:</span>
-              <span className={styles.value}>
-                {formatDateAndHour(rental.end)}
-              </span>
-            </div>
-            <div className={styles.field}>
-              <span className={styles.label}>Lugar de entrega:</span>
-              <span className={styles.value}>
-                {locationNames[rental.pickupLocation]}
-              </span>
-            </div>
-            <div className={styles.field}>
-              <span className={styles.label}>Lugar de Devolución:</span>
-              <span className={styles.value}>
-                {locationNames[rental.returnLocation]}
-              </span>
-            </div>
-            {rental.travelLocation && (
-              <div className={styles.field}>
-                <span className={styles.label}>Destino de Viaje:</span>
-                <span className={styles.value}>{rental.travelLocation}</span>
-              </div>
-            )}
+            {renderField("Fecha de entrega", formatDateAndHour(rental.start), "start", null, "datetime-local")}
+            {renderField("Fecha de devolucion", formatDateAndHour(rental.end), "end", null, "datetime-local")}
+            {renderSelectField("Lugar de entrega", rental.pickupLocation, "pickupLocation", locationNames)}
+            {renderSelectField("Lugar de Devolución", rental.returnLocation, "returnLocation", locationNames)}
+            {rental.travelLocation && renderSelectField("Destino de Viaje", rental.travelLocation, "travelLocation", travelLocationNames)}
           </div>
         </div>
 
@@ -141,46 +204,21 @@ export default function RentalAdminResume() {
           <h2 className={styles.sectionTitle}>Conductor Principal</h2>
           <div className={styles.driverCard}>
             <div className={styles.grid}>
-              <div className={styles.field}>
-                <span className={styles.label}>Nombre:</span>
-                <span className={styles.value}>
-                  {mainDriver.name} {mainDriver.surname}
-                </span>
-              </div>
-              <div className={styles.field}>
-                <span className={styles.label}>Email:</span>
-                <span className={styles.value}>{mainDriver.email}</span>
-              </div>
-              <div className={styles.field}>
-                <span className={styles.label}>Teléfono:</span>
-                <span className={styles.value}>{mainDriver.phone}</span>
-              </div>
-              <div className={styles.field}>
-                <span className={styles.label}>Fecha de Nacimiento:</span>
-                <span className={styles.value}>
-                  {formatDate(mainDriver.bornDate)}
-                </span>
-              </div>
-              <div className={styles.field}>
-                <span className={styles.label}>Número de Licencia:</span>
-                <span className={styles.value}>{mainDriver.licenseNumber}</span>
-              </div>
-              <div className={styles.field}>
-                <span className={styles.label}>Nombre en Licencia:</span>
-                <span className={styles.value}>{mainDriver.licenseName}</span>
-              </div>
-              <div className={styles.field}>
-                <span className={styles.label}>Dirección en Licencia:</span>
-                <span className={styles.value}>
-                  {mainDriver.licenseAddress}
-                </span>
-              </div>
-              <div className={styles.field}>
-                <span className={styles.label}>Vencimiento de Licencia:</span>
-                <span className={styles.value}>
-                  {formatDate(mainDriver.licenseExpirationDate)}
-                </span>
-              </div>
+              {renderField("Nombre", mainDriver.name, "name", 0)}
+              {renderField("Apellido", mainDriver.surname, "surname", 0)}
+              {renderField("Email", mainDriver.email, "email", 0, "email")}
+              {renderField("Teléfono", mainDriver.phone, "phone", 0, "tel")}
+              {renderField("Fecha de Nacimiento", formatDate(mainDriver.bornDate), "bornDate", 0, "date")}
+              {renderField("Número de Licencia", mainDriver.licenseNumber, "licenseNumber", 0)}
+              {renderField("Nombre en Licencia", mainDriver.licenseName, "licenseName", 0)}
+              {renderField("Dirección en Licencia", mainDriver.licenseAddress, "licenseAddress", 0)}
+              {renderField(
+                "Vencimiento de Licencia",
+                formatDate(mainDriver.licenseExpirationDate),
+                "licenseExpirationDate",
+                0,
+                "date",
+              )}
             </div>
           </div>
         </div>
@@ -191,57 +229,54 @@ export default function RentalAdminResume() {
             <h2 className={styles.sectionTitle}>Conductores Adicionales</h2>
             {additionalDrivers.map((driver, index) => (
               <div key={index} className={styles.driverCard}>
+                <h3 className={styles.driverTitle}>Conductor Adicional {index + 1}</h3>
                 <div className={styles.grid}>
-                  <div className={styles.field}>
-                    <span className={styles.label}>Nombre:</span>
-                    <span className={styles.value}>
-                      {driver.name} {driver.surname}
-                    </span>
-                  </div>
-                  <div className={styles.field}>
-                    <span className={styles.label}>Email:</span>
-                    <span className={styles.value}>{driver.email}</span>
-                  </div>
-                  <div className={styles.field}>
-                    <span className={styles.label}>Teléfono:</span>
-                    <span className={styles.value}>
-                      {formatPhoneNumber(driver.phone)}
-                    </span>
-                  </div>
-                  <div className={styles.field}>
-                    <span className={styles.label}>Fecha de Nacimiento:</span>
-                    <span className={styles.value}>
-                      {formatDateAndHour(driver.bornDate)}
-                    </span>
-                  </div>
-                  <div className={styles.field}>
-                    <span className={styles.label}>Número de Licencia:</span>
-                    <span className={styles.value}>{driver.licenseNumber}</span>
-                  </div>
-                  <div className={styles.field}>
-                    <span className={styles.label}>Nombre en Licencia:</span>
-                    <span className={styles.value}>{driver.licenseName}</span>
-                  </div>
-                  <div className={styles.field}>
-                    <span className={styles.label}>Dirección en Licencia:</span>
-                    <span className={styles.value}>
-                      {driver.licenseAddress}
-                    </span>
-                  </div>
-                  <div className={styles.field}>
-                    <span className={styles.label}>
-                      Vencimiento de Licencia:
-                    </span>
-                    <span className={styles.value}>
-                      {formatDateAndHour(driver.licenseExpirationDate)}
-                    </span>
-                  </div>
+                  {renderField("Nombre", driver.name, "name", index + 1)}
+                  {renderField("Apellido", driver.surname, "surname", index + 1)}
+                  {renderField("Email", driver.email, "email", index + 1, "email")}
+                  {renderField("Teléfono", formatPhoneNumber(driver.phone), "phone", index + 1, "tel")}
+                  {renderField(
+                    "Fecha de Nacimiento",
+                    formatDateAndHour(driver.bornDate),
+                    "bornDate",
+                    index + 1,
+                    "date",
+                  )}
+                  {renderField("Número de Licencia", driver.licenseNumber, "licenseNumber", index + 1)}
+                  {renderField("Nombre en Licencia", driver.licenseName, "licenseName", index + 1)}
+                  {renderField("Dirección en Licencia", driver.licenseAddress, "licenseAddress", index + 1)}
+                  {renderField(
+                    "Vencimiento de Licencia",
+                    formatDateAndHour(driver.licenseExpirationDate),
+                    "licenseExpirationDate",
+                    index + 1,
+                    "date",
+                  )}
                 </div>
               </div>
             ))}
           </div>
         )}
+
+        {/* Botones de acción para modo edición */}
+        {isEditable && (
+          <div className={styles.actionButtons}>
+            <button className={styles.saveButton} onClick={() => setShowConfirmationComponent(true)}>
+              Guardar Cambios
+            </button>
+            <button className={styles.cancelButton} onClick={() => setEditedRental({ ...rental })}>
+              Cancelar Cambios
+            </button>
+          </div>
+        )}
       </div>
+      <ConfirmationModal 
+        message={"¿Estas seguro que quieres editar el alquiler?"} 
+        onConfirm={handleSave} 
+        onCancel={handleCancel} 
+        isOpen={showConfirmationComponent} 
+        type={"success"}
+      />
     </div>
-  );
+  )
 }
