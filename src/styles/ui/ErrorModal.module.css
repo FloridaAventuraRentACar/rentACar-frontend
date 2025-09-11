@@ -1,0 +1,435 @@
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: backdropFadeIn 0.3s ease-out;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.content {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0, 0, 0, 0.15);
+  padding: 3rem 2rem;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Botón de cerrar */
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+  transform: scale(1.1);
+}
+
+.closeButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+.closeIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.iconContainer {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  background-color: #fff7ed; /* bg-orange-50 */
+  border-radius: 50%;
+  border: 2px solid #fed7aa; /* border-orange-200 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #f97316; /* text-orange-500 */
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937; /* text-gray-800 */
+  margin-bottom: 1rem;
+  letter-spacing: 0.025em;
+}
+
+.message {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4b5563; /* text-gray-600 */
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.button {
+  width: 100%;
+  max-width: 300px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  margin-bottom: 2rem;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2), 0 8px 20px rgba(249, 115, 22, 0.4);
+}
+
+.helpText {
+  border-top: 1px solid #e5e7eb; /* border-gray-200 */
+  padding-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #6b7280; /* text-gray-500 */
+}
+
+.highlight {
+  color: #f97316; /* text-orange-500 */
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.highlight:hover {
+  color: #ea580c; /* hover:text-orange-600 */
+}
+
+/* Animaciones */
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .backdrop {
+    padding: 0.5rem;
+  }
+
+  .content {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    max-height: 95vh;
+  }
+
+  .closeButton {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .closeIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .iconContainer {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .message {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .helpText {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .backdrop {
+    padding: 0.25rem;
+  }
+
+  .content {
+    padding: 1.5rem 1rem;
+    border-radius: 10px;
+  }
+
+  .closeButton {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .closeIcon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .iconContainer {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .message {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .helpText {
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .content {
+    max-height: 85vh;
+    padding: 1.5rem;
+  }
+
+  .iconContainer {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .message {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .button {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Touch-friendly improvements for mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  .button,
+  .closeButton {
+    min-height: 48px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .content,
+  .button,
+  .closeButton,
+  .highlight {
+    animation: none;
+    transition: none;
+  }
+
+  .button:hover,
+  .closeButton:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .content {
+    border: 2px solid #000;
+    background: #fff;
+    backdrop-filter: none;
+  }
+
+  .button {
+    border: 2px solid currentColor;
+  }
+
+  .closeButton {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Print styles */
+@media print {
+  .backdrop {
+    display: none;
+  }
+}
+
+/* Focus management */
+.content:focus {
+  outline: none;
+}
+
+.button:focus-visible,
+.closeButton:focus-visible {
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .content {
+    background: rgba(31, 41, 55, 0.98);
+    border-color: rgba(75, 85, 99, 0.3);
+  }
+
+  .title {
+    color: #f9fafb;
+  }
+
+  .message {
+    color: #d1d5db;
+  }
+
+  .helpText {
+    color: #9ca3af;
+    border-color: rgba(75, 85, 99, 0.3);
+  }
+
+  .closeButton {
+    color: #9ca3af;
+  }
+
+  .closeButton:hover {
+    background-color: rgba(55, 65, 81, 0.8);
+    color: #d1d5db;
+  }
+}
