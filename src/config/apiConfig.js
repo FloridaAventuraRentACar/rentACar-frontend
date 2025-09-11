@@ -9,3 +9,5 @@ export const API_RENTALS = `${API_BASE_URL}/rentals`;
 export const API_GET_CURRENT_RENTALS = `${API_BASE_URL}/rentals/current`;
 
 export const API_POST_LOGIN = `${API_BASE_URL}/auth/login`;
+
+export const API_CARS = `${API_BASE_URL}/cars`;

@@ -1,6 +1,6 @@
 export function formatPhoneNumber (number) {
-    // Eliminar todos los caracteres que no sean dígitos
-  const clean = number.replace(/\D/g, '');
+  // Eliminar todos los caracteres que no sean dígitos
+  const clean = String(number || '').replace(/\D/g, '');
 
   // Si es formato internacional con código de país +54 y "9" (ej: 5491123456789)
   if (clean.length === 13 && clean.startsWith('549')) {
