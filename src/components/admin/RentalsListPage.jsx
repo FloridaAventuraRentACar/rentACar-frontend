@@ -13,6 +13,7 @@ export default function RentalsListPage() {
   const [isSuccessAnimating, setIsSuccessAnimating] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 
+  
   // Verificar si se debe mostrar la notificación de éxito al cargar el componente
   useEffect(() => {
     if (location.state?.showSuccess) {
