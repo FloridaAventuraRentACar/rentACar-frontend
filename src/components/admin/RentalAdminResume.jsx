@@ -14,6 +14,7 @@ import { carNames } from "../../utilities/names/carNames";
 import ConfirmationModal from "../ui/ConfirmationModal";
 import travelLocationNames from "../../utilities/names/travelLocationNames";
 import ErrorModal from "../ui/ErrorModal";
+import { getErrorMessage } from "../../utilities/errors/errorsMessages";
 
 export default function RentalAdminResume({ isEditable = true }) {
   //capturo el id de la URL
@@ -71,6 +72,7 @@ export default function RentalAdminResume({ isEditable = true }) {
   const handleSave = async () => {
     try {
       await updateRental(editedRental);
+      
       setShowConfirmationComponent(false);
 
       setRental({ ...editedRental });
@@ -84,9 +86,12 @@ export default function RentalAdminResume({ isEditable = true }) {
     } catch (error) {
       setShowConfirmationComponent(false);
       setShowErrorModal(true);
-      setErrorButtonMessage("Volver al inicio");
-      setErrorMessage("Error al actualizar el alquiler");
+      setErrorButtonMessage("Salir");
+
+      setErrorMessage(getErrorMessage(error.response.data.code, "es"));
+
       setErrorPath("/admin/rentals/edit/" + id);
+      fetchRentalDetails(id);
     }
   };
 
