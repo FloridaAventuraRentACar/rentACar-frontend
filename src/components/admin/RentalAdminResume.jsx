@@ -215,7 +215,7 @@ export default function RentalAdminResume({ isEditable = true }) {
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>Información del Vehículo</h2>
           <div className={styles.grid}>
-            {renderSelectField("Vehículo", rental.carName, "carName", cars)}
+            {renderSelectField("Vehículo", rental.carId, "carId", cars)}
             {renderField(
               "Precio Total",
               `$${rental.totalPrice}`,
