@@ -59,7 +59,7 @@ export default function RentalsListPage() {
       <SuccessNotification
         isVisible={showSuccessNotification}
         isAnimating={isSuccessAnimating}
-        message="¡Alquiler actualizado exitosamente!"
+        message={successMessage}
         onClose={hideSuccessNotification}
       />
     </div>

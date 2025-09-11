@@ -61,6 +61,12 @@ export default function RentalsGrid() {
   const handleDelete = async () => {
     try {
       await deleteRentalById(rentalIdToDelete);
+      navigate("/admin", {
+        state: {
+          showSuccess: true,
+          message: "Alquiler eliminado exitosamente",
+        },
+      });
     } catch (error) {
 
       setShowConfirmationComponent(false);
