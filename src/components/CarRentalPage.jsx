@@ -1,8 +1,8 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import styles from "../styles/CarRentalPage.module.css";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,9 +15,12 @@ import MotionPhotosAutoIcon from "@mui/icons-material/MotionPhotosAuto";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import SensorDoorIcon from "@mui/icons-material/SensorDoor";
 import locationNames from "../utilities/names/locationNames.js";
+import PriceDetailsModal from "./ui/PriceDetailsModal.jsx";
 
 export function CarRentalPage() {
   const navigate = useNavigate();
+
+  const [isPriceDetailsModalOpen, setIsPriceDetailsModalOpen] = useState(false);
 
   const handleClick = () => {
     navigate("/driver-form");
@@ -45,42 +48,6 @@ export function CarRentalPage() {
     selectedGasTank,
     setSelectedGasTank,
   } = useContext(AppContext);
-
-  const insuranceCharge = () => {
-    if (selectedInsurance === "DEDUCTIBLE") {
-      return 0;
-    }
-    return 15 * daysBooked;
-  };
-
-  const babySeatCharge = () => {
-    if (selectedBabySeat === "NONE") {
-      return 0;
-    }
-    return 3 * daysBooked;
-  };
-
-  const gasTankCharge = () => {
-    if (selectedGasTank === "EMPTY") {
-      return gasTankPrices[carData.type];
-    }
-    return 0;
-  };
-
-  // useEffect(() => {
-  //   setTotalPrice(
-  //     carData.pricePerDay * daysBooked +
-  //     insuranceCharge() +
-  //     babySeatCharge() +
-  //     travelLocationPrice +
-  //     gasTankCharge()
-  //   );
-  // }, [
-  //   selectedInsurance,
-  //   selectedBabySeat,
-  //   travelLocationPrice,
-  //   selectedGasTank,
-  // ]);
 
   const handleInsuranceClick = (selected) => {
     setSelectedInsurance(selected);
@@ -110,6 +77,14 @@ export function CarRentalPage() {
   const handleGasTankClick = (selected) => {
     setSelectedGasTank(selected);
   };
+
+  const handlePriceDetailsClose = () => {
+    setIsPriceDetailsModalOpen(false);
+  }
+
+  const handlePriceDetailsClick = () => {
+    setIsPriceDetailsModalOpen(true);
+  }
 
   return (
     <div className={styles.carRentalCard}>
@@ -414,7 +389,7 @@ export function CarRentalPage() {
             <p className={styles.daysReserved}>{daysBooked} dias reservados</p>
           </div>
           <strong className={styles.totalPrice}>${totalPrice} total</strong>
-          <a href="#">Detalles del precio</a>
+          <a onClick={handlePriceDetailsClick}>Detalles del precio</a>
         </div>
         <div className={styles.reserveInfo}>
           <div className={styles.pickupInfo}>
@@ -440,6 +415,19 @@ export function CarRentalPage() {
           Siguiente
         </button>
       </div>
+
+      <PriceDetailsModal  
+        daysRented = {daysBooked}
+        pricePerDay = {carData.pricePerDay}
+        insurance = {selectedInsurance}
+        babySeat = {selectedBabySeat}
+        travelLocation = {travelLocation}
+        gasTank = {selectedGasTank}
+        carType = {carData.type}
+        totalPrice = {totalPrice}
+        onClose = {handlePriceDetailsClose}
+        isOpen = {isPriceDetailsModalOpen}
+      />
     </div>
   );
 }
