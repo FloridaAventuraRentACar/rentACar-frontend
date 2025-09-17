@@ -70,8 +70,9 @@
 
 /* Header del modal - Elegante y profesional */
 .header {
-  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  background: linear-gradient(135deg, #1f2937c4 0%, #111827 100%);
   padding: 2.5rem 2rem 2rem 2rem;
+  margin-bottom: 1.5rem;
   border-radius: 12px 12px 0 0;
   text-align: center;
   position: relative;
@@ -95,27 +96,25 @@
 
 /* Contenido del modal */
 .content {
-  padding: 2rem;
+  padding: 0rem;
   background: #ffffff;
 }
 
 .pricePerDayContainer {
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
 }
 
 /* Secciones - Diseño limpio y profesional */
 .section {
   background: #f8f9fa;
   border-radius: 8px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0rem;
   border: 1px solid #e5e7eb;
   transition: all 0.2s ease;
-}
-
-.section:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .title {
@@ -130,12 +129,11 @@
   display: inline-block;
 }
 
-/* Líneas de items - Espaciado profesional */
 .line {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.875rem 0;
+  padding-bottom: 0.3rem;
   border-bottom: 1px solid #f3f4f6;
   transition: all 0.2s ease;
 }

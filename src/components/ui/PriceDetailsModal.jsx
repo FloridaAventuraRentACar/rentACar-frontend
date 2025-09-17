@@ -1,10 +1,9 @@
-
-import { useEffect } from "react"
-import { X } from "lucide-react"
-import styles from "../../styles/ui/PriceDetailsModal.module.css"
-import gasTankPrices from "../../utilities/gasTankPrices"
-import locationPrices from "../../utilities/locationPrices"
-import travelLocationNames from "../../utilities/names/travelLocationNames"
+import { useEffect } from "react";
+import { X } from "lucide-react";
+import styles from "../../styles/ui/PriceDetailsModal.module.css";
+import gasTankPrices from "../../utilities/gasTankPrices";
+import locationPrices from "../../utilities/locationPrices";
+import travelLocationNames from "../../utilities/names/travelLocationNames";
 
 export default function PriceDetailsModal({
   daysRented,
@@ -16,39 +15,58 @@ export default function PriceDetailsModal({
   carType,
   totalPrice,
   onClose,
-  isOpen = false
+  isOpen = false,
 }) {
+  
 
-  if (!isOpen) return null
+  useEffect(() => {
+    if (isOpen) {
+      // Bloquear scroll del body
+      document.body.style.overflow = "hidden";
 
-//   // Bloquear scroll del body cuando el modal está abierto
-//   useEffect(() => {
-//     document.body.style.overflow = "hidden"
-//     return () => {
-//       document.body.style.overflow = "unset"
-//     }
-//   }, [])
+      // Mover la ventana para que el modal quede centrado
+      const scrollToCenter = () => {
+        const modal = document.querySelector(`.${styles.container}`);
+        if (modal) {
+          const modalTop = modal.getBoundingClientRect().top + window.scrollY;
+          const modalHeight = modal.offsetHeight;
+          const windowHeight = window.innerHeight;
+          // Calcular scroll necesario para centrar el modal en la pantalla
+          const scrollPosition = modalTop - (windowHeight - modalHeight) / 2;
+          window.scrollTo({ top: scrollPosition, behavior: "smooth" });
+        }
+      };
+
+      scrollToCenter();
+
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   // Manejar tecla Escape para cerrar el modal
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === "Escape") {
-        onClose()
+        onClose();
       }
-    }
+    };
 
-    document.addEventListener("keydown", handleEscape)
+    document.addEventListener("keydown", handleEscape);
     return () => {
-      document.removeEventListener("keydown", handleEscape)
-    }
-  }, [onClose])
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
 
+  if (!isOpen) return null;
+  
   const handleBackdropClick = (e) => {
     // Solo cerrar si se hace clic en el backdrop, no en el contenido
     if (e.target === e.currentTarget) {
-      onClose()
+      onClose();
     }
-  }
+  };
 
   return (
     <div
@@ -60,7 +78,11 @@ export default function PriceDetailsModal({
     >
       <div className={styles.container}>
         {/* Botón de cerrar */}
-        <button className={styles.closeButton} onClick={onClose} aria-label="Cerrar modal">
+        <button
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Cerrar modal"
+        >
           <X className={styles.closeIcon} />
         </button>
 
@@ -69,7 +91,9 @@ export default function PriceDetailsModal({
           <h2 id="price-details-title" className={styles.modalTitle}>
             Detalles del Precio
           </h2>
-          <p className={styles.modalSubtitle}>Desglose completo de tu reserva</p>
+          <p className={styles.modalSubtitle}>
+            Desglose completo de tu reserva
+          </p>
         </div>
 
         <div className={styles.content}>
@@ -80,7 +104,9 @@ export default function PriceDetailsModal({
                 <span className={styles.info}>
                   {daysRented} días de alquiler x US${pricePerDay}
                 </span>
-                <span className={styles.value}>${pricePerDay * daysRented}</span>
+                <span className={styles.value}>
+                  ${pricePerDay * daysRented}
+                </span>
               </div>
             </div>
 
@@ -90,12 +116,16 @@ export default function PriceDetailsModal({
               {/* Insurance */}
               {insurance === "TOTAL" ? (
                 <div className={styles.line}>
-                  <span className={styles.info}>{daysRented} días de seguro x US$15</span>
+                  <span className={styles.info}>
+                    {daysRented} días de seguro x US$15
+                  </span>
                   <span className={styles.value}>${15 * daysRented}</span>
                 </div>
               ) : (
                 <div className={styles.line}>
-                  <span className={styles.info}>Seguro con franquicia de $500</span>
+                  <span className={styles.info}>
+                    Seguro con franquicia de $500
+                  </span>
                   <span className={styles.included}>incluido</span>
                 </div>
               )}
@@ -103,7 +133,9 @@ export default function PriceDetailsModal({
               {/* Baby seat */}
               {babySeat !== "NONE" && (
                 <div className={styles.line}>
-                  <span className={styles.info}>{daysRented} días de asiento de niño x US$3</span>
+                  <span className={styles.info}>
+                    {daysRented} días de asiento de niño x US$3
+                  </span>
                   <span className={styles.value}>${3 * daysRented}</span>
                 </div>
               )}
@@ -111,8 +143,12 @@ export default function PriceDetailsModal({
               {/* Travel location */}
               {travelLocation && (
                 <div className={styles.line}>
-                  <span className={styles.info}>Viajar a {travelLocationNames[travelLocation]}</span>
-                  <span className={styles.value}>${locationPrices[travelLocation]}</span>
+                  <span className={styles.info}>
+                    Viajar a {travelLocationNames[travelLocation]}
+                  </span>
+                  <span className={styles.value}>
+                    ${locationPrices[travelLocation]}
+                  </span>
                 </div>
               )}
 
@@ -120,7 +156,9 @@ export default function PriceDetailsModal({
               {gasTank === "EMPTY" && (
                 <div className={styles.line}>
                   <span className={styles.info}>Tanque de gasolina</span>
-                  <span className={styles.value}>${gasTankPrices[carType]}</span>
+                  <span className={styles.value}>
+                    ${gasTankPrices[carType]}
+                  </span>
                 </div>
               )}
             </div>
@@ -143,11 +181,11 @@ export default function PriceDetailsModal({
             <h3 className={styles.totalTitle}>Total</h3>
             <div className={styles.totalLine}>
               <span className={styles.totalText}>Total a pagar</span>
-              <span className={styles.totalValue}>${totalPrice}</span>
+              <span className={styles.totalValue}>US${totalPrice}</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
