@@ -3,7 +3,6 @@
 import { useContext, useState } from "react"
 import { Calendar, Car, CheckCircle, Download, MapPin, PersonStanding, Phone } from "lucide-react"
 import styles from "../styles/SuccessfulRental.module.css"
-import { AppContext } from "../context/AppContext"
 import { useLocation, useNavigate } from "react-router-dom"
 import { format, parseISO } from 'date-fns';
 import {locationNames} from '../utilities/names/locationNames'

@@ -10,9 +10,33 @@ export const postRental = (rental) => {
 };
 
 export const getCurrentRentals = () => {
-    return axios.get(`${API_GET_CURRENT_RENTALS}`);
+    return axios.get(`${API_GET_CURRENT_RENTALS}`, {
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    });
 };
 
 export const getRentalById = (rentalId) => {
-    return axios.get(`${API_RENTALS}/${rentalId}`);
+    return axios.get(`${API_RENTALS}/${rentalId}`,{
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+};
+
+export const deleteRentalById = (rentalId) => {
+    return axios.delete(`${API_RENTALS}/${rentalId}`,{
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+};
+
+export const updateRental = (rental) => {
+    return axios.put(`${API_RENTALS}/${rental.id}`, rental, {
+        headers: {
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+    });
 };

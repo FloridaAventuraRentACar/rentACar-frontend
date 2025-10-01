@@ -1,8 +1,8 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import styles from "../styles/CarRentalPage.module.css";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,15 +15,16 @@ import MotionPhotosAutoIcon from "@mui/icons-material/MotionPhotosAuto";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import SensorDoorIcon from "@mui/icons-material/SensorDoor";
 import locationNames from "../utilities/names/locationNames.js";
+import PriceDetailsModal from "./ui/PriceDetailsModal.jsx";
 
 export function CarRentalPage() {
   const navigate = useNavigate();
 
+  const [isPriceDetailsModalOpen, setIsPriceDetailsModalOpen] = useState(false);
+
   const handleClick = () => {
     navigate("/driver-form");
   };
-
-  const location = useLocation(); //Este useState se usa para pasar datos entre componentes
 
   const [selectedSunpass, setSelectedSunpass] = useState("no");
   const [travelLocationPrice, setTravelLocationPrice] = useState(0);
@@ -38,7 +39,6 @@ export function CarRentalPage() {
     returnTime,
     carData,
     totalPrice,
-    setTotalPrice,
     selectedInsurance,
     setSelectedInsurance,
     selectedBabySeat,
@@ -48,43 +48,6 @@ export function CarRentalPage() {
     selectedGasTank,
     setSelectedGasTank,
   } = useContext(AppContext);
-
-  const insuranceCharge = () => {
-    if (selectedInsurance === "DEDUCTIBLE") {
-      return 0;
-    }
-    return 15 * daysBooked;
-  };
-
-  const babySeatCharge = () => {
-    if (selectedBabySeat === "NONE") {
-      return 0;
-    }
-    return 3 * daysBooked;
-  };
-
-  const gasTankCharge = () => {
-    if (selectedGasTank === "EMPTY") {
-      return gasTankPrices[carData.type];
-    }
-    return 0;
-  };
-
-  useEffect(() => {
-    pickupLocation;
-    setTotalPrice(
-      carData.pricePerDay * daysBooked +
-        insuranceCharge() +
-        babySeatCharge() +
-        travelLocationPrice +
-        gasTankCharge()
-    );
-  }, [
-    selectedInsurance,
-    selectedBabySeat,
-    travelLocationPrice,
-    selectedGasTank,
-  ]);
 
   const handleInsuranceClick = (selected) => {
     setSelectedInsurance(selected);
@@ -114,6 +77,14 @@ export function CarRentalPage() {
   const handleGasTankClick = (selected) => {
     setSelectedGasTank(selected);
   };
+
+  const handlePriceDetailsClose = () => {
+    setIsPriceDetailsModalOpen(false);
+  }
+
+  const handlePriceDetailsClick = () => {
+    setIsPriceDetailsModalOpen(true);
+  }
 
   return (
     <div className={styles.carRentalCard}>
@@ -401,7 +372,7 @@ export function CarRentalPage() {
             <div className={styles.optionMain}>
               <div className={styles.optionText}>
                 <strong>Millas ilimitadas</strong>
-                <p>Tienes millas ilimitadas dentro de Miami</p>
+                <p>Tienes millas ilimitadas dentro de la florida</p>
               </div>
             </div>
             <span className={styles.includedTag}>Incluido</span>
@@ -418,7 +389,7 @@ export function CarRentalPage() {
             <p className={styles.daysReserved}>{daysBooked} dias reservados</p>
           </div>
           <strong className={styles.totalPrice}>${totalPrice} total</strong>
-          <a href="#">Detalles del precio</a>
+          <a onClick={handlePriceDetailsClick}>Detalles del precio</a>
         </div>
         <div className={styles.reserveInfo}>
           <div className={styles.pickupInfo}>
@@ -429,7 +400,7 @@ export function CarRentalPage() {
             </p>
           </div>
           <div className={styles.returnInfo}>
-            <strong className={styles.title}>Devolucion</strong>
+            <div className={styles.title}>Devolucion</div>
             <p className={styles.location}>{locationNames[returnLocation]}</p>
             <p className={styles.date}>
               {returnDate} - {returnTime}
@@ -444,6 +415,19 @@ export function CarRentalPage() {
           Siguiente
         </button>
       </div>
+
+      <PriceDetailsModal  
+        daysRented = {daysBooked}
+        pricePerDay = {carData.pricePerDay}
+        insurance = {selectedInsurance}
+        babySeat = {selectedBabySeat}
+        travelLocation = {travelLocation}
+        gasTank = {selectedGasTank}
+        carType = {carData.type}
+        totalPrice = {totalPrice}
+        onClose = {handlePriceDetailsClose}
+        isOpen = {isPriceDetailsModalOpen}
+      />
     </div>
   );
 }

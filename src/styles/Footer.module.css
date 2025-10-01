@@ -1,0 +1,247 @@
+.footer {
+  background-color: #374151; /* Gris oscuro */
+  color: #ffffff; /* Blanco */
+  padding: 2.5rem 0 1.5rem 0;
+  margin-top: auto;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Sección de marca */
+.brandSection {
+  text-align: center;
+}
+
+.brandTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #f97316; /* Naranja */
+  margin-bottom: 1rem;
+  letter-spacing: 0.025em;
+}
+
+.brandSlogan {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e5e7eb; /* Gris claro */
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* Sección de contacto */
+.contactSection {
+  text-align: center;
+}
+
+.contactTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.025em;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.contactLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f97316; /* Naranja */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contactValue {
+  font-size: 0.95rem;
+  color: #e5e7eb; /* Gris claro */
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Copyright */
+.copyright {
+  border-top: 1px solid #4b5563; /* Gris medio */
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.copyrightText {
+  font-size: 0.875rem;
+  color: #9ca3af; /* Gris medio */
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .footer {
+    padding: 3rem 0 2rem 0;
+  }
+
+  .content {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .brandSection {
+    text-align: left;
+  }
+
+  .brandTitle {
+    font-size: 2rem;
+  }
+
+  .brandSlogan {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  .contactSection {
+    text-align: left;
+  }
+
+  .contactInfo {
+    margin: 0;
+  }
+
+  .contactItem {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .contactLabel {
+    flex-shrink: 0;
+    width: 100px;
+  }
+
+  .contactValue {
+    text-align: right;
+    flex: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    padding: 3.5rem 0 2.5rem 0;
+  }
+
+  .content {
+    gap: 4rem;
+  }
+
+  .brandTitle {
+    font-size: 2.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .brandSlogan {
+    font-size: 1.125rem;
+  }
+
+  .contactTitle {
+    font-size: 1.375rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contactInfo {
+    gap: 1rem;
+  }
+
+  .contactItem {
+    padding: 0.5rem 0;
+  }
+
+  .contactLabel {
+    font-size: 0.9rem;
+    width: 110px;
+  }
+
+  .contactValue {
+    font-size: 1rem;
+  }
+
+  .copyrightText {
+    font-size: 0.9rem;
+  }
+}
+
+/* Hover effects */
+.contactValue:hover {
+  color: #f97316; /* Naranja al hover */
+  transition: color 0.3s ease;
+}
+
+/* Animación sutil */
+.footer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mejoras para accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .footer {
+    animation: none;
+  }
+  
+  .contactValue {
+    transition: none;
+  }
+}
+
+/* Estilos para impresión */
+@media print {
+  .footer {
+    background-color: transparent;
+    color: #000;
+    border-top: 1px solid #000;
+  }
+
+  .brandTitle,
+  .contactLabel {
+    color: #000;
+  }
+
+  .brandSlogan,
+  .contactValue,
+  .copyrightText {
+    color: #333;
+  }
+}
