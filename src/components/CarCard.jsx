@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import styles from "../styles/carCard.module.css";
+import styles from "../styles/CarCard.module.css";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatReclineNormal';
