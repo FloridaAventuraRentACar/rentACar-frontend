@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://localhost:8080'; //URL del backend
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; //URL del backend
 
 export const API_GET_AVAILABILITY = `${API_BASE_URL}/availability`;
 
