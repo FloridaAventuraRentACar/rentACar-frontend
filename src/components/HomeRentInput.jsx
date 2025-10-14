@@ -142,7 +142,7 @@ export default function HomeRentInput() {
               id="pickupTime"
               value={pickupTime}
               onChange={(e) => {
-                const rounded = `${roundToNearestHalfHour(e.target.value)}:00`;
+                const rounded = roundToNearestHalfHour(e.target.value);
                 setPickupTime(rounded);
               }}
               className={styles.formInput}
@@ -175,7 +175,7 @@ export default function HomeRentInput() {
               id="returnTime"
               value={returnTime}
               onChange={(e) => {
-                const rounded = `${roundToNearestHalfHour(e.target.value)}:00`;
+                const rounded = roundToNearestHalfHour(e.target.value);
                 setReturnTime(rounded);
               }}
               className={styles.formInput}
