@@ -372,7 +372,7 @@ export function CarRentalPage() {
             <div className={styles.optionMain}>
               <div className={styles.optionText}>
                 <strong>Millas ilimitadas</strong>
-                <p>Tienes millas ilimitadas dentro de la florida</p>
+                <p>Tienes millas ilimitadas dentro de la Florida</p>
               </div>
             </div>
             <span className={styles.includedTag}>Incluido</span>
@@ -389,7 +389,7 @@ export function CarRentalPage() {
             <p className={styles.daysReserved}>{daysBooked} dias reservados</p>
           </div>
           <strong className={styles.totalPrice}>${totalPrice} total</strong>
-          <a onClick={handlePriceDetailsClick}>Detalles del precio</a>
+          <a className={styles.priceDetails} onClick={handlePriceDetailsClick}>Detalles del precio</a>
         </div>
         <div className={styles.reserveInfo}>
           <div className={styles.pickupInfo}>

@@ -199,7 +199,7 @@ const DriverForm = () => {
       </div>
 
       <div className={styles.fieldGroup}>
-        <label className={styles.label}>Nombre en licencia de conducir</label>
+        <label className={styles.label}>Nombre completo en licencia de conducir</label>
         <Field className={styles.input} name={`${prefix}.licenseName`} />
         <ErrorMessage
           className={styles.error}

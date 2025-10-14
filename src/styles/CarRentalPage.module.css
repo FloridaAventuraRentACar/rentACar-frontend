@@ -341,6 +341,10 @@
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2), 0 8px 20px rgba(249, 115, 22, 0.4);
 }
 
+.priceDetails{
+  cursor: pointer;
+  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+}
 /* Animación de entrada */
 @keyframes fadeInUp {
   from {
@@ -606,3 +610,4 @@
     color-adjust: exact;
   }
 }
+
