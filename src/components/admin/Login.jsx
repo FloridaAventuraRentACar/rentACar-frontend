@@ -21,12 +21,11 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login attempt:", formData);
+
     try {
       const response = await fetchLogin(formData.email, formData.password);
       const data = await response.data;
       login(data.jwt);
-      console.log(data);
       navigate("/admin");
     } catch (error) {
       console.log(error);
