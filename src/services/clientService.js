@@ -1,6 +1,6 @@
 import { API_POST_CLIENT_LIST } from "../config/apiConfig";
-import axios from "axios";
+import axiosInstance from "./axiosInstance";
 
 export const postClientList = (clientList) => {
-    return axios.post(`${API_POST_CLIENT_LIST}`, clientList);
+    return axiosInstance.post(`${API_POST_CLIENT_LIST}`, clientList);
 }

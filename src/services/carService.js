@@ -1,10 +1,6 @@
-import axios from "axios";
+import axiosInstance from "./axiosInstance";
 import { API_CARS } from "../config/apiConfig";
 
 export const getCarList = () => {
-    return axios.get(`${API_CARS}`, {
-        headers: {
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
-        }
-    });
+    return axiosInstance.get(`${API_CARS}`);
 }
