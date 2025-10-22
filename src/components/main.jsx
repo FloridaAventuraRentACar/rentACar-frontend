@@ -13,6 +13,8 @@ import RentalAdminResume from "./admin/RentalAdminResume.jsx";
 import Login from "./admin/Login.jsx";
 import { AuthProvider } from "../context/AuthContext.jsx";
 import ProtectedRoute from "./admin/ProtectedRoute.jsx";
+import GanttChart from "./admin/GanttChart.jsx";
+import AdminHome from "./admin/AdminHome.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,10 +27,19 @@ const router = createBrowserRouter([
       { path: "/driver-form", element: <DriverForm /> },
       { path: "/successful-rental", element: <SuccessfulRental /> },
       { path: "/admin/login", element: <Login /> },
+      { path : "/admin/rentals/gantt", element: <GanttChart /> },
 
       //Rutas protegidas
       {
         path: "/admin",
+        element: (
+          <ProtectedRoute>
+            <AdminHome />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/rentals",
         element: (
           <ProtectedRoute>
             <RentalsListPage />

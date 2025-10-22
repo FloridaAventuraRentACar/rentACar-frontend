@@ -3,6 +3,7 @@ import styles from "../../styles/admin/RentalsListPage.module.css";
 import SuccessNotification from "../ui/SuccessNotification.jsx";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import AdminSideBar from "./AdminSideBar.jsx";
 
 export default function RentalsListPage() {
 
@@ -51,9 +52,11 @@ export default function RentalsListPage() {
 
   return (
     <div>
+      <AdminSideBar />
       <h1 className={styles.title}>Listado de alquileres</h1>
-      <RentalsGrid />
-
+      <div className={styles.rentalsGridContainer}>
+        <RentalsGrid />
+      </div>
       {/* Componente de notificación de éxito */}
       <SuccessNotification
         isVisible={showSuccessNotification}
