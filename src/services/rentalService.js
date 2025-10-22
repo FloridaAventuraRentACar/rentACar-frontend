@@ -24,3 +24,7 @@ export const deleteRentalById = (rentalId) => {
 export const updateRental = (rental) => {
     return axiosInstance.put(`${API_RENTALS}/${rental.id}`, rental);
 };
+
+export const getRentals = () => {
+    return axiosInstance.get(`${API_RENTALS}`);
+}
