@@ -1,51 +1,67 @@
+import { useNavigate, useLocation } from "react-router-dom";
+import { Home, Calendar, FileText, Car, Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import styles from "../../styles/admin/AdminSideBar.module.css";
 
-import { useNavigate, useLocation } from "react-router-dom"
-import { Home, Calendar, FileText, Car, LogOut, Menu, X } from "lucide-react"
-import { useState } from "react"
-import styles from "../../styles/admin/AdminSideBar.module.css"
+export default function AdminSideBar({ forceToggle = false }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-export default function AdminSideBar() {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  // 🔹 Detecta si la pantalla es móvil y actualiza al redimensionar
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const handleHomeClick = () => {
-    navigate("/admin")
-    setIsMobileMenuOpen(false)
-  }
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  const handleCalendarClick = () => {
-    navigate("/admin/rentals/gantt")
-    setIsMobileMenuOpen(false)
-  }
+  const handleNavigate = (path) => {
+    navigate(path);
+    setIsMenuOpen(false);
+  };
 
-  const handleRentalsClick = () => {
-    navigate("/admin/rentals")
-    setIsMobileMenuOpen(false)
-  }
+  const isActive = (path) => location.pathname === path;
 
-  const isActive = (path) => {
-    return location.pathname === path
-  }
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+  // 🔹 Decide si se debe usar el modo “colapsable”
+  const isCollapsible = isMobile || forceToggle;
 
   return (
     <>
-      {/* Botón hamburguesa para móvil */}
-      <button className={styles.mobileMenuButton} onClick={toggleMobileMenu} aria-label="Toggle menu">
-        {isMobileMenuOpen ? <X className={styles.menuIcon} /> : <Menu className={styles.menuIcon} />}
-      </button>
+      {/* Botón hamburguesa visible solo en modo colapsable */}
+      {isCollapsible && (
+        <button
+          className={styles.mobileMenuButton}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? (
+            <X className={styles.menuIcon} />
+          ) : (
+            <Menu className={styles.menuIcon} />
+          )}
+        </button>
+      )}
 
-      {/* Overlay para móvil */}
-      {isMobileMenuOpen && <div className={styles.overlay} onClick={toggleMobileMenu}></div>}
+      {/* Overlay solo visible cuando el menú está abierto */}
+      {isCollapsible && isMenuOpen && (
+        <div className={styles.overlay} onClick={toggleMenu}></div>
+      )}
 
       {/* Sidebar */}
-      <aside className={`${styles.sidebar} ${isMobileMenuOpen ? styles.sidebarOpen : ""}`}>
-        {/* Logo y título */}
-        <div className={styles.logoContainer} onClick={handleHomeClick}>
+      <aside
+        className={`${styles.sidebar} ${
+          isCollapsible
+            ? isMenuOpen
+              ? styles.sidebarOpen
+              : styles.sidebarClosed
+            : styles.sidebarFixed
+        }`}
+      >
+        {/* Logo */}
+        <div className={styles.logoContainer} onClick={() => handleNavigate("/admin")}>
           <div className={styles.logoBadge}>
             <Car className={styles.logoIcon} />
           </div>
@@ -55,43 +71,44 @@ export default function AdminSideBar() {
           </div>
         </div>
 
-        {/* Separador */}
         <div className={styles.separator}></div>
 
-        {/* Navegación principal */}
+        {/* Navegación */}
         <nav className={styles.navigation}>
           <button
-            className={`${styles.navButton} ${isActive("/admin") ? styles.navButtonActive : ""}`}
-            onClick={handleHomeClick}
+            className={`${styles.navButton} ${
+              isActive("/admin") ? styles.navButtonActive : ""
+            }`}
+            onClick={() => handleNavigate("/admin")}
           >
             <Home className={styles.navIcon} />
             <span className={styles.navText}>Inicio</span>
-            {isActive("/admin") && <div className={styles.activeIndicator}></div>}
           </button>
 
           <button
-            className={`${styles.navButton} ${isActive("/admin/calendar") ? styles.navButtonActive : ""}`}
-            onClick={handleCalendarClick}
+            className={`${styles.navButton} ${
+              isActive("/admin/rentals/gantt") ? styles.navButtonActive : ""
+            }`}
+            onClick={() => handleNavigate("/admin/rentals/gantt")}
           >
             <Calendar className={styles.navIcon} />
             <span className={styles.navText}>Calendario</span>
-            {isActive("/admin/calendar") && <div className={styles.activeIndicator}></div>}
           </button>
 
           <button
-            className={`${styles.navButton} ${isActive("/admin/rentals") ? styles.navButtonActive : ""}`}
-            onClick={handleRentalsClick}
+            className={`${styles.navButton} ${
+              isActive("/admin/rentals") ? styles.navButtonActive : ""
+            }`}
+            onClick={() => handleNavigate("/admin/rentals")}
           >
             <FileText className={styles.navIcon} />
             <span className={styles.navText}>Listado de Alquileres</span>
-            {isActive("/admin/rentals") && <div className={styles.activeIndicator}></div>}
           </button>
         </nav>
 
-        {/* Separador */}
         <div className={styles.separator}></div>
 
-        {/* Información del usuario */}
+        {/* Usuario */}
         <div className={styles.userSection}>
           <div className={styles.userInfo}>
             <div className={styles.userAvatar}>
@@ -105,5 +122,5 @@ export default function AdminSideBar() {
         </div>
       </aside>
     </>
-  )
+  );
 }
