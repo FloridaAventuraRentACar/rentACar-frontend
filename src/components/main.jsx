@@ -27,7 +27,6 @@ const router = createBrowserRouter([
       { path: "/driver-form", element: <DriverForm /> },
       { path: "/successful-rental", element: <SuccessfulRental /> },
       { path: "/admin/login", element: <Login /> },
-      { path : "/admin/rentals/gantt", element: <GanttChart /> },
 
       //Rutas protegidas
       {
@@ -43,6 +42,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <RentalsListPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/rentals/gantt",
+        element: (
+          <ProtectedRoute>
+            <GanttChart />
           </ProtectedRoute>
         ),
       },
