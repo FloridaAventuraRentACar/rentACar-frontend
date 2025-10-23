@@ -65,8 +65,8 @@ export default function RentalAdminResume({ isEditable = true }) {
     }
   };
 
-  const navigateAdmin = () => {
-    navigate(`/admin`);
+  const navigateBack = () => {
+    navigate(-1);
   };
 
   const handleSave = async () => {
@@ -202,7 +202,7 @@ export default function RentalAdminResume({ isEditable = true }) {
 
   return (
     <div className={styles.background}>
-      <BackButton onClick={navigateAdmin} />
+      <BackButton onClick={navigateBack} />
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.title}>
