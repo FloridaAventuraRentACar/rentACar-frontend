@@ -9,6 +9,7 @@ import { AppContext } from "../context/AppContext.jsx";
 import { useNavigate } from "react-router-dom";
 import useEmailJs from "../hooks/useEmailJs.js";
 import rentalConfirmationEmailhtml from "../utilities/emailHtml/rentalConfimationEmailHtml.js";
+import Loading from "./ui/Loading.jsx";
 
 const driverSchema = Yup.object({
   name: Yup.string().required("Obligatorio"),
@@ -29,6 +30,7 @@ const driverSchema = Yup.object({
 
 const DriverForm = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const { sendEmail } = useEmailJs({
     serviceId: import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
@@ -49,7 +51,7 @@ const DriverForm = () => {
     travelLocation,
     selectedGasTank,
     additionalDriversCount,
-    setAdditionalDriversCount
+    setAdditionalDriversCount,
   } = useContext(AppContext);
 
   const sendRentalConfimationEmail = async (rental) => {
@@ -57,7 +59,7 @@ const DriverForm = () => {
       to_email: rental.clients[0].email,
       html_message: rentalConfirmationEmailhtml(
         rental.clients[0].name,
-        rental.clients[0].surname, 
+        rental.clients[0].surname,
         rental.carName,
         rental.clients[0].phone,
         rental.start,
@@ -65,7 +67,7 @@ const DriverForm = () => {
         pickupLocation,
         returnLocation,
         rental.daysRented,
-        rental.totalPrice        
+        rental.totalPrice
       ),
       subject: "Su reserva ha sido confirmada",
     };
@@ -74,16 +76,21 @@ const DriverForm = () => {
   };
 
   const handleSubmit = async (values) => {
+    try {
+      setLoading(true);
+      
+      const clientList = [values.driver, ...values.additionalDrivers];
 
-    const clientList = [values.driver, ...values.additionalDrivers];
+      const rental = await saveRental(clientList);
 
-    const rental = await saveRental(clientList);
+      await sendRentalConfimationEmail(rental);
 
-    await sendRentalConfimationEmail(rental);
-
-    navigate("/successful-rental", { state: { rental } });
+      navigate("/successful-rental", { state: { rental } });
+    } catch (error) {
+      alert("Ocurrio un error al guardar la renta");
+      console.error("Error al guardar el alquiler: " + error);
+    }
   };
-
 
   const saveRental = async (clientsToSave) => {
     const start = `${pickupDate}T${pickupTime}`;
@@ -199,7 +206,9 @@ const DriverForm = () => {
       </div>
 
       <div className={styles.fieldGroup}>
-        <label className={styles.label}>Nombre completo en licencia de conducir</label>
+        <label className={styles.label}>
+          Nombre completo en licencia de conducir
+        </label>
         <Field className={styles.input} name={`${prefix}.licenseName`} />
         <ErrorMessage
           className={styles.error}
@@ -253,83 +262,92 @@ const DriverForm = () => {
 
   return (
     <div className={styles.background}>
-      <div className={styles.mainContainer}>
-        <div className={styles.formContainer}>
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ values }) => {
+      {loading ? (
+        <Loading  text="Cargando confirmacion de reserva..."/>
+      ) : (
+        <div className={styles.mainContainer}>
+          <div className={styles.formContainer}>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ values }) => {
+                if (
+                  values.additionalDrivers.length !== additionalDriversCount
+                ) {
+                  setAdditionalDriversCount(values.additionalDrivers.length);
+                }
 
-              if (values.additionalDrivers.length !== additionalDriversCount) {
-                setAdditionalDriversCount(values.additionalDrivers.length);
-              }
+                return (
+                  <Form>
+                    <h3 className={styles.sectionTitle}>Conductor principal</h3>
+                    {renderFields("driver")}
 
-              return (
-                <Form>
-                  <h3 className={styles.sectionTitle}>Conductor principal</h3>
-                  {renderFields("driver")}
+                    <h3 className={styles.sectionTitle}>
+                      Conductores adicionales
+                    </h3>
+                    <span className={styles.include}>
+                      Hasta un conductor adicional incluido en el precio
+                    </span>
+                    <FieldArray name="additionalDrivers">
+                      {({ push, remove }) => (
+                        <div>
+                          {values.additionalDrivers.map((_, index) => (
+                            <div key={index} className={styles.driverBox}>
+                              <h4 className={styles.sectionTitle}>
+                                Conductor adicional {index + 1}
+                              </h4>
+                              {renderFields(`additionalDrivers[${index}]`)}
+                              <button
+                                type="button"
+                                className={`${styles.button} ${styles.removeButton}`}
+                                onClick={() => remove(index)}
+                              >
+                                Remover
+                              </button>
+                            </div>
+                          ))}
+                          <button
+                            type="button"
+                            className={`${styles.button} ${styles.addButton}`}
+                            onClick={() => {
+                              push({
+                                name: "",
+                                surname: "",
+                                email: "",
+                                phone: "",
+                                licenseNumber: "",
+                                bornDate: "",
+                                licenseName: "",
+                                licenseAddress: "",
+                                licenseExpirationDate: "",
+                              });
+                            }}
+                          >
+                            Agregar conductor adicional
+                          </button>
+                        </div>
+                      )}
+                    </FieldArray>
 
-                  <h3 className={styles.sectionTitle}>Conductores adicionales</h3>
-                  <span className={styles.include}>Hasta un conductor adicional incluido en el precio</span>
-                  <FieldArray name="additionalDrivers">
-                    {({ push, remove }) => (
-                      <div>
-                        {values.additionalDrivers.map((_, index) => (
-                          <div key={index} className={styles.driverBox}>
-                            <h4 className={styles.sectionTitle}>
-                              Conductor adicional {index + 1}
-                            </h4>
-                            {renderFields(`additionalDrivers[${index}]`)}
-                            <button
-                              type="button"
-                              className={`${styles.button} ${styles.removeButton}`}
-                              onClick={() => remove(index)}
-                            >
-                              Remover
-                            </button>
-                          </div>
-                        ))}
-                        <button
-                          type="button"
-                          className={`${styles.button} ${styles.addButton}`}
-                          onClick={() => {
-                            push({
-                              name: "",
-                              surname: "",
-                              email: "",
-                              phone: "",
-                              licenseNumber: "",
-                              bornDate: "",
-                              licenseName: "",
-                              licenseAddress: "",
-                              licenseExpirationDate: "",
-                            });
-                          }}
-                        >
-                          Agregar conductor adicional
-                        </button>
-                      </div>
-                    )}
-                  </FieldArray>
-
-                  <br />
-                  <button
-                    type="submit"
-                    className={`${styles.submitButton} ${styles.button}`}
-                  >
-                    Confirmar reserva
-                  </button>
-                </Form>
-              );
-            }}
-          </Formik>
+                    <br />
+                    <button
+                      type="submit"
+                      className={`${styles.submitButton} ${styles.button}`}
+                    >
+                      Confirmar reserva
+                    </button>
+                  </Form>
+                );
+              }}
+            </Formik>
+          </div>
+          <div className={styles.rentalDetailsContainer}>
+            <RentalDetails />
+          </div>
         </div>
-        <div className={styles.rentalDetailsContainer}>
-          <RentalDetails />
-        </div>
-      </div>
+      )}
     </div>
   );
 };
