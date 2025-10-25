@@ -6,11 +6,15 @@ import { carsQuery } from "../utilities/CarsFetchSimulate.js";
 import { AppContext } from "../context/AppContext";
 import { getAvailability } from "../services/rentalService.js";
 import HeaderReusable from "./ui/HeaderReusable.jsx";
+import Loading from "./ui/Loading.jsx";
 
 export function ShowCarsPage() {
-  const [cars, setCars] = useState([]);
+  const [cars, setCars] = useState(undefined);
 
   useEffect(() => {
+    // setTimeout(() => {
+      
+    // }, 1000);
     checkAvailability();
   }, []);
 
@@ -20,12 +24,13 @@ export function ShowCarsPage() {
   const checkAvailability = () => {
     const start = `${pickupDate}T${pickupTime}`;
     const end = `${returnDate}T${returnTime}`;
-
+    
     getAvailability(start, end)
       .then((response) => {
         setCars(response.data);
       })
       .catch((error) => {
+        setCars([]);
         console.log(error);
       });
   };
@@ -44,7 +49,7 @@ export function ShowCarsPage() {
           </div>
         )
       ) : (
-        <h1>Cargando</h1>
+        <Loading text="Chequeando disponibilidad de vehiculos..."/>
       )}
     </div>
   );
