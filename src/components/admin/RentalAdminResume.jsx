@@ -69,6 +69,10 @@ export default function RentalAdminResume({ isEditable = true }) {
     navigate(-1);
   };
 
+  const handleEditButtonClick = () => {
+    navigate("/admin/rentals/edit/" + id);
+  };
+
   const handleSave = async () => {
     try {
       await updateRental(editedRental);
@@ -205,10 +209,13 @@ export default function RentalAdminResume({ isEditable = true }) {
       <BackButton onClick={navigateBack} />
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>
-            {isEditable ? "Editar Alquiler" : "Detalles del Alquiler"}
-          </h1>
-          {isEditable && <div className={styles.editBadge}>Modo Edición</div>}
+          <div className={styles.headerText}>
+            <h1 className={styles.title}>
+              {isEditable ? "Editar Alquiler" : "Detalles del Alquiler"}
+            </h1>
+            {isEditable && <div className={styles.editBadge}>Modo Edición</div>}
+          </div>
+          {!isEditable && <button className={styles.editButton} onClick={handleEditButtonClick}>Editar</button>}
         </div>
 
         {/* Información del Alquiler */}
