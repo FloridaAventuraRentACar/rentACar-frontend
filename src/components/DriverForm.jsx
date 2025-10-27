@@ -8,8 +8,9 @@ import { postRental } from "../services/rentalService.js";
 import { AppContext } from "../context/AppContext.jsx";
 import { useNavigate } from "react-router-dom";
 import useEmailJs from "../hooks/useEmailJs.js";
-import rentalConfirmationEmailhtml from "../utilities/emailHtml/rentalConfimationEmailHtml.js";
+import rentalClientConfirmationEmailhtml from "../utilities/emailHtml/rentalClientConfimationEmailHtml.js";
 import Loading from "./ui/Loading.jsx";
+import rentalConfirmationEmailHtml from "../utilities/emailHtml/rentalConfirmationEmailHtml.js";
 
 const driverSchema = Yup.object({
   name: Yup.string().required("Obligatorio"),
@@ -54,10 +55,10 @@ const DriverForm = () => {
     setAdditionalDriversCount,
   } = useContext(AppContext);
 
-  const sendRentalConfimationEmail = async (rental) => {
-    const ContactUsTemplateParams = {
+  const sendRentalClientConfimationEmail = async (rental) => {
+    const templateParams = {
       to_email: rental.clients[0].email,
-      html_message: rentalConfirmationEmailhtml(
+      html_message: rentalClientConfirmationEmailhtml(
         rental.clients[0].name,
         rental.clients[0].surname,
         rental.carName,
@@ -72,9 +73,29 @@ const DriverForm = () => {
       subject: "Su reserva ha sido confirmada",
     };
 
-    await sendEmail(ContactUsTemplateParams);
+    await sendEmail(templateParams);
   };
 
+  const sendRentalConfimationEmail = async (rental) => {
+    const templateParams = {
+      to_email: "floridaaventuraok@gmail.com",
+      html_message: rentalConfirmationEmailHtml(
+        rental.clients[0].name,
+        rental.clients[0].surname,
+        rental.carName,
+        rental.clients[0].phone,
+        rental.start,
+        rental.end,
+        pickupLocation,
+        returnLocation,
+        rental.daysRented,
+        rental.totalPrice
+      ),
+      subject: "Nueva reserva confirmada",
+    };
+
+    await sendEmail(templateParams);
+  };
   const handleSubmit = async (values) => {
     try {
       setLoading(true);
@@ -82,6 +103,8 @@ const DriverForm = () => {
       const clientList = [values.driver, ...values.additionalDrivers];
 
       const rental = await saveRental(clientList);
+
+      await sendRentalClientConfimationEmail(rental);
 
       await sendRentalConfimationEmail(rental);
 
