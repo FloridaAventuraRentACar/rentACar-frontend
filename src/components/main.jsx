@@ -15,6 +15,7 @@ import { AuthProvider } from "../context/AuthContext.jsx";
 import ProtectedRoute from "./admin/ProtectedRoute.jsx";
 import GanttChart from "./admin/GanttChart.jsx";
 import AdminHome from "./admin/AdminHome.jsx";
+import AdminRentalFormPage from "./admin/adminRentalForm/AdminRentalFormPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,15 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/admin/register",
+        element: (
+          <ProtectedRoute>
+            <AdminRentalFormPage />
+          </ProtectedRoute>
+        ),
+      },
+
     ],
   },
 ]);
