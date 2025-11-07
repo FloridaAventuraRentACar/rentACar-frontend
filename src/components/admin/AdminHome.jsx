@@ -1,12 +1,56 @@
 "use client";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Calendar, FileText, TrendingUp, Car } from "lucide-react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/admin/AdminHome.module.css";
 import AdminSideBar from "./AdminSideBar";
+import SuccessNotification from "../ui/SuccessNotification.jsx";
 
 export default function AdminHome() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Estados para el componente de éxito
+  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+  const [isSuccessAnimating, setIsSuccessAnimating] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+
+  // Función para mostrar la notificación de éxito
+  const showSuccessMessage = () => {
+    setShowSuccessNotification(true);
+    setIsSuccessAnimating(true);
+
+    // Después de 5 segundos, inicia la animación de salida
+    setTimeout(() => {
+      setIsSuccessAnimating(false);
+    }, 5000);
+
+    // Después de la animación de salida, oculta completamente
+    setTimeout(() => {
+      setShowSuccessNotification(false);
+    }, 5300);
+  };
+
+  // Función para ocultar manualmente la notificación
+  const hideSuccessNotification = () => {
+    setIsSuccessAnimating(false);
+    setTimeout(() => {
+      setShowSuccessNotification(false);
+    }, 300);
+  };
+
+  // Verificar si se debe mostrar la notificación de éxito al cargar el componente
+  useEffect(() => {
+    if (location.state?.showSuccess) {
+      const message = location.state.message || "¡Operación exitosa!";
+      setSuccessMessage(message);
+      showSuccessMessage();
+
+      // Limpiar el state de navegación para que no se muestre de nuevo al recargar
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
 
   const handleCalendarClick = () => {
     navigate("/admin/rentals/gantt");
@@ -106,6 +150,13 @@ export default function AdminHome() {
           </div>
         </div>
       </div>
+      {/* Componente de notificación de éxito */}
+      <SuccessNotification
+        isVisible={showSuccessNotification}
+        isAnimating={isSuccessAnimating}
+        message={successMessage}
+        onClose={hideSuccessNotification}
+      />
     </div>
   );
 }
