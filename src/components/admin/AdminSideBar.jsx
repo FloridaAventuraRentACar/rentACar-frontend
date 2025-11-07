@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { Home, Calendar, FileText, Car, Menu, X } from "lucide-react";
+import { Home, Calendar, FileText, Car, Menu, X, Plus } from "lucide-react";
 import { useState, useEffect } from "react";
 import styles from "../../styles/admin/AdminSideBar.module.css";
 
@@ -103,6 +103,16 @@ export default function AdminSideBar({ forceToggle = false }) {
           >
             <FileText className={styles.navIcon} />
             <span className={styles.navText}>Listado de Alquileres</span>
+          </button>
+
+          <button
+            className={`${styles.navButton} ${
+              isActive("/admin/register") ? styles.navButtonActive : ""
+            }`}
+            onClick={() => handleNavigate("/admin/register")}
+          >
+            <Plus className={styles.navIcon} />
+            <span className={styles.navText}>Registrar alquiler</span>
           </button>
         </nav>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useNavigate, useLocation } from "react-router-dom";
-import { Calendar, FileText, TrendingUp, Car } from "lucide-react";
+import { Calendar, FileText, TrendingUp, Car, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import styles from "../../styles/admin/AdminHome.module.css";
 import AdminSideBar from "./AdminSideBar";
@@ -58,6 +58,10 @@ export default function AdminHome() {
 
   const handleRentalsClick = () => {
     navigate("/admin/rentals");
+  };
+
+  const handleRegisterClick = () => {
+    navigate("/admin/register");
   };
 
   return (
@@ -125,29 +129,23 @@ export default function AdminHome() {
               </div>
             </div>
           </button>
-        </div>
 
-        {/* Información adicional */}
-        <div className={styles.infoCards}>
-          <div className={styles.infoCard}>
-            <div className={styles.infoIcon}>
-              <Calendar className={styles.infoIconSvg} />
+          <button
+            onClick={handleRegisterClick}
+            className={styles.secondaryButton}
+          >
+            <div className={styles.buttonContent}>
+              <Plus className={styles.buttonIcon} />
+              <div className={styles.buttonText}>
+                <span className={styles.buttonTitle}>
+                  Registrar alquiler
+                </span>
+                <span className={styles.buttonSubtitle}>
+                  Nuevo registro
+                </span>
+              </div>
             </div>
-            <div className={styles.infoText}>
-              <span className={styles.infoNumber}>12</span>
-              <span className={styles.infoLabel}>Reservas activas</span>
-            </div>
-          </div>
-
-          <div className={styles.infoCard}>
-            <div className={styles.infoIcon}>
-              <Car className={styles.infoIconSvg} />
-            </div>
-            <div className={styles.infoText}>
-              <span className={styles.infoNumber}>8</span>
-              <span className={styles.infoLabel}>Vehículos disponibles</span>
-            </div>
-          </div>
+          </button>
         </div>
       </div>
       {/* Componente de notificación de éxito */}
