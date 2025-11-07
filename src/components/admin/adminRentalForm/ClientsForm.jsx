@@ -1,7 +1,7 @@
 import { Field, ErrorMessage, FieldArray, useFormikContext } from "formik";
 import styles from "../../../styles/admin/adminRentalForm/ClientsForm.module.css";
 
-const renderDriverFields = (prefix, styles) => (
+const renderDriverFields = (prefix) => (
   <>
     <div className={styles.fieldGroup}>
       <label className={styles.label}>Nombre</label>
@@ -122,7 +122,7 @@ const renderDriverFields = (prefix, styles) => (
   </>
 );
 
-const ClientsForm = () => {
+const ClientsForm = ({ customStyles }) => {
   const { values } = useFormikContext();
 
   return (

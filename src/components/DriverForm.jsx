@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import styles from "../styles/DriverForm.module.css";
@@ -11,6 +11,7 @@ import useEmailJs from "../hooks/useEmailJs.js";
 import rentalClientConfirmationEmailhtml from "../utilities/emailHtml/rentalClientConfimationEmailHtml.js";
 import Loading from "./ui/Loading.jsx";
 import rentalConfirmationEmailHtml from "../utilities/emailHtml/rentalConfirmationEmailHtml.js";
+import ClientsForm from "./admin/adminRentalForm/ClientsForm.jsx";
 
 const driverSchema = Yup.object({
   name: Yup.string().required("Obligatorio"),
@@ -162,127 +163,6 @@ const DriverForm = () => {
     additionalDrivers: Yup.array().of(driverSchema),
   });
 
-  const renderFields = (prefix) => (
-    <>
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>Nombre</label>
-        <Field className={styles.input} name={`${prefix}.name`} />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.name`}
-          component="div"
-        />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>Apellido</label>
-        <Field className={styles.input} name={`${prefix}.surname`} />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.surname`}
-          component="div"
-        />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>Email</label>
-        <Field className={styles.input} type="email" name={`${prefix}.email`} />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.email`}
-          component="div"
-        />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>Numero de telefono</label>
-        <Field className={styles.input} name={`${prefix}.phone`} />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.phone`}
-          component="div"
-        />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>Numero de licencia de conducir</label>
-        <Field className={styles.input} name={`${prefix}.licenseNumber`} />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.licenseNumber`}
-          component="div"
-        />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>Fecha de nacimiento</label>
-        <Field
-          className={styles.input}
-          type="date"
-          name={`${prefix}.bornDate`}
-        />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.bornDate`}
-          component="div"
-        />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>
-          Nombre completo en licencia de conducir
-        </label>
-        <Field className={styles.input} name={`${prefix}.licenseName`} />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.licenseName`}
-          component="div"
-        />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>
-          Direccion en licencia de conducir
-        </label>
-        <Field className={styles.input} name={`${prefix}.licenseAddress`} />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.licenseAddress`}
-          component="div"
-        />
-      </div>
-
-      <div className={styles.fieldGroup}>
-        <label className={styles.label}>
-          Fecha de expiracion de licencia de conducir
-        </label>
-        <Field
-          className={styles.input}
-          type="date"
-          name={`${prefix}.licenseExpirationDate`}
-        />
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.licenseExpirationDate`}
-          component="div"
-        />
-      </div>
-      <div className={styles.checkbox}>
-        <Field
-          type="checkbox"
-          name={`${prefix}.ageCheckbox`}
-          className={styles.ageCheckbox}
-        />
-        <label className={styles.label}>Tengo mas de 25 años</label>
-        <ErrorMessage
-          className={styles.error}
-          name={`${prefix}.ageCheckbox`}
-          component="div"
-        />
-      </div>
-    </>
-  );
-
   return (
     <div className={styles.background}>
       {loading ? (
@@ -304,55 +184,7 @@ const DriverForm = () => {
 
                 return (
                   <Form>
-                    <h3 className={styles.sectionTitle}>Conductor principal</h3>
-                    {renderFields("driver")}
-
-                    <h3 className={styles.sectionTitle}>
-                      Conductores adicionales
-                    </h3>
-                    <span className={styles.include}>
-                      Hasta un conductor adicional incluido en el precio
-                    </span>
-                    <FieldArray name="additionalDrivers">
-                      {({ push, remove }) => (
-                        <div>
-                          {values.additionalDrivers.map((_, index) => (
-                            <div key={index} className={styles.driverBox}>
-                              <h4 className={styles.sectionTitle}>
-                                Conductor adicional {index + 1}
-                              </h4>
-                              {renderFields(`additionalDrivers[${index}]`)}
-                              <button
-                                type="button"
-                                className={`${styles.button} ${styles.removeButton}`}
-                                onClick={() => remove(index)}
-                              >
-                                Remover
-                              </button>
-                            </div>
-                          ))}
-                          <button
-                            type="button"
-                            className={`${styles.button} ${styles.addButton}`}
-                            onClick={() => {
-                              push({
-                                name: "",
-                                surname: "",
-                                email: "",
-                                phone: "",
-                                licenseNumber: "",
-                                bornDate: "",
-                                licenseName: "",
-                                licenseAddress: "",
-                                licenseExpirationDate: "",
-                              });
-                            }}
-                          >
-                            Agregar conductor adicional
-                          </button>
-                        </div>
-                      )}
-                    </FieldArray>
+                    <ClientsForm />
 
                     <br />
                     <button
