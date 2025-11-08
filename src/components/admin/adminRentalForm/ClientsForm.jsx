@@ -106,6 +106,21 @@ const renderDriverFields = (prefix) => (
         component="div"
       />
     </div>
+    <div className={styles.fieldGroup}>
+      <label className={styles.label}>
+        Numero de vuelo
+      </label>
+      <Field
+        className={styles.input}
+        placeholder="AA907"
+        name={`${prefix}.flightNumber`}
+      />
+      <ErrorMessage
+        className={styles.error}
+        name={`${prefix}.flightNumber`}
+        component="div"
+      />
+    </div>
     <div className={styles.checkbox}>
       <Field
         type="checkbox"
@@ -122,7 +137,7 @@ const renderDriverFields = (prefix) => (
   </>
 );
 
-const ClientsForm = ({ customStyles }) => {
+const ClientsForm = () => {
   const { values } = useFormikContext();
 
   return (
@@ -169,6 +184,7 @@ const ClientsForm = ({ customStyles }) => {
                   licenseName: "",
                   licenseAddress: "",
                   licenseExpirationDate: "",
+                  flightNumber: "",
                   ageCheckbox: false,
                 });
               }}

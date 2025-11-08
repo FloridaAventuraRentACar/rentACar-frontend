@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/admin/RentalAdminResume.module.css";
 import { getRentalById, updateRental } from "../../services/rentalService";
 import { useNavigate, useParams } from "react-router-dom";
@@ -335,6 +335,13 @@ export default function RentalAdminResume({ isEditable = true }) {
                 "licenseExpirationDate",
                 0,
                 "date"
+              )}
+              {renderField(
+                "Numero de vuelo",
+                mainDriver.flightNumber,
+                "flightNumber",
+                0,
+                "text"
               )}
             </div>
           </div>
