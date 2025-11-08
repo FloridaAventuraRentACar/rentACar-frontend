@@ -163,7 +163,7 @@ export default function HomeRentInput() {
               onChange={(e) => setReturnDate(e.target.value)}
               className={styles.formInput}
               required
-              min={new Date().toISOString().split("T")[0]}
+              min={pickupDate ? pickupDate : new Date().toISOString().split("T")[0]}
             />
           </div>
           <div className={styles.formGroup}>
