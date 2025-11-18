@@ -11,6 +11,7 @@ import ErrorModal from "../../ui/ErrorModal.jsx";
 import { getErrorMessage } from "../../../utilities/errors/errorsMessages.js";
 import VehicleRentalForm from "./VehicleRentalForm.jsx";
 import ClientsForm from "./ClientsForm.jsx";
+import AdminSideBar from "../AdminSideBar.jsx";
 
 const driverSchema = Yup.object({
   name: Yup.string().required("Obligatorio"),
@@ -165,6 +166,7 @@ const AdminRentalFormPage = () => {
         <Loading text="Registrando alquiler..." />
       ) : (
         <div className={styles.mainContainer}>
+          <AdminSideBar />
           <div className={styles.formContainer}>
             <h1 className={styles.formTitle}>Registrar Nuevo Alquiler</h1>
             <Formik
