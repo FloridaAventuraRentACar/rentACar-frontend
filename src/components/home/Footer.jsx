@@ -11,7 +11,7 @@ export default function Footer() {
           <div className={styles.brandSection}>
             <h3 className={styles.brandTitle}>Florida Aventura Rent a Car</h3>
             <p className={styles.brandSlogan}>
-              Tu compañero de confianza para explorar Miami con estilo y comodidad.
+              Tu compañero de confianza para alquilar carro en Miami con estilo y comodidad.
               Descubre la ciudad del sol con nuestra flota premium de vehículos.
             </p>
             <a

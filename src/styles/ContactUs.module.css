@@ -24,13 +24,16 @@
   font-weight: 700; /* font-bold */
   color: #1f2937; /* text-gray-800 */
   margin-bottom: 1rem; /* Reduced for mobile */
+  font-family: 'inter';
 }
 
 .sectionDescription {
-  font-size: 1rem; /* Smaller for mobile */
-  line-height: 1.5; /* leading-relaxed */
-  color: #4b5563; /* text-gray-600 */
-  max-width: 48rem; /* max-w-3xl */
+  font-size: 1rem; 
+  font-family: 'inter';
+  font-weight: 400;
+  line-height: 1.5; 
+  color: #4b5563; 
+  max-width: 48rem; 
   margin-left: auto;
   margin-right: auto;
 }

@@ -136,7 +136,7 @@ export default function Header({ className = "" }) {
               className={styles.mobileWhatsappButton}
             >
               <a
-                href="https://wa.me/13057731787" // Deja en blanco según lo solicitado
+                href="https://wa.me/13057731787" 
                 target="_blank"
                 rel="noopener noreferrer"
               >
