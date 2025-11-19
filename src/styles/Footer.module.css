@@ -41,6 +41,40 @@
   font-weight: 400;
 }
 
+/* Logo */
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space-x-3 */
+  transition: transform 0.3s ease-in-out;
+}
+
+.logoImageWrapper {
+  position: relative;
+  width: 2.5rem; /* w-10 */
+  height: 2.5rem; /* h-10 */
+}
+
+@media (min-width: 1024px) {
+  .logoImageWrapper {
+    width: 7rem; /* lg:w-12 */
+    height: 7rem; /* lg:h-12 */
+  }
+}
+
+.logoImage {
+  width: 100%; /* fill */
+  height: 100%; /* fill */
+  object-fit: contain; /* object-contain */
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+@media (min-width: 640px) {
+  .logoTextWrapper {
+    display: block; /* sm:block */
+  }
+}
+
 /* Sección de contacto */
 .contactSection {
   text-align: center;

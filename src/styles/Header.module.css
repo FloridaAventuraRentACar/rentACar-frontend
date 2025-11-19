@@ -266,7 +266,9 @@
     display: inline; /* xl:inline */
   }
 }
-
+.reserveText{
+  padding-left: 0.3rem;
+}
 .reserveButton {
   background-color: var(--color-primary); /* bg-orange-500 */
   color: white; /* text-white */

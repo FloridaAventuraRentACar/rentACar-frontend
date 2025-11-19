@@ -93,24 +93,6 @@ export default function Header({ className = "" }) {
 
           {/* Desktop Actions */}
           <div className={styles.desktopActions}>
-            {/* Instagram Button */}
-            {/*<Button
-              asChild
-              variant="outline"
-              size="sm"
-              className={styles.instagramButton}
-            >
-              <a
-                href="https://www.instagram.com/floridaaventurarentacar?utm_source=ig_web_button_share_sheet&igsh=MWtxNnN6MTBhZ3NpZw==" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.buttonContent}
-              >
-                <InstagramIcon style={{ fontSize: '32px' }} />
-                <span className={styles.whatsappText}>WhatsApp</span>
-              </a>
-            </Button>*/}
-            {/* WhatsApp Button */}
             <Button
               asChild
               variant="outline"
@@ -139,7 +121,7 @@ export default function Header({ className = "" }) {
                 className={styles.buttonContent}
               >
                 <Phone className={styles.icon} />
-                <span>Reservar</span>
+                <span className={styles.reserveText}>Reservar ahora</span>
               </a>
             </Button>
           </div>
