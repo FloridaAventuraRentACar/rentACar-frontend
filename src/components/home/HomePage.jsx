@@ -1,15 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import {
-  Menu,
-  X,
-  Star,
-  Shield,
-  Clock,
-  DollarSign,
-  Car,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { Star, Shield, Clock, DollarSign, Car, ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 import styles from "../../styles/HomePage.module.css"; // Import CSS Module
 import HomeRentInput from "../HomeRentInput.jsx";
 import Header from "./Header";
@@ -20,10 +10,14 @@ import ContactUs from "./ContactUs.jsx";
 import Footer from "./Footer.jsx";
 import testimonials from "../../utilities/testimonials.js";
 import { AppContext } from "../../context/AppContext.jsx";
+import {faqs} from "../../utilities/faqs.js";
+import WhatsAppFloat from "./WhatsAppFloat.jsx";
+
 
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentFaq, setCurrentFaq] = useState(0);
   const {clearRentalData} = useContext(AppContext);
 
   useEffect(() => {
@@ -43,18 +37,25 @@ export default function HomePage() {
     );
   };
 
+  const nextFaq = () => {
+    setCurrentFaq((prev) => (prev + 1) % faqs.length);
+  };
+
+  const prevFaq = () => {
+    setCurrentFaq((prev) => (prev - 1 + faqs.length) % faqs.length);
+  };
+
   return (
     <div className={styles.container}>
       {/* Header */}
       <Header />
-
+      <WhatsAppFloat />
       {/* Hero Section */}
       <section id="inicio" className={styles.heroSection}>
         <div
           className={styles.heroBackground}
           style={{
             backgroundImage: `url("https://www.volkswagen.cl/dam/images/c8d028b2c737e686c203c1f67c0b3330a2fdf699/6d9348c871dd4f3beae3e6217e3e9478/e4bad2ec-cd8a-4c37-9604-858174c72fc8/crop:SMART/resize:3840:2160/captura-de-pantalla-2024-01-16-a-la-s-15-52-22.png")`,
-            transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
         <div className={styles.heroOverlay} />
@@ -80,8 +81,7 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Nuestras Unidades</h2>
             <p className={styles.sectionDescription}>
-              Desde autos económicos hasta vehículos de lujo, tenemos la opción
-              perfecta para tu aventura en Miami
+              Desde autos económicos hasta vehículos de lujo. La mejor opción para alquilar auto en Miami y comenzar tu aventura
             </p>
           </div>
 
@@ -119,9 +119,9 @@ export default function HomePage() {
       <section className={styles.sectionWhyChooseUs}>
         <div className={styles.innerContainer}>
           <div className={styles.sectionHeader}>
-            <h2 className={` ${styles.whyChooseUsTitle} ${styles.sectionTitle} `}>¿Por qué elegirnos?</h2>
-            <p className={`${styles.sectionDescription} ${styles.whyChooseUsDescription}`}>
-              Atención personalizada, sin colas ni trámites — tu auto te espera en el aeropuerto.
+            <h2 className={` ${styles.blackTitle} ${styles.sectionTitle} `}>¿Por qué elegirnos?</h2>
+            <p className={`${styles.sectionDescription} ${styles.blackDescription}`}>
+              Atención personalizada, sin colas ni trámites — Olvídate de las colas al alquilar carro en Miami.
             </p>
           </div>
 
@@ -170,16 +170,60 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.sectionFaq}>
+        <div className={styles.innerContainer}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Preguntas Frecuentes</h2>
+            <p className={styles.sectionDescription}>
+              Encuentra respuestas a las preguntas más comunes sobre nuestro servicio de renta de autos
+            </p>
+          </div>
+
+          <div className={styles.faqCarousel}>
+            <Card className={styles.faqCard}>
+              <CardContent className={styles.faqCardContent}>
+                <div className={styles.faqIconContainer}>
+                  <HelpCircle className={styles.faqIcon} />
+                </div>
+                <h3 className={styles.faqQuestion}>
+                  {faqs[currentFaq].question}
+                </h3>
+                <p className={styles.faqAnswer}>
+                  {faqs[currentFaq].answer}
+                </p>
+                <div className={styles.faqCounter}>
+                  {currentFaq + 1} / {faqs.length}
+                </div>
+              </CardContent>
+            </Card>
+
+            <button
+              onClick={prevFaq}
+              className={styles.carouselButtonLeft}
+              aria-label="Pregunta anterior"
+            >
+              <ChevronLeft className={styles.icon} />
+            </button>
+            <button
+              onClick={nextFaq}
+              className={styles.carouselButtonRight}
+              aria-label="Siguiente pregunta"
+            >
+              <ChevronRight className={styles.icon} />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonios */}
       <section className={styles.sectionTestimonials}>
         <div className={styles.innerContainer}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>
+            <h2 className={` ${styles.blackTitle} ${styles.sectionTitle} `}>
               Lo que dicen nuestros clientes
             </h2>
-            <p className={styles.sectionDescription}>
-              Miles de clientes satisfechos confían en nosotros para sus
-              aventuras en Miami
+            <p className={` ${styles.blackDescription} ${styles.sectionDescription}`}>
+              Miles de clientes satisfechos recomiendan nuestro servicio de alquiler de coche en Miami.
             </p>
           </div>
 
