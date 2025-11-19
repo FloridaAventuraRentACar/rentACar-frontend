@@ -119,8 +119,8 @@ export default function HomePage() {
       <section className={styles.sectionWhyChooseUs}>
         <div className={styles.innerContainer}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>¿Por qué elegirnos?</h2>
-            <p className={styles.sectionDescription}>
+            <h2 className={` ${styles.whyChooseUsTitle} ${styles.sectionTitle} `}>¿Por qué elegirnos?</h2>
+            <p className={`${styles.sectionDescription} ${styles.whyChooseUsDescription}`}>
               Atención personalizada, sin colas ni trámites — tu auto te espera en el aeropuerto.
             </p>
           </div>

@@ -168,6 +168,10 @@ html {
   flex: 1;
 }
 
+.sectionWhyChooseUs {
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+}
+
 
 /* --- Sections General --- */
 .sectionUnits,
@@ -186,7 +190,6 @@ html {
   /* bg-gray-50 */
 }
 
-.sectionWhyChooseUs,
 .sectionContact {
   background-color: #ffffff;
   /* bg-white */
@@ -211,6 +214,11 @@ html {
   /* Reduced for mobile */
 }
 
+.whyChooseUsTitle {
+  color: #f97316;
+  font-weight: bold;
+}
+
 .sectionDescription {
   font-size: 1rem;
   /* Smaller for mobile */
@@ -223,6 +231,10 @@ html {
   margin-left: auto;
   margin-right: auto;
 
+}
+
+.whyChooseUsDescription {
+  color: #ffffff;
 }
 
 /* --- Cars Grid --- */
@@ -414,20 +426,23 @@ html {
 .featureTitle {
   font-size: 1.125rem;
   /* Smaller for mobile */
-  font-weight: 700;
+  font-weight: bold;
   /* font-bold */
-  color: #1f2937;
+  color: #f97316;
   /* text-gray-800 */
   margin-bottom: 0.75rem;
   /* Reduced margin for mobile */
+  font-family: 'inter';
+
 }
 
 .featureDescription {
-  color: #4b5563;
+  color: #ffffff;
   /* text-gray-600 */
   font-size: 0.9rem;
   /* Smaller for mobile */
   line-height: 1.4;
+  font-family: 'inter';
 }
 
 /* --- Testimonials --- */
