@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/admin/RentalAdminResume.module.css";
 import { getRentalById, updateRental } from "../../services/rentalService";
 import { useNavigate, useParams } from "react-router-dom";
@@ -65,8 +65,12 @@ export default function RentalAdminResume({ isEditable = true }) {
     }
   };
 
-  const navigateAdmin = () => {
-    navigate(`/admin`);
+  const navigateBack = () => {
+    navigate(-1);
+  };
+
+  const handleEditButtonClick = () => {
+    navigate("/admin/rentals/edit/" + id);
   };
 
   const handleSave = async () => {
@@ -202,13 +206,16 @@ export default function RentalAdminResume({ isEditable = true }) {
 
   return (
     <div className={styles.background}>
-      <BackButton onClick={navigateAdmin} />
+      <BackButton onClick={navigateBack} />
       <div className={styles.container}>
         <div className={styles.header}>
-          <h1 className={styles.title}>
-            {isEditable ? "Editar Alquiler" : "Detalles del Alquiler"}
-          </h1>
-          {isEditable && <div className={styles.editBadge}>Modo Edición</div>}
+          <div className={styles.headerText}>
+            <h1 className={styles.title}>
+              {isEditable ? "Editar Alquiler" : "Detalles del Alquiler"}
+            </h1>
+            {isEditable && <div className={styles.editBadge}>Modo Edición</div>}
+          </div>
+          {!isEditable && <button className={styles.editButton} onClick={handleEditButtonClick}>Editar</button>}
         </div>
 
         {/* Información del Alquiler */}
@@ -328,6 +335,13 @@ export default function RentalAdminResume({ isEditable = true }) {
                 "licenseExpirationDate",
                 0,
                 "date"
+              )}
+              {renderField(
+                "Numero de vuelo",
+                mainDriver.flightNumber,
+                "flightNumber",
+                0,
+                "text"
               )}
             </div>
           </div>

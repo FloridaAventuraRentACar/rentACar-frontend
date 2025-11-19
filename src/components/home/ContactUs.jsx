@@ -5,13 +5,15 @@ import Input from "../ui/Input";
 import Textarea from "../ui/TextArea";
 import Card from "../ui/Card";
 import CardContent from "../ui/CardContent";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useEmailJs from "../../hooks/useEmailJs";
 import contactUsHtml from "../../utilities/emailHtml/contactUsHtml";
 import autoReplyHtml from "../../utilities/emailHtml/autoReplyHtml";
 
 export default function ContactUs() {
   const formRef = useRef();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const contactUsEmail = useEmailJs({
     serviceId: import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
@@ -28,6 +30,13 @@ export default function ContactUs() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isLoading) {
+      console.log("Enviando correo...");
+      return;
+    }
+
+    setIsLoading(true);
 
     const form = formRef.current;
 
@@ -54,7 +63,7 @@ export default function ContactUs() {
     };
 
     await contactUsEmail.sendEmail(ContactUsTemplateParams);
-    
+    setIsLoading(false);
     form.reset();
   };
 
@@ -82,18 +91,19 @@ export default function ContactUs() {
                   >
                     <div>
                       <label htmlFor="fullName" className={styles.formLabel}>
-                        Nombre completo
+                        Nombre completo *
                       </label>
                       <Input
                         id="fullName"
                         name="fullName"
                         placeholder="Tu nombre"
                         className={styles.inputFullWidth}
+                        required
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className={styles.formLabel}>
-                        Email
+                        Email *
                       </label>
                       <Input
                         id="email"
@@ -118,17 +128,18 @@ export default function ContactUs() {
                     </div>
                     <div>
                       <label htmlFor="message" className={styles.formLabel}>
-                        Mensaje
+                        Mensaje *
                       </label>
                       <Textarea
                         id="message"
                         name="message"
                         placeholder="¿En qué podemos ayudarte?"
                         className={styles.textareaFullWidth}
+                        required
                       />
                     </div>
                     <Button className={styles.submitButton}>
-                      Enviar mensaje
+                      {isLoading ? "Enviando..." : "Enviar mensaje"}
                     </Button>
                   </form>
                 </CardContent>

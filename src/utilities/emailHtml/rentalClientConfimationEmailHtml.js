@@ -1,7 +1,7 @@
 import formatDateAndHour from "../functions/formatDateAndHour"
 import locationNames from "../names/locationNames";
 
-export function rentalConfirmationEmailhtml(name, surname, carName, phoneNumber ,startDateAndHour, endDateAndHour, pickupPlace , returnPlace, daysBooked, totalCost) {
+export function rentalClientConfirmationEmailhtml(name, surname, carName, phoneNumber ,startDateAndHour, endDateAndHour, pickupPlace , returnPlace, daysBooked, totalCost) {
   return `
     <!DOCTYPE html>
     <html lang="es">
@@ -124,4 +124,4 @@ export function rentalConfirmationEmailhtml(name, surname, carName, phoneNumber 
 `;
 }
 
-export default rentalConfirmationEmailhtml;
+export default rentalClientConfirmationEmailhtml;

@@ -1,0 +1,232 @@
+/* VehicleRentalForm.module.css */
+
+.sectionTitle {
+  color: #1f2937; /* text-gray-800 */
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  border-bottom: 2px solid #f97316; /* border-orange-500 */
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.fieldGroup {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #374151; /* text-gray-700 */
+  font-size: 0.95rem;
+  letter-spacing: 0.025em;
+}
+
+.input {
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1d5db; /* border-gray-300 */
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #ffffff;
+  color: #1f2937; /* text-gray-800 */
+  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input:focus {
+  border-color: #f97316; /* border-orange-500 */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.input:hover {
+  border-color: #9ca3af; /* border-gray-400 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input:disabled,
+.input[readonly] {
+  background-color: #f9fafb; /* bg-gray-50 */
+  border-color: #e5e7eb; /* border-gray-200 */
+  color: #6b7280; /* text-gray-500 */
+  cursor: not-allowed;
+}
+
+.input::placeholder {
+  color: #9ca3af; /* text-gray-400 */
+  opacity: 1;
+}
+
+.input[type="date"],
+.input[type="datetime-local"] {
+  color-scheme: light;
+}
+
+.input[type="date"]::-webkit-calendar-picker-indicator,
+.input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  color: #f97316; /* orange-500 */
+  cursor: pointer;
+}
+
+.error {
+  color: #dc2626; /* text-red-600 */
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.priceContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.priceInputWrapper {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.priceInput {
+  width: 90%;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #fff7ed; /* bg-orange-50 */
+  border: 1px solid #fed7aa; /* border-orange-200 */
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  min-height: 48px;
+}
+
+.checkboxContainer:hover {
+  background-color: #ffedd5; /* bg-orange-100 */
+  border-color: #fdba74; /* border-orange-300 */
+}
+
+.calculateCheckbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: #f97316; /* orange-500 */
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  font-weight: 600;
+  color: #374151; /* text-gray-700 */
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Media Queries para Responsive */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .priceContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .checkboxContainer {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Mobile (hasta 768px) */
+@media (max-width: 768px) {
+  .fieldGroup {
+    margin-bottom: 1.25rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .input {
+    padding: 0.875rem;
+    font-size: 16px; /* Evita zoom en iOS */
+    border-radius: 10px;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .priceContainer {
+    flex-direction: column;
+  }
+
+  .priceInputWrapper {
+    min-width: 100%;
+  }
+
+  .checkboxContainer {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* Mobile pequeño (hasta 480px) */
+@media (max-width: 480px) {
+  .input {
+    padding: 0.75rem;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .sectionTitle {
+    font-size: 1.125rem;
+  }
+
+  .label {
+    font-size: 0.875rem;
+  }
+
+  .error {
+    font-size: 0.8rem;
+  }
+}
+
+/* Touch-friendly improvements for mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  .input {
+    min-height: 48px;
+  }
+
+  .calculateCheckbox {
+    min-width: 24px;
+    min-height: 24px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .input,
+  .checkboxContainer {
+    transition: none;
+  }
+
+  .input:focus {
+    transform: none;
+  }
+}
+

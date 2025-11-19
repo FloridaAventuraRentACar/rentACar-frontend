@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
+import "../index.css";
+
 import { createRoot } from "react-dom/client";
-import HomePage  from "./home/HomePage.jsx";
+import HomePage from "./home/HomePage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ShowCarsPage } from "./ShowCarsPage.jsx";
 import { CarRentalPage } from "./CarRentalPage.jsx";
@@ -13,6 +15,9 @@ import RentalAdminResume from "./admin/RentalAdminResume.jsx";
 import Login from "./admin/Login.jsx";
 import { AuthProvider } from "../context/AuthContext.jsx";
 import ProtectedRoute from "./admin/ProtectedRoute.jsx";
+import GanttChart from "./admin/GanttChart.jsx";
+import AdminHome from "./admin/AdminHome.jsx";
+import AdminRentalFormPage from "./admin/adminRentalForm/AdminRentalFormPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +36,23 @@ const router = createBrowserRouter([
         path: "/admin",
         element: (
           <ProtectedRoute>
+            <AdminHome />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/rentals",
+        element: (
+          <ProtectedRoute>
             <RentalsListPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/rentals/gantt",
+        element: (
+          <ProtectedRoute>
+            <GanttChart />
           </ProtectedRoute>
         ),
       },
@@ -51,6 +72,15 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/admin/register",
+        element: (
+          <ProtectedRoute>
+            <AdminRentalFormPage />
+          </ProtectedRoute>
+        ),
+      },
+
     ],
   },
 ]);
