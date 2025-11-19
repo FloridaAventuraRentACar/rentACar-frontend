@@ -1,5 +1,5 @@
 .footer {
-  background-color: #374151; /* Gris oscuro */
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
   color: #ffffff; /* Blanco */
   padding: 2.5rem 0 1.5rem 0;
   margin-top: auto;

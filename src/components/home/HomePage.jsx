@@ -66,7 +66,7 @@ export default function HomePage() {
             <span className={styles.heroSubtitle}>Con Estilo</span>
           </h1>
           <p className={styles.heroDescription}>
-            Flota de alta gama y servicio impecable para una experiencia inolvidable. Tarifas transparentes garantizadas.
+            Alquilar auto en Miami nunca fue tan fácil. Vehículos premium, entrega inmediata y precios transparentes.
           </p>
 
           <div className={styles.heroInputContainer}>
