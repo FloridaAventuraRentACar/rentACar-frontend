@@ -26,6 +26,34 @@ export const faqs = [
   {
     question: "¿Puedo cancelar o modificar mi reserva?",
     answer: "Sí, puedes cancelar o modificar tu reserva hasta 24 horas antes de la fecha de recogida sin cargos adicionales. Las cancelaciones con menos de 24 horas de anticipación pueden estar sujetas a cargos."
+  },
+  {
+    question: "¿Puedo agregar conductores adicionales?",
+    answer: "Sí, puedes agregar conductores adicionales siempre que presenten su licencia de conducir válida. Tienes incluido hasta 1 conductor adicional sin coste."
+  },
+  {
+    question: "¿Ofrecen sillas para bebés o boosters?",
+    answer: "Sí, contamos con sillas infantiles y boosters según la edad del niño. Puedes agregarlos a tu reserva con anticipación para garantizar disponibilidad."
+  },
+  {
+    question: "¿Debo devolver el auto con el tanque lleno?",
+    answer: "Debes devolver el tanque completo para no incurrir en costes adicionales. También ofrecemos la opción de prepagar el combustible para mayor comodidad."
+  },
+  {
+    question: "¿Puedo conducir a otras ciudades o estados?",
+    answer: "Puedes conducir con total libertad dentro del estado de Florida. Para salir del estado, simplemente notifícalo al momento de la reserva."
+  },
+  {
+    question: "¿Aceptan pagos en efectivo?",
+    answer: "Aceptamos pagos con tarjeta de crédito o débito. Para pagos en efectivo, es necesario proporcionar una tarjeta válida como garantía."
+  },
+  {
+    question: "¿Qué sucede si mi vuelo se retrasa?",
+    answer: "Monitoreamos tu vuelo en tiempo real y ajustamos la entrega del vehículo sin cargos adicionales. Siempre recibirás tu auto a tiempo."
+  },
+  {
+    question: "¿El alquiler incluye kilometraje ilimitado?",
+    answer: "Sí, todos nuestros alquileres incluyen kilometraje ilimitado dentro del estado de Florida."
   }
 ];
 
