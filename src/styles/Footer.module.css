@@ -1,9 +1,10 @@
 .footer {
   background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
-  color: #ffffff; /* Blanco */
+  color: #ffffff;
+  /* Blanco */
   padding: 2.5rem 0 1.5rem 0;
   margin-top: auto;
-  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--primary-font), 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .container {
@@ -27,7 +28,8 @@
 .brandTitle {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #f97316; /* Naranja */
+  color: #f97316;
+  /* Naranja */
   margin-bottom: 1rem;
   letter-spacing: 0.025em;
 }
@@ -35,7 +37,8 @@
 .brandSlogan {
   font-size: 1rem;
   line-height: 1.6;
-  color: #e5e7eb; /* Gris claro */
+  color: #e5e7eb;
+  /* Gris claro */
   max-width: 600px;
   margin: 0 auto;
   font-weight: 400;
@@ -45,33 +48,38 @@
 .logoLink {
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* space-x-3 */
+  gap: 0.75rem;
   transition: transform 0.3s ease-in-out;
 }
 
 .logoImageWrapper {
   position: relative;
-  width: 2.5rem; /* w-10 */
-  height: 2.5rem; /* h-10 */
+  width: 3rem;
+  /* w-10 */
+  height: 3rem;
+  /* h-10 */
 }
 
-@media (min-width: 1024px) {
-  .logoImageWrapper {
-    width: 7rem; /* lg:w-12 */
-    height: 7rem; /* lg:h-12 */
-  }
-}
+
 
 .logoImage {
-  width: 100%; /* fill */
-  height: 100%; /* fill */
-  object-fit: contain; /* object-contain */
-  border-radius: 0.5rem; /* rounded-lg */
+  width: 100%;
+  /* fill */
+  height: 100%;
+  /* fill */
+  object-fit: contain;
+  /* object-contain */
+  border-radius: 0.5rem;
+  /* rounded-lg */
 }
 
 @media (min-width: 640px) {
   .logoTextWrapper {
-    display: block; /* sm:block */
+    display: block;
+    width: 4rem;
+  /* w-10 */
+  height: 4rem;
+    /* sm:block */
   }
 }
 
@@ -91,7 +99,7 @@
 .contactInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.2rem;
   max-width: 400px;
   margin: 0 auto;
 }
@@ -99,37 +107,75 @@
 .contactItem {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0rem;
   text-align: center;
 }
 
 .contactLabel {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #f97316; /* Naranja */
+  color: #f97316;
+  /* Naranja */
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .contactValue {
   font-size: 0.95rem;
-  color: #e5e7eb; /* Gris claro */
+  color: #e5e7eb;
+  /* Gris claro */
   font-weight: 400;
   line-height: 1.4;
 }
 
+.hoursItem{
+  margin-top: -1rem;
+
+}
 /* Copyright */
 .copyright {
-  border-top: 1px solid #4b5563; /* Gris medio */
+  border-top: 1px solid #4b5563;
+  /* Gris medio */
   padding-top: 1.5rem;
   text-align: center;
 }
 
 .copyrightText {
   font-size: 0.875rem;
-  color: #9ca3af; /* Gris medio */
+  color: #9ca3af;
+  /* Gris medio */
   margin: 0;
   font-weight: 400;
+}
+
+@media (min-width: 425px) {
+  .logoLink {
+    justify-content: center;
+  }
+
+  .contactItem {
+    padding: 0.3rem 0;
+  }
+  .hoursItem{
+    margin-top: 0rem;
+  }
+  .logoImageWrapper {
+    width: 4rem;
+    /* w-10 */
+    height: 4rem;
+    /* h-10 */
+  }
+  .content{
+    gap: 1rem;
+  }
+}
+@media (min-width: 640px) {
+  
+
+  .contactItem{
+    padding: 0.5rem 0;
+  }
+  
 }
 
 /* Responsive Design */
@@ -169,6 +215,14 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
+    padding: 0.2rem 0;
+  }
+
+  .logoLink {
+    justify-content: left;
+  }
+  .hoursItem{
+    margin-top: 0rem;
   }
 
   .contactLabel {
@@ -210,7 +264,7 @@
   }
 
   .contactItem {
-    padding: 0.5rem 0;
+    padding: 0.3rem 0;
   }
 
   .contactLabel {
@@ -225,11 +279,19 @@
   .copyrightText {
     font-size: 0.9rem;
   }
+
+  .logoImageWrapper {
+    width: 7rem;
+    /* lg:w-12 */
+    height: 7rem;
+    /* lg:h-12 */
+  }
 }
 
 /* Hover effects */
 .contactValue:hover {
-  color: #f97316; /* Naranja al hover */
+  color: #f97316;
+  /* Naranja al hover */
   transition: color 0.3s ease;
 }
 
@@ -243,6 +305,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -254,7 +317,7 @@
   .footer {
     animation: none;
   }
-  
+
   .contactValue {
     transition: none;
   }
