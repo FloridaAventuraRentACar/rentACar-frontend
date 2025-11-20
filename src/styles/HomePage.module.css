@@ -99,54 +99,39 @@ html {
   position: relative;
   top: 10%;
   font-size: 2rem;
-  /* Smaller for mobile */
   line-height: 1.1;
-  /* leading-tight */
   font-weight: 700;
-  /* font-bold */
   margin-bottom: 1rem;
-  /* Reduced margin for mobile */
   animation: fadeIn 1s ease-out;
-  font-family: 'inter';
+  font-family: var(--secondary-font);
 }
 
 .heroTitle span {
   display: block;
-  /* block */
   color: #fbbf24;
-  /* text-orange-400 */
 }
 
 .heroDescription {
   font-size: 1rem;
-  /* Smaller for mobile */
   line-height: 1.5;
-  /* leading-relaxed */
   margin-bottom: 2rem;
-  /* Reduced margin for mobile */
   max-width: 48rem;
-  /* max-w-3xl */
   margin-left: auto;
   margin-right: auto;
   opacity: 0.9;
-  font-family: 'inter';
-  /* opacity-90 */
+  font-family: var(--secondary-font);
 }
 
 .heroInputContainer {
   margin-top: 2rem;
-  /* Reduced margin for mobile */
 }
 
 /* Placeholder for HomeRentInput styles */
 .homeRentInput {
   display: flex;
   flex-direction: column;
-  /* For smaller screens */
   gap: 0.75rem;
-  /* Reduced gap for mobile */
   padding: 1rem;
-  /* Reduced padding for mobile */
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 0.75rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -161,7 +146,6 @@ html {
   border-radius: 0.5rem;
   flex-grow: 1;
   font-size: 0.9rem;
-  /* Slightly smaller for mobile */
   color: #374151;
   min-width: 0;
   flex: 1;
@@ -178,14 +162,11 @@ html {
 .sectionTestimonials,
 .sectionContact {
   padding-top: 3rem;
-  /* Reduced for mobile */
   padding-bottom: 3rem;
-  /* Reduced for mobile */
 }
 
 .sectionUnits {
   background-color: #f9fafb;
-  /* bg-gray-50 */
 }
 
 .sectionTestimonials {
@@ -195,27 +176,20 @@ html {
 
 .sectionContact {
   background-color: #ffffff;
-  /* bg-white */
 }
 
 .sectionHeader {
   text-align: center;
   margin-bottom: 2rem;
-  /* Reduced for mobile */
 }
 
 .sectionTitle {
   font-size: 1.75rem;
-  /* Smaller for mobile */
   line-height: 1.2;
-  /* leading-10 */
   font-weight: 700;
-  /* font-bold */
   color: #1f2937;
-  /* text-gray-800 */
   margin-bottom: 1rem;
-  /* Reduced for mobile */
-  font-family: 'inter';
+  font-family: var(--primary-font);
 }
 
 .blackTitle {
@@ -226,16 +200,12 @@ html {
 .sectionDescription {
   font-size: 1rem;
   font-weight: 400;
-  /* Smaller for mobile */
   line-height: 1.5;
-  /* leading-relaxed */
   color: #4b5563;
-  /* text-gray-600 */
   max-width: 48rem;
-  /* max-w-3xl */
   margin-left: auto;
   margin-right: auto;
-  font-family: 'inter';
+  font-family: var(--primary-font);
 
 }
 

@@ -9,3 +9,10 @@ body {
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
 }
+
+:root {
+  --primary-font: "Inter", sans-serif;
+  --secondary-font: "Robot", serif;
+  --primary-color: #1a73e8;
+  --secondary-color: #ff9800;
+}

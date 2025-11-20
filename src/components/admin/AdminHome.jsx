@@ -80,7 +80,7 @@ export default function AdminHome() {
           <a href="/" className={styles.logoLink}>
             <div className={styles.logoImageWrapper}>
               <img
-                src="/FloridaAventuraLogo.png"
+                src="/FloridaAventuraLogo.jpg"
                 alt="Florida Aventura Rent a Car Logo"
                 className={styles.logoImage}
               />

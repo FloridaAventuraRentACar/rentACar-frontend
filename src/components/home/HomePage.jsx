@@ -55,7 +55,7 @@ export default function HomePage() {
         <div
           className={styles.heroBackground}
           style={{
-            backgroundImage: `url("https://www.volkswagen.cl/dam/images/c8d028b2c737e686c203c1f67c0b3330a2fdf699/6d9348c871dd4f3beae3e6217e3e9478/e4bad2ec-cd8a-4c37-9604-858174c72fc8/crop:SMART/resize:3840:2160/captura-de-pantalla-2024-01-16-a-la-s-15-52-22.png")`,
+            backgroundImage: `url("/public/backgroundLandingPage.jpg")`,
           }}
         />
         <div className={styles.heroOverlay} />

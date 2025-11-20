@@ -66,7 +66,7 @@ export default function HeaderReusable({ className = "" }) {
           >
             <div className={styles.logoImageWrapper}>
               <img
-                src="/FloridaAventuraLogo.png"
+                src="/FloridaAventuraLogo.jpg"
                 alt="Florida Aventura Rent a Car Logo"
                 className={styles.logoImage}
               />
