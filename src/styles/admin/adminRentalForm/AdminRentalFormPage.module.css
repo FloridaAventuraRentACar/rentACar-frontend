@@ -2,8 +2,9 @@
 
 .background {
   min-height: 100vh;
-  background-color: #f9fafb; /* bg-gray-50 */
-  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f9fafb;
+  /* bg-gray-50 */
+  font-family: var(--primary-font), 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
   padding: 1rem;
 }
 
@@ -40,11 +41,13 @@
 .formTitle {
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937; /* text-gray-800 */
+  color: #1f2937;
+  /* text-gray-800 */
   margin-bottom: 2rem;
   text-align: center;
   padding-bottom: 1rem;
-  border-bottom: 3px solid #f97316; /* border-orange-500 */
+  border-bottom: 3px solid #f97316;
+  /* border-orange-500 */
   letter-spacing: 0.025em;
 }
 
@@ -61,7 +64,7 @@
   letter-spacing: 0.025em;
   position: relative;
   overflow: hidden;
-  font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--primary-font), 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .button::before {
@@ -89,7 +92,8 @@
 }
 
 .submitButton {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); /* orange gradient */
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  /* orange gradient */
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
   font-size: 1.125rem;
   padding: 1rem 2rem;
@@ -111,7 +115,7 @@
   .mainContainer {
     gap: 3rem;
   }
-  
+
   .formContainer {
     padding: 3rem;
   }
@@ -188,6 +192,7 @@
 
 /* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
   .formContainer,
   .button {
     transition: none;
@@ -226,4 +231,3 @@
     background: #f97316 !important;
   }
 }
-

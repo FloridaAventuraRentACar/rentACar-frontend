@@ -20,7 +20,7 @@ export default function Footer() {
             >
               <div className={styles.logoImageWrapper}>
                 <img
-                  src="/FloridaAventuraLogo.png"
+                  src="/FloridaAventuraLogo.jpg"
                   alt="Florida Aventura Rent a Car Logo"
                   className={styles.logoImage}
                 />
@@ -37,14 +37,18 @@ export default function Footer() {
                 <span className={styles.contactValue}>+1 (305) 773-1787</span>
               </div>
               <div className={styles.contactItem}>
-                <span className={styles.contactLabel}>Email:</span>
+                <span className={styles.contactLabel}>Email principal:</span>
                 <span className={styles.contactValue}>floridaaventuraok@gmail.com</span>
+              </div>
+              <div className={styles.contactItem}>
+                <span className={styles.contactLabel}>Email secundario:</span>
+                <span className={styles.contactValue}>patgonzalez007@hotmail.com</span>
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactLabel}>Dirección:</span>
                 <span className={styles.contactValue}>13499 Biscayne Blvd, North Miami, FL 33181</span>
               </div>
-              <div className={styles.contactItem}>
+              <div className={`${styles.contactItem} ${styles.hoursItem}`}>
                 <span className={styles.contactLabel}>Horarios:</span>
                 <span className={styles.contactValue}>Lun - Dom: 9:00 AM - 9:00 PM</span>
               </div>
