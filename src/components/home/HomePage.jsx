@@ -55,7 +55,7 @@ export default function HomePage() {
         <div
           className={styles.heroBackground}
           style={{
-            backgroundImage: `url("/public/backgroundLandingPage.jpg")`,
+            backgroundImage: `url("/backgroundLandingPage.jpg")`,
           }}
         />
         <div className={styles.heroOverlay} />
