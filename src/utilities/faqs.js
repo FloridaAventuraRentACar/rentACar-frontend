@@ -1,7 +1,7 @@
 export const faqs = [
   {
     question: "¿Qué documentos necesito para rentar un auto?",
-    answer: "Necesitas una licencia de conducir válida, tarjeta de crédito a tu nombre y un documento de identificación (pasaporte o ID). Para conductores internacionales, se requiere una licencia de conducir internacional junto con tu licencia original."
+    answer: "Necesitas una licencia de conducir válida, tarjeta de crédito a tu nombre y un documento de identificación (pasaporte o ID)."
   },
   {
     question: "¿Cuál es la edad mínima para rentar?",
@@ -16,12 +16,20 @@ export const faqs = [
     answer: "Sí, todos nuestros precios incluyen seguro básico de responsabilidad civil y cobertura contra daños por colisión (CDW). Ofrecemos opciones de seguro adicional para mayor tranquilidad durante tu viaje."
   },
   {
+    question: "¿Qué incluye el seguro del vehículo?",
+    answer: "El alquiler incluye seguro total con un deducible fijo de USD 500. La cobertura comprende: colisión, choque o daños al vehículo; robo del auto; responsabilidad civil frente a terceros; y asistencia en carretera (averías, batería, pinchaduras, etc.)."
+  },
+  {
+    question: "¿Cómo funciona el deducible?",
+    answer: "El deducible es un monto que se aplica únicamente si ocurre un siniestro o un daño provocado por el cliente. Si el vehículo se devuelve sin daños, no se cobra nada. Importante: el seguro no cubre negligencia, conducción bajo efectos de alcohol o drogas ni daños causados por terceros no autorizados. Los daños menores (rayones, llantas, parabrisas, interior, etc.) también están cubiertos, aplicando el mismo deducible si corresponde."
+  },
+  {
     question: "¿Puedo devolver el auto en una ubicación diferente?",
     answer: "Sí, ofrecemos servicio de devolución en diferentes ubicaciones dentro del área de Miami sin coste adicional."
   },
   {
-    question: "¿Qué pasa si tengo un problema con el vehículo?",
-    answer: "Contamos con asistencia en carretera 24/7. Si tienes cualquier problema con el vehículo, llámanos inmediatamente y te proporcionaremos asistencia o un vehículo de reemplazo si es necesario."
+    question: "¿Qué debo hacer si tengo un problema o un accidente con el vehículo?",
+    answer: "Al retirar el vehículo te entregamos un carnet con los datos de la asistencia en carretera disponible 24/7. Si tienes un problema mecánico, debes comunicarte al número indicado en ese carnet para recibir ayuda o un vehículo de reemplazo si es necesario. En caso de sufrir un accidente, lo primero que debes hacer es llamar al 911 y luego contactarte con la asistencia en carretera."
   },
   {
     question: "¿Puedo cancelar o modificar mi reserva?",
@@ -41,7 +49,7 @@ export const faqs = [
   },
   {
     question: "¿Puedo conducir a otras ciudades o estados?",
-    answer: "Puedes conducir con total libertad dentro del estado de Florida. Para salir del estado, simplemente notifícalo al momento de la reserva."
+    answer: "No, solo puedes conducir dentro del estado de Florida."
   },
   {
     question: "¿Aceptan pagos en efectivo?",
