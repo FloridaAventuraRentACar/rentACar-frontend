@@ -9,6 +9,10 @@ export const postRental = (rental) => {
     return axiosInstance.post(`${API_RENTALS}`, rental);
 };
 
+export const postRentalAsAdmin = (rental) => {
+    return axiosInstance.post(`${API_RENTALS}/admin-register`, rental);
+};
+
 export const getCurrentRentals = () => {
     return axiosInstance.get(`${API_GET_CURRENT_RENTALS}`);
 };

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
 import styles from "../../../styles/admin/adminRentalForm/AdminRentalFormPage.module.css";
-import { postRental } from "../../../services/rentalService.js";
+import { postRental, postRentalAsAdmin } from "../../../services/rentalService.js";
 import { carNames } from "../../../utilities/names/carNames.js";
 import Loading from "../../ui/Loading.jsx";
 import ErrorModal from "../../ui/ErrorModal.jsx";
@@ -16,18 +16,14 @@ import AdminSideBar from "../AdminSideBar.jsx";
 const driverSchema = Yup.object({
   name: Yup.string().required("Obligatorio"),
   surname: Yup.string().required("Obligatorio"),
-  email: Yup.string()
-    .email("Debes ingresar un formato de mail valido")
-    .required("Obligatorio"),
-  phone: Yup.string().required("Obligatorio"),
-  licenseNumber: Yup.string().required("Obligatorio"),
-  bornDate: Yup.date().required("Obligatorio"),
-  licenseName: Yup.string().required("Obligatorio"),
-  licenseAddress: Yup.string().required("Obligatorio"),
-  licenseExpirationDate: Yup.date().required("Obligatorio"),
-  ageCheckbox: Yup.boolean()
-    .oneOf([true], "Debes tener mas de 25 años para manejar un vehiculo")
-    .required("Obligatorio"),
+  email: Yup.string().email("Debes ingresar un formato de mail valido"),
+  phone: Yup.string(),
+  licenseNumber: Yup.string(),
+  bornDate: Yup.date(),
+  licenseName: Yup.string(),
+  licenseAddress: Yup.string(),
+  licenseExpirationDate: Yup.date(),
+  ageCheckbox: Yup.boolean(),
 });
 
 const AdminRentalFormPage = () => {
@@ -99,13 +95,13 @@ const AdminRentalFormPage = () => {
     carId: "",
     startDateTime: "",
     endDateTime: "",
-    pickupLocation: "",
-    returnLocation: "",
+    pickupLocation: "MIAMI_AIRPORT",
+    returnLocation: "MIAMI_AIRPORT",
     travelLocation: "",
-    insurance: "",
-    babySeat: "",
-    gasTank: "",
-    totalPrice: "",
+    insurance: "DEDUCTIBLE",
+    babySeat: "NONE",
+    gasTank: "FULL",
+    totalPrice: null,
     calculateTotal: false,
     driver: {
       name: "",
@@ -136,11 +132,11 @@ const AdminRentalFormPage = () => {
           return new Date(value) > new Date(startDateTime);
         }
       ),
-    pickupLocation: Yup.string().required("Obligatorio"),
-    returnLocation: Yup.string().required("Obligatorio"),
-    insurance: Yup.string().required("Obligatorio"),
-    babySeat: Yup.string().required("Obligatorio"),
-    gasTank: Yup.string().required("Obligatorio"),
+    pickupLocation: Yup.string(),
+    returnLocation: Yup.string(),
+    insurance: Yup.string(),
+    babySeat: Yup.string(),
+    gasTank: Yup.string(),
     totalPrice: Yup.number()
       .nullable()
       .when("calculateTotal", {
