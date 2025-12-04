@@ -1,6 +1,6 @@
 export const locationNames = {
-  MIAMI_AIRPORT: "Miami International Airport",
-  FORTLAURENDALE_AIRPORT: "Fort Lauderdale Airport",
+  MIAMI_AIRPORT: "Aeropuerto Internacional de Miami",
+  FORTLAURENDALE_AIRPORT: "Aeropuerto Internacional de Fort Lauderdale",
   BRICKEL: "Brickell",
   SUNNY_ISLES: "Sunny Isles",
   HALLANDALE: "Hallandale",
