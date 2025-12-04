@@ -160,6 +160,7 @@ export default function RentalAdminResume({ isEditable = true }) {
     options,
     driverIndex = null
   ) => {
+    if (!options) return <div className={styles.field}>Cargando...</div>;
     const isEditMode = isEditable;
     const currentValue =
       driverIndex !== null
