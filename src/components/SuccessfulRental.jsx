@@ -6,6 +6,7 @@ import styles from "../styles/SuccessfulRental.module.css"
 import { useLocation, useNavigate } from "react-router-dom"
 import { format, parseISO } from 'date-fns';
 import {locationNames} from '../utilities/names/locationNames'
+import formatDateAndHour from "../utilities/functions/formatDateAndHour"
 
 export default function SuccessfulRental() {
   const location = useLocation();
@@ -74,11 +75,11 @@ export default function SuccessfulRental() {
               <Calendar className={styles.rowIcon} />
               <div className={styles.dateGrid}>
                 <div>
-                  <p className={styles.value}>{formattedPickupDate}</p>
+                  <p className={styles.value}>{formatDateAndHour(rental.start)}</p>
                   <p className={styles.subLabel}>Entrega</p>
                 </div>
                 <div>
-                  <p className={styles.value}>{formattedReturnDate}</p>
+                  <p className={styles.value}>{formatDateAndHour(rental.end)}</p>
                   <p className={styles.subLabel}>Devolucion</p>
                 </div>
               </div>

@@ -21,10 +21,31 @@ const driverSchema = Yup.object({
     .required("Obligatorio"),
   phone: Yup.string().required("Obligatorio"),
   licenseNumber: Yup.string().required("Obligatorio"),
-  bornDate: Yup.date().required("Obligatorio"),
+  bornDate: Yup.date()
+  .required("Obligatorio")
+  .test(
+    "age-min-25",
+    "El conductor debe tener al menos 25 años",
+    function (value) {
+      if (!value) return false;
+
+      const today = new Date();
+      const birthDate = new Date(value);
+
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+
+      // Ajuste si todavía no cumplió años este año
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+
+      return age >= 25;
+    }
+  ),
   licenseName: Yup.string().required("Obligatorio"),
   licenseAddress: Yup.string().required("Obligatorio"),
-  licenseExpirationDate: Yup.date().required("Obligatorio"),
+  licenseExpirationDate: Yup.date().required("Obligatorio") .min(new Date(), "La licencia debe estar vigente (fecha futura)"),
   ageCheckbox: Yup.boolean()
     .oneOf([true], "Debes tener mas de 25 años para manejar un vehiculo")
     .required("Obligatorio"),

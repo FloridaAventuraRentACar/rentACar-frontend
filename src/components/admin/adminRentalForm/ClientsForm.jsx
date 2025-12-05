@@ -145,13 +145,14 @@ const ClientsForm = () => {
       {/* Formulario de Clientes */}
       <h3 className={styles.sectionTitle}>Conductor principal</h3>
       {renderDriverFields("driver", styles)}
-
-      <h3 className={styles.sectionTitle}>
-        Conductores adicionales
-      </h3>
-      <span className={styles.include}>
-        Hasta un conductor adicional incluido en el precio
-      </span>
+      <div className={styles.addDriverTitle}>
+        <h3 className={styles.sectionTitle}>
+          Conductores adicionales
+        </h3>
+        <span className={styles.include}>
+          Hasta un conductor adicional incluido en el precio
+        </span>
+      </div>
       <FieldArray name="additionalDrivers">
         {({ push, remove }) => (
           <div>

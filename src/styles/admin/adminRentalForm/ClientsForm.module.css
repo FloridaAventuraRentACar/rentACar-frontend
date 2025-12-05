@@ -1,5 +1,9 @@
 /* ClientsForm.module.css */
 
+.addDriverTitle {
+  display: flex;
+  align-items: center;
+}
 .sectionTitle {
   color: #1f2937;
   /* text-gray-800 */
@@ -17,7 +21,7 @@
 .include {
   font-size: 0.8rem;
   color: rgba(15, 15, 15, 0.616);
-  margin-top: 10px;
+  margin-top: 40px;
   font-weight: bold;
   margin-left: 15px;
   display: block;

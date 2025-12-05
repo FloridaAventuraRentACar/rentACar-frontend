@@ -4,8 +4,12 @@ import { useEffect, useContext } from "react";
 import styles from "../styles/HomeRentInput.module.css";
 import { AppContext } from "../context/AppContext";
 import { daysCalculate } from "../utilities/functions/daysCalculate";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeRentInput() {
+
+  const navigate = useNavigate();
+
   const {
     pickupLocation,
     setPickupLocation,
@@ -42,13 +46,13 @@ export default function HomeRentInput() {
     }
 
     setDaysBooked(daysBooked);
-    // En lugar de navigate, mostramos un mensaje de éxito
-    alert(`¡Perfecto! Has reservado por ${daysBooked} días. Mostrando autos disponibles...`);
+    
+    navigate("/cars");
   };
 
   const resetStates = () => {
-    setPickupLocation("MIAMI_INTERNATIONAL_AIRPORT");
-    setReturnLocation("MIAMI_INTERNATIONAL_AIRPORT");
+    setPickupLocation("MIAMI_AIRPORT");
+    setReturnLocation("MIAMI_AIRPORT");
     setPickupDate("");
     setPickupTime("");
     setReturnDate("");

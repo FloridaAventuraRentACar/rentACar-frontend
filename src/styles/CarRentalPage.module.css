@@ -250,7 +250,7 @@
 .daysReserved {
   font-size: 0.8rem;
   position: relative;
-  top: 0.25rem;
+  top: -0.25rem;
   color: #6b7280;
   font-weight: 600;
 }
@@ -396,11 +396,7 @@
     font-size: 1.6rem;
   }
 
-  .priceSection {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: stretch;
-  }
+
 
   .reserveInfo {
     justify-content: space-around;
@@ -408,15 +404,10 @@
     margin-right: 0;
   }
 
-  .nextButton {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.1rem;
-  }
 }
 
 /* Mobile (hasta 768px) */
-@media (max-width: 768px) {
+@media (max-width: 880px) {
   .carRentalCard {
     max-width: 98%;
     margin: 10px auto;
@@ -513,7 +504,7 @@
 }
 
 /* Mobile pequeño (hasta 480px) */
-@media (max-width: 480px) {
+@media (max-width: 668px) {
   .carRentalCard {
     margin: 5px auto;
     padding: 0.75rem;
@@ -558,13 +549,22 @@
     font-size: 1.2rem;
   }
 
-  .nextButton {
-    padding: 0.875rem;
-    font-size: 1rem;
+  .priceSection {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
   }
 
-  .priceSection {
+  .reserveInfo {
+    justify-content: space-around;
+    gap: 2rem;
+    margin-right: 0;
+  }
+
+  .nextButton {
+    width: 100%;
     padding: 1rem;
+    font-size: 1.1rem;
   }
 
   /* Ajustar el FormControl de Material-UI para móvil */

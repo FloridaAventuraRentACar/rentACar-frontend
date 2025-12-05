@@ -27,11 +27,11 @@
 
 .carName {
   font-size: 3rem;
-  font-family: Arial, sans-serif;
+  font-family: 'inter', sans-serif;
   font-weight: bold;
   white-space: nowrap;
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -100%);
   color: white;

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import styles from '../styles/RentalDetails.module.css';
 import { AppContext } from '../context/AppContext';
-import { format, parseISO } from 'date-fns';
 import locationNames from '../utilities/names/locationNames';
 import insuranceNames from '../utilities/names/insuranceNames';
 import babySeatNames from '../utilities/names/babySeatNames';
 import travelLocationNames from '../utilities/names/travelLocationNames';
+import { formatDate } from '../utilities/functions/formatDate';
 
 const RentalDetails = () => {
 
@@ -13,12 +13,6 @@ const RentalDetails = () => {
     carData, daysBooked, pickupLocation, pickupDate,pickupTime, returnLocation, returnDate, returnTime, 
     totalPrice ,selectedInsurance, selectedBabySeat, travelLocation
   } = useContext(AppContext);
-  
-  const parsePickupDate = parseISO(pickupDate);
-  const formattedPickupDate = format(parsePickupDate, 'eee, dd. MMM. yyyy');
-  
-  const parseReturnDate = parseISO(returnDate);
-  const formattedReturnDate = format(parseReturnDate, 'eee, dd. MMM. yyyy');
 
   return (
     <div className={styles.container}>
@@ -38,12 +32,12 @@ const RentalDetails = () => {
         <div>
           <p className={styles.label}>Entrega</p>
           <p className={styles.location}>{locationNames[pickupLocation]}</p>
-          <p className={styles.datetime}>{formattedPickupDate} | {pickupTime}</p>
+          <p className={styles.datetime}>{formatDate(pickupDate)} | {pickupTime}</p>
         </div>
         <div>
           <p className={styles.label}>Devolución</p>
           <p className={styles.location}>{locationNames[returnLocation]}</p>
-          <p className={styles.datetime}>{formattedReturnDate} | {returnTime}</p>
+          <p className={styles.datetime}>{formatDate(returnDate)} | {returnTime}</p>
         </div>
       </div>
 

@@ -16,6 +16,8 @@ import LuggageIcon from "@mui/icons-material/Luggage";
 import SensorDoorIcon from "@mui/icons-material/SensorDoor";
 import locationNames from "../utilities/names/locationNames.js";
 import PriceDetailsModal from "./ui/PriceDetailsModal.jsx";
+import { formatDate } from "../utilities/functions/formatDate";
+
 
 export function CarRentalPage() {
   const navigate = useNavigate();
@@ -394,16 +396,14 @@ export function CarRentalPage() {
         <div className={styles.reserveInfo}>
           <div className={styles.pickupInfo}>
             <strong className={styles.title}>Entrega</strong>
-            <p className={styles.location}>{locationNames[pickupLocation]}</p>
             <p className={styles.date}>
-              {pickupDate} - {pickupTime}
+              {formatDate(pickupDate)}
             </p>
           </div>
           <div className={styles.returnInfo}>
             <div className={styles.title}>Devolucion</div>
-            <p className={styles.location}>{locationNames[returnLocation]}</p>
             <p className={styles.date}>
-              {returnDate} - {returnTime}
+              {formatDate(returnDate)}
             </p>
           </div>
         </div>
