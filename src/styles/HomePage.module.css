@@ -904,16 +904,23 @@ html {
   .carouselButtonRight {
     right: -0.2rem;
   }
+  .heroTitle {
+    font-size: 3rem;
+  }
+
+  .heroDescription {
+    font-size: 1.25rem;
+  }
 }
 
 /* Media Queries for Responsive Design */
 @media (min-width: 480px) {
   .heroTitle {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
 
   .heroDescription {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
   }
 
   .sectionTitle {
@@ -1206,13 +1213,6 @@ html {
 
 /* Media Queries for Responsive Design */
 @media (min-width: 480px) {
-  .heroTitle {
-    font-size: 2.5rem;
-  }
-
-  .heroDescription {
-    font-size: 1.125rem;
-  }
 
   .sectionTitle {
     font-size: 2rem;

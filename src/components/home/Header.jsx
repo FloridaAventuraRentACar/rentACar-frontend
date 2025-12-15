@@ -93,23 +93,6 @@ export default function Header({ className = "" }) {
 
           {/* Desktop Actions */}
           <div className={styles.desktopActions}>
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className={styles.whatsappButton}
-            >
-              <a
-                href="https://wa.me/13057731787" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.buttonContent}
-              >
-                <WhatsAppIcon className={styles.icon} />
-                <span className={styles.whatsappText}>WhatsApp</span>
-              </a>
-            </Button>
-
             {/* Reserve Button */}
             <Button
               asChild
@@ -128,19 +111,17 @@ export default function Header({ className = "" }) {
 
           {/* Mobile Menu */}
           <div className={styles.mobileMenu}>
-            {/* Mobile WhatsApp Button */}
             <Button
               asChild
-              variant="outline"
-              size="sm"
-              className={styles.mobileWhatsappButton}
+              className={`${styles.reserveButton} ${styles.mobileButton}`}
             >
               <a
-                href="https://wa.me/13057731787" 
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#inicio"
+                onClick={handleSmoothScroll}
+                className={styles.buttonContent}
               >
-                <WhatsAppIcon className={styles.icon} />
+                <Phone className={styles.icon} />
+                <span className={styles.reserveText}>Reservar ahora</span>
               </a>
             </Button>
 

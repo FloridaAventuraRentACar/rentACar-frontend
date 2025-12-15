@@ -54,9 +54,9 @@
 
 .logoImageWrapper {
   position: relative;
-  width: 3rem;
+  width: 4rem;
   /* w-10 */
-  height: 3rem;
+  height: 4rem;
   /* h-10 */
 }
 
@@ -148,6 +148,19 @@
   font-weight: 400;
 }
 
+@media(max-width: 425px){
+  .logoLink{
+    justify-content: center;
+  }
+}
+@media (min-width: 200px) {
+  .contactItem{
+    padding-top: 0.7rem;
+  }
+  .hoursItem{
+    margin-top: 0.2rem;
+  }
+}
 @media (min-width: 425px) {
   .logoLink {
     justify-content: center;
