@@ -39,7 +39,8 @@ export function ShowCarsPage() {
     <div className={styles.showCarsMainContainer}>
       <HeaderReusable />
       {cars ? (
-        cars.length === 0 ? (
+        //cars.length === 0 ? (
+        true ? (
           <NoCarsAvailable />
         ) : (
           <div className={styles.carsContainer}>
