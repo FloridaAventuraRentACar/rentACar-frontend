@@ -29,12 +29,12 @@ const RentalDetails = () => {
       </div>
 
       <div className={styles.details}>
-        <div>
+        <div className={styles.pickupDetail}>
           <p className={styles.label}>Entrega</p>
           <p className={styles.location}>{locationNames[pickupLocation]}</p>
           <p className={styles.datetime}>{formatDate(pickupDate)} | {pickupTime}</p>
         </div>
-        <div>
+        <div className={styles.returnDetail}>
           <p className={styles.label}>Devolución</p>
           <p className={styles.location}>{locationNames[returnLocation]}</p>
           <p className={styles.datetime}>{formatDate(returnDate)} | {returnTime}</p>
@@ -50,7 +50,7 @@ const RentalDetails = () => {
         </ul>
       </div>
       <div className={styles.priceContainer}>
-        <p className={styles.priceText}>Precio total:</p>
+        <p className={styles.priceText}>Total:</p>
         <p className={styles.totalPrice}>${totalPrice}</p>
       </div>
     </div>

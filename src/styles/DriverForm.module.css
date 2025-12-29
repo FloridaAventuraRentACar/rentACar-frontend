@@ -173,6 +173,29 @@
     padding: 0.8rem;
   }
 }
+
+@media (max-width: 900px){
+ 
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0rem;
+  }
+
+  .rentalDetailsContainer {
+    order: 1;
+    margin-left: 0rem;
+    margin-right: 3rem;
+    margin-bottom: -6rem;
+  }
+
+  .formContainer {
+    order: 2;
+    max-width: 100%;
+  }
+}
+
 /* Mobile (hasta 768px) */
 @media (max-width: 768px) {
   .background {
@@ -181,19 +204,17 @@
 
   .mainContainer {
     margin-top: 10px;
-    gap: 1rem;
   }
 
   .formContainer {
-    max-width: 100%;
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 15px;
   }
 
   .rentalDetailsContainer {
-    margin: 0;
     width: 100%;
+    margin-bottom: -8rem;
   }
 
   .submitButton {
@@ -202,6 +223,7 @@
     border-radius: 10px;
   }
 }
+
 
 /* Mobile pequeño (hasta 480px) */
 @media (max-width: 480px) {
@@ -268,5 +290,11 @@
 
   .submitButton {
     background: #f97316 !important;
+  }
+}
+
+@media (max-width: 370px) {
+  .rentalDetailsContainer{
+    display: none;
   }
 }
