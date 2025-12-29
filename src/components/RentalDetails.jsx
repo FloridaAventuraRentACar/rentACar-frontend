@@ -23,7 +23,7 @@ const RentalDetails = () => {
           className={styles.carImage}
         />
         <div>
-          <h3 className={styles.title}>{carData.name}</h3>
+          <h3 className={styles.title}>{carData.brand} {carData.model}</h3>
           <p className={styles.duration}>{daysBooked} días de alquiler</p>
         </div>
       </div>

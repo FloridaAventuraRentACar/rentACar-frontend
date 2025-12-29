@@ -16,7 +16,7 @@ export function CarCard({ carData }){
   return (
     <div className={styles.carCard} style={{ backgroundImage: `url(${carData.imageUrl})` }} onClick={handleClick}>
       <div className={styles.carCardOverlay}>
-        <h3 className={styles.carName}>{carData.name}</h3>
+        <h3 className={styles.carName}>{carData.brand} {carData.model}</h3>
         <div className={styles.footerContainer}>
           <div className={styles.carCardFooter}>
             <div className={styles.footerDescription}>
