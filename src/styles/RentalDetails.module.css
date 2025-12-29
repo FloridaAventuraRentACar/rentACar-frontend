@@ -1,7 +1,7 @@
 /* RentalDetails.module.css */
 
 .container {
-  max-width: 400px;
+  max-width: 350px;
   width: 100%;
   height: auto;
   /* Cambiamos de min-height fijo */
@@ -229,7 +229,7 @@
 /* Large Desktop (1200px+) */
 @media (min-width: 1200px) {
   .container {
-    max-width: 450px;
+    max-width: 400px;
     padding: 2.5rem;
   }
 
@@ -254,7 +254,6 @@
 @media (max-width: 1024px) {
   .container {
     width: 100%;
-    max-width: 600px;
     height: auto;
     padding: 1.5rem;
   }
@@ -273,16 +272,43 @@
   }
 }
 
-/* Mobile (hasta 768px) */
-@media (max-width: 768px) {
-  .container {
-    width: 100%;
-    max-width: none;
-    height: auto;
-    padding: 1.25rem;
-    border-radius: 12px;
+@media (max-width: 880px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  .duration{
+    font-size: 0.9rem;
   }
 
+  .label{
+    font-size: 0.7rem;
+  }
+  .location{
+    font-size: 0.7rem;
+  }
+  .datetime{
+    font-size: 0.7rem;
+  }
+  .summary h4{
+    font-size: 1rem;
+  }
+  .summary li {
+    font-size: 0.8rem;
+  }
+  .priceText {
+    font-size: 0.8rem;
+  }
+  .totalPrice{
+    font-size: 1.2rem;
+  }
+}
+/* Mobile (hasta 768px) */
+@media (max-width: 768px) {
+
+
+  .container{
+    max-width: 50%;
+  }
   .summary {
     text-align: center;
     padding-top: 1.25rem;
@@ -372,6 +398,36 @@
   }
 }
 
+@media (max-width: 700px) {
+  .title {
+    font-size: 1rem;
+  }
+  .duration{
+    font-size: 0.7rem;
+  }
+
+  .label{
+    font-size: 0.7rem;
+  }
+  .location{
+    font-size: 0.6rem;
+  }
+  .datetime{
+    font-size: 0.6rem;
+  }
+  .summary h4{
+    font-size: 0.8rem;
+  }
+  .summary li {
+    font-size: 0.8rem;
+  }
+  .priceText {
+    font-size: 0.6rem;
+  }
+  .totalPrice{
+    font-size: 1rem;
+  }
+}
 /* Mobile pequeño (hasta 480px) */
 @media (max-width: 480px) {
   .container {

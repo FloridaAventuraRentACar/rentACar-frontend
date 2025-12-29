@@ -42,9 +42,9 @@ const RentalDetails = () => {
       </div>
 
       <div className={styles.summary}>
-        <h4>Su resumen de reservas:</h4>
+        <h4 className={styles.summaryTitle}>Su resumen de reservas:</h4>
         <ul>
-          <li>✔ Seguro {insuranceNames[selectedInsurance]}</li>
+          <li>Seguro {insuranceNames[selectedInsurance]}</li>
           {(selectedBabySeat !== 'NONE') && <li>✔ {babySeatNames[selectedBabySeat]}</li>}
           {travelLocation && <li>✔ Viajaras a {travelLocationNames[travelLocation]} </li>}
         </ul>
