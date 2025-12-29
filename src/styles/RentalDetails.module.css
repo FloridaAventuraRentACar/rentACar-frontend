@@ -1,7 +1,7 @@
 /* RentalDetails.module.css */
 
 .container {
-  max-width: 400px;
+  max-width: 350px;
   width: 100%;
   height: auto;
   /* Cambiamos de min-height fijo */
@@ -229,7 +229,7 @@
 /* Large Desktop (1200px+) */
 @media (min-width: 1200px) {
   .container {
-    max-width: 450px;
+    max-width: 400px;
     padding: 2.5rem;
   }
 
@@ -254,7 +254,6 @@
 @media (max-width: 1024px) {
   .container {
     width: 100%;
-    max-width: 600px;
     height: auto;
     padding: 1.5rem;
   }
@@ -273,180 +272,206 @@
   }
 }
 
-/* Mobile (hasta 768px) */
-@media (max-width: 768px) {
-  .container {
+@media (max-width: 880px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  .duration{
+    font-size: 0.9rem;
+  }
+
+  .label{
+    font-size: 0.7rem;
+  }
+  .location{
+    font-size: 0.7rem;
+  }
+  .datetime{
+    font-size: 0.7rem;
+  }
+  .summary h4{
+    font-size: 1rem;
+  }
+  .summary li {
+    font-size: 0.8rem;
+  }
+  .priceText {
+    font-size: 0.8rem;
+  }
+  .totalPrice{
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 900px){
+ .container{
+  display: flex;
+  align-items: center;
+  max-width: 120%;
+  width: 700px;
+  position: sticky;
+ } 
+
+ .summary{
+  display: none;
+ }
+
+ .carImage{
+  width: 50%;
+ }
+}
+
+
+@media (max-width: 740px) {
+  .carImage{
+    width: 50%;
+  }
+  .title {
+    font-size: 1rem;
+  }
+  .duration{
+    font-size: 0.7rem;
+  }
+
+  .label{
+    font-size: 0.7rem;
+  }
+  .location{
+    font-size: 0.6rem;
+  }
+  .datetime{
+    font-size: 0.6rem;
+  }
+  .summary h4{
+    font-size: 0.8rem;
+  }
+  .summary li {
+    font-size: 0.8rem;
+  }
+  .priceText {
+    font-size: 0.6rem;
+  }
+  .totalPrice{
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .container{
     width: 100%;
-    max-width: none;
-    height: auto;
-    padding: 1.25rem;
-    border-radius: 12px;
+    gap: 0rem;
+  }
+  .header{
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+  }
+  .carImage{
+    width: 55%;
+  }
+  .title {
+    font-size: 1rem;
+  }
+  .duration{
+    display: none;
   }
 
-  .summary {
-    text-align: center;
-    padding-top: 1.25rem;
-    margin-bottom: 0;
+  .details{
+    margin-bottom: 0rem;
+  }
+  .label{
+    font-size: 0.7rem;
+  }
+  .location{
+    font-size: 0.6rem;
+  }
+  .datetime{
+    font-size: 0.7rem;
+  }
+  .summary h4{
+    font-size: 0.6rem;
+  }
+  .summary li {
+    font-size: 0.6rem;
   }
 
-  .header {
+  .priceText {
+    font-size: 0.5rem;
+  }
+  .totalPrice{
+    font-size: 0.8rem;
+  }
+  .priceContainer{
+    width: 50%;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .carImage {
-    width: 60%;
-    max-width: 200px;
-    border-radius: 10px;
-  }
-
-  .title {
-    font-size: 1.25rem;
-    text-align: center;
-  }
-
-  .duration {
-    font-size: 0.95rem;
-    padding: 0.375rem 1rem;
-  }
-
-  .details {
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .details>div {
-    padding: 1rem;
-    text-align: center;
-    background-color: #f9fafb;
-    border-radius: 10px;
-  }
-
-  .label {
-    font-size: 0.8rem;
-  }
-
-  .location {
-    font-size: 1rem;
-  }
-
-  .datetime {
-    font-size: 0.875rem;
-  }
-
-
-
-  .summary h4 {
-    font-size: 1.125rem;
-  }
-
-  .summary ul {
-    text-align: left;
-    display: inline-block;
-  }
-
-  .summary li {
-    font-size: 0.9rem;
-    padding: 0.625rem;
-    border-radius: 6px;
-  }
-
-  .priceContainer {
-    margin-top: 1rem;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    flex-direction: row;
-    /* Mantenemos horizontal en mobile */
-    justify-content: space-between;
-  }
-
-  .priceText {
-    font-size: 0.9rem;
-  }
-
-  .totalPrice {
-    font-size: 1.125rem;
   }
 }
-
 /* Mobile pequeño (hasta 480px) */
 @media (max-width: 480px) {
-  .container {
-    padding: 1rem;
-    width: 100%;
-    border-radius: 10px;
+  
+  .carImage{
+    width: 65%;
   }
-
-  .header {
-    gap: 0.75rem;
+  .title{
+    margin-left: 1.3rem;
   }
-
-  .carImage {
-    width: 70%;
-    max-width: 180px;
-    border-radius: 8px;
+  .priceContainer{
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
   }
-
-  .title {
-    font-size: 1.125rem;
-  }
-
-  .duration {
-    font-size: 0.875rem;
-    padding: 0.25rem 0.75rem;
-  }
-
-  .details>div {
-    padding: 0.75rem;
-    border-radius: 8px;
-  }
-
-  .label {
-    font-size: 0.75rem;
-  }
-
-  .location {
-    font-size: 0.95rem;
-  }
-
-  .datetime {
-    font-size: 0.8rem;
-  }
-
-  .summary {
-    padding-top: 1rem;
-    margin-bottom: 0;
-  }
-
-  .summary h4 {
-    font-size: 1rem;
-  }
-
-  .summary li {
-    font-size: 0.85rem;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .priceContainer {
-    margin-top: 1rem;
-    padding: 0.625rem 0.875rem;
-    border-radius: 8px;
-    width: 90%;
-  }
-
-  .priceText {
-    font-size: 0.85rem;
-  }
-
-  .totalPrice {
-    font-size: 1rem;
-  }
+  
 }
 
+@media (max-width: 415px) {
+
+  .carImage{
+    width: 65%;
+    margin-left: 1rem;
+  }
+  .title {
+    font-size: 0.8rem;
+  }
+  .duration{
+    display: none;
+  }
+
+  .details{
+    margin-bottom: 0rem;
+    gap: 0rem;
+    padding: 0rem;
+  }
+  .pickupDetail{
+    margin-right: -1rem;
+  }
+
+  .label{
+    font-size: 0.7rem;
+  }
+  .location{
+    font-size: 0.6rem;
+  }
+  .datetime{
+    font-size: 0.7rem;
+  }
+  .summary h4{
+    font-size: 0.6rem;
+  }
+  .summary li {
+    font-size: 0.6rem;
+  }
+  .priceContainer{
+    width: 50%;
+  }
+  .priceText {
+    font-size: 0.5rem;
+  }
+  .totalPrice{
+    font-size: 0.8rem;
+  }
+}
 /* Landscape orientation on mobile */
 @media (max-width: 767px) and (orientation: landscape) {
   .container {
@@ -529,3 +554,4 @@
     border-left-color: #10b981 !important;
   }
 }
+

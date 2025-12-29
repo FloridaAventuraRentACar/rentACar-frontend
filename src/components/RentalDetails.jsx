@@ -23,18 +23,18 @@ const RentalDetails = () => {
           className={styles.carImage}
         />
         <div>
-          <h3 className={styles.title}>{carData.name}</h3>
+          <h3 className={styles.title}>{carData.brand} {carData.model}</h3>
           <p className={styles.duration}>{daysBooked} días de alquiler</p>
         </div>
       </div>
 
       <div className={styles.details}>
-        <div>
+        <div className={styles.pickupDetail}>
           <p className={styles.label}>Entrega</p>
           <p className={styles.location}>{locationNames[pickupLocation]}</p>
           <p className={styles.datetime}>{formatDate(pickupDate)} | {pickupTime}</p>
         </div>
-        <div>
+        <div className={styles.returnDetail}>
           <p className={styles.label}>Devolución</p>
           <p className={styles.location}>{locationNames[returnLocation]}</p>
           <p className={styles.datetime}>{formatDate(returnDate)} | {returnTime}</p>
@@ -42,15 +42,15 @@ const RentalDetails = () => {
       </div>
 
       <div className={styles.summary}>
-        <h4>Su resumen de reservas:</h4>
+        <h4 className={styles.summaryTitle}>Su resumen de reservas:</h4>
         <ul>
-          <li>✔ Seguro {insuranceNames[selectedInsurance]}</li>
+          <li>Seguro {insuranceNames[selectedInsurance]}</li>
           {(selectedBabySeat !== 'NONE') && <li>✔ {babySeatNames[selectedBabySeat]}</li>}
           {travelLocation && <li>✔ Viajaras a {travelLocationNames[travelLocation]} </li>}
         </ul>
       </div>
       <div className={styles.priceContainer}>
-        <p className={styles.priceText}>Precio total:</p>
+        <p className={styles.priceText}>Total:</p>
         <p className={styles.totalPrice}>${totalPrice}</p>
       </div>
     </div>

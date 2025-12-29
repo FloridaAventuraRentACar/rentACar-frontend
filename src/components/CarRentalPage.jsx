@@ -93,11 +93,11 @@ export function CarRentalPage() {
       <div className={styles.carInfo}>
         <img
           src={carData.imageUrl}
-          alt={carData.name}
+          alt={carData.brand}
           className={styles.carImage}
         />
         <div className={styles.carDescription}>
-          <h2 className={styles.carName}>{carData.name}</h2>
+          <h2 className={styles.carName}>{carData.brand} {carData.model}</h2>
           <div className={styles.carSpecs}>
             <div className={styles.seats}>
               <AirlineSeatReclineNormalIcon

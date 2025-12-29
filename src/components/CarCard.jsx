@@ -16,18 +16,22 @@ export function CarCard({ carData }){
   return (
     <div className={styles.carCard} style={{ backgroundImage: `url(${carData.imageUrl})` }} onClick={handleClick}>
       <div className={styles.carCardOverlay}>
-        <h3 className={styles.carName}>{carData.name}</h3>
-        <p className={styles.carSeats}>
-          <AirlineSeatReclineNormalIcon className={styles.icon} />
-          {carData.passengersAmount} asientos
-        </p>
-        <div className={styles.carCardFooter}>
-          <span className={styles.price}>${carData.pricePerDay}/dia</span>
-          <span className={styles.includes}>Impuestos y seguro incluidos en el precio</span>
+        <h3 className={styles.carName}>{carData.brand} {carData.model}</h3>
+        <div className={styles.footerContainer}>
+          <div className={styles.carCardFooter}>
+            <div className={styles.footerDescription}>
+              <span className={styles.price}>${carData.pricePerDay}/dia</span>
+              <span className={styles.includes}>Impuestos y seguro incluidos en el precio</span>
+            </div>
+            <p className={styles.carSeats}>
+              <AirlineSeatReclineNormalIcon className={styles.icon} />
+              {carData.passengersAmount} asientos
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  );
+  );  
 };
 
 
