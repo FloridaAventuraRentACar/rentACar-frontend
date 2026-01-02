@@ -259,7 +259,9 @@ export default function RentalAdminResume({ isEditable = true }) {
 
   return (
     <div className={styles.background}>
-      <BackButton onClick={navigateBack} />
+      <div className={styles.backButtonContainer}>
+        <BackButton onClick={navigateBack} />
+      </div>
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.headerText}>
