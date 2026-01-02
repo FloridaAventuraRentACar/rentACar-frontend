@@ -137,13 +137,32 @@
   display: none;
 }
 
-/* Variante con icono (opcional) */
-.editButton svg {
-  width: 18px;
-  height: 18px;
-  stroke-width: 2.5;
+
+.deleteButton {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  margin-top: -3rem;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, #bb6565 0%, #d80808 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  letter-spacing: 0.025em;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 40%;
 }
 
+.deleteButton:hover {
+  transform: translateX(50%) scale(1.1);
+}
 /* Responsive Design */
 
 /* Tablet (768px - 1024px) */

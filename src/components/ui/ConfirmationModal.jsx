@@ -43,10 +43,8 @@ const ConfirmationModal = ({
     if (e.key === "Escape") {
       onCancel()
     }
-    if (e.key === "Enter") {
-      onConfirm()
-    }
   }
+
 
   return (
     <div className={styles.backdrop} onClick={handleBackdropClick} onKeyDown={handleKeyDown} tabIndex={-1}>
