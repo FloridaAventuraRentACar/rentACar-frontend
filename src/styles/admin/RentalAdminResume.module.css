@@ -5,10 +5,15 @@
   font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
   padding: 1rem;
 }
-
+.backButtonContainer {
+  width: 100%;
+  height: auto;
+}
 .container {
+  
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 4rem;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
@@ -27,9 +32,10 @@
 /* Header */
 .header {
   display: flex;
-  direction: column;
+  flex-direction: column;
   align-items: center;
-  columns: 2;
+  columns: 1;
+  gap: 0.5rem;
   justify-content: center;
   text-align: center;
   margin-bottom: 3rem;
@@ -60,11 +66,8 @@
 
 /* Botón Editar */
 .editButton {
-  position: absolute;
-  right: 5%;
   gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  background: linear-gradient(135deg, #aa5920 0%, #ea580c 100%);
+  background-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
   border: none;
   border-radius: 12px;
@@ -77,6 +80,11 @@
   letter-spacing: 0.025em;
   overflow: hidden;
   white-space: nowrap;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Efecto de brillo en hover */
@@ -137,13 +145,32 @@
   display: none;
 }
 
-/* Variante con icono (opcional) */
-.editButton svg {
-  width: 18px;
-  height: 18px;
-  stroke-width: 2.5;
+
+.deleteButton {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  margin-top: -3rem;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, #bb6565 0%, #d80808 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  letter-spacing: 0.025em;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 40%;
 }
 
+.deleteButton:hover {
+  transform: translateX(50%) scale(1.05);
+}
 /* Responsive Design */
 
 /* Tablet (768px - 1024px) */
@@ -153,10 +180,6 @@
     font-size: 0.95rem;
   }
 
-  .editButton svg {
-    width: 17px;
-    height: 17px;
-  }
 }
 
 /* Móvil (hasta 768px) */
@@ -167,25 +190,16 @@
     border-radius: 10px;
   }
 
-  .editButton svg {
-    width: 16px;
-    height: 16px;
-  }
 }
 
 /* Móvil pequeño (hasta 480px) */
 @media (max-width: 480px) {
+  
   .editButton {
     padding: 0.625rem 1rem;
     font-size: 0.85rem;
     border-radius: 8px;
-    width: 100%;
-    max-width: 200px;
-  }
 
-  .editButton svg {
-    width: 15px;
-    height: 15px;
   }
 }
 
@@ -557,6 +571,7 @@
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
+    margin-top: 3rem;
   }
 
   .title {
@@ -597,6 +612,11 @@
   }
 }
 
+@media (max-width: 545px){
+  .title{
+    font-size: 1.75rem ;
+  }
+}
 @media (max-width: 480px) {
   .background {
     padding: 0.5rem;
@@ -611,9 +631,6 @@
     margin-bottom: 2rem;
   }
 
-  .title {
-    font-size: 1.75rem;
-  }
 
   .section {
     padding: 1rem;
@@ -638,6 +655,13 @@
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 430px){
+  .title{
+    font-size: 1.3rem;
+  }
+}
+
 
 /* Animaciones adicionales */
 @media (prefers-reduced-motion: no-preference) {

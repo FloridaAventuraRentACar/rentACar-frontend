@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/admin/RentalAdminResume.module.css";
-import { getRentalById, updateRental } from "../../services/rentalService";
+import { deleteRentalById, getRentalById, updateRental } from "../../services/rentalService";
 import { useNavigate, useParams } from "react-router-dom";
 import insuranceNames from "../../utilities/names/insuranceNames";
 import babySeatNames from "../../utilities/names/babySeatNames";
@@ -25,7 +25,10 @@ export default function RentalAdminResume({ isEditable = true }) {
   const [cars, setCars] = useState(null);
   const [showConfirmationComponent, setShowConfirmationComponent] =
     useState(false);
-
+  const [confirmationModalMessage, setConfirmationModalMessage] = useState("");
+  const [confirmationModalType, setConfirmationModalType] = useState("");
+  const [confirmationModalFunction, setConfirmationModalFunction] = useState(() => {});
+  const [isProcessing, setIsProcessing] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorPath, setErrorPath] = useState("");
   const [showErrorModal, setShowErrorModal] = useState(false);
@@ -73,7 +76,26 @@ export default function RentalAdminResume({ isEditable = true }) {
     navigate("/admin/rentals/edit/" + id);
   };
 
+  const handleSaveButtonClick = () => {
+    setShowConfirmationComponent(true);
+    setConfirmationModalMessage("¿Estas seguro que quieres editar el alquiler?");
+    setConfirmationModalType("success");
+    setConfirmationModalFunction(() => handleSave);
+  };
+  
+  const handleDeleteButtonClick = () => {
+    setShowConfirmationComponent(true);
+    setConfirmationModalMessage("¿Estas seguro que quieres eliminar el alquiler?");
+    setConfirmationModalType("danger");
+    setConfirmationModalFunction(() => handleDelete);
+  };
+  
   const handleSave = async () => {
+    console.log("isProcessing: " + isProcessing);
+    if (isProcessing) return;
+    setIsProcessing(true);
+    console.log("isProcessing: " + isProcessing);
+
     try {
       await updateRental(editedRental);
       
@@ -95,7 +117,37 @@ export default function RentalAdminResume({ isEditable = true }) {
       setErrorMessage(getErrorMessage(error.response.data.code, "es"));
 
       setErrorPath("/admin/rentals/edit/" + id);
-      fetchRentalDetails(id);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    console.log("isProcessing: " + isProcessing);
+    if (isProcessing) return;
+    setIsProcessing(true);
+    console.log("isProcessing: " + isProcessing);
+    try {
+      await deleteRentalById(id);
+      
+      setShowConfirmationComponent(false);
+
+      navigate("/admin", {
+        state: {
+          showSuccess: true,
+          message: "Alquiler eliminado exitosamente",
+        },
+      });
+    } catch (error) {
+      setShowConfirmationComponent(false);
+      setShowErrorModal(true);
+      setErrorButtonMessage("Salir");
+
+      setErrorMessage(getErrorMessage(error.response.data.code, "es"));
+
+      setErrorPath("/admin/rentals/view/" + id);
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -207,7 +259,9 @@ export default function RentalAdminResume({ isEditable = true }) {
 
   return (
     <div className={styles.background}>
-      <BackButton onClick={navigateBack} />
+      <div className={styles.backButtonContainer}>
+        <BackButton onClick={navigateBack} />
+      </div>
       <div className={styles.container}>
         <div className={styles.header}>
           <div className={styles.headerText}>
@@ -417,17 +471,26 @@ export default function RentalAdminResume({ isEditable = true }) {
           </div>
         )}
 
+        {!isEditable && (
+            <button
+              className={`${styles.deleteButton}`}
+              onClick={handleDeleteButtonClick}
+            >
+              Eliminar
+            </button>
+
+        )}
         {/* Botones de acción para modo edición */}
         {isEditable && (
           <div className={styles.actionButtons}>
             <button
-              className={styles.saveButton}
-              onClick={() => setShowConfirmationComponent(true)}
+              className={`${styles.saveButton} ${styles.button}`}
+              onClick={handleSaveButtonClick}
             >
               Guardar Cambios
             </button>
             <button
-              className={styles.cancelButton}
+              className={`${styles.cancelButton} ${styles.button}`}
               onClick={() => setEditedRental({ ...rental })}
             >
               Cancelar Cambios
@@ -437,11 +500,11 @@ export default function RentalAdminResume({ isEditable = true }) {
       </div>
       {/* Modal de confirmación */}
       <ConfirmationModal
-        message={"¿Estas seguro que quieres editar el alquiler?"}
-        onConfirm={handleSave}
+        message={confirmationModalMessage}
+        onConfirm={confirmationModalFunction}
         onCancel={handleCancel}
         isOpen={showConfirmationComponent}
-        type={"success"}
+        type={confirmationModalType}
       />
       
       <ErrorModal
