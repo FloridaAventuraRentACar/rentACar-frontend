@@ -33,7 +33,10 @@ const VehicleRentalForm = ({ cars, values }) => {
       <h3 className={styles.sectionTitle}>Información del Alquiler</h3>
 
       <div className={styles.fieldGroup}>
-        <label className={styles.label}>Vehículo</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>Vehículo</label>
+          <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+        </div>
         <Field as="select" className={styles.input} name="carId">
           <option value="">Seleccione un vehículo</option>
           {Object.entries(cars).map(([id, name]) => (
@@ -50,7 +53,10 @@ const VehicleRentalForm = ({ cars, values }) => {
       </div>
 
       <div className={styles.fieldGroup}>
-        <label className={styles.label}>Fecha y hora de entrega</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>Fecha y hora de entrega</label>
+          <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+        </div>
         <Field
           className={styles.input}
           type="datetime-local"
@@ -67,7 +73,10 @@ const VehicleRentalForm = ({ cars, values }) => {
       </div>
 
       <div className={styles.fieldGroup}>
-        <label className={styles.label}>Fecha y hora de devolución</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.label}>Fecha y hora de devolución</label>
+          <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+        </div>
         <Field
           className={styles.input}
           type="datetime-local"
@@ -189,6 +198,7 @@ const VehicleRentalForm = ({ cars, values }) => {
       <div className={styles.fieldGroup}>
         <div className={styles.priceContainer}>
           <div className={styles.priceInputWrapper}>
+            
             <label className={styles.label}>Precio Total</label>
             <Field
               className={`${styles.input} ${styles.priceInput}`}
@@ -215,6 +225,18 @@ const VehicleRentalForm = ({ cars, values }) => {
             </label>
           </div>
         </div>
+      </div>
+
+      <div className={styles.fieldGroup}>
+        <label className={styles.label}>
+          Notas adicionales
+        </label>
+        <Field className={styles.input} name="notes" as="textarea" rows="4" />
+        <ErrorMessage
+          className={styles.error}
+          name="notes"
+          component="div"
+        />
       </div>
     </>
   );

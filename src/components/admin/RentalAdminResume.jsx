@@ -69,7 +69,7 @@ export default function RentalAdminResume({ isEditable = true }) {
   };
 
   const navigateBack = () => {
-    navigate(-1);
+    navigate("/admin/rentals/gantt");
   };
 
   const handleEditButtonClick = () => {
@@ -190,14 +190,25 @@ export default function RentalAdminResume({ isEditable = true }) {
       <div className={styles.field}>
         <span className={styles.label}>{label}:</span>
         {isEditMode ? (
-          <input
-            type={type}
-            value={currentValue}
-            onChange={(e) =>
-              handleInputChange(field, e.target.value, driverIndex)
-            }
-            className={styles.editInput}
-          />
+          type === "textarea" ? (
+            <textarea
+              value={currentValue}
+              onChange={(e) =>
+                handleInputChange(field, e.target.value, driverIndex)
+              }
+              className={styles.editInput}
+              rows="4"
+            />
+          ) : (
+            <input
+              type={type}
+              value={currentValue}
+              onChange={(e) =>
+                handleInputChange(field, e.target.value, driverIndex)
+              }
+              className={styles.editInput}
+            />
+          )
         ) : (
           <span className={styles.value}>{value}</span>
         )}
@@ -468,6 +479,16 @@ export default function RentalAdminResume({ isEditable = true }) {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Notas adicionales */}
+        {(isEditable || rental.notes) && (
+          <div className={styles.section}>
+            <h2 className={styles.sectionTitle}>Notas adicionales</h2>
+            <div className={`${styles.grid} ${styles.notes}`}>
+              {renderField("Notas", rental.notes, "notes", null, "textarea")}
+            </div>
           </div>
         )}
 
