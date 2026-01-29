@@ -4,7 +4,10 @@ import styles from "../../../styles/admin/adminRentalForm/ClientsForm.module.css
 const renderDriverFields = (prefix) => (
   <>
     <div className={styles.fieldGroup}>
-      <label className={styles.label}>Nombre</label>
+      <div className={styles.labelContainer}>
+        <label className={styles.label}>Nombre</label>
+        <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+      </div>
       <Field className={styles.input} name={`${prefix}.name`} />
       <ErrorMessage
         className={styles.error}
@@ -14,7 +17,10 @@ const renderDriverFields = (prefix) => (
     </div>
 
     <div className={styles.fieldGroup}>
-      <label className={styles.label}>Apellido</label>
+      <div className={styles.labelContainer}>
+        <label className={styles.label}>Apellido</label>
+        <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+      </div>
       <Field className={styles.input} name={`${prefix}.surname`} />
       <ErrorMessage
         className={styles.error}

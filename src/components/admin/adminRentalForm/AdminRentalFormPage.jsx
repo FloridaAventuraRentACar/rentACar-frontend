@@ -102,7 +102,7 @@ const AdminRentalFormPage = () => {
     babySeat: "NONE",
     gasTank: "FULL",
     totalPrice: null,
-    calculateTotal: false,
+    calculateTotal: true,
     driver: {
       name: "",
       surname: "",
