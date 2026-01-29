@@ -70,6 +70,7 @@ const AdminRentalFormPage = () => {
         travelLocation: values.travelLocation || null,
         gasTank: values.gasTank,
         totalPrice: values.calculateTotal ? null : parseFloat(values.totalPrice) || null,
+        notes: values.notes || null,
       };
 
       await postRental(rental);
@@ -116,6 +117,7 @@ const AdminRentalFormPage = () => {
       ageCheckbox: false,
     },
     additionalDrivers: [],
+    notes: ""
   };
 
   const validationSchema = Yup.object({
@@ -146,6 +148,7 @@ const AdminRentalFormPage = () => {
       }),
     driver: driverSchema,
     additionalDrivers: Yup.array().of(driverSchema),
+    notes: Yup.string(),
   });
 
   if (!cars) {

@@ -226,6 +226,18 @@ const VehicleRentalForm = ({ cars, values }) => {
           </div>
         </div>
       </div>
+
+      <div className={styles.fieldGroup}>
+        <label className={styles.label}>
+          Notas adicionales
+        </label>
+        <Field className={styles.input} name="notes" as="textarea" rows="4" />
+        <ErrorMessage
+          className={styles.error}
+          name="notes"
+          component="div"
+        />
+      </div>
     </>
   );
 };
