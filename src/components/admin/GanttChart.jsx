@@ -15,20 +15,18 @@ export default function GanttChart() {
 
   const navigate = useNavigate();
 
-  // const groups = [
-  //   { id: 1, title: "Nissan Kicks (Blanca)" },
-  //   { id: 2, title: "Nissan Rogue (Negra)" },
-  //   { id: 3, title: "Nissan Rogue (Azul)" },
-  //   { id: 4, title: "Nissan Rogue (Blanca)" },
-  //   { id: 5, title: "Volkswagen Tiguan" },
-  //   { id: 6, title: "Honda Odyssey" },
-  //   { id: 7, title: "Nissan Kicks (Negra)" },
-  //   { id: 8, title: "Honda Pilot" },
-  // ];
-
   useEffect(() => {
     fetchData();
   }, []);
+
+  //Lanza un evento para volver a renderizar el timeline(Arregla bug de desfaso de alquileres por ancho de pantalla)
+  useEffect(() => {
+    if (!loading) {
+        setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+        }, 100);
+    }
+  }, [loading]);
 
   const fetchData = async () => {
     try {
@@ -55,8 +53,8 @@ export default function GanttChart() {
         id: rental.id,
         group: rental.carId,
         title: rental.clients[0].name + " " + rental.clients[0].surname,
-        start_time: moment(rental.start),
-        end_time: moment(rental.end),
+        start_time: moment(rental.start).valueOf(),
+        end_time: moment(rental.end).valueOf(),
       }));
 
       setItems(formattedItems);
