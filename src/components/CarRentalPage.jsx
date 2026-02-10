@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
-
 import styles from "../styles/CarRentalPage.module.css";
-
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -14,10 +12,8 @@ import AirlineSeatReclineNormalIcon from "@mui/icons-material/AirlineSeatRecline
 import MotionPhotosAutoIcon from "@mui/icons-material/MotionPhotosAuto";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import SensorDoorIcon from "@mui/icons-material/SensorDoor";
-import locationNames from "../utilities/names/locationNames.js";
 import PriceDetailsModal from "./ui/PriceDetailsModal.jsx";
 import { formatDate } from "../utilities/functions/formatDate";
-
 
 export function CarRentalPage() {
   const navigate = useNavigate();
@@ -33,12 +29,8 @@ export function CarRentalPage() {
 
   const {
     daysBooked,
-    pickupLocation,
-    returnLocation,
     pickupDate,
-    pickupTime,
     returnDate,
-    returnTime,
     carData,
     totalPrice,
     selectedInsurance,
