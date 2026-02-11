@@ -1,4 +1,5 @@
 export function formatDateAndHour(dateString) {
+    if (!dateString) return "";
     const date = new Date(dateString)
     return date.toLocaleDateString("es-ES", {
       year: "numeric",
