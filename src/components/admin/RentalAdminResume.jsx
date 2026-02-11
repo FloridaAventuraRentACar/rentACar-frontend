@@ -9,7 +9,7 @@ import locationNames from "../../utilities/names/locationNames";
 import { formatPhoneNumber } from "../../utilities/functions/formatPhoneNumber";
 import { formatDateAndHour } from "../../utilities/functions/formatDateAndHour";
 import { formatDate } from "../../utilities/functions/formatDate";
-import BackButton from "../BackButton";
+import {BackButton} from "../ui/BackButton";
 import { carNames } from "../../utilities/names/carNames";
 import ConfirmationModal from "../ui/ConfirmationModal";
 import travelLocationNames from "../../utilities/names/travelLocationNames";
