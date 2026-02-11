@@ -4,6 +4,7 @@ import locationNames from "../names/locationNames";
 export function rentalConfirmationEmailHtml(
   name,
   surname,
+  email,
   carName,
   phoneNumber,
   startDateAndHour,
@@ -84,12 +85,12 @@ export function rentalConfirmationEmailHtml(
   <body>
     <div class="container">
       <div class="header">
-        <h1>🚗 Nueva Reserva Confirmada</h1>
+        <h1>🚗 Nueva Reserva recibida</h1>
       </div>
 
       <div class="section">
         <h2>Hola Patricia,</h2>
-        <p class="highlight">Se ha confirmado una nueva reserva en <strong>Florida Aventura Rent A Car</strong>. A continuación, encontrarás los detalles del cliente y del alquiler.</p>
+        <p class="highlight">Se ha recibido una nueva reserva en <strong>Florida Aventura Rent A Car</strong>. A continuación, encontrarás los detalles del cliente y del alquiler.</p>
       </div>
 
       <div class="section">
@@ -97,6 +98,10 @@ export function rentalConfirmationEmailHtml(
           <tr>
             <td>Cliente:</td>
             <td>${name} ${surname}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>${email}</td>
           </tr>
           <tr>
             <td>Teléfono:</td>

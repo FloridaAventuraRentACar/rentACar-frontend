@@ -105,6 +105,7 @@ const DriverForm = () => {
       html_message: rentalConfirmationEmailHtml(
         rental.clients[0].name,
         rental.clients[0].surname,
+        rental.clients[0].email,
         rental.carName,
         rental.clients[0].phone,
         rental.start,
