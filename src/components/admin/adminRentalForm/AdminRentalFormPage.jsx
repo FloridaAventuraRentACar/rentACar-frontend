@@ -10,7 +10,7 @@ import Loading from "../../ui/Loading.jsx";
 import ErrorModal from "../../ui/ErrorModal.jsx";
 import { getErrorMessage } from "../../../utilities/errors/errorsMessages.js";
 import VehicleRentalForm from "./VehicleRentalForm.jsx";
-import ClientsForm from "./ClientsForm.jsx";
+import ClientsForm from "./ClientsForm";
 import AdminSideBar from "../AdminSideBar.jsx";
 
 const driverSchema = Yup.object({
@@ -176,7 +176,7 @@ const AdminRentalFormPage = () => {
               {({ values }) => (
                 <Form>
                   <VehicleRentalForm cars={cars} values={values} />
-                  <ClientsForm />
+                  <ClientsForm admin={true} />
                   <br />
                   <button
                     type="submit"

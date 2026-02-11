@@ -1,12 +1,14 @@
 import { Field, ErrorMessage, FieldArray, useFormikContext } from "formik";
 import styles from "../../../styles/admin/adminRentalForm/ClientsForm.module.css";
 
-const renderDriverFields = (prefix) => (
+const renderDriverFields = (prefix : string, admin : boolean) => (
   <>
     <div className={styles.fieldGroup}>
       <div className={styles.labelContainer}>
         <label className={styles.label}>Nombre</label>
-        <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+        {admin  && (
+          <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+        )}
       </div>
       <Field className={styles.input} name={`${prefix}.name`} />
       <ErrorMessage
@@ -19,7 +21,9 @@ const renderDriverFields = (prefix) => (
     <div className={styles.fieldGroup}>
       <div className={styles.labelContainer}>
         <label className={styles.label}>Apellido</label>
-        <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+        {admin && (
+          <label className={`${styles.label} ${styles.required}`}>Obligatorio</label>
+        )}
       </div>
       <Field className={styles.input} name={`${prefix}.surname`} />
       <ErrorMessage
@@ -143,14 +147,18 @@ const renderDriverFields = (prefix) => (
   </>
 );
 
-const ClientsForm = () => {
-  const { values } = useFormikContext();
+interface ClientsFormProps {
+  admin?: boolean
+}
+
+const ClientsForm = ({admin = false} : ClientsFormProps) => {
+  const { values } = useFormikContext() as any;
 
   return (
     <>
       {/* Formulario de Clientes */}
       <h3 className={styles.sectionTitle}>Conductor principal</h3>
-      {renderDriverFields("driver", styles)}
+      {renderDriverFields("driver", admin)}
       <div className={styles.addDriverTitle}>
         <h3 className={styles.sectionTitle}>
           Conductores adicionales
@@ -162,12 +170,12 @@ const ClientsForm = () => {
       <FieldArray name="additionalDrivers">
         {({ push, remove }) => (
           <div>
-            {values.additionalDrivers.map((_, index) => (
+            {values.additionalDrivers.map((_ : any, index : number) => (
               <div key={index} className={styles.driverBox}>
                 <h4 className={styles.sectionTitle}>
                   Conductor adicional {index + 1}
                 </h4>
-                {renderDriverFields(`additionalDrivers[${index}]`, styles)}
+                {renderDriverFields(`additionalDrivers[${index}]`, admin)}
                 <button
                   type="button"
                   className={`${styles.button} ${styles.removeButton}`}

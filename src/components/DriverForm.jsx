@@ -11,7 +11,7 @@ import useEmailJs from "../hooks/useEmailJs.js";
 import rentalClientConfirmationEmailhtml from "../utilities/emailHtml/rentalClientConfimationEmailHtml.js";
 import Loading from "./ui/Loading.jsx";
 import rentalConfirmationEmailHtml from "../utilities/emailHtml/rentalConfirmationEmailHtml.js";
-import ClientsForm from "./admin/adminRentalForm/ClientsForm.jsx";
+import ClientsForm from "./admin/adminRentalForm/ClientsForm";
 import { BackButton } from "./ui/BackButton";
 
 const driverSchema = Yup.object({
@@ -210,7 +210,7 @@ const DriverForm = () => {
 
                 return (
                   <Form>
-                    <ClientsForm />
+                    <ClientsForm/>
 
                     <br />
                     <button
