@@ -12,6 +12,7 @@ import rentalClientConfirmationEmailhtml from "../utilities/emailHtml/rentalClie
 import Loading from "./ui/Loading.jsx";
 import rentalConfirmationEmailHtml from "../utilities/emailHtml/rentalConfirmationEmailHtml.js";
 import ClientsForm from "./admin/adminRentalForm/ClientsForm.jsx";
+import { BackButton } from "./ui/BackButton";
 
 const driverSchema = Yup.object({
   name: Yup.string().required("Obligatorio"),
@@ -190,6 +191,9 @@ const DriverForm = () => {
         <Loading  text="Cargando confirmacion de reserva..."/>
       ) : (
         <div className={styles.mainContainer}>
+          <div className={styles.backButtonContainer}>
+            <BackButton href={`/cars/${carData.name}`}/>
+          </div>
           <div className={styles.formContainer}>
             <Formik
               initialValues={initialValues}

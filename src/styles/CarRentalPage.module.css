@@ -1,3 +1,10 @@
+.backButtonContainer {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
 .carRentalCard {
   max-width: 900px;
   margin: 20px auto;
