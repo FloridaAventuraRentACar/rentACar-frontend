@@ -52,13 +52,13 @@ export default function SuccessfulRental() {
           <div className={styles.section}>
 
             <div className={styles.box}>
-              <p className={styles.customer}>Recibira un correo con los detalles de su reserva</p>
+              <p className={styles.customer}>Recibira un correo en {rental.clients[0].email} con los detalles de su reserva</p>
             </div>
 
             <div className={styles.row}>
               <PersonStanding className={styles.rowIcon} />
               <div>
-                <p className={styles.value}>{rental.clients[0].name}</p>
+                <p className={styles.value}>{rental.clients[0].name} {rental.clients[0].surname}</p>
                 <p className={styles.subLabel}>Conductor principal</p>
               </div>
             </div>
