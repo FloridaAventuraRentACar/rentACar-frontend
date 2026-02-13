@@ -1,7 +1,7 @@
 import { createContext, useMemo } from "react";
 import { useSessionState } from "../hooks/useSessionState";
-import locationPrices from "../utilities/locationPrices";
-import gasTankPrices from "../utilities/gasTankPrices";
+import locationPrices from "../utilities/prices/locationPrices";
+import gasTankPrices from "../utilities/prices/gasTankPrices";
 
 export const AppContext = createContext();
 
@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
   const [pickupLocation, setPickupLocation] = useSessionState("pickupLocation", '');
   const [returnLocation, setReturnLocation] = useSessionState("returnLocation", '');
   const [pickupDate, setPickupDate] = useSessionState("pickupDate", '');
-  const [pickupTime , setPickupTime] = useSessionState("pickupTime", '');
+  const [pickupTime, setPickupTime] = useSessionState("pickupTime", '');
   const [returnDate, setReturnDate] = useSessionState("returnDate", '');
   const [returnTime, setReturnTime] = useSessionState("returnTime", '');
   const [carData, setCarData] = useSessionState("carData", {});
@@ -20,7 +20,7 @@ export const AppProvider = ({ children }) => {
   const [travelLocation, setTravelLocation] = useSessionState("travelLocation", null);
   const [selectedGasTank, setSelectedGasTank] = useSessionState("selectedGasTank", 'FULL');
   const [additionalDriversCount, setAdditionalDriversCount] = useSessionState("additionalDriversCount", 0);
-  
+
   const additionalDriverCharge = useMemo(() => {
     return (additionalDriversCount > 1) ? ((additionalDriversCount - 1) * (5 * daysBooked)) : 0;
   }, [additionalDriversCount, daysBooked]);
@@ -53,13 +53,13 @@ export const AppProvider = ({ children }) => {
   }, [carData, daysBooked, insuranceCharge, babySeatCharge, travelLocationPrice, gasTankCharge, additionalDriverCharge]);
 
   const clearRentalData = () => {
-  const keys = [
-    "daysBooked", "pickupLocation", "returnLocation", "pickupDate", "pickupTime",
-    "returnDate", "returnTime", "carData", "totalPrice", "pricePerDay",
-    "selectedInsurance", "selectedBabySeat", "travelLocation", "selectedGasTank"
-  ];
-  keys.forEach(key => sessionStorage.removeItem(key));
-};
+    const keys = [
+      "daysBooked", "pickupLocation", "returnLocation", "pickupDate", "pickupTime",
+      "returnDate", "returnTime", "carData", "totalPrice", "pricePerDay",
+      "selectedInsurance", "selectedBabySeat", "travelLocation", "selectedGasTank"
+    ];
+    keys.forEach(key => sessionStorage.removeItem(key));
+  };
 
   return (
     <AppContext.Provider

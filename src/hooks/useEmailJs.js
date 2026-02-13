@@ -17,7 +17,6 @@ const useEmailJs = ({ serviceId, templateId, publicKey }) => {
       return response;
     } catch (err) {
       setError("Error al enviar el correo");
-      console.error(err);
       return null;
     } finally {
       setLoading(false);
