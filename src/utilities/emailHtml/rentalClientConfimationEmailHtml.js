@@ -65,12 +65,24 @@ export function rentalClientConfirmationEmailhtml(name, surname, carName, phoneN
     <body>
     <div class="container">
         <div class="header">
-        <h1>¡Reserva Confirmada!</h1>
+        <h1>¡Reserva Recibida!</h1>
         </div>
 
         <div class="section">
         <h2>Gracias por elegirnos, ${name}</h2>
-        <p>Hemos recibido tu reserva de vehículo con éxito. A continuación, te compartimos los detalles:</p>
+        <p>
+            Hemos recibido tu solicitud de reserva con éxito. 
+            Queremos informarte que, para finalizar el proceso y garantizar la disponibilidad total, 
+            es necesario validar la documentación correspondiente.
+        </p>
+        <p>
+            <strong>¿Qué sigue ahora?</strong>
+            <br>
+            🕒 Contacto del equipo: Un miembro de nuestro equipo de atención al cliente se pondrá en contacto contigo a la brevedad (vía WhatsApp).
+        </p>
+        <p>
+            📅 A continuacion, te compartimos los detalles de tu reserva:
+        </p>
         </div>
 
         <div class="section">

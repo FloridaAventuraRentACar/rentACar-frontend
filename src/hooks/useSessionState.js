@@ -6,7 +6,6 @@ export function useSessionState(key, initialValue) {
       const stored = sessionStorage.getItem(key);
       return stored !== null ? JSON.parse(stored) : initialValue;
     } catch (error) {
-      console.warn(`Error leyendo sessionStorage[${key}]`, error);
       return initialValue;
     }
   });
@@ -15,7 +14,6 @@ export function useSessionState(key, initialValue) {
     try {
       sessionStorage.setItem(key, JSON.stringify(state));
     } catch (error) {
-      console.warn(`Error guardando en sessionStorage[${key}]`, error);
     }
   }, [key, state]);
 
