@@ -3,7 +3,7 @@ export const cars = [
       name: "Nissan Kick",
       category: "SUV",
       price: "$54/día",
-      image: "https://i.ibb.co/Y7sMnBH8/el-nuevo-nissan-kicks-cuya-produccion-arranco-en-JTW4-VHZT6-FETHIGGTJJCUMJIQM.jpg",
+      image: "https://i.ibb.co/RF5j6vL/el-nuevo-nissan-kicks-cuya-produccion-arranco-en-JTW4-VHZT6-FETHIGGTJJCUMJIQM-removebg-preview.png",
     },
     {
       name: "Nissan Rogue",
@@ -12,22 +12,22 @@ export const cars = [
       image: "https://i.ibb.co/twz7G6TH/Rogue-2025-cover.png",
     },
     {
-      name: "Honda HRV",
+      name: "Honda CRV",
       category: "SUV",
-      price: "$61/día",
-      image: "https://i.ibb.co/xtdVCf3k/all-new-hr-v-0-768x768.jpg",
+      price: "$62/día",
+      image: "https://i.ibb.co/LzSJHXvz/Honda-CR-V-PHEV-2023-4-removebg-preview.png",
     },
     {
       name: "Volkswagen Tiguan",
       category: "SUV",
       price: "$63/día",
-      image: "https://i.ibb.co/KptF7fcX/Tiguan1.jpg",
+      image: "https://i.ibb.co/hFgBDfW3/Tiguan1-removebg-preview.png",
     },
     {
       name: "Volkswagen Atlas",
       category: "SUV",
       price: "$68/día",
-      image: "https://i.ibb.co/8DfjQrZW/Volswagen-Atlas.webp",
+      image: "https://i.ibb.co/N22kZVF0/Volswagen-Atlas-removebg-preview.png",
     },
     {
       name: "Hyundai Santa fe",
