@@ -1,10 +1,10 @@
-import styles from "../../styles/ContactUs.module.css";
+import styles from "../../styles/home/ContactUs.module.css";
 import { Phone, Mail, MapPin } from "lucide-react";
-import Button from "../ui/Button";
-import Input from "../ui/Input";
-import Textarea from "../ui/TextArea";
-import Card from "../ui/Card";
-import CardContent from "../ui/CardContent";
+import Button from "../ui/buttons/Button";
+import Input from "../ui/inputs/Input";
+import Textarea from "../ui/inputs/TextArea";
+import Card from "../ui/cards/Card";
+import CardContent from "../ui/cards/CardContent";
 import { useRef, useState } from "react";
 import useEmailJs from "../../hooks/useEmailJs";
 import contactUsHtml from "../../utilities/emailHtml/contactUsHtml";
@@ -27,12 +27,11 @@ export default function ContactUs() {
     publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
   });
 
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isLoading) {
-      console.log("Enviando correo...");
       return;
     }
 
