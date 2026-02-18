@@ -31,7 +31,6 @@ export function CarRentalPage() {
   const returnDate = searchParams.get("returnDate");
 
   const [selectedSunpass, setSelectedSunpass] = useState("no");
-  const [travelLocationPrice, setTravelLocationPrice] = useState(0);
 
   const {
     daysBooked,
@@ -61,17 +60,12 @@ export function CarRentalPage() {
 
   const handleTravelLocationChange = (event) => {
     const newLocation = event.target.value;
-    const newLocationPrice = locationPrices[newLocation];
-
-    // Actualizamos travelLocation y travelLocationPrice
     setTravelLocation(newLocation);
-    setTravelLocationPrice(newLocationPrice);
   };
 
   const handleSunpassClick = (selected) => {
     if (selected === "no") {
       setTravelLocation(null);
-      setTravelLocationPrice(0);
     }
     setSelectedSunpass(selected);
   };
@@ -289,7 +283,7 @@ export function CarRentalPage() {
               )}
               {selectedSunpass === "yes" && (
                 <span className={styles.priceTag}>
-                  + ${travelLocationPrice} al total
+                  + ${locationPrices[travelLocation]} al total
                 </span>
               )}
             </label>
