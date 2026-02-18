@@ -2,7 +2,13 @@
 .background {
   min-height: 100vh;
   background-color: #f9fafb; /* bg-gray-50 */
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    "Roboto",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   padding: 1rem;
 }
 .backButtonContainer {
@@ -10,7 +16,6 @@
   height: auto;
 }
 .container {
-  
   max-width: 1200px;
   margin: auto;
   margin-top: 4rem;
@@ -18,14 +23,18 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
   animation: fadeInUp 0.6s ease-out;
 }
 
 .container:hover {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
@@ -55,7 +64,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
   transition: left 0.5s ease;
 }
 
@@ -65,7 +79,7 @@
 
 .notes {
   white-space: pre-wrap;
-  word-wrap: break-word; 
+  word-wrap: break-word;
 }
 
 /* Botón Editar */
@@ -77,7 +91,13 @@
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    "Roboto",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
@@ -99,7 +119,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s ease;
 }
 
@@ -123,12 +148,16 @@
 /* Estado focus */
 .editButton:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2), 0 4px 12px rgba(249, 115, 22, 0.3);
+  box-shadow:
+    0 0 0 3px rgba(249, 115, 22, 0.2),
+    0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
 .editButton:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3), 0 4px 12px rgba(249, 115, 22, 0.3);
+  box-shadow:
+    0 0 0 3px rgba(249, 115, 22, 0.3),
+    0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
 /* Estado disabled */
@@ -149,7 +178,6 @@
   display: none;
 }
 
-
 .deleteButton {
   position: absolute;
   right: 50%;
@@ -162,7 +190,13 @@
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    "Roboto",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
@@ -183,7 +217,6 @@
     padding: 0.75rem 1.5rem;
     font-size: 0.95rem;
   }
-
 }
 
 /* Móvil (hasta 768px) */
@@ -193,17 +226,14 @@
     font-size: 0.9rem;
     border-radius: 10px;
   }
-
 }
 
 /* Móvil pequeño (hasta 480px) */
 @media (max-width: 480px) {
-  
   .editButton {
     padding: 0.625rem 1rem;
     font-size: 0.85rem;
     border-radius: 8px;
-
   }
 }
 
@@ -252,7 +282,7 @@
     background: #f97316 !important;
     color: #fff !important;
     -webkit-print-color-adjust: exact;
-    color-adjust: exact;
+    print-color-adjust: exact;
     box-shadow: none;
   }
 }
@@ -368,7 +398,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(234, 88, 12, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.05),
+    rgba(234, 88, 12, 0.05)
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -402,6 +436,38 @@
   z-index: 1;
 }
 
+/* Contenedor de precio con checkbox calcular total */
+.priceEditContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.calculateLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.calculateLabel:hover {
+  color: #f97316;
+}
+
+.calculateCheckbox {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #f97316;
+  cursor: pointer;
+}
+
 /* Inputs editables */
 .editInput,
 .editSelect {
@@ -415,7 +481,13 @@
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    "Roboto",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 .editInput:focus,
@@ -429,6 +501,17 @@
 .editInput:hover,
 .editSelect:hover {
   border-color: #9ca3af;
+}
+
+.editInput:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.editInput:disabled:hover {
+  border-color: #e5e7eb;
 }
 
 /* Tarjetas de conductores */
@@ -495,7 +578,13 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    "Roboto",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   letter-spacing: 0.025em;
 }
 
@@ -616,9 +705,9 @@
   }
 }
 
-@media (max-width: 545px){
-  .title{
-    font-size: 1.75rem ;
+@media (max-width: 545px) {
+  .title {
+    font-size: 1.75rem;
   }
 }
 @media (max-width: 480px) {
@@ -634,7 +723,6 @@
     padding: 1.5rem 1rem;
     margin-bottom: 2rem;
   }
-
 
   .section {
     padding: 1rem;
@@ -660,12 +748,11 @@
   }
 }
 
-@media (max-width: 430px){
-  .title{
+@media (max-width: 430px) {
+  .title {
     font-size: 1.3rem;
   }
 }
-
 
 /* Animaciones adicionales */
 @media (prefers-reduced-motion: no-preference) {
