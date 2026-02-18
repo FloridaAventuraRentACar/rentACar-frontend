@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CarCard from "./CarCard.jsx";
 import styles from "../../../styles/rental/cars/ShowCarsPage.module.css";
 import NoCarsAvailable from "./NoCarsAvailable.jsx";
-import { AppContext } from "../../../context/AppContext.jsx";
 import { getAvailability } from "../../../services/rentalService.js";
 import HeaderReusable from "../../ui/HeaderReusable.jsx";
 import Loading from "../../ui/feedback/Loading.jsx";
+import { useSearchParams } from "react-router-dom";
 
 export function ShowCarsPage() {
   const [cars, setCars] = useState(undefined);
@@ -14,8 +14,12 @@ export function ShowCarsPage() {
     checkAvailability();
   }, []);
 
-  const { pickupDate, pickupTime, returnDate, returnTime } =
-    useContext(AppContext);
+  const [searchParams] = useSearchParams();
+
+  const pickupDate = searchParams.get("pickupDate");
+  const pickupTime = searchParams.get("pickupTime");
+  const returnDate = searchParams.get("returnDate");
+  const returnTime = searchParams.get("returnTime");
 
   const checkAvailability = () => {
     const start = `${pickupDate}T${pickupTime}`;
