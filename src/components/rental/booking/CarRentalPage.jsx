@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "../../../styles/rental/booking/CarRentalPage.module.css";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context/AppContext.jsx";
@@ -21,17 +21,19 @@ export function CarRentalPage() {
 
   const [isPriceDetailsModalOpen, setIsPriceDetailsModalOpen] = useState(false);
 
-  const handleClick = () => {
-    navigate("/driver-form");
-  };
+  const location = useLocation();
+
+  const [searchParams] = useSearchParams();
+
+  const pickupLocation = searchParams.get("pickupLocation");
+  const returnLocation = searchParams.get("returnLocation");
+  const pickupDate = searchParams.get("pickupDate");
+  const returnDate = searchParams.get("returnDate");
 
   const [selectedSunpass, setSelectedSunpass] = useState("no");
-  const [travelLocationPrice, setTravelLocationPrice] = useState(0);
 
   const {
     daysBooked,
-    pickupDate,
-    returnDate,
     carData,
     totalPrice,
     selectedInsurance,
@@ -44,6 +46,10 @@ export function CarRentalPage() {
     setSelectedGasTank,
   } = useContext(AppContext);
 
+  const handleClick = () => {
+    navigate(`/driver-form${location.search}`);
+  };
+
   const handleInsuranceClick = (selected) => {
     setSelectedInsurance(selected);
   };
@@ -54,17 +60,12 @@ export function CarRentalPage() {
 
   const handleTravelLocationChange = (event) => {
     const newLocation = event.target.value;
-    const newLocationPrice = locationPrices[newLocation];
-
-    // Actualizamos travelLocation y travelLocationPrice
     setTravelLocation(newLocation);
-    setTravelLocationPrice(newLocationPrice);
   };
 
   const handleSunpassClick = (selected) => {
     if (selected === "no") {
       setTravelLocation(null);
-      setTravelLocationPrice(0);
     }
     setSelectedSunpass(selected);
   };
@@ -84,7 +85,7 @@ export function CarRentalPage() {
   return (
     <div className={styles.background}>
       <div className={styles.backButtonContainer}>
-        <BackButton href="/cars" />
+        <BackButton href={`/cars${location.search}`} />
       </div>
       <div className={styles.carRentalCard}>
         <div className={styles.carInfo}>
@@ -282,7 +283,7 @@ export function CarRentalPage() {
               )}
               {selectedSunpass === "yes" && (
                 <span className={styles.priceTag}>
-                  + ${travelLocationPrice} al total
+                  + ${locationPrices[travelLocation]} al total
                 </span>
               )}
             </label>

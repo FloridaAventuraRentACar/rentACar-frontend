@@ -6,7 +6,7 @@ import styles from "../../../styles/rental/booking/DriverForm.module.css";
 import RentalDetails from "./RentalDetails.jsx";
 import { postRental } from "../../../services/rentalService.js";
 import { AppContext } from "../../../context/AppContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import useEmailJs from "../../../hooks/useEmailJs.js";
 import rentalClientConfirmationEmailhtml from "../../../utilities/emailHtml/rentalClientConfimationEmailHtml.js";
 import Loading from "../../ui/feedback/Loading.jsx";
@@ -56,6 +56,16 @@ const DriverForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+
+  const pickupDate = searchParams.get("pickupDate");
+  const pickupTime = searchParams.get("pickupTime");
+  const returnDate = searchParams.get("returnDate");
+  const returnTime = searchParams.get("returnTime");
+  const pickupLocation = searchParams.get("pickupLocation");
+  const returnLocation = searchParams.get("returnLocation");
+
   const { sendEmail } = useEmailJs({
     serviceId: import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
     templateId: import.meta.env.VITE_HTML_TEMPLATE_ID,
@@ -64,12 +74,8 @@ const DriverForm = () => {
 
   const {
     carData,
-    pickupLocation,
-    returnLocation,
-    pickupDate,
-    pickupTime,
-    returnDate,
-    returnTime,
+    daysBooked,
+    totalPrice,
     selectedInsurance,
     selectedBabySeat,
     travelLocation,
@@ -191,7 +197,7 @@ const DriverForm = () => {
       ) : (
         <div className={styles.mainContainer}>
           <div className={styles.backButtonContainer}>
-            <BackButton href={`/cars/${carData.name}`} />
+            <BackButton href={`/cars/${carData.name}${location.search}`} />
           </div>
           <div className={styles.formContainer}>
             <Formik
@@ -223,7 +229,20 @@ const DriverForm = () => {
             </Formik>
           </div>
           <div className={styles.rentalDetailsContainer}>
-            <RentalDetails />
+            <RentalDetails
+              carData={carData}
+              daysBooked={daysBooked}
+              pickupLocation={pickupLocation}
+              pickupDate={pickupDate}
+              pickupTime={pickupTime}
+              returnLocation={returnLocation}
+              returnDate={returnDate}
+              returnTime={returnTime}
+              totalPrice={totalPrice}
+              selectedInsurance={selectedInsurance}
+              selectedBabySeat={selectedBabySeat}
+              travelLocation={travelLocation}
+            />
           </div>
         </div>
       )}
