@@ -8,7 +8,6 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [daysBooked, setDaysBooked] = useSessionState("daysBooked", 0);
   const [carData, setCarData] = useSessionState("carData", {});
-  const [pricePerDay, setPricePerDay] = useSessionState("pricePerDay", 100);
   const [selectedInsurance, setSelectedInsurance] = useSessionState("selectedInsurance", 'DEDUCTIBLE');
   const [selectedBabySeat, setSelectedBabySeat] = useSessionState("selectedBabySeat", 'NONE');
   const [travelLocation, setTravelLocation] = useSessionState("travelLocation", null);
@@ -48,7 +47,7 @@ export const AppProvider = ({ children }) => {
 
   const clearRentalData = () => {
     const keys = [
-      "daysBooked", "carData", "totalPrice", "pricePerDay",
+      "daysBooked", "carData", "totalPrice",
       "selectedInsurance", "selectedBabySeat", "travelLocation", "selectedGasTank"
     ];
     keys.forEach(key => sessionStorage.removeItem(key));
@@ -60,7 +59,6 @@ export const AppProvider = ({ children }) => {
         daysBooked, setDaysBooked,
         carData, setCarData,
         totalPrice,
-        pricePerDay, setPricePerDay,
         selectedInsurance, setSelectedInsurance,
         selectedBabySeat, setSelectedBabySeat,
         travelLocation, setTravelLocation,
