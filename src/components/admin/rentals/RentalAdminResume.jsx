@@ -33,6 +33,7 @@ export default function RentalAdminResume({ isEditable = true }) {
   const [errorPath, setErrorPath] = useState("");
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorButtonMessage, setErrorButtonMessage] = useState("");
+  const [calculateTotal, setCalculateTotal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -44,6 +45,8 @@ export default function RentalAdminResume({ isEditable = true }) {
   useEffect(() => {
     if (rental) {
       setEditedRental({ ...rental });
+      
+      setCalculateTotal(rental.totalPrice === null || rental.totalPrice === undefined);
     }
   }, [rental]);
 
@@ -95,11 +98,17 @@ export default function RentalAdminResume({ isEditable = true }) {
     setIsProcessing(true);
 
     try {
-      await updateRental(editedRental);
+      const rentalToSave = {
+        ...editedRental,
+        totalPrice: calculateTotal ? null : parseInt(editedRental.totalPrice) || null,
+      };
+
+      console.log(rentalToSave);
+      await updateRental(rentalToSave);
 
       setShowConfirmationComponent(false);
 
-      setRental({ ...editedRental });
+      setRental({ ...rentalToSave });
 
       navigate("/admin", {
         state: {
@@ -285,13 +294,40 @@ export default function RentalAdminResume({ isEditable = true }) {
           <h2 className={styles.sectionTitle}>Información del Vehículo</h2>
           <div className={styles.grid}>
             {renderSelectField("Vehículo", rental.carId, "carId", cars)}
-            {renderField(
-              "Precio Total",
-              `$${rental.totalPrice}`,
-              "totalPrice",
-              null,
-              "number"
-            )}
+            <div className={styles.field}>
+              <span className={styles.label}>Precio Total:</span>
+              {isEditable ? (
+                <div className={styles.priceEditContainer}>
+                  <input
+                    type="number"
+                    value={calculateTotal ? "" : (editedRental?.totalPrice ?? "")}
+                    onChange={(e) => handleInputChange("totalPrice", e.target.value)}
+                    className={styles.editInput}
+                    disabled={calculateTotal}
+                    step="0.01"
+                    placeholder={calculateTotal ? "Se calculará automáticamente" : ""}
+                  />
+                  <label className={styles.calculateLabel}>
+                    <input
+                      type="checkbox"
+                      checked={calculateTotal}
+                      onChange={(e) => {
+                        setCalculateTotal(e.target.checked);
+                        if (e.target.checked) {
+                          handleInputChange("totalPrice", null);
+                        }
+                      }}
+                      className={styles.calculateCheckbox}
+                    />
+                    Calcular total
+                  </label>
+                </div>
+              ) : (
+                <span className={styles.value}>
+                  {rental.totalPrice != null ? `$${rental.totalPrice}` : "A calcular"}
+                </span>
+              )}
+            </div>
             <div className={styles.field}>
               <span className={styles.label}>Dias de alquiler</span>
               <span className={styles.value}>{rental.daysRented} dias</span>

@@ -1,18 +1,14 @@
-import { useContext } from 'react';
 import styles from '../../../styles/rental/booking/RentalDetails.module.css';
-import { AppContext } from '../../../context/AppContext';
 import locationNames from '../../../utilities/names/locationNames';
 import insuranceNames from '../../../utilities/names/insuranceNames';
 import babySeatNames from '../../../utilities/names/babySeatNames';
 import travelLocationNames from '../../../utilities/names/travelLocationNames';
 import { formatDate } from '../../../utilities/functions/formatDate';
 
-const RentalDetails = () => {
-
-  const {
-    carData, daysBooked, pickupLocation, pickupDate, pickupTime, returnLocation, returnDate, returnTime,
-    totalPrice, selectedInsurance, selectedBabySeat, travelLocation
-  } = useContext(AppContext);
+const RentalDetails = ({
+  carData, daysBooked, pickupLocation, pickupDate, pickupTime, returnLocation,
+  returnDate, returnTime, totalPrice, selectedInsurance, selectedBabySeat, travelLocation
+}) => {
 
   return (
     <div className={styles.container}>

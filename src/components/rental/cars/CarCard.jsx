@@ -1,16 +1,36 @@
 import { useContext } from "react";
 import styles from "../../../styles/rental/cars/CarCard.module.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { AppContext } from "../../../context/AppContext";
 import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatReclineNormal';
+import { daysCalculate } from "../../../utilities/functions/daysCalculate";
 
 export function CarCard({ carData }) {
   const navigate = useNavigate()
-  const { setCarData } = useContext(AppContext);
+  const { setCarData, setDaysBooked } = useContext(AppContext);
+  const location = useLocation();
+
+  const [searchParams] = useSearchParams();
+
+  const pickupDate = searchParams.get("pickupDate");
+  const pickupTime = searchParams.get("pickupTime");
+  const returnDate = searchParams.get("returnDate");
+  const returnTime = searchParams.get("returnTime");
 
   const handleClick = () => {
+
     setCarData(carData);
-    navigate(`/cars/${carData.name}`, {});
+
+    setDaysBooked(
+      daysCalculate(
+        pickupDate,
+        returnDate,
+        pickupTime,
+        returnTime
+      )
+    );
+
+    navigate(`/cars/${carData.name}${location.search}`, {});
   };
 
   return (

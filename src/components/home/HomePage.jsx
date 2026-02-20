@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Star, Shield, Clock, DollarSign, Car, ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 import styles from "../../styles/home/HomePage.module.css";
-import HomeRentInput from "./HomeRentInput.jsx";
+import HomeRentInput from "./HomeRentInput";
 import Header from "../layout/Header";
 import Card from "../ui/cards/Card.jsx";
 import CardContent from "../ui/cards/CardContent.jsx";

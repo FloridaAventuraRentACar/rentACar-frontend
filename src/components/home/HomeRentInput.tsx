@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useContext } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/home/HomeRentInput.module.css";
-import { AppContext } from "../../context/AppContext";
 import { daysCalculate } from "../../utilities/functions/daysCalculate";
 import { useNavigate } from "react-router-dom";
 
@@ -10,27 +9,18 @@ export default function HomeRentInput() {
 
   const navigate = useNavigate();
 
-  const {
-    pickupLocation,
-    setPickupLocation,
-    returnLocation,
-    setReturnLocation,
-    pickupDate,
-    setPickupDate,
-    pickupTime,
-    setPickupTime,
-    returnDate,
-    setReturnDate,
-    returnTime,
-    setReturnTime,
-    setDaysBooked,
-  } = useContext(AppContext);
+  const [pickupLocation, setPickupLocation] = useState("MIAMI_AIRPORT");
+  const [returnLocation, setReturnLocation] = useState("MIAMI_AIRPORT");
+  const [pickupDate, setPickupDate] = useState("");
+  const [pickupTime, setPickupTime] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [returnTime, setReturnTime] = useState("");
 
   useEffect(() => {
     resetStates();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const daysBooked = daysCalculate(
@@ -39,17 +29,19 @@ export default function HomeRentInput() {
       pickupTime,
       returnTime
     );
-
+    
     if (daysBooked < 3) {
       alert("El alquiler debe ser de mínimo 3 días");
       return;
     }
-
-    setDaysBooked(daysBooked);
-
-    navigate("/cars");
+        
+    navigate(createUrlWithParams());
   };
 
+  const createUrlWithParams = () => {
+    const url = `/cars?pickupLocation=${pickupLocation}&returnLocation=${returnLocation}&pickupDate=${pickupDate}&pickupTime=${pickupTime}&returnDate=${returnDate}&returnTime=${returnTime}`;
+    return url;
+  }
   const resetStates = () => {
     setPickupLocation("MIAMI_AIRPORT");
     setReturnLocation("MIAMI_AIRPORT");
@@ -57,10 +49,9 @@ export default function HomeRentInput() {
     setPickupTime("");
     setReturnDate("");
     setReturnTime("");
-    setDaysBooked(0);
   };
 
-  const handlePickupDateTimeChange = (e) => {
+  const handlePickupDateTimeChange = (e : React.ChangeEvent<HTMLInputElement>) => {
     const dateTimeValue = e.target.value;
     if (dateTimeValue) {
       const [date, time] = dateTimeValue.split("T");
@@ -69,7 +60,7 @@ export default function HomeRentInput() {
     }
   };
 
-  const handleReturnDateTimeChange = (e) => {
+  const handleReturnDateTimeChange = (e : React.ChangeEvent<HTMLInputElement>) => {
     const dateTimeValue = e.target.value;
     if (dateTimeValue) {
       const [date, time] = dateTimeValue.split("T");
