@@ -85,6 +85,7 @@ export default function AdminSideBar({ forceToggle = false }) {
             <span className={styles.navText}>Inicio</span>
           </button>
 
+          {/* Calendario */}
           <button
             className={`${styles.navButton} ${
               isActive("/admin/rentals/gantt") ? styles.navButtonActive : ""
@@ -95,16 +96,7 @@ export default function AdminSideBar({ forceToggle = false }) {
             <span className={styles.navText}>Calendario</span>
           </button>
 
-          <button
-            className={`${styles.navButton} ${
-              isActive("/admin/rentals") ? styles.navButtonActive : ""
-            }`}
-            onClick={() => handleNavigate("/admin/rentals")}
-          >
-            <FileText className={styles.navIcon} />
-            <span className={styles.navText}>Listado de Alquileres</span>
-          </button>
-
+          {/* Registrar alquiler */}
           <button
             className={`${styles.navButton} ${
               isActive("/admin/register") ? styles.navButtonActive : ""
@@ -114,6 +106,18 @@ export default function AdminSideBar({ forceToggle = false }) {
             <Plus className={styles.navIcon} />
             <span className={styles.navText}>Registrar alquiler</span>
           </button>
+
+          {/*Ajuste de precios */}
+          <button
+            className={`${styles.navButton} ${
+              isActive("/admin/price-adjustment") ? styles.navButtonActive : ""
+            }`}
+            onClick={() => handleNavigate("/admin/price-adjustment")}
+          >
+            <FileText className={styles.navIcon} />
+            <span className={styles.navText}>Ajuste de precios</span>
+          </button>
+
         </nav>
 
         <div className={styles.separator}></div>
