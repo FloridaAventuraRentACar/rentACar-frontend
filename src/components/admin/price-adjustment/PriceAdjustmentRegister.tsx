@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react"
 import { X, TrendingUp, TrendingDown, DollarSign } from "lucide-react"
 import styles from "../../../styles/admin/price-adjustments/PriceAdjustmentRegister.module.css"
 import { PriceAdjustment, PriceAdjustmentCreate } from "../../../types/PriceAdjustment"
-import ErrorModal from "../../ui/modals/ErrorModal"
 import ConfirmationModal from "../../ui/modals/ConfirmationModal"
 import { formatDate } from "../../../utilities/functions/formatDate"
 
@@ -169,6 +168,7 @@ export default function PriceAdjustmentRegister({
                     className={styles.input}
                     value={periodEnd}
                     onChange={(e) => setPeriodEnd(e.target.value)}
+                    min={periodStart || new Date().toISOString().split("T")[0]}
                   />
                   {errors.periodEnd && <span className={styles.error}>{errors.periodEnd}</span>}
                 </div>
