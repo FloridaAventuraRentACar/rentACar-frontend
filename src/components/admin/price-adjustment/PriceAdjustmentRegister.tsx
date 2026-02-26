@@ -6,6 +6,7 @@ import { PriceAdjustment, PriceAdjustmentCreate } from "../../../types/PriceAdju
 import ConfirmationModal from "../../ui/modals/ConfirmationModal"
 import { formatDate } from "../../../utilities/functions/formatDate"
 
+//TODO: Modal de error abierto al editar si antes me salto error editando/registrando
 
 interface PriceAdjustmentRegisterProps {
   onSave: (data: PriceAdjustmentCreate) => Promise<void>

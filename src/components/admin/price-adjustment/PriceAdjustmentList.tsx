@@ -196,7 +196,7 @@ export default function PriceAdjustmentList({
       <ErrorModal
         showModal={errorModal}
         message={errorMessage}
-        redirectPath="/admin/price-adjustments"
+        redirectPath="/admin/price-adjustment"
         buttonText="Volver a los ajustes de precio"
         onClose={() => setErrorModal(false)}
       />
