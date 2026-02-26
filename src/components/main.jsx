@@ -10,7 +10,6 @@ import { AppProvider } from "../context/AppContext.jsx";
 import DriverForm from "./rental/booking/DriverForm.jsx";
 import Layout from "./layout/Layout.jsx";
 import SuccessfulRental from "./rental/booking/SuccessfulRental.jsx";
-import RentalsListPage from "./admin/rentals/list/RentalsListPage.jsx";
 import RentalAdminResume from "./admin/rentals/RentalAdminResume.jsx";
 import Login from "./admin/auth/Login.jsx";
 import { AuthProvider } from "../context/AuthContext.jsx";
@@ -18,6 +17,7 @@ import ProtectedRoute from "./admin/auth/ProtectedRoute.jsx";
 import GanttChart from "./admin/dashboard/GanttChart.jsx";
 import AdminHome from "./admin/dashboard/AdminHome.jsx";
 import AdminRentalFormPage from "./admin/rentals/registerForm/AdminRentalFormPage.jsx";
+import PriceAdjustmentPage from "./admin/price-adjustment/PriceAdjustmentPage";
 
 const router = createBrowserRouter([
   {
@@ -37,14 +37,6 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AdminHome />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/admin/rentals",
-        element: (
-          <ProtectedRoute>
-            <RentalsListPage />
           </ProtectedRoute>
         ),
       },
@@ -77,6 +69,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AdminRentalFormPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/admin/price-adjustment",
+        element: (
+          <ProtectedRoute>
+            <PriceAdjustmentPage />
           </ProtectedRoute>
         ),
       },

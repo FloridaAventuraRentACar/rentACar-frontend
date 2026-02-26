@@ -56,8 +56,8 @@ export default function AdminHome() {
     navigate("/admin/rentals/gantt");
   };
 
-  const handleRentalsClick = () => {
-    navigate("/admin/rentals");
+  const handlePriceAdjustmentClick = () => {
+    navigate("/admin/price-adjustment");
   };
 
   const handleRegisterClick = () => {
@@ -113,22 +113,6 @@ export default function AdminHome() {
             </div>
           </button>
 
-          <button
-            onClick={handleRentalsClick}
-            className={styles.secondaryButton}
-          >
-            <div className={styles.buttonContent}>
-              <FileText className={styles.buttonIcon} />
-              <div className={styles.buttonText}>
-                <span className={styles.buttonTitle}>
-                  Ver Listado de Alquileres
-                </span>
-                <span className={styles.buttonSubtitle}>
-                  Historial completo
-                </span>
-              </div>
-            </div>
-          </button>
 
           <button
             onClick={handleRegisterClick}
@@ -142,6 +126,23 @@ export default function AdminHome() {
                 </span>
                 <span className={styles.buttonSubtitle}>
                   Nuevo registro
+                </span>
+              </div>
+            </div>
+          </button>
+
+          <button
+            onClick={handlePriceAdjustmentClick}
+            className={styles.secondaryButton}
+          >
+            <div className={styles.buttonContent}>
+              <FileText className={styles.buttonIcon} />
+              <div className={styles.buttonText}>
+                <span className={styles.buttonTitle}>
+                  Ajuste de precios
+                </span>
+                <span className={styles.buttonSubtitle}>
+                  Modifica el precio de los vehiculos en un período
                 </span>
               </div>
             </div>
