@@ -159,6 +159,7 @@ const DriverForm = () => {
       babySeat: selectedBabySeat,
       travelLocation,
       gasTank: selectedGasTank,
+      notifyAdmin: true //Se notifica al admin del alquiler, ya que lo realiza el cliente
     };
 
     try {
