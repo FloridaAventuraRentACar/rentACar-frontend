@@ -2,12 +2,12 @@
 .sidebar {
   width: 280px;
   min-height: 100vh;
-  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+  background: linear-gradient(180deg, var(--color-footer) 0%, var(--color-title) 100%);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   position: fixed;
   left: 0;
   top: 0;
@@ -36,7 +36,7 @@
 .logoBadge {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -48,7 +48,7 @@
 .logoIcon {
   width: 28px;
   height: 28px;
-  color: #ffffff;
+  color: var(--color-white);
   stroke-width: 2.5;
 }
 
@@ -61,7 +61,7 @@
 .logoTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-white);
   margin: 0;
   letter-spacing: -0.025em;
   line-height: 1.2;
@@ -70,7 +70,7 @@
 .logoSubtitle {
   font-size: 0.75rem;
   font-weight: 500;
-  color: #9ca3af;
+  color: var(--color-text-light);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -114,7 +114,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: #f97316;
+  background: var(--color-brand);
   transform: scaleY(0);
   transition: transform 0.3s ease;
 }
@@ -140,7 +140,7 @@
 .navIcon {
   width: 22px;
   height: 22px;
-  color: #d1d5db;
+  color: var(--color-border);
   stroke-width: 2;
   flex-shrink: 0;
   transition: all 0.3s ease;
@@ -148,21 +148,21 @@
 
 .navButton:hover .navIcon,
 .navButtonActive .navIcon {
-  color: #f97316;
+  color: var(--color-brand);
   transform: scale(1.1);
 }
 
 .navText {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #d1d5db;
+  color: var(--color-border);
   letter-spacing: -0.025em;
   transition: color 0.3s ease;
 }
 
 .navButton:hover .navText,
 .navButtonActive .navText {
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .activeIndicator {
@@ -170,7 +170,7 @@
   right: 1rem;
   width: 8px;
   height: 8px;
-  background: #f97316;
+  background: var(--color-brand);
   border-radius: 50%;
   box-shadow: 0 0 12px rgba(249, 115, 22, 0.8);
   animation: pulse 2s ease-in-out infinite;
@@ -210,7 +210,7 @@
 .userAvatar {
   width: 44px;
   height: 44px;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -222,7 +222,7 @@
 .userInitial {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .userDetails {
@@ -235,7 +235,7 @@
 .userName {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--color-white);
   margin: 0;
   line-height: 1.2;
   white-space: nowrap;
@@ -246,7 +246,7 @@
 .userRole {
   font-size: 0.75rem;
   font-weight: 500;
-  color: #9ca3af;
+  color: var(--color-text-light);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -262,7 +262,7 @@
   z-index: 200;
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  background: linear-gradient(135deg, var(--color-footer) 0%, var(--color-title) 100%);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   align-items: center;
@@ -273,14 +273,14 @@
 }
 
 .mobileMenuButton:hover {
-  background: linear-gradient(135deg, #111827 0%, #000000 100%);
+  background: linear-gradient(135deg, var(--color-title) 0%, #000000 100%);
   transform: scale(1.05);
 }
 
 .menuIcon {
   width: 24px;
   height: 24px;
-  color: #ffffff;
+  color: var(--color-white);
   stroke-width: 2.5;
 }
 

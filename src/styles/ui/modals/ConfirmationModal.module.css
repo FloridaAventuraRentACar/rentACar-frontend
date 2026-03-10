@@ -24,7 +24,7 @@
   max-width: 500px;
   width: 100%;
   padding: 0;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   animation: modalSlideIn 0.3s ease-out;
   overflow: hidden;
 }
@@ -45,14 +45,14 @@
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  background-color: #fff7ed; /* bg-orange-50 */
+  background-color: var(--color-primary-hover-light); /* bg-orange-50 */
   border: 2px solid #fed7aa; /* border-orange-200 */
 }
 
 .iconWarning {
   width: 2rem;
   height: 2rem;
-  color: #f97316; /* text-orange-500 */
+  color: var(--color-brand); /* text-orange-500 */
 }
 
 .iconDanger {
@@ -70,7 +70,7 @@
 .title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1f2937; /* text-gray-800 */
+  color: var(--color-footer); /* text-gray-800 */
   margin: 0;
   letter-spacing: 0.025em;
 }
@@ -82,7 +82,7 @@
 
 .message {
   font-size: 1.125rem;
-  color: #4b5563; /* text-gray-600 */
+  color: var(--color-text-medium); /* text-gray-600 */
   margin: 0;
   line-height: 1.6;
   font-weight: 500;
@@ -92,8 +92,8 @@
   display: flex;
   gap: 1rem;
   padding: 1.5rem 2rem 2rem 2rem;
-  border-top: 1px solid #e5e7eb; /* border-gray-200 */
-  background-color: #f9fafb; /* bg-gray-50 */
+  border-top: 1px solid var(--color-border); /* border-gray-200 */
+  background-color: var(--color-bg-soft); /* bg-gray-50 */
 }
 
 .button {
@@ -107,7 +107,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   letter-spacing: 0.025em;
 }
 
@@ -136,25 +136,25 @@
 }
 
 .cancelButton {
-  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); /* gray gradient */
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-text-light) 0%, var(--color-text-medium) 100%); /* gray gradient */
+  color: var(--color-white);
   box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
 }
 
 .cancelButton:hover {
-  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  background: linear-gradient(135deg, var(--color-text-medium) 0%, var(--color-text) 100%);
   box-shadow: 0 6px 16px rgba(107, 114, 128, 0.4);
   transform: translateY(-1px) scale(1.02);
 }
 
 .confirmButton {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); /* orange gradient */
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%); /* orange gradient */
+  color: var(--color-white);
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
 .confirmButton:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
   box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
   transform: translateY(-1px) scale(1.02);
 }

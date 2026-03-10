@@ -2,7 +2,7 @@
 
 .background {
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: var(--color-bg-soft);
   /* bg-gray-50 */
   font-family: var(--primary-font), 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
   padding: 1rem;
@@ -41,19 +41,19 @@
 .formTitle {
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--color-footer);
   /* text-gray-800 */
   margin-bottom: 2rem;
   text-align: center;
   padding-bottom: 1rem;
-  border-bottom: 3px solid #f97316;
+  border-bottom: 3px solid var(--color-brand);
   /* border-orange-500 */
   letter-spacing: 0.025em;
 }
 
 .button {
   padding: 0.75rem 1.5rem;
-  color: white;
+  color: var(--color-white);
   border: none;
   border-radius: 12px;
   margin-right: 1rem;
@@ -64,7 +64,7 @@
   letter-spacing: 0.025em;
   position: relative;
   overflow: hidden;
-  font-family: var(--primary-font), 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
 }
 
 .button::before {
@@ -92,7 +92,7 @@
 }
 
 .submitButton {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
   /* orange gradient */
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
   font-size: 1.125rem;
@@ -103,7 +103,7 @@
 }
 
 .submitButton:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
   box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
   transform: translateY(-2px) scale(1.02);
 }
@@ -212,13 +212,13 @@
 /* Print styles */
 @media print {
   .background {
-    background-color: white;
+    background-color: var(--color-white);
   }
 
   .formContainer {
     box-shadow: none;
     border: 1px solid #000;
-    background: white;
+    background: var(--color-white);
     backdrop-filter: none;
   }
 
@@ -228,6 +228,6 @@
   }
 
   .submitButton {
-    background: #f97316 !important;
+    background: var(--color-brand) !important;
   }
 }

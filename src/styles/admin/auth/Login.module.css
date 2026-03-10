@@ -1,12 +1,12 @@
 /* Contenedor principal */
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--color-bg-soft) 0%, var(--color-white) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   position: relative;
   overflow: hidden;
 }
@@ -120,7 +120,7 @@
 .logoBadge {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -145,14 +145,14 @@
 .logoIcon {
   width: 40px;
   height: 40px;
-  color: #ffffff;
+  color: var(--color-white);
   stroke-width: 2.5;
 }
 
 .brandName {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--color-footer);
   margin: 0 0 0.25rem 0;
   letter-spacing: -0.025em;
 }
@@ -160,7 +160,7 @@
 .brandSubtitle {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--color-text-light);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -175,14 +175,14 @@
 .title {
   font-size: 2rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-title);
   margin: 0 0 0.75rem 0;
   letter-spacing: -0.025em;
 }
 
 .subtitle {
   font-size: 1rem;
-  color: #6b7280;
+  color: var(--color-text-light);
   margin: 0;
   font-weight: 500;
   line-height: 1.5;
@@ -249,57 +249,57 @@
   gap: 0.5rem;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--color-text);
   letter-spacing: -0.025em;
 }
 
 .labelIcon {
   width: 16px;
   height: 16px;
-  color: #6b7280;
+  color: var(--color-text-light);
   stroke-width: 2.5;
 }
 
 .input {
   width: 100%;
   padding: 1rem 1.25rem;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--color-border);
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 500;
-  color: #1f2937;
-  background: #ffffff;
+  color: var(--color-footer);
+  background: var(--color-white);
   transition: all 0.3s ease;
   font-family: inherit;
 }
 
 .input::placeholder {
-  color: #9ca3af;
+  color: var(--color-text-light);
 }
 
 .input:hover {
-  border-color: #d1d5db;
+  border-color: var(--color-border);
 }
 
 .input:focus {
   outline: none;
-  border-color: #f97316;
+  border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
   transform: translateY(-1px);
 }
 
 .input:disabled {
-  background: #f9fafb;
-  color: #9ca3af;
+  background: var(--color-bg-soft);
+  color: var(--color-text-light);
   cursor: not-allowed;
-  border-color: #e5e7eb;
+  border-color: var(--color-border);
 }
 
 /* Botón de submit */
 .submitButton {
   width: 100%;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
+  color: var(--color-white);
   border: none;
   padding: 1.125rem 2rem;
   font-size: 1.125rem;
@@ -332,7 +332,7 @@
 }
 
 .submitButton:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
   box-shadow: 0 12px 30px rgba(249, 115, 22, 0.4);
   transform: translateY(-2px);
 }
@@ -352,7 +352,7 @@
 }
 
 .submitButton:disabled {
-  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  background: linear-gradient(135deg, var(--color-text-light) 0%, var(--color-text-medium) 100%);
   cursor: not-allowed;
   box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
   transform: none;
@@ -367,7 +367,7 @@
   width: 20px;
   height: 20px;
   border: 3px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #ffffff;
+  border-top-color: var(--color-white);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -382,19 +382,19 @@
 .footer {
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border);
   text-align: center;
 }
 
 .footerText {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--color-text-light);
   margin: 0;
   line-height: 1.5;
 }
 
 .footerLink {
-  color: #f97316;
+  color: var(--color-brand);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -408,12 +408,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #f97316;
+  background: var(--color-brand);
   transition: width 0.3s ease;
 }
 
 .footerLink:hover {
-  color: #ea580c;
+  color: var(--color-primary-hover);
 }
 
 .footerLink:hover::after {
@@ -422,7 +422,7 @@
 
 .footerLink:focus {
   outline: none;
-  color: #ea580c;
+  color: var(--color-primary-hover);
 }
 
 /* Responsive Design */
@@ -750,7 +750,7 @@
 @media (prefers-contrast: high) {
   .loginCard {
     border: 2px solid #000;
-    background: #fff;
+    background: var(--color-white);
   }
 
   .input,
@@ -773,10 +773,10 @@
 }
 
 .loginCard::-webkit-scrollbar-thumb {
-  background: #f97316;
+  background: var(--color-brand);
   border-radius: 3px;
 }
 
 .loginCard::-webkit-scrollbar-thumb:hover {
-  background: #ea580c;
+  background: var(--color-primary-hover);
 }

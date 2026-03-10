@@ -93,6 +93,17 @@ export default function Header({ className = "" }) {
 
           {/* Desktop Actions */}
           <div className={styles.desktopActions}>
+            {/* Instagram Button */}
+            <Button asChild className={styles.instagramButton}>
+              <a
+                href="https://www.instagram.com/floridaaventura/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.buttonContent}
+              >
+                <Instagram className={styles.icon} />
+              </a>
+            </Button>
             {/* Reserve Button */}
             <Button
               asChild
@@ -111,6 +122,17 @@ export default function Header({ className = "" }) {
 
           {/* Mobile Menu */}
           <div className={styles.mobileMenu}>
+            {/* Instagram Button */}
+            <Button asChild className={styles.instagramButton}>
+              <a
+                href="https://www.instagram.com/floridaaventura/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.buttonContent}
+              >
+                <Instagram className={styles.icon} />
+              </a>
+            </Button>
             <Button
               asChild
               className={`${styles.reserveButton} ${styles.mobileButton}`}
@@ -124,8 +146,6 @@ export default function Header({ className = "" }) {
                 <span className={styles.reserveText}>Reservar ahora</span>
               </a>
             </Button>
-
-            
           </div>
         </div>
       </div>

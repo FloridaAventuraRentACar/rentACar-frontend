@@ -1,7 +1,7 @@
 /* General Layout and Reset */
 .container {
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   /* bg-white */
 }
 
@@ -82,7 +82,7 @@ html {
   position: relative;
   z-index: 10;
   text-align: center;
-  color: #ffffff;
+  color: var(--color-white);
   /* text-white */
   padding-left: 1rem;
   /* px-4 */
@@ -104,11 +104,12 @@ html {
   margin-bottom: 1rem;
   animation: fadeIn 1s ease-out;
   font-family: var(--secondary-font);
+  color: var(--color-detail);
 }
 
 .heroTitle span {
   display: block;
-  color: #fbbf24;
+  color: #A4E5E0;
 }
 
 .heroDescription {
@@ -119,7 +120,7 @@ html {
   margin-left: auto;
   margin-right: auto;
   opacity: 0.9;
-  font-family: var(--secondary-font);
+  font-family: var(--font-ui);
 }
 
 .heroInputContainer {
@@ -142,17 +143,17 @@ html {
 .homeRentInputField,
 .homeRentInputSelect {
   padding: 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   flex-grow: 1;
   font-size: 0.9rem;
-  color: #374151;
+  color: var(--color-text);
   min-width: 0;
   flex: 1;
 }
 
 .sectionWhyChooseUs {
-  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+  background: linear-gradient(180deg, var(--color-footer) 0%, var(--color-title) 100%);
 }
 
 
@@ -166,16 +167,16 @@ html {
 }
 
 .sectionUnits {
-  background-color: #f9fafb;
+  background-color: var(--color-border);
 }
 
 .sectionTestimonials {
-  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+  background: linear-gradient(180deg, var(--color-footer) 30%, var(--color-bg-soft) 100%);
 
 }
 
 .sectionContact {
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 
 .sectionHeader {
@@ -187,13 +188,13 @@ html {
   font-size: 1.75rem;
   line-height: 1.2;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--color-accent);
   margin-bottom: 1rem;
   font-family: var(--primary-font);
 }
 
 .blackTitle {
-  color: #f97316;
+  color: var(--color-accent);
   font-weight: bold;
 }
 
@@ -201,7 +202,7 @@ html {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #4b5563;
+  color: var(--color-text-dark);
   max-width: 48rem;
   margin-left: auto;
   margin-right: auto;
@@ -210,7 +211,7 @@ html {
 }
 
 .blackDescription {
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 /* --- Cars Grid --- */
@@ -223,7 +224,7 @@ html {
 }
 
 .carCard {
-  background-color: #ffffff;
+  background-color: var(--color-white);
   /* bg-white */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   /* shadow-sm */
@@ -277,9 +278,9 @@ html {
   /* Adjusted for mobile */
   right: 0.75rem;
   /* Adjusted for mobile */
-  background-color: #f97316;
+  background-color: var(--color-brand);
   /* bg-orange-500 */
-  color: #ffffff;
+  color: var(--color-white);
   /* text-white */
   padding: 0.25rem 0.5rem;
   /* Reduced padding for mobile */
@@ -301,7 +302,7 @@ html {
   /* Slightly smaller for mobile */
   font-weight: 1500;
   /* font-bold */
-  color: #1f2937;
+  color: var(--color-footer);
   /* text-gray-800 */
   margin-bottom: 0.5rem;
   /* mb-2 */
@@ -321,14 +322,14 @@ html {
   /* Smaller for mobile */
   font-weight: 700;
   /* font-bold */
-  color: #f97316;
+  color: var(--color-accent);
   /* text-orange-500 */
 }
 
 .viewMoreButton {
-  background-color: #f97316;
+  background-color: var(--color-brand);
   /* bg-orange-500 */
-  color: #ffffff;
+  color: var(--color-white);
   /* text-white */
   padding: 0.5rem 0.75rem;
   /* Reduced padding for mobile */
@@ -346,7 +347,7 @@ html {
 }
 
 .viewMoreButton:hover {
-  background-color: #ea580c;
+  background-color: var(--color-primary-hover);
   /* hover:bg-orange-600 */
 }
 
@@ -364,7 +365,7 @@ html {
 }
 
 .featureIconContainer {
-  background-color: #fff7ed;
+  background-color: var(--color-primary-hover-light);
   /* bg-orange-100 */
   width: 4rem;
   /* Smaller for mobile */
@@ -386,7 +387,7 @@ html {
 }
 
 .featureItem:hover .featureIconContainer {
-  background-color: #fed7aa;
+  background-color: #fed7aa; /* orange-200 - intentional hover accent */
   /* group-hover:bg-orange-200 */
 }
 
@@ -395,7 +396,7 @@ html {
   /* Smaller for mobile */
   height: 2rem;
   /* Smaller for mobile */
-  color: #f97316;
+  color: var(--color-accent);
   /* text-orange-500 */
 }
 
@@ -404,7 +405,7 @@ html {
   /* Smaller for mobile */
   font-weight: bold;
   /* font-bold */
-  color: #f97316;
+  color: var(--color-bg-soft);
   /* text-gray-800 */
   margin-bottom: 0.75rem;
   /* Reduced margin for mobile */
@@ -413,7 +414,7 @@ html {
 }
 
 .featureDescription {
-  color: #ffffff;
+  color: var(--color-highlight);
   /* text-gray-600 */
   font-size: 0.9rem;
   /* Smaller for mobile */
@@ -459,7 +460,7 @@ html {
   /* Smaller for mobile */
   height: 1.25rem;
   /* Smaller for mobile */
-  color: #facc15;
+  color: var(--color-highlight);
   /* text-yellow-400 */
   fill: currentColor;
   /* fill-current */
@@ -468,7 +469,7 @@ html {
 .testimonialComment {
   font-size: 1rem;
   /* Smaller for mobile */
-  color: #374151;
+  color: var(--color-text);
   /* text-gray-700 */
   margin-bottom: 1.25rem;
   /* Reduced margin for mobile */
@@ -480,13 +481,13 @@ html {
 .testimonialName {
   font-weight: 700;
   /* font-bold */
-  color: #1f2937;
+  color: var(--color-footer);
   /* text-gray-800 */
   font-size: 0.95rem;
 }
 
 .testimonialLocation {
-  color: #4b5563;
+  color: var(--color-text-medium);
   /* text-gray-600 */
   font-size: 0.875rem;
 }
@@ -539,7 +540,7 @@ html {
   /* Smaller for mobile */
   height: 5rem;
   /* Smaller for mobile */
-  color: #4b5563;
+  color: var(--color-text-medium);
   /* text-gray-600 */
 }
 
@@ -568,7 +569,7 @@ html {
   /* Smaller for mobile */
   font-weight: 700;
   /* font-bold */
-  color: #1f2937;
+  color: var(--color-footer);
   /* text-gray-800 */
   margin-bottom: 1.25rem;
   /* Reduced margin for mobile */
@@ -588,7 +589,7 @@ html {
   /* text-sm */
   font-weight: 500;
   /* font-medium */
-  color: #374151;
+  color: var(--color-text);
   /* text-gray-700 */
   margin-bottom: 0.5rem;
   /* mb-2 */
@@ -602,7 +603,7 @@ html {
   /* w-full */
   padding: 0.75rem;
   /* Adjusted padding for mobile */
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   /* border border-gray-300 */
   border-radius: 0.5rem;
   /* rounded-md */
@@ -1122,7 +1123,7 @@ html {
 }
 
 .sectionWhyChooseUs {
-  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+  background: var(--color-footer);
 }
 
 /* Estilos para la sección de FAQ */
@@ -1144,7 +1145,7 @@ html {
   background-color: #ffffff;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border-radius: 0.75rem;
-  border: 2px solid #f97316;
+  border: 2px solid var(--color-brand);
 }
 
 .faqCardContent {
@@ -1171,7 +1172,7 @@ html {
 .faqIcon {
   width: 2rem;
   height: 2rem;
-  color: #f97316;
+  color: var(--color-accent);
 }
 
 .faqQuestion {
@@ -1194,7 +1195,7 @@ html {
 .faqCounter {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #f97316;
+  color: var(--color-accent);
   margin-top: auto;
 }
 

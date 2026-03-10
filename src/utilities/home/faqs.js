@@ -17,7 +17,7 @@ export const faqs = [
   },
   {
     question: "¿Qué incluye el seguro del vehículo?",
-    answer: "El alquiler incluye seguro total con un deducible fijo de USD 500. La cobertura comprende: colisión, choque o daños al vehículo; robo del auto; responsabilidad civil frente a terceros; y asistencia en carretera (averías, batería, pinchaduras, etc.)."
+    answer: "El alquiler incluye seguro con un deducible fijo de USD 500. La cobertura comprende: colisión, choque o daños al vehículo; robo del auto; responsabilidad civil frente a terceros; y asistencia en carretera (averías, batería, pinchaduras, etc.)."
   },
   {
     question: "¿Cómo funciona el deducible?",

@@ -1,28 +1,6 @@
 /* Header.module.css */
 
-/* Variables para colores, si quieres un control centralizado */
-:root {
-  --color-primary: #f97316;
-  /* orange-500 */
-  --color-primary-hover: #ea580c;
-  /* orange-600 */
-  --color-green: #22c55e;
-  /* green-500 */
-  --color-green-hover-bg: #f0fdf4;
-  /* green-50 */
-  --color-green-hover-border: #16a34a;
-  /* green-600 */
-  --color-text-dark: #374151;
-  /* gray-800 */
-  --color-text-medium: #4b5563;
-  /* gray-700 */
-  --color-text-light: #6b7280;
-  /* gray-600 */
-  --color-border: #e5e7eb;
-  /* gray-200 */
-  --color-background-light: #f3f4f6;
-  /* gray-100 */
-}
+/* Variables centralizadas en src/index.css */
 
 .header {
   position: fixed;
@@ -108,9 +86,9 @@
 
 @media (min-width: 1024px) {
   .logoImageWrapper {
-    width: 3rem;
+    width: 5rem;
     /* lg:w-12 */
-    height: 3rem;
+    height: 4rem;
     /* lg:h-12 */
   }
 }
@@ -139,10 +117,10 @@
   line-height: 1.75rem;
   font-weight: 700;
   /* font-bold */
-  color: var(--color-text-dark);
+  color: var(--color-brand);
   /* text-gray-800 */
   transition: color 0.3s ease-in-out;
-  font-family: var(--primary-font);
+  font-family: var(--secondary-font);
 }
 
 .logoLink:hover .logoTitle {
@@ -152,7 +130,7 @@
 
 @media (min-width: 1024px) {
   .logoTitle {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     /* lg:text-xl */
     line-height: 1.75rem;
   }
@@ -162,7 +140,7 @@
   font-size: 0.75rem;
   /* text-xs */
   line-height: 1rem;
-  color: var(--color-text-light);
+  color: var(--color-accent);
   /* text-gray-600 */
   margin-top: -0.25rem;
   /* -mt-1 */
@@ -171,9 +149,9 @@
 
 @media (min-width: 1024px) {
   .logoSubtitle {
-    font-size: 0.875rem;
+    font-size: 1rem;
     /* lg:text-sm */
-    line-height: 1.25rem;
+    line-height: 1.5rem;
   }
 }
 
@@ -195,7 +173,7 @@
 
 .navLink {
   position: relative;
-  color: var(--color-text-medium);
+  color: var(--color-brand);
   /* text-gray-700 */
   font-weight: 500;
   /* font-medium */
@@ -204,11 +182,11 @@
   padding-bottom: 0.5rem;
   /* py-2 */
   transition: all 0.3s ease-in-out;
-  font-family: "inter";
+  font-family: var(--font-ui);
 }
 
 .navLink:hover {
-  color: var(--color-primary);
+  color: var(--color-accent);
   /* hover:text-orange-500 */
 }
 
@@ -219,7 +197,7 @@
   width: 0;
   height: 2px;
   /* h-0.5 */
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
   /* bg-orange-500 */
   transition: all 0.3s ease-in-out;
 }
@@ -263,7 +241,7 @@
   border: 1px solid transparent;
   text-decoration: none;
   /* Ensure links styled as buttons don't have underline */
-  font-family: "inter";
+  font-family: var(--font-ui);
 }
 
 .button:focus {
@@ -319,18 +297,19 @@
 
 /* Specific Button Styles */
 .instagramButton {
-  border-color: #000000;
-  border-width: 1px;
-  /* border-green-500 */
-  color: #000000;
-  /* text-green-600 */
+  color: var(--color-detail);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   background-color: transparent;
-  /* bg-transparent */
+}
+
+.instagramButton .icon {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .instagramButton:hover {
-  border-color: #dc2743;
-  /* hover:border-green-600 */
+  color: #dc2743; /* Instagram brand color */
 }
 
 .whatsappText {
@@ -362,7 +341,7 @@
 }
 
 .reserveButton:hover {
-  background-color: var(--color-primary-hover);
+  background-color: var(--color-accent);
   /* hover:bg-orange-600 */
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -442,7 +421,7 @@
   bottom: 0;
   width: 300px;
   /* w-[300px] */
-  background-color: white;
+  background-color: var(--color-white);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
   /* shadow-lg */
@@ -562,12 +541,6 @@
   /* hover:text-orange-500 */
   background-color: var(--color-primary-hover-light);
   /* hover:bg-orange-50 */
-}
-
-/* Define --color-primary-hover-light if not already defined, e.g. for orange-50 */
-:root {
-  --color-primary-hover-light: #fff7ed;
-  /* A light orange for hover background */
 }
 
 .mobileNavLinkText {

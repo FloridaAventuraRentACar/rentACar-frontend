@@ -3,11 +3,11 @@
   align-items: center;
   gap: 0.625rem;
   border-radius: 9999px;
-  background-color: #FF5A1F;
+  background-color: var(--color-brand);
   padding: 0.625rem 1.25rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--color-white);
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -47,7 +47,7 @@
 .icon {
   height: 1rem;
   width: 1rem;
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 @media (max-width: 600px) {

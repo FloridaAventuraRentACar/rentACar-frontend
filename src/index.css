@@ -1,18 +1,78 @@
+/* ── Neue Einstellung (self-hosted) ─────────────────────────────────── */
+@font-face {
+  font-family: "Neue Einstellung";
+  src: url("/fonts/NeueEinstellung-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Einstellung";
+  src: url("/fonts/NeueEinstellung-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Einstellung";
+  src: url("/fonts/NeueEinstellung-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  /* ── Tipografías ─────────────────────────────────────────────────── */
+  --font-display: "Yellowtail", cursive;                          /* kickers, títulos retro */
+  --font-body:    "Raleway", sans-serif;                          /* párrafos, FAQs, microcopy */
+  --font-ui:      "Neue Einstellung", "Inter", sans-serif;        /* menú, H1/H2, botones, cards */
+
+  /* ── Colores principales ─────────────────────────────────────────── */
+  --color-brand:     #22B4B5;   /* Turquesa — Brand / CTA */
+  --color-highlight: #F8DA96;   /* Arena — Fondos cálidos / destacados */
+  --color-accent:    #E95F4B;   /* Coral — Acento / alertas suaves */
+  --color-title:     #1F7496;   /* Azul petróleo — Títulos / links */
+
+  /* ── Colores secundarios ─────────────────────────────────────────── */
+  --color-footer:    #005679;   /* Azul profundo — Footer / contraste */
+  --color-bg-soft:   #A4E5E0;   /* Aqua claro — Fondos suaves */
+  --color-detail:    #F6B4CD;   /* Rosa — Detalles / badges */
+
+  /* ── Neutros ─────────────────────────────────────────────────────── */
+  --color-white:     #FFFFFF;
+  --color-text:      #1A1A1A;
+  --color-border:    #E9EEF0;
+
+  /* ── Aliases (compatibilidad con código existente) ───────────────── */
+  --primary-font:    var(--font-body);
+  --secondary-font:  var(--font-display);
+  --primary-color:   var(--color-brand);
+  --secondary-color: var(--color-title);
+
+  /* ── Variables usadas en Header y otros módulos ──────────────────── */
+  --color-primary:             var(--color-brand);
+  --color-primary-hover:       var(--color-title);
+  --color-primary-hover-light: #E0F7F7;
+  --color-green:               var(--color-brand);
+  --color-green-hover-bg:      var(--color-bg-soft);
+  --color-green-hover-border:  var(--color-title);
+  --color-text-dark:           var(--color-text);
+  --color-text-medium:         var(--color-title);
+  --color-text-light:          var(--color-footer);
+  --color-background-light:    var(--color-bg-soft);
+}
+
 body {
   width: 100%;
   overflow-x: hidden;
-  font-family: var(--primary-font), sans-serif;
-}
-
-:root {
-  --primary-font: "Inter", sans-serif;
-  --secondary-font: "Robot", serif;
-  --primary-color: #1a73e8;
-  --secondary-color: #ff9800;
+  font-family: var(--font-body);
+  color: var(--color-text);
 }
