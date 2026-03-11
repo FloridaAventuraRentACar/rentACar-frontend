@@ -5,7 +5,7 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border: 2px solid #10b981;
-  color: #1f2937;
+  color: var(--color-footer);
   padding: 1.5rem;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2), 0 8px 16px rgba(16, 185, 129, 0.1);
@@ -14,7 +14,7 @@
   gap: 1rem;
   max-width: 28rem;
   z-index: 9999;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   transition: all 0.3s ease;
 }
 
@@ -49,13 +49,13 @@
   font-weight: 700;
   font-size: 1rem;
   margin: 0 0 0.5rem 0;
-  color: #1f2937;
+  color: var(--color-footer);
   letter-spacing: 0.025em;
 }
 
 .successMessage {
   font-size: 0.95rem;
-  color: #4b5563;
+  color: var(--color-text-medium);
   margin: 0;
   line-height: 1.5;
   font-weight: 500;
@@ -64,7 +64,7 @@
 .closeButton {
   background: none;
   border: none;
-  color: #6b7280;
+  color: var(--color-text-light);
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
@@ -77,8 +77,8 @@
 }
 
 .closeButton:hover {
-  color: #374151;
-  background-color: #f3f4f6;
+  color: var(--color-text);
+  background-color: var(--color-bg-soft);
   transform: scale(1.1);
 }
 
@@ -175,6 +175,6 @@
 /* Fallback para navegadores que no soportan backdrop-filter */
 @supports not (backdrop-filter: blur(12px)) {
   .successNotification {
-    background: #ffffff;
+    background: var(--color-white);
   }
 }

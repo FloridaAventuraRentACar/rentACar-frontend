@@ -2,14 +2,14 @@
 
 .container {
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: var(--color-bg-soft);
   /* bg-gray-50 */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  font-family: var(--primary-font), 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
 }
 
 .alert {
@@ -73,7 +73,7 @@
 
 .cardHeader {
   padding: 2rem 2rem 1rem 2rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-border);
   /* border-gray-200 */
 }
 
@@ -86,7 +86,7 @@
 .title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--color-footer);
   /* text-gray-800 */
   margin: 0 0 0.5rem 0;
   letter-spacing: 0.025em;
@@ -94,14 +94,14 @@
 
 .subtitle {
   font-size: 1rem;
-  color: #4b5563;
+  color: var(--color-text-medium);
   /* text-gray-600 */
   margin: 0;
   font-weight: 500;
 }
 
 .iconWrapper {
-  background-color: #fff7ed;
+  background-color: var(--color-primary-hover-light);
   /* bg-orange-50 */
   border-radius: 50%;
   padding: 1rem;
@@ -113,7 +113,7 @@
 .icon {
   width: 2rem;
   height: 2rem;
-  color: #f97316;
+  color: var(--color-brand);
   /* text-orange-500 */
 }
 
@@ -154,7 +154,7 @@
 .rowIcon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #f97316;
+  color: var(--color-brand);
   /* text-orange-500 */
   margin-top: 0.125rem;
   flex-shrink: 0;
@@ -163,7 +163,7 @@
 .value {
   font-size: 1rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--color-footer);
   /* text-gray-800 */
   margin: 0 0 0.25rem 0;
   line-height: 1.4;
@@ -171,7 +171,7 @@
 
 .subLabel {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--color-text-light);
   /* text-gray-500 */
   margin: 0;
   font-weight: 500;
@@ -186,7 +186,7 @@
 
 .separator {
   border: none;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border);
   /* border-gray-200 */
   margin: 1rem 0;
 }
@@ -195,7 +195,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f3f4f6;
+  background-color: var(--color-bg-soft);
   /* bg-gray-100 */
   border-radius: 8px;
   padding: 1rem;
@@ -204,7 +204,7 @@
 .amountLabel {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--color-text);
   /* text-gray-700 */
   margin: 0;
 }
@@ -212,7 +212,7 @@
 .amount {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #f97316;
+  color: var(--color-brand);
   /* text-orange-500 */
   margin: 0;
   letter-spacing: 0.025em;
@@ -220,7 +220,7 @@
 
 .cardFooter {
   padding: 1.5rem 2rem 2rem 2rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border);
   /* border-gray-200 */
   display: flex;
   flex-direction: column;
@@ -229,8 +229,8 @@
 
 .backButton {
   width: 100%;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
+  color: var(--color-white);
   font-weight: 700;
   font-size: 1.125rem;
   padding: 1rem 2rem;
@@ -243,7 +243,7 @@
   letter-spacing: 0.075em;
   position: relative;
   overflow: hidden;
-  font-family: var(--primary-font), 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
@@ -259,7 +259,7 @@
 }
 
 .backButton:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
   box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
   transform: translateY(-2px) scale(1.02);
 }
@@ -280,7 +280,7 @@
 
 .supportText {
   text-align: center;
-  color: #6b7280;
+  color: var(--color-text-light);
   /* text-gray-500 */
 }
 
@@ -295,7 +295,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  color: #f97316;
+  color: var(--color-brand);
   /* text-orange-500 */
   font-weight: 600;
   margin: 0;
@@ -598,19 +598,19 @@
 /* Print styles */
 @media print {
   .container {
-    background-color: white;
+    background-color: var(--color-white);
     padding: 1rem;
   }
 
   .card {
     box-shadow: none;
     border: 1px solid #000;
-    background: white;
+    background: var(--color-white);
     backdrop-filter: none;
   }
 
   .backButton {
-    background: #f97316 !important;
+    background: var(--color-brand) !important;
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
   }

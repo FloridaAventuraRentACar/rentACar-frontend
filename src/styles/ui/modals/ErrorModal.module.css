@@ -21,7 +21,7 @@
   justify-content: center;
   width: 100%;
   max-width: 600px;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
 }
 
 .content {
@@ -50,7 +50,7 @@
   padding: 0.5rem;
   border-radius: 50%;
   transition: all 0.3s ease;
-  color: #6b7280;
+  color: var(--color-text-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,8 +59,8 @@
 }
 
 .closeButton:hover {
-  background-color: #f3f4f6;
-  color: #374151;
+  background-color: var(--color-bg-soft);
+  color: var(--color-text);
   transform: scale(1.1);
 }
 
@@ -81,7 +81,7 @@
   justify-content: center;
   width: 5rem;
   height: 5rem;
-  background-color: #fff7ed; /* bg-orange-50 */
+  background-color: var(--color-primary-hover-light); /* bg-orange-50 */
   border-radius: 50%;
   border: 2px solid #fed7aa; /* border-orange-200 */
   margin-left: auto;
@@ -91,13 +91,13 @@
 .icon {
   width: 2.5rem;
   height: 2.5rem;
-  color: #f97316; /* text-orange-500 */
+  color: var(--color-brand); /* text-orange-500 */
 }
 
 .title {
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937; /* text-gray-800 */
+  color: var(--color-footer); /* text-gray-800 */
   margin-bottom: 1rem;
   letter-spacing: 0.025em;
 }
@@ -105,7 +105,7 @@
 .message {
   font-size: 1.125rem;
   line-height: 1.6;
-  color: #4b5563; /* text-gray-600 */
+  color: var(--color-text-medium); /* text-gray-600 */
   margin-bottom: 2rem;
   font-weight: 400;
 }
@@ -113,8 +113,8 @@
 .button {
   width: 100%;
   max-width: 300px;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
+  color: var(--color-white);
   font-weight: 700;
   font-size: 1.125rem;
   padding: 1rem 2rem;
@@ -127,7 +127,7 @@
   letter-spacing: 0.075em;
   position: relative;
   overflow: hidden;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   margin-bottom: 2rem;
 }
 
@@ -143,7 +143,7 @@
 }
 
 .button:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
   box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
   transform: translateY(-2px) scale(1.02);
 }
@@ -163,21 +163,21 @@
 }
 
 .helpText {
-  border-top: 1px solid #e5e7eb; /* border-gray-200 */
+  border-top: 1px solid var(--color-border); /* border-gray-200 */
   padding-top: 1.5rem;
   font-size: 0.95rem;
-  color: #6b7280; /* text-gray-500 */
+  color: var(--color-text-light); /* text-gray-500 */
 }
 
 .highlight {
-  color: #f97316; /* text-orange-500 */
+  color: var(--color-brand); /* text-orange-500 */
   font-weight: 600;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .highlight:hover {
-  color: #ea580c; /* hover:text-orange-600 */
+  color: var(--color-primary-hover); /* hover:text-orange-600 */
 }
 
 /* Animaciones */

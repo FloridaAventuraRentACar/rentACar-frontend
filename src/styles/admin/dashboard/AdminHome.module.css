@@ -1,12 +1,12 @@
 /* Contenedor principal */
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--color-bg-soft) 0%, var(--color-white) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   position: relative;
   overflow: hidden;
 }
@@ -141,18 +141,18 @@
 .carIcon {
   width: 40px;
   height: 40px;
-  color: #ffffff;
+  color: var(--color-white);
   stroke-width: 2.5;
 }
 
 .trendIcon {
   width: 28px;
   height: 28px;
-  color: #10b981;
+  color: #10b981; /* success green - semantic state color */
   position: absolute;
   bottom: -5px;
   right: -5px;
-  background: #ffffff;
+  background: var(--color-white);
   border-radius: 50%;
   padding: 4px;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
@@ -166,7 +166,7 @@
 .welcomeTitle {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--color-text-light);
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.025em;
 }
@@ -174,10 +174,10 @@
 .userName {
   font-size: 3.5rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-title);
   margin: 0 0 1rem 0;
   letter-spacing: -0.05em;
-  background: linear-gradient(135deg, #1f2937 0%, #f97316 100%);
+  background: linear-gradient(135deg, var(--color-footer) 0%, var(--color-brand) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -185,7 +185,7 @@
 
 .subtitle {
   font-size: 1.125rem;
-  color: #9ca3af;
+  color: var(--color-text-light);
   margin: 0;
   font-weight: 500;
 }
@@ -231,12 +231,12 @@
 
 /* Botón primario */
 .primaryButton {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
   box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
 }
 
 .primaryButton:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
   box-shadow: 0 12px 30px rgba(249, 115, 22, 0.4);
   transform: translateY(-2px);
 }
@@ -248,12 +248,12 @@
 
 /* Botón secundario */
 .secondaryButton {
-  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  background: linear-gradient(135deg, var(--color-footer) 0%, var(--color-title) 100%);
   box-shadow: 0 8px 20px rgba(31, 41, 55, 0.3);
 }
 
 .secondaryButton:hover {
-  background: linear-gradient(135deg, #111827 0%, #000000 100%);
+  background: linear-gradient(135deg, var(--color-title) 0%, #000000 100%);
   box-shadow: 0 12px 30px rgba(31, 41, 55, 0.4);
   transform: translateY(-2px);
 }
@@ -276,7 +276,7 @@
 .buttonIcon {
   width: 32px;
   height: 32px;
-  color: #ffffff;
+  color: var(--color-white);
   stroke-width: 2;
   flex-shrink: 0;
 }
@@ -292,7 +292,7 @@
 .buttonTitle {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-white);
   letter-spacing: -0.025em;
   line-height: 1.2;
 }
@@ -311,7 +311,7 @@
   gap: 1.5rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 2px solid #f3f4f6;
+  border-top: 2px solid var(--color-bg-soft);
 }
 
 .infoCard {
@@ -319,34 +319,34 @@
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  background: linear-gradient(135deg, var(--color-bg-soft) 0%, var(--color-bg-soft) 100%);
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   transition: all 0.3s ease;
 }
 
 .infoCard:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #f97316;
+  border-color: var(--color-brand);
 }
 
 .infoIcon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-bg-soft) 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   flex-shrink: 0;
 }
 
 .infoIconSvg {
   width: 24px;
   height: 24px;
-  color: #f97316;
+  color: var(--color-brand);
   stroke-width: 2;
 }
 
@@ -360,7 +360,7 @@
 .infoNumber {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-title);
   line-height: 1;
   letter-spacing: -0.025em;
 }
@@ -368,7 +368,7 @@
 .infoLabel {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--color-text-light);
   line-height: 1.2;
 }
 
@@ -602,13 +602,13 @@
 /* Print styles */
 @media print {
   .container {
-    background: white;
+    background: var(--color-white);
   }
 
   .content {
     box-shadow: none;
     border: 1px solid #000;
-    background: white;
+    background: var(--color-white);
   }
 
   .backgroundDecoration {
@@ -633,7 +633,7 @@
 @media (prefers-contrast: high) {
   .content {
     border: 2px solid #000;
-    background: #fff;
+    background: var(--color-white);
   }
 
   .primaryButton,

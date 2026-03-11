@@ -29,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   animation: containerSlideIn 0.4s ease-out;
 }
 
@@ -56,9 +56,9 @@
   height: 100%;
   border-radius: 50%;
   border: 6px solid transparent;
-  border-top-color: #f97316;
-  border-right-color: #f97316;
-  border-bottom-color: #ea580c;
+  border-top-color: var(--color-brand);
+  border-right-color: var(--color-brand);
+  border-bottom-color: var(--color-primary-hover);
   animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
   box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
 }
@@ -89,7 +89,7 @@
 .loadingText {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--color-footer);
   margin: 0;
   letter-spacing: -0.025em;
   line-height: 1.2;
@@ -106,7 +106,7 @@
 .dot {
   width: 8px;
   height: 8px;
-  background: #f97316;
+  background: var(--color-brand);
   border-radius: 50%;
   animation: dotPulse 1.4s ease-in-out infinite;
 }
@@ -123,7 +123,7 @@
 .progressBar {
   width: 100%;
   height: 4px;
-  background: #e5e7eb;
+  background: var(--color-border);
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -135,7 +135,7 @@
   left: 0;
   height: 100%;
   width: 40%;
-  background: linear-gradient(90deg, #f97316, #ea580c, #dc2626);
+  background: linear-gradient(90deg, var(--color-brand), var(--color-primary-hover), #dc2626);
   border-radius: 2px;
   animation: progressMove 2s ease-in-out infinite;
   box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
@@ -377,10 +377,10 @@
 
   /* Mostrar un estado estático cuando reduce-motion está activo */
   .spinnerCircle {
-    border-top-color: #f97316;
-    border-right-color: #f97316;
-    border-bottom-color: #ea580c;
-    border-left-color: #fed7aa;
+    border-top-color: var(--color-brand);
+    border-right-color: var(--color-brand);
+    border-bottom-color: var(--color-primary-hover);
+    border-left-color: #fed7aa; /* orange-200 - animation fallback */
   }
 
   .progressFill {
@@ -398,14 +398,14 @@
   }
 
   .spinnerCircle {
-    border-top-color: #f97316;
-    border-right-color: #f97316;
-    border-bottom-color: #f97316;
+    border-top-color: var(--color-brand);
+    border-right-color: var(--color-brand);
+    border-bottom-color: var(--color-brand);
     box-shadow: none;
   }
 
   .pulseRing {
-    border-color: #f97316;
+    border-color: var(--color-brand);
   }
 
   .progressBar {
@@ -427,7 +427,7 @@
 /* Fallback para navegadores que no soportan backdrop-filter */
 @supports not (backdrop-filter: blur(12px)) {
   .container {
-    background: #ffffff;
+    background: var(--color-white);
   }
 
   .backdrop {

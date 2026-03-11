@@ -9,11 +9,6 @@ export default function Footer() {
         <div className={styles.content}>
           {/* Frase empresarial */}
           <div className={styles.brandSection}>
-            <h3 className={styles.brandTitle}>Florida Aventura Rent a Car</h3>
-            <p className={styles.brandSlogan}>
-              Tu compañero de confianza para alquilar carro en Miami con estilo y comodidad.
-              Descubre la ciudad del sol con nuestra flota premium de vehículos.
-            </p>
             <a
               href="/"
               className={styles.logoLink}
@@ -26,6 +21,11 @@ export default function Footer() {
                 />
               </div>
             </a>
+            <h3 className={styles.brandTitle}>Florida Aventura Rent a Car</h3>
+            <p className={styles.brandSlogan}>
+              Tu compañero de confianza para alquilar carro en Miami con estilo y comodidad.
+              Descubre la ciudad del sol con nuestra flota premium de vehículos.
+            </p>
           </div>
 
           {/* Información de contacto */}
