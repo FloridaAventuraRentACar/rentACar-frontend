@@ -29,7 +29,6 @@
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
-  background: var(--color-bg-soft);
   border-radius: 12px;
   padding: 1.5rem;
   border: 1px solid var(--color-border);
@@ -103,7 +102,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--color-bg-soft);
   border: 2px solid var(--color-border);
   border-radius: 12px;
   padding: 1rem;
@@ -212,10 +210,9 @@
   margin-top: 2rem;
   flex-wrap: wrap;
   position: relative;
-  background: linear-gradient(135deg, var(--color-primary-hover-light) 0%, #ffedd5 100%);
   border-radius: 16px;
   padding: 2rem;
-  border: 2px solid #fed7aa;
+  border: 2px solid var(--color-brand);
 }
 
 .priceInfo {
@@ -310,7 +307,6 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.075em;
   position: relative;
@@ -329,8 +325,7 @@
 }
 
 .nextButton:hover {
-  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
-  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, var(--color-brand) 100%);
   transform: translateY(-2px) scale(1.02);
 }
 
@@ -340,7 +335,6 @@
 
 .nextButton:active {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
 }
 
 .nextButton:focus {
