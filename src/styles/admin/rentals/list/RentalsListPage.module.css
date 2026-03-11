@@ -1,6 +1,6 @@
 .title {
   text-align: center;
-  color: #2c3e50;
+  color: var(--color-footer);
   margin-bottom: 2rem;
   font-size: 2.5rem;
   font-weight: 700;

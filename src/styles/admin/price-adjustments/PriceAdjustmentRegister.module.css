@@ -4,13 +4,13 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
+  color: var(--color-white);
   border: none;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
@@ -35,7 +35,7 @@
 }
 
 .registerButton:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
   box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
   transform: translateY(-2px) scale(1.02);
 }
@@ -80,7 +80,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   max-width: 560px;
   width: 100%;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
   animation: modalSlideIn 0.3s ease-out;
   overflow: hidden;
   max-height: 90vh;
@@ -104,9 +104,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-  color: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(135deg, var(--color-footer) 0%, var(--color-title) 100%);
+  color: var(--color-white);
 }
 
 .modalHeaderLeft {
@@ -129,7 +129,7 @@
 .modalHeaderIcon {
   width: 22px;
   height: 22px;
-  color: #fb923c;
+  color: var(--color-brand);
 }
 
 .modalTitle {
@@ -192,13 +192,13 @@
 .label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--color-text);
   letter-spacing: 0.025em;
 }
 
 .optional {
   font-weight: 400;
-  color: #9ca3af;
+  color: var(--color-text-light);
   font-size: 0.8rem;
 }
 
@@ -206,12 +206,12 @@
 .textarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--color-border);
   border-radius: 10px;
   font-size: 1rem;
   font-family: inherit;
-  color: #1f2937;
-  background: #ffffff;
+  color: var(--color-footer);
+  background: var(--color-white);
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
@@ -219,13 +219,13 @@
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-color: #f97316;
+  border-color: var(--color-brand);
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: #9ca3af;
+  color: var(--color-text-light);
 }
 
 .textarea {
@@ -252,10 +252,10 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 1rem;
-  border: 2px solid #e5e7eb;
+  border: 2px solid var(--color-border);
   border-radius: 10px;
-  background: #ffffff;
-  color: #6b7280;
+  background: var(--color-white);
+  color: var(--color-text-light);
   font-size: 0.95rem;
   font-weight: 600;
   font-family: inherit;
@@ -264,20 +264,20 @@
 }
 
 .typeOption:hover {
-  border-color: #d1d5db;
-  background: #f9fafb;
+  border-color: var(--color-border);
+  background: var(--color-bg-soft);
 }
 
 .typeIncrease {
-  border-color: #f97316;
-  background: #fff7ed;
-  color: #ea580c;
+  border-color: var(--color-brand);
+  background: var(--color-primary-hover-light);
+  color: var(--color-primary-hover);
   box-shadow: 0 2px 8px rgba(249, 115, 22, 0.15);
 }
 
 .typeIncrease:hover {
-  background: #fff7ed;
-  border-color: #f97316;
+  background: var(--color-primary-hover-light);
+  border-color: var(--color-brand);
 }
 
 .typeDecrease {
@@ -302,7 +302,7 @@
   display: flex;
   gap: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border);
 }
 
 .cancelButton,
@@ -322,20 +322,20 @@
 }
 
 .cancelButton {
-  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-text-light) 0%, var(--color-text-medium) 100%);
+  color: var(--color-white);
   box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
 }
 
 .cancelButton:hover {
-  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  background: linear-gradient(135deg, var(--color-text-medium) 0%, var(--color-text) 100%);
   box-shadow: 0 6px 16px rgba(107, 114, 128, 0.4);
   transform: translateY(-1px);
 }
 
 .submitButton {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
+  color: var(--color-white);
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
@@ -355,7 +355,7 @@
 }
 
 .submitButton:hover {
-  background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+  background: linear-gradient(135deg, var(--color-primary-hover) 0%, #dc2626 100%);
   box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
   transform: translateY(-1px);
 }

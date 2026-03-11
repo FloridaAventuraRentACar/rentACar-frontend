@@ -2,7 +2,7 @@
 .container {
   max-width: 900px;
   margin: 0 auto;
-  font-family: "Inter", "Segoe UI", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ui);
 }
 
 /* Header */
@@ -23,7 +23,7 @@
 .iconBadge {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -35,20 +35,20 @@
 .headerIcon {
   width: 28px;
   height: 28px;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-title);
   margin: 0;
   letter-spacing: -0.025em;
 }
 
 .subtitle {
   font-size: 0.95rem;
-  color: #6b7280;
+  color: var(--color-text-light);
   margin: 0.25rem 0 0 0;
   font-weight: 500;
 }
@@ -60,26 +60,26 @@
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
   border-radius: 16px;
-  border: 2px dashed #e5e7eb;
+  border: 2px dashed var(--color-border);
 }
 
 .emptyIcon {
   width: 48px;
   height: 48px;
-  color: #d1d5db;
+  color: var(--color-border);
   margin-bottom: 1rem;
 }
 
 .emptyTitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #374151;
+  color: var(--color-text);
   margin: 0 0 0.5rem 0;
 }
 
 .emptyText {
   font-size: 0.95rem;
-  color: #9ca3af;
+  color: var(--color-text-light);
   margin: 0;
   max-width: 400px;
   margin-left: auto;
@@ -98,13 +98,13 @@
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
   border-radius: 14px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  border-color: #f97316;
+  border-color: var(--color-brand);
   box-shadow: 0 8px 24px rgba(249, 115, 22, 0.12);
 }
 
@@ -115,13 +115,13 @@
 /* Card inactiva */
 .cardInactive {
   opacity: 0.9;
-  background: #f3f4f6;
-  border-color: #d1d5db;
+  background: var(--color-bg-soft);
+  border-color: var(--color-border);
   filter: grayscale(0.1);
 }
 
 .cardInactive:hover {
-  border-color: #d1d5db;
+  border-color: var(--color-border);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
@@ -130,8 +130,8 @@
   position: absolute;
   bottom: 1.5rem;
   right: 1.5rem;
-  background: #6b7280;
-  color: #ffffff;
+  background: var(--color-text-light);
+  color: var(--color-white);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -178,7 +178,7 @@
 .percentage {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-title);
   letter-spacing: -0.025em;
 }
 
@@ -201,25 +201,25 @@
 .dateIcon {
   width: 16px;
   height: 16px;
-  color: #9ca3af;
+  color: var(--color-text-light);
   flex-shrink: 0;
 }
 
 .dateText {
   font-size: 0.9rem;
-  color: #4b5563;
+  color: var(--color-text-medium);
   font-weight: 500;
 }
 
 /* Reason */
 .reason {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--color-text-light);
   margin: 0 0 1rem 0;
   padding: 0.625rem 0.875rem;
-  background: #f9fafb;
+  background: var(--color-bg-soft);
   border-radius: 8px;
-  border-left: 3px solid #e5e7eb;
+  border-left: 3px solid var(--color-border);
   line-height: 1.5;
   font-style: italic;
 }
@@ -229,7 +229,7 @@
   display: flex;
   gap: 0.75rem;
   padding-top: 1rem;
-  border-top: 1px solid #f3f4f6;
+  border-top: 1px solid var(--color-bg-soft);
 }
 
 .editButton,
@@ -248,22 +248,22 @@
 }
 
 .editButton {
-  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-  color: #f97316;
-  border: 2px solid #f97316;
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-bg-soft) 100%);
+  color: var(--color-brand);
+  border: 2px solid var(--color-brand);
 }
 
 .editButton:hover {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-primary-hover) 100%);
+  color: var(--color-white);
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
   transform: translateY(-1px);
 }
 
 .deleteButton {
-  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-  color: #dc2626;
-  border: 2px solid #dc2626;
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-bg-soft) 100%);
+  color: #dc2626; /* error red - semantic state color */
+  border: 2px solid #dc2626; /* error red - semantic state color */
 }
 
 .deleteButton:hover {
@@ -296,8 +296,8 @@
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid #e5e7eb;
-  border-top-color: #f97316;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-brand);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -308,7 +308,7 @@
 
 .loadingText {
   font-size: 1rem;
-  color: #6b7280;
+  color: var(--color-text-light);
   font-weight: 500;
   margin: 0;
 }

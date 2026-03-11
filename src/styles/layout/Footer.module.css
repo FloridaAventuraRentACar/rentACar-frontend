@@ -1,6 +1,6 @@
 .footer {
-  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
-  color: #ffffff;
+  background: linear-gradient(180deg, var(--color-footer) 0%, var(--color-title) 100%);
+  color: var(--color-white);
   /* Blanco */
   padding: 2.5rem 0 1.5rem 0;
   margin-top: auto;
@@ -28,16 +28,18 @@
 .brandTitle {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #f97316;
+  color: var(--color-highlight);
+  font-family: var(--font-display);
   /* Naranja */
   margin-bottom: 1rem;
   letter-spacing: 0.025em;
+  text-align: center;
 }
 
 .brandSlogan {
   font-size: 1rem;
   line-height: 1.6;
-  color: #e5e7eb;
+  color: var(--color-border);
   /* Gris claro */
   max-width: 600px;
   margin: 0 auto;
@@ -77,8 +79,8 @@
   .logoTextWrapper {
     display: block;
     width: 4rem;
-  /* w-10 */
-  height: 4rem;
+    /* w-10 */
+    height: 4rem;
     /* sm:block */
   }
 }
@@ -91,7 +93,7 @@
 .contactTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--color-bg-soft);
   margin-bottom: 1.25rem;
   letter-spacing: 0.025em;
 }
@@ -114,7 +116,7 @@
 .contactLabel {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #f97316;
+  color: var(--color-accent);
   /* Naranja */
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -122,7 +124,7 @@
 
 .contactValue {
   font-size: 0.95rem;
-  color: #e5e7eb;
+  color: var(--color-border);
   /* Gris claro */
   font-weight: 400;
   line-height: 1.4;
@@ -134,7 +136,7 @@
 }
 /* Copyright */
 .copyright {
-  border-top: 1px solid #4b5563;
+  border-top: 1px solid var(--color-text-medium);
   /* Gris medio */
   padding-top: 1.5rem;
   text-align: center;
@@ -142,7 +144,7 @@
 
 .copyrightText {
   font-size: 0.875rem;
-  color: #9ca3af;
+  color: var(--color-bg-soft);
   /* Gris medio */
   margin: 0;
   font-weight: 400;
@@ -232,7 +234,7 @@
   }
 
   .logoLink {
-    justify-content: left;
+    justify-content: center;
   }
   .hoursItem{
     margin-top: 0rem;
@@ -294,16 +296,16 @@
   }
 
   .logoImageWrapper {
-    width: 7rem;
+    width: 10rem;
     /* lg:w-12 */
-    height: 7rem;
+    height: 10rem;
     /* lg:h-12 */
   }
 }
 
 /* Hover effects */
 .contactValue:hover {
-  color: #f97316;
+  color: var(--color-brand);
   /* Naranja al hover */
   transition: color 0.3s ease;
 }

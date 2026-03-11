@@ -2,7 +2,7 @@
 .sectionContact {
   padding-top: 3rem; /* Reduced for mobile */
   padding-bottom: 3rem; /* Reduced for mobile */
-  background-color: #ffffff; /* bg-white */
+  background-color: var(--color-white); /* bg-white */
 }
 
 .innerContainer {
@@ -22,7 +22,7 @@
   font-size: 1.75rem; /* Smaller for mobile */
   line-height: 1.2; /* leading-10 */
   font-weight: 700; /* font-bold */
-  color: #1f2937; /* text-gray-800 */
+  color: var(--color-accent); /* text-gray-800 */
   margin-bottom: 1rem; /* Reduced for mobile */
   font-family: var(--primary-font);
 }
@@ -32,7 +32,7 @@
   font-family: var(--primary-font);
   font-weight: 400;
   line-height: 1.5; 
-  color: #4b5563; 
+  color: var(--color-text-medium);
   max-width: 48rem; 
   margin-left: auto;
   margin-right: auto;
@@ -56,7 +56,7 @@
 .formTitle {
   font-size: 1.25rem; /* Smaller for mobile */
   font-weight: 700; /* font-bold */
-  color: #1f2937; /* text-gray-800 */
+  color: var(--color-footer); /* text-gray-800 */
   margin-bottom: 1.25rem; /* Reduced margin for mobile */
 }
 
@@ -70,7 +70,7 @@
   display: block; /* block */
   font-size: 0.875rem; /* text-sm */
   font-weight: 500; /* font-medium */
-  color: #374151; /* text-gray-700 */
+  color: var(--color-text); /* text-gray-700 */
   margin-bottom: 0.5rem; /* mb-2 */
 }
 
@@ -79,24 +79,24 @@
   display: block; /* block */
   width: 100%; /* w-full */
   padding: 0.75rem; /* Adjusted padding for mobile */
-  border: 1px solid #d1d5db; /* border border-gray-300 */
+  border: 1px solid var(--color-border); /* border border-gray-300 */
   border-radius: 0.5rem; /* rounded-md */
   font-size: 0.9rem; /* Smaller for mobile */
   line-height: 1.4; /* leading-normal */
-  color: #1f2937; /* text-gray-900 */
-  background-color: #ffffff; /* bg-white */
+  color: var(--color-footer); /* text-gray-900 */
+  background-color: var(--color-white); /* bg-white */
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: #9ca3af; /* placeholder-gray-400 */
+  color: var(--color-text-light); /* placeholder-gray-400 */
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-color: #f97316; /* focus:border-orange-500 */
+  border-color: var(--color-brand); /* focus:border-orange-500 */
   box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2); /* focus:ring focus:ring-orange-200 */
 }
 
@@ -107,8 +107,8 @@
 
 .submitButton {
   width: 100%; /* w-full */
-  background-color: #f97316; /* bg-orange-500 */
-  color: #ffffff; /* text-white */
+  background-color: var(--color-brand); /* bg-orange-500 */
+  color: var(--color-white); /* text-white */
   padding: 0.875rem 1rem; /* Adjusted padding for mobile */
   border-radius: 0.5rem; /* rounded-md */
   font-weight: 500; /* font-medium */
@@ -122,7 +122,7 @@
 }
 
 .submitButton:hover {
-  background-color: #ea580c; /* hover:bg-orange-600 */
+  background-color: var(--color-primary-hover); /* hover:bg-orange-600 */
 }
 
 .contactInfoSection {
@@ -134,7 +134,7 @@
 .contactInfoTitle {
   font-size: 1.25rem; /* Smaller for mobile */
   font-weight: 700; /* font-bold */
-  color: #1f2937; /* text-gray-800 */
+  color: var(--color-footer); /* text-gray-800 */
   margin-bottom: 1.25rem; /* Reduced margin for mobile */
 }
 
@@ -153,7 +153,7 @@
 .contactIcon {
   width: 1.25rem; /* Smaller for mobile */
   height: 1.25rem; /* Smaller for mobile */
-  color: #f97316; /* text-orange-500 */
+  color: var(--color-accent); /* text-orange-500 */
   margin-top: 0.125rem; /* Slight adjustment for alignment */
 }
 
@@ -163,19 +163,19 @@
 }
 
 .contactText {
-  color: #4b5563; /* text-gray-600 */
+  color: var(--color-text-medium); /* text-gray-600 */
   font-size: 0.9rem;
 }
 
 .hoursOfOperation {
-  background-color: #f3f4f6; /* bg-gray-100 */
+  background-color: var(--color-bg-soft); /* bg-gray-100 */
   border-radius: 0.5rem; /* rounded-lg */
   padding: 1.25rem; /* Reduced padding for mobile */
 }
 
 .hoursTitle {
   font-weight: 700; /* font-bold */
-  color: #1f2937; /* text-gray-800 */
+  color: var(--color-footer); /* text-gray-800 */
   margin-bottom: 0.75rem; /* Reduced margin for mobile */
   font-size: 0.95rem;
 }
@@ -184,18 +184,18 @@
   display: flex;
   flex-direction: column;
   gap: 0.375rem; /* Reduced gap for mobile */
-  color: #4b5563; /* text-gray-600 */
+  color: var(--color-text-medium); /* text-gray-600 */
   font-size: 0.875rem;
 }
 
 .mapPlaceholder {
-  background-color: #e5e7eb; /* bg-gray-200 */
+  background-color: var(--color-border); /* bg-gray-200 */
   border-radius: 0.5rem; /* rounded-lg */
   height: 12rem; /* Reduced height for mobile */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #4b5563; /* text-gray-600 */
+  color: var(--color-text-medium); /* text-gray-600 */
   font-size: 0.9rem;
 }
 

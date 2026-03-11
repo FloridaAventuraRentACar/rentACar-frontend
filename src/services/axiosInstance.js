@@ -12,6 +12,7 @@ axiosInstance.interceptors.request.use((config) => {
   }
   config.headers.apiKey = import.meta.env.VITE_API_KEY;
   return config;
+  
 });
 
 export default axiosInstance;

@@ -5,10 +5,21 @@
       "has": [
         {
           "type": "host",
+          "value": "floridaaventura.com"
+        }
+      ],
+      "destination": "https://www.floridaaventura.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
           "value": "admin.floridaaventura.com"
         }
       ],
-      "destination": "https://floridaaventura.com/admin",
+      "destination": "https://www.floridaaventura.com/admin",
       "permanent": true
     }
   ],
