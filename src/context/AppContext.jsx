@@ -42,7 +42,8 @@ export const AppProvider = ({ children }) => {
 
   const totalPrice = useMemo(() => {
     const basePrice = (carData?.pricePerDay || 0) * daysBooked;
-    return basePrice + insuranceCharge + babySeatCharge + travelLocationPrice + gasTankCharge + additionalDriverCharge;
+    const total = basePrice + insuranceCharge + babySeatCharge + travelLocationPrice + gasTankCharge + additionalDriverCharge;
+    return Math.round(total * 100) / 100;
   }, [carData, daysBooked, insuranceCharge, babySeatCharge, travelLocationPrice, gasTankCharge, additionalDriverCharge]);
 
   const clearRentalData = () => {
