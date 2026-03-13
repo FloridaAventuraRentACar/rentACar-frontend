@@ -1,9 +1,9 @@
 export const cars = [
     {
-      name: "Nissan Kick",
+      name: "Nissan Kicks",
       category: "SUV",
       price: "$54/día",
-      image: "https://i.ibb.co/RF5j6vL/el-nuevo-nissan-kicks-cuya-produccion-arranco-en-JTW4-VHZT6-FETHIGGTJJCUMJIQM-removebg-preview.png",
+      image: "https://i.ibb.co/XrrSpqSh/Nissak-Nicks-Fondo-Blanco.jpg",
     },
     {
       name: "Nissan Rogue",

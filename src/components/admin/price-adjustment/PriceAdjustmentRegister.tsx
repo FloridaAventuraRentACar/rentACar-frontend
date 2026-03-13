@@ -62,6 +62,7 @@ export default function PriceAdjustmentRegister({
 
   const handleClose = () => {
     setIsOpen(false)
+    setConfirmationModal(false)
     resetForm()
     if (editingItem && onCancelEdit) {
       onCancelEdit()
@@ -96,14 +97,18 @@ export default function PriceAdjustmentRegister({
   }
   
   const handleSubmit = async () => {
-    await onSave({
-      periodStart,
-      periodEnd,
-      type,
-      percentage: Number(percentage),
-      reason: reason || undefined,
-    })
-    handleClose()
+    try{
+      await onSave({
+        periodStart,
+        periodEnd,
+        type,
+        percentage: Number(percentage),
+        reason: reason || undefined,
+      })
+
+    } finally {
+      handleClose()
+    }
   }
 
   const handleBackdropClick = (e: React.MouseEvent) => {
