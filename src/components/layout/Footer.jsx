@@ -23,7 +23,7 @@ export default function Footer() {
             </a>
             <h3 className={styles.brandTitle}>Florida Aventura Rent a Car</h3>
             <p className={styles.brandSlogan}>
-              Un servicio pensado para viajeros hispanohablantes que valoran la claridad, la cercanía y la comodidad. <br/> Tu compañero de viajer en esta aventura.
+              Un servicio pensado para viajeros hispanohablantes que valoran la claridad, la cercanía y la comodidad. <br/> Tu compañero de viaje en esta aventura.
             </p>
           </div>
 
