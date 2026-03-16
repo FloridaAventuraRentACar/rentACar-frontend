@@ -23,11 +23,6 @@ export const AppProvider = ({ children }) => {
     return 15 * daysBooked;
   }, [selectedInsurance, daysBooked]);
 
-  const babySeatCharge = useMemo(() => {
-    if (selectedBabySeat === "NONE") return 0;
-    return 3 * daysBooked;
-  }, [selectedBabySeat, daysBooked]);
-
   const travelLocationPrice = useMemo(() => {
     return travelLocation ? locationPrices[travelLocation] : 0;
   }, [travelLocation]);
@@ -42,9 +37,9 @@ export const AppProvider = ({ children }) => {
 
   const totalPrice = useMemo(() => {
     const basePrice = (carData?.pricePerDay || 0) * daysBooked;
-    const total = basePrice + insuranceCharge + babySeatCharge + travelLocationPrice + gasTankCharge + additionalDriverCharge;
+    const total = basePrice + insuranceCharge + travelLocationPrice + gasTankCharge + additionalDriverCharge;
     return Math.round(total * 100) / 100;
-  }, [carData, daysBooked, insuranceCharge, babySeatCharge, travelLocationPrice, gasTankCharge, additionalDriverCharge]);
+  }, [carData, daysBooked, insuranceCharge, travelLocationPrice, gasTankCharge, additionalDriverCharge]);
 
   const clearRentalData = () => {
     const keys = [

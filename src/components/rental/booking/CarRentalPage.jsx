@@ -193,7 +193,7 @@ export function CarRentalPage() {
                   <p>Pensada para niños de hasta 1 año</p>
                 </div>
               </div>
-              <span className={styles.priceTag}>+ $3 /dia</span>
+              <span className={styles.includedTag}>Mismo precio por dia</span>
             </label>
 
             <label
@@ -208,7 +208,7 @@ export function CarRentalPage() {
                   <p>Pensada para niños de entre 1 y 4 años</p>
                 </div>
               </div>
-              <span className={styles.priceTag}>+ $3 /dia</span>
+              <span className={styles.includedTag}>Mismo precio por dia</span>
             </label>
 
             <label
@@ -223,7 +223,7 @@ export function CarRentalPage() {
                   <p>Pensada para niños de entre 4 y 12 años</p>
                 </div>
               </div>
-              <span className={styles.priceTag}>+ $3 /dia</span>
+              <span className={styles.includedTag}>Mismo precio por dia</span>
             </label>
           </div>
         </div>
