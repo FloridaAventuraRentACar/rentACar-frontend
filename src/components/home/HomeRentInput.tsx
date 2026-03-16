@@ -30,8 +30,8 @@ export default function HomeRentInput() {
       returnTime
     );
     
-    if (daysBooked < 3) {
-      alert("El alquiler debe ser de mínimo 3 días");
+    if (daysBooked < 4) {
+      alert("El alquiler debe ser de mínimo 4 días");
       return;
     }
         
