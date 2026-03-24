@@ -1,7 +1,7 @@
 const gasTankPrices = {
-    'SMALL':40,
-    'MEDIUM':50,
-    'LARGE':70
+    'SMALL':50,
+    'MEDIUM':60,
+    'LARGE':85
 };
 
 export default gasTankPrices;
