@@ -168,7 +168,7 @@ export default function HomeRentInput() {
         </div>
         <div className={styles.buttonRow}>
           <button type="submit" className={styles.formButton}>
-            Reservá online
+            Reservar ahora / Cotizar mi viaje
           </button>
         </div>
       </form>

@@ -62,11 +62,11 @@ export default function HomePage() {
 
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Disfrutá Miami
-            <span className={styles.heroSubtitle}>Con la mejor atención</span>
+            Alquiler de autos en Miami
+            <span className={styles.heroSubtitle}>sin filas ni sorpresas</span>
           </h1>
           <p className={styles.heroDescription}>
-            Te esperamos con todo listo desde que aterrizas del avión. Recibí el vehículo que reservaste sin sorpresas.
+            Renta de autos en Miami con entrega directa en el aeropuerto. El vehículo que reservaste, ese mismo te espera.
           </p>
 
           <div className={styles.heroInputContainer}>
@@ -121,7 +121,7 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={` ${styles.blackTitle} ${styles.sectionTitle} `}>¿Por qué elegirnos?</h2>
             <p className={`${styles.sectionDescription} ${styles.blackDescription}`}>
-              Atención personalizada, sin complicaciones. <br/> Olvidate de las demoras al alquilar vehículo en Miami. Que el alquiler sea lo más simple del viaje, no un problema para resolver.
+              Alquilar un auto en Miami con Florida Aventura es simple: coordinas por WhatsApp, aterrizas y el vehículo ya está listo. Precio final, seguro incluido, atención en tu idioma.
             </p>
           </div>
 
