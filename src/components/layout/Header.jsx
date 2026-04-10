@@ -60,7 +60,8 @@ export default function Header({ className = "" }) {
         <div className={styles.headerInner}>
           {/* Logo */}
           <a
-            href="/"
+            href="#inicio"
+            onClick={handleSmoothScroll}
             className={styles.logoLink}
           >
             <div className={styles.logoImageWrapper}>
@@ -110,8 +111,9 @@ export default function Header({ className = "" }) {
               className={styles.reserveButton}
             >
               <a
-                href="#inicio"
-                onClick={handleSmoothScroll}
+                href="https://wa.me/13057731787"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.buttonContent}
               >
                 <Phone className={styles.icon} />
