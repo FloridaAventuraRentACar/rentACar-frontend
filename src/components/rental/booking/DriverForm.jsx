@@ -99,7 +99,7 @@ const DriverForm = () => {
         rental.daysRented,
         rental.totalPrice
       ),
-      subject: "Su reserva ha sido confirmada",
+      subject: "Su reserva ha sido pre confirmada",
     };
 
     await sendEmail(templateParams);
@@ -121,7 +121,7 @@ const DriverForm = () => {
         rental.daysRented,
         rental.totalPrice
       ),
-      subject: "Nueva reserva confirmada",
+      subject: "Nueva reserva pre confirmada",
     };
 
     await sendEmail(templateParams);
