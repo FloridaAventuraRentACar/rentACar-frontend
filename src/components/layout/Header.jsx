@@ -111,9 +111,8 @@ export default function Header({ className = "" }) {
               className={styles.reserveButton}
             >
               <a
-                href="https://wa.me/13057731787"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#inicio"
+                onClick={handleSmoothScroll}
                 className={styles.buttonContent}
               >
                 <Phone className={styles.icon} />
