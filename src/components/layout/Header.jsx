@@ -60,7 +60,8 @@ export default function Header({ className = "" }) {
         <div className={styles.headerInner}>
           {/* Logo */}
           <a
-            href="/"
+            href="#inicio"
+            onClick={handleSmoothScroll}
             className={styles.logoLink}
           >
             <div className={styles.logoImageWrapper}>
