@@ -62,11 +62,11 @@ export default function HomePage() {
 
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            Explora Miami
-            <span className={styles.heroSubtitle}>Con Estilo</span>
+            Alquiler de autos en Miami
+            <span className={styles.heroSubtitle}>sin filas ni sorpresas</span>
           </h1>
           <p className={styles.heroDescription}>
-            Alquilar auto en Miami nunca fue tan fácil. Vehículos premium, entrega inmediata y precios transparentes.
+            Renta de autos en Miami con entrega directa en el aeropuerto. El vehículo que reservaste, ese mismo te espera.
           </p>
 
           <div className={styles.heroInputContainer}>
@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Nuestras Unidades</h2>
             <p className={styles.sectionDescription}>
-              Desde autos económicos hasta vehículos de lujo. La mejor opción para alquilar auto en Miami y comenzar tu aventura
+              Vehículos de último modelo, en excelente estado, listos para comenzar tu aventura. Las mejores opciones para alquilar automovil en Miami, sin sorpresas. Recibí el vehículo que reservaste.
             </p>
           </div>
 
@@ -121,7 +121,7 @@ export default function HomePage() {
           <div className={styles.sectionHeader}>
             <h2 className={` ${styles.blackTitle} ${styles.sectionTitle} `}>¿Por qué elegirnos?</h2>
             <p className={`${styles.sectionDescription} ${styles.blackDescription}`}>
-              Atención personalizada, sin colas ni trámites — Olvídate de las colas al alquilar carro en Miami.
+              Alquilar un auto en Miami con Florida Aventura es simple: coordinas por WhatsApp, aterrizas y el vehículo ya está listo. Precio final, seguro incluido, atención en tu idioma.
             </p>
           </div>
 
@@ -143,7 +143,7 @@ export default function HomePage() {
               </div>
               <h3 className={styles.featureTitle}>Atención 24/7</h3>
               <p className={styles.featureDescription}>
-                Soporte completo las 24 horas del día, los 7 días de la semana
+                Soporte completo en tu idioma las 24 horas del día, los 7 días de la semana
               </p>
             </div>
 
@@ -230,24 +230,53 @@ export default function HomePage() {
           <div className={styles.testimonialCarousel}>
             <Card className={styles.testimonialCard}>
               <CardContent className={styles.testimonialCardContent}>
-                <div className={styles.testimonialRating}>
-                  {[...Array(testimonials[currentTestimonial].rating)].map(
-                    (_, i) => (
-                      <Star key={i} className={styles.starIcon} />
-                    )
-                  )}
+                {/* Header: avatar + nombre + Google logo */}
+                <div className={styles.testimonialHeader}>
+                  <div
+                    className={styles.testimonialAvatar}
+                    style={{ background: testimonials[currentTestimonial].avatarColor }}
+                  >
+                    {testimonials[currentTestimonial].name
+                      .split(" ")
+                      .slice(0, 2)
+                      .map((w) => w[0])
+                      .join("")
+                      .toUpperCase()}
+                  </div>
+                  <div className={styles.testimonialMeta}>
+                    <h4 className={styles.testimonialName}>
+                      {testimonials[currentTestimonial].name}
+                    </h4>
+                    <p className={styles.testimonialReviewCount}>
+                      {testimonials[currentTestimonial].reviewCount}
+                    </p>
+                    <div className={styles.testimonialStarsRow}>
+                      <div className={styles.testimonialRating}>
+                        {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                          <Star key={i} className={styles.starIcon} />
+                        ))}
+                      </div>
+                      <span className={styles.testimonialDate}>
+                        {testimonials[currentTestimonial].date}
+                      </span>
+                    </div>
+                  </div>
+                  <svg
+                    className={styles.googleLogo}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-label="Google"
+                  >
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
                 </div>
+                {/* Texto del review */}
                 <p className={styles.testimonialComment}>
-                  "{testimonials[currentTestimonial].comment}"
+                  {testimonials[currentTestimonial].comment}
                 </p>
-                <div>
-                  <h4 className={styles.testimonialName}>
-                    {testimonials[currentTestimonial].name}
-                  </h4>
-                  <p className={styles.testimonialLocation}>
-                    {testimonials[currentTestimonial].location}
-                  </p>
-                </div>
               </CardContent>
             </Card>
 
