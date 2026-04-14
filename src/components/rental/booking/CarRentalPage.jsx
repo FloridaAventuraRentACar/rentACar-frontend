@@ -15,6 +15,8 @@ import SensorDoorIcon from "@mui/icons-material/SensorDoor";
 import PriceDetailsModal from "../../ui/modals/PriceDetailsModal.jsx";
 import { formatDate } from "../../../utilities/functions/formatDate.js";
 import BackButton from "../../ui/buttons/BackButton";
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import { sizeTranslation } from "../../../utilities/names/sizeTranslation.js";
 
 export function CarRentalPage() {
   const navigate = useNavigate();
@@ -100,24 +102,24 @@ export function CarRentalPage() {
               <div className={styles.seats}>
                 <AirlineSeatReclineNormalIcon
                   fontSize="large"
-                  className={styles.seatIcon}
+                  className={styles.icon}
                 />
                 <span>{carData.passengersAmount} asientos</span>
               </div>
               <div className={styles.luggage}>
-                <LuggageIcon fontSize="large" className={styles.luggageIcon} />
+                <LuggageIcon fontSize="large" className={styles.icon} />
                 <span>{carData.suitcasesAmount} valijas</span>
               </div>
               <div className={styles.automatic}>
                 <MotionPhotosAutoIcon
                   fontSize="large"
-                  className={styles.automaticIcon}
+                  className={styles.icon}
                 />
                 <span>Automatico</span>
               </div>
-              <div className={styles.door}>
-                <SensorDoorIcon fontSize="large" className={styles.doorIcon} />
-                <span>4 Puertas</span>
+              <div className={styles.iconContainer}>
+                <DirectionsCarIcon fontSize="large" className={styles.icon} />
+                <span>{sizeTranslation[carData.size]}</span>
               </div>
             </div>
           </div>
@@ -328,7 +330,7 @@ export function CarRentalPage() {
                 </div>
               </div>
               <span className={styles.priceTag}>
-                + ${gasTankPrices[carData.type]} al total
+                + ${carData.tankPrice} al total
               </span>
             </label>
           </div>
@@ -411,7 +413,7 @@ export function CarRentalPage() {
           babySeat={selectedBabySeat}
           travelLocation={travelLocation}
           gasTank={selectedGasTank}
-          carType={carData.type}
+          tankPrice={carData.tankPrice}
           totalPrice={totalPrice}
           onClose={handlePriceDetailsClose}
           isOpen={isPriceDetailsModalOpen}
