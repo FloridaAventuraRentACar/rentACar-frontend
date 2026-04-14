@@ -6,7 +6,7 @@
 }
 
 .carRentalCard {
-  max-width: 900px;
+  max-width: 120vh;
   margin: 20px auto;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
@@ -76,10 +76,14 @@
   font-weight: 500;
 }
 
-.seatIcon,
-.luggageIcon,
-.automaticIcon,
-.doorIcon {
+.iconContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.icon {
   vertical-align: middle;
   color: var(--color-brand);
   margin-right: 0.5rem;

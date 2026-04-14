@@ -28,9 +28,8 @@ export const AppProvider = ({ children }) => {
   }, [travelLocation]);
 
   const gasTankCharge = useMemo(() => {
-    if (!carData?.type) return 0;
     if (selectedGasTank === "EMPTY") {
-      return gasTankPrices[carData.type] || 0;
+      return carData.tankPrice || 0;
     }
     return 0;
   }, [selectedGasTank, carData]);

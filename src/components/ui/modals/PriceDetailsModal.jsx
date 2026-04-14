@@ -12,7 +12,7 @@ export default function PriceDetailsModal({
   babySeat,
   travelLocation,
   gasTank,
-  carType,
+  tankPrice,
   totalPrice,
   onClose,
   isOpen = false,
@@ -105,7 +105,7 @@ export default function PriceDetailsModal({
                   {daysRented} días de alquiler x US${pricePerDay}
                 </span>
                 <span className={styles.value}>
-                  ${pricePerDay * daysRented}
+                  ${(pricePerDay * daysRented).toFixed(2)}
                 </span>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function PriceDetailsModal({
                 <div className={styles.line}>
                   <span className={styles.info}>Tanque de gasolina</span>
                   <span className={styles.value}>
-                    ${gasTankPrices[carType]}
+                    ${tankPrice}
                   </span>
                 </div>
               )}
