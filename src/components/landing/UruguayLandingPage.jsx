@@ -267,7 +267,7 @@ export default function UruguayLandingPage() {
           <div className={styles.finalCtaButtons}>
             <a href="#inicio" className={styles.ctaButton}>Reservar ahora</a>
             <a
-              href="https://wa.me/13059001107"
+              href="https://wa.me/13057731787"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.ctaButtonWhatsapp}
