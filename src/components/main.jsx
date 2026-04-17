@@ -18,8 +18,11 @@ import GanttChart from "./admin/dashboard/GanttChart.jsx";
 import AdminHome from "./admin/dashboard/AdminHome.jsx";
 import AdminRentalFormPage from "./admin/rentals/registerForm/AdminRentalFormPage.jsx";
 import PriceAdjustmentPage from "./admin/price-adjustment/PriceAdjustmentPage";
+import UruguayLandingPage from "./landing/UruguayLandingPage";
 
 const router = createBrowserRouter([
+  // Landing independiente (sin Layout del sitio principal)
+  { path: "/uruguay", element: <UruguayLandingPage /> },
   {
     path: "/",
     element: <Layout />,
