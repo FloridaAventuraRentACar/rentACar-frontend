@@ -1,10 +1,3 @@
-/*
-  UruguayLanding.module.css
-  Solo contiene overrides de color de fondo y elementos
-  exclusivos de la landing. Todo lo demás usa HomePage.module.css.
-  Paleta: #066694 (principal), #044f73 (oscuro), #033550 (más oscuro)
-*/
-
 /* ── HERO OVERLAY — celeste en vez del negro del original ── */
 .heroOverlay {
   position: absolute;
