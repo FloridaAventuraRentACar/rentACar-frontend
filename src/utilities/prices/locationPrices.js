@@ -1,6 +1,6 @@
 const locationPrices = {
     'KeyWest': 20.70,
-    'Orlando': 32,
+    'Orlando': 38,
     'WestPalmBeach': 32.50,
     'Daytona': 30,
     'ClearWater': 24.70,
