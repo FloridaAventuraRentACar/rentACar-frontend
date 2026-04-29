@@ -78,7 +78,7 @@ const DriverForm = () => {
     totalPrice,
     selectedInsurance,
     selectedBabySeat,
-    travelLocation,
+    travelLocations,
     selectedGasTank,
     additionalDriversCount,
     setAdditionalDriversCount,
@@ -157,7 +157,7 @@ const DriverForm = () => {
       returnLocation,
       insurance: selectedInsurance,
       babySeat: selectedBabySeat,
-      travelLocation,
+      travelLocations,
       gasTank: selectedGasTank,
       notifyAdmin: true //Se notifica al admin del alquiler, ya que lo realiza el cliente
     };
@@ -242,7 +242,7 @@ const DriverForm = () => {
               totalPrice={totalPrice}
               selectedInsurance={selectedInsurance}
               selectedBabySeat={selectedBabySeat}
-              travelLocation={travelLocation}
+              travelLocations={travelLocations}
             />
           </div>
         </div>
