@@ -7,7 +7,7 @@ import { formatDate } from '../../../utilities/functions/formatDate';
 
 const RentalDetails = ({
   carData, daysBooked, pickupLocation, pickupDate, pickupTime, returnLocation,
-  returnDate, returnTime, totalPrice, selectedInsurance, selectedBabySeat, travelLocation
+  returnDate, returnTime, totalPrice, selectedInsurance, selectedBabySeat, travelLocations
 }) => {
 
   return (
@@ -41,8 +41,10 @@ const RentalDetails = ({
         <h4 className={styles.summaryTitle}>Su resumen de reservas:</h4>
         <ul>
           <li>Seguro {insuranceNames[selectedInsurance]}</li>
-          {(selectedBabySeat !== 'NONE') && <li>✔ {babySeatNames[selectedBabySeat]}</li>}
-          {travelLocation && <li>✔ Viajaras a {travelLocationNames[travelLocation]} </li>}
+          {(selectedBabySeat !== 'NONE') && <li> {babySeatNames[selectedBabySeat]}</li>}
+          {travelLocations && travelLocations.length > 0 && travelLocations.map((travelLocation) => (
+            <li key={travelLocation}>Viajaras a {travelLocationNames[travelLocation]} </li>
+          ))}
         </ul>
       </div>
       <div className={styles.priceContainer}>

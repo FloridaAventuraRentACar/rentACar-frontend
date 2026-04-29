@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
   const [carData, setCarData] = useSessionState("carData", {});
   const [selectedInsurance, setSelectedInsurance] = useSessionState("selectedInsurance", 'DEDUCTIBLE');
   const [selectedBabySeat, setSelectedBabySeat] = useSessionState("selectedBabySeat", 'NONE');
-  const [travelLocation, setTravelLocation] = useSessionState("travelLocation", null);
+  const [travelLocations, setTravelLocations] = useSessionState("travelLocations", []);
   const [selectedGasTank, setSelectedGasTank] = useSessionState("selectedGasTank", 'FULL');
   const [additionalDriversCount, setAdditionalDriversCount] = useSessionState("additionalDriversCount", 0);
 
@@ -24,8 +24,13 @@ export const AppProvider = ({ children }) => {
   }, [selectedInsurance, daysBooked]);
 
   const travelLocationPrice = useMemo(() => {
-    return travelLocation ? locationPrices[travelLocation] : 0;
-  }, [travelLocation]);
+
+    if (travelLocations.length === 0 || !travelLocations) {
+      return (2.15 * daysBooked);
+    }
+
+    return travelLocations.reduce((acc, location) => acc + locationPrices[location], 0);
+  }, [travelLocations, daysBooked]);
 
   const gasTankCharge = useMemo(() => {
     if (selectedGasTank === "EMPTY") {
@@ -41,11 +46,28 @@ export const AppProvider = ({ children }) => {
   }, [carData, daysBooked, insuranceCharge, travelLocationPrice, gasTankCharge, additionalDriverCharge]);
 
   const clearRentalData = () => {
+    setDaysBooked(0);
+    setCarData({});
+    setSelectedInsurance('DEDUCTIBLE');
+    setSelectedBabySeat('NONE');
+    setTravelLocations([]);
+    setSelectedGasTank('FULL');
+    setAdditionalDriversCount(0);
+
     const keys = [
       "daysBooked", "carData", "totalPrice",
-      "selectedInsurance", "selectedBabySeat", "travelLocation", "selectedGasTank"
+      "selectedInsurance", "selectedBabySeat", "travelLocations", "selectedGasTank", 
+      "additionalDriversCount"
     ];
     keys.forEach(key => sessionStorage.removeItem(key));
+  };
+
+  const clearRentalOptions = () => {
+    setSelectedInsurance('DEDUCTIBLE');
+    setSelectedBabySeat('NONE');
+    setTravelLocations([]);
+    setSelectedGasTank('FULL');
+    setAdditionalDriversCount(0);
   };
 
   return (
@@ -56,10 +78,10 @@ export const AppProvider = ({ children }) => {
         totalPrice,
         selectedInsurance, setSelectedInsurance,
         selectedBabySeat, setSelectedBabySeat,
-        travelLocation, setTravelLocation,
+        travelLocations, setTravelLocations, travelLocationPrice,
         selectedGasTank, setSelectedGasTank,
         additionalDriversCount, setAdditionalDriversCount,
-        clearRentalData
+        clearRentalData, clearRentalOptions
       }}
     >
       {children}

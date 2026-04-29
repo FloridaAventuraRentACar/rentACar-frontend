@@ -10,7 +10,7 @@ export default function PriceDetailsModal({
   pricePerDay,
   insurance,
   babySeat,
-  travelLocation,
+  travelLocations,
   gasTank,
   tankPrice,
   totalPrice,
@@ -134,23 +134,25 @@ export default function PriceDetailsModal({
               {babySeat !== "NONE" && (
                 <div className={styles.line}>
                   <span className={styles.info}>
-                    {daysRented} días de asiento de niño x US$3
+                    {daysRented} días de asiento de niño
                   </span>
-                  <span className={styles.value}>${3 * daysRented}</span>
+                  <span className={styles.included}>incluido</span>
                 </div>
               )}
 
               {/* Travel location */}
-              {travelLocation && (
-                <div className={styles.line}>
-                  <span className={styles.info}>
-                    Viajar a {travelLocationNames[travelLocation]}
-                  </span>
-                  <span className={styles.value}>
-                    ${locationPrices[travelLocation]}
-                  </span>
-                </div>
-              )}
+              {(travelLocations && travelLocations.length > 0) ? (
+                travelLocations.map((travelLocation) => (
+                  <div key={travelLocation} className={styles.line}>
+                    <span className={styles.info}>
+                      Viajar a {travelLocationNames[travelLocation]}
+                    </span>
+                    <span className={styles.value}>
+                      ${locationPrices[travelLocation]}
+                    </span>
+                  </div>
+                ))
+              ) : (null) } 
 
               {/* Gas tank */}
               {gasTank === "EMPTY" && (

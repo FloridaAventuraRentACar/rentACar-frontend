@@ -17,6 +17,31 @@ import { formatDate } from "../../../utilities/functions/formatDate.js";
 import BackButton from "../../ui/buttons/BackButton";
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { sizeTranslation } from "../../../utilities/names/sizeTranslation.js";
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Chip from '@mui/material/Chip';
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  slotProps: {
+    paper: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  },
+};
+
+function getStyles(location, selectedLocations, theme) {
+  return {
+    fontWeight: selectedLocations.includes(location)
+      ? theme.typography.fontWeightMedium
+      : theme.typography.fontWeightRegular,
+  };
+}
 
 export function CarRentalPage() {
   const navigate = useNavigate();
@@ -34,6 +59,8 @@ export function CarRentalPage() {
 
   const [selectedSunpass, setSelectedSunpass] = useState("no");
 
+  const theme = useTheme();
+
   const {
     daysBooked,
     carData,
@@ -42,11 +69,17 @@ export function CarRentalPage() {
     setSelectedInsurance,
     selectedBabySeat,
     setSelectedBabySeat,
-    travelLocation,
-    setTravelLocation,
+    travelLocations,
+    setTravelLocations,
     selectedGasTank,
     setSelectedGasTank,
+    travelLocationPrice,
+    clearRentalOptions
   } = useContext(AppContext);
+
+  useEffect(() => {
+    clearRentalOptions();
+  }, []);
 
   const handleClick = () => {
     navigate(`/driver-form${location.search}`);
@@ -60,14 +93,14 @@ export function CarRentalPage() {
     setSelectedBabySeat(selected);
   };
 
-  const handleTravelLocationChange = (event) => {
-    const newLocation = event.target.value;
-    setTravelLocation(newLocation);
+  const handleTravelLocationsChange = (event) => {
+    const { target: { value } } = event;
+    setTravelLocations(typeof value === 'string' ? value.split(',') : value);
   };
 
   const handleSunpassClick = (selected) => {
     if (selected === "no") {
-      setTravelLocation(null);
+      setTravelLocations([]);
     }
     setSelectedSunpass(selected);
   };
@@ -248,7 +281,7 @@ export function CarRentalPage() {
                   </p>
                 </div>
               </div>
-              <span className={styles.includedTag}>Mismo precio por dia</span>
+              <span className={styles.priceTag}>+ ${(2.15 * daysBooked).toFixed(2)} al total</span>
             </label>
 
             <label
@@ -269,23 +302,32 @@ export function CarRentalPage() {
                   <Select
                     labelId="travel-location-label"
                     id="travel-location-select"
-                    value={travelLocation}
-                    label="Travel location"
-                    onChange={handleTravelLocationChange}
+                    multiple
+                    value={travelLocations}
+                    onChange={handleTravelLocationsChange}
+                    input={<OutlinedInput id="select-multiple-chip" label="Donde" />}
+                    renderValue={(selected) => (
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                        {selected.map((value) => (
+                          <Chip key={value} label={value} />
+                        ))}
+                      </Box>
+                    )}
+                    MenuProps={MenuProps}
                   >
-                    <MenuItem value={"Orlando"}>Orlando</MenuItem>
-                    <MenuItem value={"KeyWest"}>KeyWest</MenuItem>
-                    <MenuItem value={"WestPalmBeach"}>West Palm Beach</MenuItem>
-                    <MenuItem value={"Daytona"}>Daytona</MenuItem>
-                    <MenuItem value={"ClearWater"}>Clearwater beach</MenuItem>
-                    <MenuItem value={"IslaMorada"}>Isla morada</MenuItem>
-                    <MenuItem value={"Naples"}>Naples</MenuItem>
+                    <MenuItem value="Orlando" style={getStyles("Orlando", travelLocations, theme)}>Orlando</MenuItem>
+                    <MenuItem value="KeyWest" style={getStyles("KeyWest", travelLocations, theme)}>KeyWest</MenuItem>
+                    <MenuItem value="WestPalmBeach" style={getStyles("WestPalmBeach", travelLocations, theme)}>West Palm Beach</MenuItem>
+                    <MenuItem value="Daytona" style={getStyles("Daytona", travelLocations, theme)}>Daytona</MenuItem>
+                    <MenuItem value="ClearWater" style={getStyles("ClearWater", travelLocations, theme)}>Clearwater Beach</MenuItem>
+                    <MenuItem value="IslaMorada" style={getStyles("IslaMorada", travelLocations, theme)}>Isla Morada</MenuItem>
+                    <MenuItem value="Naples" style={getStyles("Naples", travelLocations, theme)}>Naples</MenuItem>
                   </Select>
                 </FormControl>
               )}
               {selectedSunpass === "yes" && (
                 <span className={styles.priceTag}>
-                  + ${locationPrices[travelLocation]} al total
+                  + ${travelLocations.length === 0 ? 0 : travelLocationPrice} al total
                 </span>
               )}
             </label>
@@ -405,13 +447,12 @@ export function CarRentalPage() {
             Siguiente
           </button>
         </div>
-
         <PriceDetailsModal
           daysRented={daysBooked}
           pricePerDay={carData.pricePerDay}
           insurance={selectedInsurance}
           babySeat={selectedBabySeat}
-          travelLocation={travelLocation}
+          travelLocations={travelLocations}
           gasTank={selectedGasTank}
           tankPrice={carData.tankPrice}
           totalPrice={totalPrice}
