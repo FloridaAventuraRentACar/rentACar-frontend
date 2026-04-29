@@ -21,27 +21,7 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Chip from '@mui/material/Chip';
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  slotProps: {
-    paper: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-  },
-};
-
-function getStyles(location, selectedLocations, theme) {
-  return {
-    fontWeight: selectedLocations.includes(location)
-      ? theme.typography.fontWeightMedium
-      : theme.typography.fontWeightRegular,
-  };
-}
+import { getMultipleSelectStyles, MenuProps } from "../../../utilities/functions/getMultipleSelectStyles";
 
 export function CarRentalPage() {
   const navigate = useNavigate();
@@ -315,13 +295,13 @@ export function CarRentalPage() {
                     )}
                     MenuProps={MenuProps}
                   >
-                    <MenuItem value="Orlando" style={getStyles("Orlando", travelLocations, theme)}>Orlando</MenuItem>
-                    <MenuItem value="KeyWest" style={getStyles("KeyWest", travelLocations, theme)}>KeyWest</MenuItem>
-                    <MenuItem value="WestPalmBeach" style={getStyles("WestPalmBeach", travelLocations, theme)}>West Palm Beach</MenuItem>
-                    <MenuItem value="Daytona" style={getStyles("Daytona", travelLocations, theme)}>Daytona</MenuItem>
-                    <MenuItem value="ClearWater" style={getStyles("ClearWater", travelLocations, theme)}>Clearwater Beach</MenuItem>
-                    <MenuItem value="IslaMorada" style={getStyles("IslaMorada", travelLocations, theme)}>Isla Morada</MenuItem>
-                    <MenuItem value="Naples" style={getStyles("Naples", travelLocations, theme)}>Naples</MenuItem>
+                    <MenuItem value="Orlando" style={getMultipleSelectStyles("Orlando", travelLocations, theme)}>Orlando</MenuItem>
+                    <MenuItem value="KeyWest" style={getMultipleSelectStyles("KeyWest", travelLocations, theme)}>KeyWest</MenuItem>
+                    <MenuItem value="WestPalmBeach" style={getMultipleSelectStyles("WestPalmBeach", travelLocations, theme)}>West Palm Beach</MenuItem>
+                    <MenuItem value="Daytona" style={getMultipleSelectStyles("Daytona", travelLocations, theme)}>Daytona</MenuItem>
+                    <MenuItem value="ClearWater" style={getMultipleSelectStyles("ClearWater", travelLocations, theme)}>Clearwater Beach</MenuItem>
+                    <MenuItem value="IslaMorada" style={getMultipleSelectStyles("IslaMorada", travelLocations, theme)}>Isla Morada</MenuItem>
+                    <MenuItem value="Naples" style={getMultipleSelectStyles("Naples", travelLocations, theme)}>Naples</MenuItem>
                   </Select>
                 </FormControl>
               )}

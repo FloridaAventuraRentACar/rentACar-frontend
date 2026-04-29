@@ -15,6 +15,8 @@ import ConfirmationModal from "../../ui/modals/ConfirmationModal";
 import travelLocationNames from "../../../utilities/names/travelLocationNames";
 import ErrorModal from "../../ui/modals/ErrorModal";
 import { getErrorMessage } from "../../../utilities/errors/errorsMessages";
+import { Box, Chip, Select, MenuItem, OutlinedInput, useTheme } from '@mui/material';
+import { getMultipleSelectStyles, MenuProps } from "../../../utilities/functions/getMultipleSelectStyles";
 
 export default function RentalAdminResume({ isEditable = true }) {
   //capturo el id de la URL
@@ -36,7 +38,7 @@ export default function RentalAdminResume({ isEditable = true }) {
   const [calculateTotal, setCalculateTotal] = useState(false);
 
   const navigate = useNavigate();
-
+  const theme = useTheme();
   useEffect(() => {
     fetchRentalDetails(id);
     fetchCarNames();
@@ -383,13 +385,51 @@ export default function RentalAdminResume({ isEditable = true }) {
               "returnLocation",
               locationNames
             )}
-            {rental.travelLocation &&
-              renderSelectField(
-                "Destino de Viaje",
-                rental.travelLocation,
-                "travelLocation",
-                travelLocationNames
+            <div className={styles.field}>
+              <span className={styles.label}>Destino de Viaje:</span>
+              {isEditable ? (
+                // Vista edición: Select múltiple con chips
+                <Select
+                  multiple
+                  value={editedRental?.travelLocations || []}
+                  onChange={(e) => handleInputChange("travelLocations", e.target.value)}
+                  input={<OutlinedInput id="select-multiple-chip" label="Destino de Viaje" />}
+                  renderValue={(selected) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                      {selected.map((value) => (
+                        <Chip key={value} label={travelLocationNames[value]} />
+                      ))}
+                    </Box>
+                  )}
+                  MenuProps={MenuProps}
+                >
+                  {Object.entries(travelLocationNames).map(([key, name]) => (
+                    <MenuItem
+                      key={key}
+                      value={key}
+                      style={getMultipleSelectStyles(key, editedRental?.travelLocations || [], theme)}
+                    >
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              ) : (
+                rental.travelLocations?.length > 0 ? (
+                // Vista lectura: Chips estáticos
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                  {rental.travelLocations.map((loc) => (
+                    <Chip
+                      key={loc}
+                      label={travelLocationNames[loc]}
+                      variant="outlined"
+                    />
+                  ))}
+                </Box>
+                ) : (
+                  <span className={styles.value}>No se agregaron destinos</span>
+                )
               )}
+            </div>
           </div>
         </div>
 
