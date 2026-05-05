@@ -19,10 +19,12 @@ import AdminHome from "./admin/dashboard/AdminHome.jsx";
 import AdminRentalFormPage from "./admin/rentals/registerForm/AdminRentalFormPage.jsx";
 import PriceAdjustmentPage from "./admin/price-adjustment/PriceAdjustmentPage";
 import UruguayLandingPage from "./landing/UruguayLandingPage";
+import ChatTestPage from "./chat/ChatTestPage";
 
 const router = createBrowserRouter([
   // Landing independiente (sin Layout del sitio principal)
   { path: "/uruguay", element: <UruguayLandingPage /> },
+  { path: "/chatbot-test", element: <ChatTestPage /> },
   {
     path: "/",
     element: <Layout />,
