@@ -366,6 +366,34 @@
   font-style: italic;
 }
 
+/* ── Quick reply buttons ─────────────────────────────────────────────────── */
+
+.quickReplies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 2px 0 4px;
+}
+
+.quickReplyBtn {
+  background: #fff;
+  border: 1.5px solid #2A9D9E;
+  color: #2A9D9E;
+  border-radius: 16px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+
+.quickReplyBtn:hover {
+  background: #2A9D9E;
+  color: #fff;
+}
+
 /* ── Input area ──────────────────────────────────────────────────────────── */
 
 .inputArea {

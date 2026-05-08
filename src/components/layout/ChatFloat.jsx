@@ -103,14 +103,37 @@ function CarCard({ card }) {
   );
 }
 
+function SimpleCarCard({ img }) {
+  return (
+    <div className={styles.carCard}>
+      {img.url && (
+        <img src={img.url} alt={img.name} className={styles.carImage} />
+      )}
+      <div className={styles.carBody}>
+        <div className={styles.carHeader}>
+          <span className={styles.carName}>{img.name}</span>
+        </div>
+        {img.pricePerDay != null && (
+          <div className={styles.carTotal}>💵 ${img.pricePerDay} / día</div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function BotMessage({ content, images }) {
   const parsed = parseMessage(content, images);
 
   if (parsed.type === 'plain') {
     return (
-      <div className={`${styles.bubble} ${styles.botBubble}`}>
-        <PlainText text={parsed.text} />
-      </div>
+      <>
+        <div className={`${styles.bubble} ${styles.botBubble}`}>
+          <PlainText text={parsed.text} />
+        </div>
+        {images && images.length > 0 && images.map((img, i) => (
+          <SimpleCarCard key={i} img={img} />
+        ))}
+      </>
     );
   }
 
@@ -140,6 +163,7 @@ export default function ChatFloat({ defaultOpen = false }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [quickReplies, setQuickReplies] = useState([]);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -151,14 +175,15 @@ export default function ChatFloat({ defaultOpen = false }) {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 100);
   }, [isOpen]);
 
-  const sendMessage = async () => {
-    const text = input.trim();
+  const sendMessage = async (overrideText) => {
+    const text = (overrideText ?? input).trim();
     if (!text || isLoading) return;
 
     const userMsg = { role: 'user', content: text };
     const updated = [...messages, userMsg];
     setMessages(updated);
     setInput('');
+    setQuickReplies([]);
     setIsLoading(true);
 
     try {
@@ -181,15 +206,17 @@ export default function ChatFloat({ defaultOpen = false }) {
         ...prev,
         { role: 'assistant', content: data.response, images: data.images || [] },
       ]);
+      setQuickReplies(data.quickReplies || []);
     } catch {
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
-          content: 'Tuve un problema técnico. Por favor, intentá de nuevo o escribile a Patricia: https://wa.me/13057731787',
+          content: 'Hubo un error. Por favor intentá de nuevo.',
           images: [],
         },
       ]);
+      setQuickReplies([]);
     } finally {
       setIsLoading(false);
     }
@@ -265,6 +292,20 @@ export default function ChatFloat({ defaultOpen = false }) {
               </div>
             )}
 
+            {!isLoading && quickReplies.length > 0 && (
+              <div className={styles.quickReplies}>
+                {quickReplies.map((qr, i) => (
+                  <button
+                    key={i}
+                    className={styles.quickReplyBtn}
+                    onClick={() => sendMessage(qr)}
+                  >
+                    {qr}
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div ref={messagesEndRef} />
           </div>
 
@@ -281,7 +322,7 @@ export default function ChatFloat({ defaultOpen = false }) {
               disabled={isLoading}
             />
             <button
-              onClick={sendMessage}
+              onClick={() => sendMessage()}
               className={styles.sendBtn}
               disabled={isLoading || !input.trim()}
               aria-label="Enviar mensaje"
