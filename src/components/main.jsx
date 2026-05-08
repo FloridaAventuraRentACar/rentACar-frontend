@@ -19,13 +19,15 @@ import AdminHome from "./admin/dashboard/AdminHome.jsx";
 import AdminRentalFormPage from "./admin/rentals/registerForm/AdminRentalFormPage.jsx";
 import PriceAdjustmentPage from "./admin/price-adjustment/PriceAdjustmentPage";
 import UruguayLandingPage from "./landing/UruguayLandingPage";
+import PublicLayout from "./layout/PublicLayout.jsx";
 
 const router = createBrowserRouter([
-  // Landing independiente (sin Layout del sitio principal)
   { path: "/uruguay", element: <UruguayLandingPage /> },
+
+  // Rutas públicas — con ChatBot
   {
     path: "/",
-    element: <Layout />,
+    element: <PublicLayout />,
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/cars", element: <ShowCarsPage /> },
@@ -33,59 +35,26 @@ const router = createBrowserRouter([
       { path: "/driver-form", element: <DriverForm /> },
       { path: "/successful-rental", element: <SuccessfulRental /> },
       { path: "/admin/login", element: <Login /> },
-
-      //Rutas protegidas
-      {
-        path: "/admin",
-        element: (
-          <ProtectedRoute>
-            <AdminHome />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/admin/rentals/gantt",
-        element: (
-          <ProtectedRoute>
-            <GanttChart />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/admin/rentals/view/:id",
-        element: (
-          <ProtectedRoute>
-            <RentalAdminResume isEditable={false} />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/admin/rentals/edit/:id",
-        element: (
-          <ProtectedRoute>
-            <RentalAdminResume />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/admin/register",
-        element: (
-          <ProtectedRoute>
-            <AdminRentalFormPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "/admin/price-adjustment",
-        element: (
-          <ProtectedRoute>
-            <PriceAdjustmentPage />
-          </ProtectedRoute>
-        ),
-      },
-
     ],
   },
+
+  //  Rutas admin — sin ChatBot
+  {
+  path: "/admin",
+  element: (
+    <ProtectedRoute>
+      <Layout />
+    </ProtectedRoute>
+  ),
+  children: [
+    { path: "", element: <AdminHome /> },
+    { path: "rentals/gantt", element: <GanttChart /> },
+    { path: "rentals/view/:id", element: <RentalAdminResume isEditable={false} /> },
+    { path: "rentals/edit/:id", element: <RentalAdminResume /> },
+    { path: "register", element: <AdminRentalFormPage /> },
+    { path: "price-adjustment", element: <PriceAdjustmentPage /> },
+  ],
+},
 ]);
 
 createRoot(document.getElementById("root")).render(
