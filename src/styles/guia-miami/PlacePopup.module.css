@@ -1,0 +1,168 @@
+.pop {
+  font-family: 'Lato', sans-serif;
+}
+
+/* ── Header ── */
+.img {
+  position: relative;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.emoji {
+  font-size: 64px;
+  line-height: 1;
+  user-select: none;
+}
+
+.badgeFree {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: white;
+  color: #1a1a1a;
+  font-family: 'Lato', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 100px;
+}
+
+.badgeCat {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 3px 9px;
+  border-radius: 100px;
+}
+
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a1a;
+  line-height: 1;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.heartActive {
+  background: #E8473A;
+  color: white;
+}
+
+/* ── Body ── */
+.body {
+  padding: 14px 16px 16px;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+
+.sub {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.rating {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.ratingCount {
+  font-size: 12px;
+  color: #6f6a5e;
+}
+
+.barrio {
+  font-size: 12px;
+  color: #6f6a5e;
+  margin-left: auto;
+}
+
+.desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #333;
+  margin: 0 0 12px;
+}
+
+.meta {
+  border-top: 1px solid #E8E2D3;
+  padding-top: 10px;
+  font-size: 12px;
+  color: #6f6a5e;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+
+.disclaimer {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  flex: 1;
+  height: 36px;
+  border-radius: 10px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s ease;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btnPrimary {
+  background: #1a1a1a;
+  color: white;
+}
+
+.btnSecondary {
+  background: #FAF7F1;
+  color: #1a1a1a;
+  border: 1px solid #E8E2D3;
+}

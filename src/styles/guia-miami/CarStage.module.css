@@ -1,0 +1,83 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.mini {
+  max-width: 96px;
+}
+
+.carWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.mini .carWrap {
+  border-radius: 10px;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: fa-scene-zoom 14s ease-in-out infinite alternate;
+}
+
+.sceneEmpty {
+  background: linear-gradient(135deg, #FFF5DD 0%, #FCE9C8 100%);
+  animation: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%);
+}
+
+.car {
+  position: absolute;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+  animation: fa-car-pop 0.45s ease forwards;
+  user-select: none;
+  pointer-events: none;
+}
+
+.mini .car {
+  bottom: 4%;
+  width: 92%;
+}
+
+.caption {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #6f6a5e;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.caption strong {
+  color: #E8473A;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .mini {
+    max-width: 64px;
+  }
+}

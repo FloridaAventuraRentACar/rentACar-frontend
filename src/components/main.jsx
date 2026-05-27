@@ -20,9 +20,11 @@ import AdminRentalFormPage from "./admin/rentals/registerForm/AdminRentalFormPag
 import PriceAdjustmentPage from "./admin/price-adjustment/PriceAdjustmentPage";
 import UruguayLandingPage from "./landing/UruguayLandingPage";
 import PublicLayout from "./layout/PublicLayout.jsx";
+import GuiaMiamiPage from "./guia-miami/GuiaMiamiPage";
 
 const router = createBrowserRouter([
   { path: "/uruguay", element: <UruguayLandingPage /> },
+  { path: "/guia-miami", element: <GuiaMiamiPage /> },
 
   // Rutas públicas — con ChatBot
   {
