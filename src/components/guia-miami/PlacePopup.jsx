@@ -16,9 +16,12 @@ export default function PlacePopup({ place, cat, isWished, onToggle }) {
 
   return (
     <div className={styles.pop}>
-      {/* Header image area */}
-      <div className={styles.img} style={{ background: gradientBg }}>
-        <span className={styles.emoji}>{cat.icono}</span>
+      {/* Header image area — foto real si existe, degradado+emoji como fallback */}
+      <div className={styles.img} style={place.imagen ? undefined : { background: gradientBg }}>
+        {place.imagen
+          ? <img src={place.imagen} alt={place.nombre} className={styles.photo} />
+          : <span className={styles.emoji}>{cat.icono}</span>
+        }
         <span className={styles.badgeFree}>{place.gratis ? 'GRATUITO' : 'DE PAGO'}</span>
         <span className={styles.badgeCat}>{place.categoria.toUpperCase()}</span>
         <button
