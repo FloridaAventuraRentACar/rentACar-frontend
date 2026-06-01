@@ -23,14 +23,8 @@ export function dominantCategory(counts) {
 }
 
 export function openExternal(url) {
-  try {
-    const w = window.open(url, '_blank', 'noopener,noreferrer')
-    if (!w) throw new Error('blocked')
-  } catch {
-    try { window.top.location.href = url } catch {
-      navigator.clipboard?.writeText(url)
-    }
-  }
+  const w = window.open(url, '_blank', 'noopener,noreferrer')
+  if (!w) navigator.clipboard?.writeText(url)
 }
 
 export function hexShade(hex, pct) {

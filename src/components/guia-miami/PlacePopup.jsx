@@ -10,8 +10,8 @@ function StarIcon() {
 }
 
 export default function PlacePopup({ place, cat, isWished, onToggle }) {
-  const gmapsDir = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}&travelmode=driving`
-  const gmapsSearch = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.nombre + ' ' + place.barrio + ' Miami')}`
+  const gmapsDir = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.nombre + ', Miami, FL')}&travelmode=driving`
+  const gmapsReviews = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.nombre + ', Miami, FL')}`
   const gradientBg = `linear-gradient(135deg, ${cat.color} 0%, ${hexShade(cat.color, -25)} 100%)`
 
   return (
@@ -69,7 +69,7 @@ export default function PlacePopup({ place, cat, isWished, onToggle }) {
           </button>
           <button
             className={`${styles.btn} ${styles.btnSecondary}`}
-            onClick={() => openExternal(gmapsSearch)}
+            onClick={() => openExternal(gmapsReviews)}
           >
             ★ Reseñas
           </button>

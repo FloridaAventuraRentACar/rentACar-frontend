@@ -89,16 +89,16 @@ export default function GuiaMiamiPage() {
         setTimeout(() => showToast('Añade algunos lugares primero ✨'), 0)
         return prev
       }
-      const counts = {}
-      prev.forEach(id => {
-        const p = PLACES_DATA.lugares.find(x => x.id === id)
-        if (p) counts[p.categoria] = (counts[p.categoria] || 0) + 1
-      })
+      const places = prev
+        .map(id => PLACES_DATA.lugares.find(x => x.id === id))
+        .filter(Boolean)
+      const lines = places.map(p =>
+        `📍 ${p.nombre} — https://maps.google.com/?q=${p.lat},${p.lng}`
+      )
       const text =
-        `Mi Miami con @floridaaventura · ${prev.length} lugares · ` +
-        Object.entries(counts)
-          .map(([k, v]) => `${v} ${PLACES_DATA.categorias[k].label}`)
-          .join(' · ')
+        `Mi Miami con Florida Aventura 🚗\n` +
+        lines.join('\n') +
+        `\n\nReservá tu auto: floridaaventura.com`
 
       if (navigator.share) {
         navigator.share({ title: 'Mi Miami · Florida Aventura', text }).catch(() => {})
