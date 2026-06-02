@@ -17,7 +17,7 @@ function normalizeName(name) {
 }
 
 const CAR_BLOCK_SOURCE =
-  /\*\*(SMALL|MEDIUM|LARGE)\s+(.+?)\*\*\n(💰[^\n]+)\n(💵[^\n]+)\n(→[^\n]+)/.source;
+  /\*\*(SMALL|MEDIUM|LARGE)\s+(.+?)\*\*\n(💰[\s\S]+?)(💵[^\n]+)\n{1,2}(→[^\n]+)/.source;
 
 function parseMessage(text, images = []) {
   const re = new RegExp(CAR_BLOCK_SOURCE, 'g');
@@ -32,7 +32,7 @@ function parseMessage(text, images = []) {
       end: match.index + match[0].length,
       type: match[1],
       fullName: match[2],
-      specs: match[3],
+      specs: match[3].replace(/\s*\n\s*/g, ' ').trim(),
       total: match[4],
       desc: match[5].replace(/^→\s*/, ''),
       image,
