@@ -1,0 +1,17 @@
+.toast {
+  position: fixed;
+  top: 76px;
+  left: 50%;
+  z-index: 3000;
+  background: #1a1a1a;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  animation: fa-toast-in 0.25s ease forwards;
+}
