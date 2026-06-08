@@ -73,6 +73,14 @@ export default function HeaderReusable({ className = "" }) {
             </div>
           </a>
 
+          {/* Desktop Navigation */}
+          <nav className={styles.desktopNav}>
+            <a href="/guia-miami" className={styles.navLink}>
+              Guía Miami
+              <span className={styles.navLinkUnderline}></span>
+            </a>
+          </nav>
+
           {/* Desktop Actions */}
           <div className={styles.desktopActions}>
             {/* WhatsApp Button */}

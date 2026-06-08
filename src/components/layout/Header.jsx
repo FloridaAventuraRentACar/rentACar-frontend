@@ -38,6 +38,7 @@ export default function Header({ className = "" }) {
     { href: "#inicio", label: "Inicio" },
     { href: "#unidades", label: "Nuestras Unidades" },
     { href: "#contacto", label: "Contacto" },
+    { href: "/guia-miami", label: "Guía Miami" },
   ];
 
   const handleSmoothScroll = (e) => {
@@ -83,7 +84,7 @@ export default function Header({ className = "" }) {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={handleSmoothScroll}
+                onClick={link.href.startsWith("#") ? handleSmoothScroll : undefined}
                 className={styles.navLink}
               >
                 {link.label}
