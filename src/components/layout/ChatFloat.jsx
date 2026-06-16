@@ -17,7 +17,7 @@ function normalizeName(name) {
 }
 
 const CAR_BLOCK_SOURCE =
-  /\*\*(SMALL|MEDIUM|LARGE)\s+(.+?)\*\*\n(💰[\s\S]+?)(💵[^\n]+)\n{1,2}(→[^\n]+)/.source;
+  /\*\*(SMALL|MEDIUM|LARGE)\s+(.+?)\*\*\n(?:📅\s*([^\n]+)\n)?(💰[\s\S]+?)(💵[^\n]+)\n{1,2}(→[^\n]+)/.source;
 
 function parseMessage(text, images = []) {
   const re = new RegExp(CAR_BLOCK_SOURCE, 'g');
@@ -32,9 +32,10 @@ function parseMessage(text, images = []) {
       end: match.index + match[0].length,
       type: match[1],
       fullName: match[2],
-      specs: match[3].replace(/\s*\n\s*/g, ' ').trim(),
-      total: match[4],
-      desc: match[5].replace(/^→\s*/, ''),
+      date: match[3] ? match[3].trim() : null,
+      specs: match[4].replace(/\s*\n\s*/g, ' ').trim(),
+      total: match[5],
+      desc: match[6].replace(/^→\s*/, ''),
       image,
     });
   }
@@ -95,6 +96,7 @@ function CarCard({ card }) {
             {card.type}
           </span>
         </div>
+        {card.date && <div className={styles.carDate}>📅 {card.date}</div>}
         <div className={styles.carSpecs}>{card.specs}</div>
         <div className={styles.carTotal}>{card.total}</div>
         <div className={styles.carDesc}>{card.desc}</div>
