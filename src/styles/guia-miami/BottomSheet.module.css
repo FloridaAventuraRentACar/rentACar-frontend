@@ -9,12 +9,16 @@
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
   z-index: 999;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   max-height: 70px;
   transition: max-height 0.3s ease;
 }
 
 .open {
   max-height: 680px;
+  /* Nunca pasar por debajo del header (fallback a vh si no hay dvh) */
+  max-height: min(680px, calc(100dvh - 88px));
 }
 
 /* ── Header ── */
@@ -89,7 +93,8 @@
   border-top: 1px solid #E8E2D3;
   padding: 16px 20px 20px;
   overflow-y: auto;
-  max-height: calc(680px - 70px);
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .cols {
@@ -332,7 +337,8 @@
   }
 
   .open {
-    max-height: calc(100vh - 76px);
+    max-height: calc(100vh - 80px);
+    max-height: calc(100dvh - 80px);
   }
 
   .head {
@@ -341,10 +347,6 @@
 
   .miniCar {
     width: 64px;
-  }
-
-  .body {
-    max-height: calc(100vh - 76px - 64px);
   }
 }
 
