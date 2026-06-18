@@ -1,6 +1,6 @@
 .toast {
   position: fixed;
-  top: 76px;
+  bottom: 100px;
   left: 50%;
   z-index: 3000;
   background: #1a1a1a;
