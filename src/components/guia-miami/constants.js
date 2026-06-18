@@ -10,6 +10,21 @@ export const INTRO_SLIDES = [
   'lighthouse-sunset', 'little-havana', 'brickell', 'outlets', 'coconut-grove',
 ]
 
+// Versiones horizontales / de mayor resolución para desktop.
+// Viven en `${ASSETS}/intro/desktop/` y se usan en pantallas >= 1024px,
+// donde las verticales de mobile se veían estiradas/borrosas.
+export const INTRO_SLIDES_DESKTOP = [
+  'Brickell_City_Centre_Interior_2026_SV_1440x900_B2D49E5A-DBB3-447D-701D521859515C3C-b2d49a6bcbebd9e_b2d4a4e6-0b94-8e45-1f2f08223fbf95ac.jpg',
+  'Orange_lifeguard_tower_Miami_Beach_green_flag_iStock_1440x900.jpg',
+  'miami-experiences-scaled.webp',
+  'colony-hotel-miami-florida_0.webp',
+  'capa-scaled.webp',
+  'fc725e13-city-30651-187381258da.jpg',
+  'RAKINZOAQNGQXBX4BVMKU2TZZ4.jpg',
+  'fdc1db26-5587-4429-881d-69ed42702db1.jpg',
+  '02ee0441-a9dd-4b32-bb53-9644902187e1.jpg',
+]
+
 const PRIORITY = ['playa', 'noche', 'compras', 'cultura', 'foodie']
 
 export function dominantCategory(counts) {
