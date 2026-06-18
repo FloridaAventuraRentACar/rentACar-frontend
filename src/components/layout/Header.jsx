@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/layout/Header.module.css"; // Importa los estilos CSS Modules
-import { Phone, Instagram } from "lucide-react"; // Para los íconos
+import { Instagram, Menu, X, MapPin, CalendarDays } from "lucide-react"; // Para los íconos
 import WhatsAppIcon from "../icons/WhatsappIcon";
 
 // Componentes placeholder para Button, Sheet y sus sub-componentes
@@ -24,6 +24,7 @@ const Button = ({ asChild, children, className, variant, size, ...props }) => {
 
 export default function Header({ className = "" }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +34,14 @@ export default function Header({ className = "" }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Bloquea el scroll del body mientras el menú mobile está abierto
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
 
   const navigationLinks = [
     { href: "#inicio", label: "Inicio" },
@@ -53,7 +62,17 @@ export default function Header({ className = "" }) {
     }
   };
 
+  // Click en un link del menú mobile: cierra el panel y, si es ancla, hace scroll suave
+  const handleMobileNavClick = (e) => {
+    const href = e.currentTarget.getAttribute("href");
+    if (href && href.startsWith("#")) {
+      handleSmoothScroll(e);
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
+    <>
     <header
       className={`${styles.header} ${isScrolled ? styles.headerScrolled : ""} ${className}`}
     >
@@ -116,7 +135,7 @@ export default function Header({ className = "" }) {
                 onClick={handleSmoothScroll}
                 className={styles.buttonContent}
               >
-                <Phone className={styles.icon} />
+                <CalendarDays className={styles.icon} />
                 <span className={styles.reserveText}>Reservar ahora</span>
               </a>
             </Button>
@@ -137,20 +156,95 @@ export default function Header({ className = "" }) {
             </Button>
             <Button
               asChild
-              className={`${styles.reserveButton} ${styles.mobileButton}`}
+              className={`${styles.reserveButton} ${styles.mobilePhoneButton}`}
             >
               <a
                 href="#inicio"
                 onClick={handleSmoothScroll}
                 className={styles.buttonContent}
+                aria-label="Reservar ahora"
               >
-                <Phone className={styles.icon} />
-                <span className={styles.reserveText}>Reservar ahora</span>
+                <CalendarDays className={styles.icon} />
               </a>
+            </Button>
+            {/* Hamburger trigger */}
+            <Button
+              className={styles.menuTriggerButton}
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Abrir menú"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <Menu className={styles.menuIcon} />
             </Button>
           </div>
         </div>
       </div>
     </header>
+
+    {/* Mobile Sidebar (sheet) — fuera del header para que position:fixed
+        no quede atrapado por el backdrop-filter del header */}
+      <div
+        className={`${styles.sheetOverlay} ${isMobileMenuOpen ? styles.sheetOverlayOpen : ""}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+      <aside
+        className={`${styles.sheetContent} ${styles["sheetContent-right"]} ${isMobileMenuOpen ? styles.sheetOpen : ""}`}
+        aria-hidden={!isMobileMenuOpen}
+      >
+        <div className={styles.mobileMenuInner}>
+          <div className={styles.mobileMenuHeader}>
+            <div className={styles.mobileLogoWrapper}>
+              <div className={styles.mobileLogoImageWrapper}>
+                <img
+                  src="/FloridaAventuraLogo.jpg"
+                  alt="Florida Aventura Rent a Car Logo"
+                  className={styles.mobileLogoImage}
+                />
+              </div>
+              <div>
+                <p className={styles.mobileLogoTitle}>Florida Aventura</p>
+                <p className={styles.mobileLogoSubtitle}>Rent a Car</p>
+              </div>
+            </div>
+            <Button
+              className={styles.menuTriggerButton}
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Cerrar menú"
+            >
+              <X className={styles.menuIcon} />
+            </Button>
+          </div>
+
+          <nav className={styles.mobileNavLinks}>
+            {navigationLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={handleMobileNavClick}
+                className={styles.mobileNavLink}
+              >
+                {link.href === "/guia-miami" && (
+                  <MapPin className={styles.menuIcon} />
+                )}
+                <span className={styles.mobileNavLinkText}>{link.label}</span>
+              </a>
+            ))}
+          </nav>
+
+          <div className={styles.mobileActions}>
+            <Button asChild className={styles.mobileReserveButtonFull}>
+              <a
+                href="#inicio"
+                onClick={handleMobileNavClick}
+                className={styles.buttonContent}
+              >
+                <CalendarDays className={styles.icon} />
+                <span className={styles.reserveText}>Reservar ahora</span>
+              </a>
+            </Button>
+          </div>
+        </div>
+      </aside>
+    </>
   );
 }
