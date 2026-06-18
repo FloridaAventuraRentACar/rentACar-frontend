@@ -177,7 +177,7 @@ export default function HomePage() {
             <div
               className={styles.guiaBannerBg}
               style={{
-                backgroundImage: `url("/Guia Florida Aventura/design_handoff_guia_miami/assets/intro/lighthouse-sunset.jpg")`,
+                backgroundImage: `url("/Guia Florida Aventura/design_handoff_guia_miami/assets/banner.png")`,
               }}
             />
             <div className={styles.guiaBannerOverlay} />
