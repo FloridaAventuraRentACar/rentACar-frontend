@@ -121,6 +121,7 @@
   /* text-gray-800 */
   transition: color 0.3s ease-in-out;
   font-family: var(--secondary-font);
+  white-space: nowrap;
 }
 
 .logoLink:hover .logoTitle {
@@ -435,13 +436,58 @@
 
 .sheetContent-right {
   right: 0;
-  /* You'd need JS to toggle this class for the slide-in/out effect */
 }
 
-/* Basic animation for the sheet content - requires JS to toggle a class */
-/* .sheetContent.open {
+/* Estado abierto: el panel entra desde la derecha */
+.sheetOpen {
   transform: translateX(0);
-} */
+}
+
+/* Padding interno del panel (antes vivía en .sheetContent vía Tailwind) */
+.sheetContent {
+  padding: 1.5rem;
+}
+
+/* Overlay oscuro detrás del panel */
+.sheetOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 55;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.sheetOverlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Botón compacto (solo ícono de teléfono) en la barra mobile */
+.mobilePhoneButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mobilePhoneButton .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* El botón hamburguesa solo se ve en mobile */
+.menuTriggerButton {
+  display: inline-flex;
+}
+
+@media (min-width: 1024px) {
+  .menuTriggerButton {
+    display: none;
+  }
+}
 
 @media (min-width: 640px) {
   .sheetContent {
