@@ -1169,12 +1169,31 @@ html {
   background-color: #ffffff;
 }
 
-.faqCarousel {
-  position: relative;
+.faqList {
   max-width: 64rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 3rem;
+  max-height: 32rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.25rem 1rem 0.25rem 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brand) transparent;
+}
+
+.faqList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.faqList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.faqList::-webkit-scrollbar-thumb {
+  background-color: var(--color-brand);
+  border-radius: 9999px;
 }
 
 .faqCard {
@@ -1185,37 +1204,40 @@ html {
 }
 
 .faqCardContent {
-  padding: 2rem;
-  text-align: center;
-  min-height: 280px;
+  padding: 1.5rem;
+  text-align: left;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.faqItemText {
+  flex: 1;
 }
 
 .faqIconContainer {
   background-color: #fff7ed;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0rem;
+  flex-shrink: 0;
 }
 
 .faqIcon {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   color: var(--color-accent);
 }
 
 .faqQuestion {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
   color: #1f2937;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   line-height: 1.4;
   font-family: var(--primary-font);
 }
@@ -1224,15 +1246,8 @@ html {
   font-size: 1rem;
   color: #4b5563;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   font-family: var(--primary-font);
-}
-
-.faqCounter {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  margin-top: auto;
 }
 
 
@@ -1293,14 +1308,9 @@ html {
     padding: 0 4rem;
   }
 
-  /* Padding para FAQ carousel en tablets */
-  .faqCarousel {
-    padding: 0 4rem;
-  }
-
+  /* FAQ en tablets */
   .faqCardContent {
-    padding: 2.5rem;
-    min-height: 300px;
+    padding: 2rem;
   }
 
   .icon {
@@ -1395,28 +1405,26 @@ html {
 
   /* Mejoras para FAQ en desktop */
   .faqIconContainer {
-    width: 5rem;
-    height: 5rem;
-    margin-bottom: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
 
   .faqIcon {
-    width: 5rem;
-    height: 5rem;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 
   .faqQuestion {
-    font-size: 1.5rem;
-    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 
   .faqAnswer {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
   }
 
   .faqCardContent {
-    padding: 3rem;
-    min-height: 320px;
+    padding: 2rem;
   }
 
   .icon {

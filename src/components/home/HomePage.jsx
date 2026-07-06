@@ -17,7 +17,6 @@ import WhatsAppFloat from "../layout/WhatsAppFloat";
 export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [currentFaq, setCurrentFaq] = useState(0);
   const { clearRentalData } = useContext(AppContext);
 
   useEffect(() => {
@@ -35,14 +34,6 @@ export default function HomePage() {
     setCurrentTestimonial(
       (prev) => (prev - 1 + testimonials.length) % testimonials.length
     );
-  };
-
-  const nextFaq = () => {
-    setCurrentFaq((prev) => (prev + 1) % faqs.length);
-  };
-
-  const prevFaq = () => {
-    setCurrentFaq((prev) => (prev - 1 + faqs.length) % faqs.length);
   };
 
   return (
@@ -200,7 +191,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.sectionFaq}>
+      <section id="faqs" className={styles.sectionFaq}>
         <div className={styles.innerContainer}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>Preguntas Frecuentes</h2>
@@ -209,38 +200,20 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className={styles.faqCarousel}>
-            <Card className={styles.faqCard}>
-              <CardContent className={styles.faqCardContent}>
-                <div className={styles.faqIconContainer}>
-                  <HelpCircle className={styles.faqIcon} />
-                </div>
-                <h3 className={styles.faqQuestion}>
-                  {faqs[currentFaq].question}
-                </h3>
-                <p className={styles.faqAnswer}>
-                  {faqs[currentFaq].answer}
-                </p>
-                <div className={styles.faqCounter}>
-                  {currentFaq + 1} / {faqs.length}
-                </div>
-              </CardContent>
-            </Card>
-
-            <button
-              onClick={prevFaq}
-              className={styles.carouselButtonLeft}
-              aria-label="Pregunta anterior"
-            >
-              <ChevronLeft className={styles.icon} />
-            </button>
-            <button
-              onClick={nextFaq}
-              className={styles.carouselButtonRight}
-              aria-label="Siguiente pregunta"
-            >
-              <ChevronRight className={styles.icon} />
-            </button>
+          <div className={styles.faqList}>
+            {faqs.map((faq, index) => (
+              <Card key={index} className={styles.faqCard}>
+                <CardContent className={styles.faqCardContent}>
+                  <div className={styles.faqIconContainer}>
+                    <HelpCircle className={styles.faqIcon} />
+                  </div>
+                  <div className={styles.faqItemText}>
+                    <h3 className={styles.faqQuestion}>{faq.question}</h3>
+                    <p className={styles.faqAnswer}>{faq.answer}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

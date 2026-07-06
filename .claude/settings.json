@@ -23,7 +23,11 @@
       "Bash(git check-ignore *)",
       "Bash(cd \"/media/elmapache/Western Digital HDD/Mis Archivos/Documentos/1. work/1. Posicionarte/CLIENTES/FloridaAventura/rentACar-frontend\" && find /tmp /home/elmapache/.cache -maxdepth 4 -type f \\\\\\( -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.jpeg\" \\\\\\) -newermt \"-30 minutes\" 2>/dev/null | head -20; echo \"---grep banner usage---\"; grep -rn \"banner.png\\\\|banner\\\\.png\\\\|/assets/banner\" src 2>/dev/null | head)",
       "Read(//tmp/**)",
-      "Bash(gh pr *)"
+      "Bash(gh pr *)",
+      "Bash(grep -rli \"faq\" src/components)",
+      "Bash(grep -rliE \"menu|navbar|header\" src/components)",
+      "Bash(npx vite *)",
+      "Bash(git pull *)"
     ],
     "additionalDirectories": [
       "/media/elmapache/Western Digital HDD/Mis Archivos/Documentos/1. work/1. Posicionarte/CLIENTES/FloridaAventura/florida-aventura-reel"
