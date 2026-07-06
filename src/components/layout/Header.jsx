@@ -46,6 +46,7 @@ export default function Header({ className = "" }) {
   const navigationLinks = [
     { href: "#inicio", label: "Inicio" },
     { href: "#unidades", label: "Nuestras Unidades" },
+    { href: "#faqs", label: "Preguntas Frecuentes" },
     { href: "#contacto", label: "Contacto" },
     { href: "/guia-miami", label: "Guía Miami" },
   ];

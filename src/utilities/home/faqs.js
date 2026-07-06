@@ -44,6 +44,10 @@ export const faqs = [
     answer: "Sí, contamos con sillas infantiles y boosters según la edad del niño. Puedes agregarlos a tu reserva con anticipación para garantizar disponibilidad."
   },
   {
+    question: "¿Puedo viajar con mi mascota en el auto?",
+    answer: "Sí, aceptamos mascotas. Solo te pedimos que nos avises con previo aviso para adecuar el vehículo y garantizar la comodidad y limpieza durante tu viaje."
+  },
+  {
     question: "¿Debo devolver el auto con el tanque lleno?",
     answer: "Debes devolver el tanque completo para no incurrir en costes adicionales. También ofrecemos la opción de prepagar el combustible para mayor comodidad."
   },
