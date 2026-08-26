@@ -1,38 +1,56 @@
-export const cars = [
-    {
-      name: "Nissan Kicks",
-      category: "SUV",
-      price: "$54/día",
-      image: "https://i.ibb.co/XrrSpqSh/Nissak-Nicks-Fondo-Blanco.jpg",
-    },
-    {
-      name: "Nissan Rogue",
-      category: "SUV",
-      price: "$59/día",
-      image: "https://i.ibb.co/twz7G6TH/Rogue-2025-cover.png",
-    },
-    {
-      name: "Honda CRV",
-      category: "SUV",
-      price: "$62/día",
-      image: "https://i.ibb.co/LzSJHXvz/Honda-CR-V-PHEV-2023-4-removebg-preview.png",
-    },
-    {
-      name: "Volkswagen Tiguan",
-      category: "SUV",
-      price: "$63/día",
-      image: "https://i.ibb.co/hFgBDfW3/Tiguan1-removebg-preview.png",
-    },
-    {
-      name: "Volkswagen Atlas",
-      category: "SUV",
-      price: "$68/día",
-      image: "https://i.ibb.co/N22kZVF0/Volswagen-Atlas-removebg-preview.png",
-    },
-    {
-      name: "Hyundai Santa fe",
-      category: "SUV",
-      price: "$68/día",
-      image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCxzE1UdU9p__OyLNLxRDcSL3uYoyb4qfcahnduLkbd1FNyyMQsXSsqAt-GmN35BdfxZ2Bad6VZ73rAi8xJoL-vDb90RNFx4pr5kawX49SU14YpsXwq9B1GU8NkcToVTOo4sfhjHlfCVMAiZFu4gxlYpNnQcMmwXm-J0waoiGl9_r8_Xteh7UljQMjocY/s1017/Imagen%205.jpeg",
-    },
-  ];
+export const carsMockedToShow = [
+  {
+    name: "Nissan Kicks",
+    category: "SUV",
+    price: "$54/día",
+    image: "https://i.ibb.co/DD4LJ4Kw/Nissak-Kicks-gris.png",
+  },
+  {
+    name: "Nissan Rogue",
+    category: "SUV",
+    price: "$59/día",
+    image: "https://i.ibb.co/xS50h12D/Nissan-Rogue-camel.jpg",
+  },
+  {
+    name: "Honda CRV",
+    category: "SUV",
+    price: "$62/día",
+    image: "https://i.ibb.co/xvc2DXb/Honda-CR-V-PHEV-2023-4.webp",
+  },
+  {
+    name: "Volkswagen Tiguan",
+    category: "SUV",
+    price: "$63/día",
+    image: "https://i.ibb.co/QFGsMdXB/943963-33.avif",
+  },
+  {
+    name: "Honda HRV",
+    category: "SUV",
+    price: "$55/día",
+    image: "https://i.ibb.co/h3RWBty/2025-honda-hr-v-4dr-suv-ex-l-fq-oem-1-1600x1067.jpg",
+  },
+  {
+    name: "Nissan New Kicks",
+    category: "SUV",
+    price: "$55/día",
+    image: "https://i.ibb.co/zhnsgxVP/New-kicks-blanca-2025.png",
+  },
+  {
+    name: "Volkswagen Atlas",
+    category: "SUV",
+    price: "$68/día",
+    image: "https://i.ibb.co/bgqYjrFr/Atlas.jpg",
+  },
+  {
+    name: "Hyundai Santa fe",
+    category: "SUV",
+    price: "$68/día",
+    image: "https://i.ibb.co/tPTWV2D2/2025-white-hyundai-santa-fe-hev.jpg",
+  },
+  {
+    name: "Honda Odyssey",
+    category: "Minivan",
+    price: "$78/día",
+    image: "https://i.ibb.co/XrcwfsVt/3434-featured-2025-honda-odyssey.avif",
+  },
+];

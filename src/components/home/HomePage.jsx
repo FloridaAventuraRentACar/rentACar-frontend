@@ -5,7 +5,7 @@ import HomeRentInput from "./HomeRentInput";
 import Header from "../layout/Header";
 import Card from "../ui/cards/Card.jsx";
 import CardContent from "../ui/cards/CardContent.jsx";
-import { cars } from "../../utilities/home/CarsToShow.js";
+import { carsMockedToShow } from "../../utilities/home/CarsToShow.js";
 import ContactUs from "./ContactUs.jsx";
 import Footer from "../layout/Footer";
 import testimonials from "../../utilities/home/testimonials.js";
@@ -70,14 +70,14 @@ export default function HomePage() {
       <section id="unidades" className={styles.sectionUnits}>
         <div className={styles.innerContainer}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Nuestras Unidades</h2>
+            <h2 className={styles.sectionTitle}>Algunas de nuestras Unidades</h2>
             <p className={styles.sectionDescription}>
               Vehículos de último modelo, en excelente estado, listos para comenzar tu aventura. Las mejores opciones para alquilar automovil en Miami, sin sorpresas. Recibí el vehículo que reservaste.
             </p>
           </div>
 
           <div className={styles.carsGrid}>
-            {cars.map((car, index) => (
+            {carsMockedToShow.map((car, index) => (
               <Card key={index} className={styles.carCard}>
                 <CardContent className={styles.carCardContent}>
                   <div className={styles.carImageContainer}>
