@@ -158,6 +158,23 @@ function BotMessage({ content, images }) {
   );
 }
 
+// ─── Endpoint del bot ─────────────────────────────────────────────────────────
+//
+// El bot vive en Railway (repo floridaAventuraBot) y es EL MISMO que atiende
+// Instagram. Lo correcto es que la URL venga de VITE_CHAT_API_URL en Vercel,
+// pero si algún build sale sin esa variable el fallback tiene que seguir
+// apuntando al bot bueno: antes caía a '/api/chat', que era una copia vieja del
+// bot (Sonnet 4.5, prompt de abril) viviendo como función serverless. Esa copia
+// ya no existe en el repo, así que sin este fallback el chat quedaría muerto.
+const CHAT_API_URL =
+  import.meta.env.VITE_CHAT_API_URL ??
+  'https://floridaaventura-bot-production.up.railway.app/chat';
+
+// El server corta solo a los 90s (server.js:379). Abortamos antes para no dejar
+// los tres puntitos girando para siempre si la conexión se murió y el navegador
+// no se entera. 60s es holgado: una cotización tarda 20-30s.
+const CHAT_TIMEOUT_MS = 60000;
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function ChatFloat({ defaultOpen = false }) {
@@ -188,33 +205,65 @@ export default function ChatFloat({ defaultOpen = false }) {
     setQuickReplies([]);
     setIsLoading(true);
 
-    try {
-      const apiUrl = import.meta.env.VITE_CHAT_API_URL ?? '/api/chat';
-      const res = await fetch(apiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          messages: updated.map((m) => ({ role: m.role, content: m.content })),
-        }),
-      });
+    // Una consulta con cotización tarda 20-30s. En ese rato un celular puede
+    // cambiar de antena o de wifi y el navegador mata la request (en los logs de
+    // Railway sale como 499: "client has closed the request"). El server la
+    // termina igual, pero la respuesta se pierde. Por eso reintentamos UNA vez, y
+    // solo cuando la falla fue de red: un error HTTP del server no se reintenta
+    // (sería gastar tokens dos veces por algo que va a fallar igual).
+    const pedirRespuesta = async () => {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), CHAT_TIMEOUT_MS);
+      try {
+        const res = await fetch(CHAT_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: updated.map((m) => ({ role: m.role, content: m.content })),
+          }),
+          signal: ctrl.signal,
+        });
 
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || `HTTP ${res.status}`);
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          const err = new Error(errData.error || `HTTP ${res.status}`);
+          err.esDelServidor = true; // no reintentar
+          throw err;
+        }
+
+        return await res.json();
+      } finally {
+        clearTimeout(timer);
+      }
+    };
+
+    try {
+      let data;
+      try {
+        data = await pedirRespuesta();
+      } catch (err) {
+        // AbortError = se nos acabaron los 60s. Reintentar sería hacer esperar
+        // 2 minutos al cliente, así que ese tampoco se reintenta.
+        if (err.esDelServidor || err.name === 'AbortError') throw err;
+        console.warn('[chat] falla de red, reintento una vez:', err);
+        data = await pedirRespuesta();
       }
 
-      const data = await res.json();
       setMessages((prev) => [
         ...prev,
         { role: 'assistant', content: data.response, images: data.images || [] },
       ]);
       setQuickReplies(data.quickReplies || []);
-    } catch {
+    } catch (err) {
+      // Antes este catch era ciego (`catch {}`): un 500, una red cortada y un
+      // JSON roto daban todos el mismo cartel y no quedaba rastro en ningún lado.
+      console.error('[chat] no pude responder:', err);
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
-          content: 'Hubo un error. Por favor intentá de nuevo.',
+          content:
+            'Se me cortó la conexión y no pude traerte la respuesta. Probá de nuevo, o escribile directo a Patricia: https://wa.me/13057731787',
           images: [],
         },
       ]);
