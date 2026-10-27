@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/layout/Header.module.css"; // Importa los estilos CSS Modules
-import { Instagram, Menu, X, MapPin, CalendarDays } from "lucide-react"; // Para los íconos
+import { Instagram, Menu, X, CalendarDays } from "lucide-react"; // Para los íconos
 import WhatsAppIcon from "../icons/WhatsappIcon";
 
 // Componentes placeholder para Button, Sheet y sus sub-componentes
@@ -48,7 +48,6 @@ export default function Header({ className = "" }) {
     { href: "#unidades", label: "Nuestras Unidades" },
     { href: "#faqs", label: "Preguntas Frecuentes" },
     { href: "#contacto", label: "Contacto" },
-    { href: "/guia-miami", label: "Guía Miami" },
   ];
 
   const handleSmoothScroll = (e) => {
@@ -224,9 +223,6 @@ export default function Header({ className = "" }) {
                 onClick={handleMobileNavClick}
                 className={styles.mobileNavLink}
               >
-                {link.href === "/guia-miami" && (
-                  <MapPin className={styles.menuIcon} />
-                )}
                 <span className={styles.mobileNavLinkText}>{link.label}</span>
               </a>
             ))}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Star, Shield, Clock, DollarSign, Car, ChevronLeft, ChevronRight, HelpCircle, MapPin, ArrowRight } from 'lucide-react';
+import { Star, Shield, Clock, DollarSign, Car, ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react';
 import styles from "../../styles/home/HomePage.module.css";
 import HomeRentInput from "./HomeRentInput";
 import Header from "../layout/Header";
@@ -160,37 +160,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Guía interactiva de Miami */}
-      <section className={styles.sectionGuia}>
-        <div className={styles.innerContainer}>
-          <a href="/guia-miami" className={styles.guiaBanner}>
-            <div
-              className={styles.guiaBannerBg}
-              style={{
-                backgroundImage: `url("/Guia Florida Aventura/design_handoff_guia_miami/assets/banner.png")`,
-              }}
-            />
-            <div className={styles.guiaBannerOverlay} />
-            <div className={styles.guiaBannerContent}>
-              <span className={styles.guiaBadge}>
-                <MapPin className={styles.guiaBadgeIcon} />
-                Guía interactiva
-              </span>
-              <h2 className={styles.guiaTitle}>Descubrí Miami con nuestra guía</h2>
-              <p className={styles.guiaDescription}>
-                Lugares imperdibles, mapas y recorridos para aprovechar tu auto al máximo.
-                Explorá Miami como un local.
-              </p>
-              <span className={styles.guiaCta}>
-                Abrir la guía
-                <ArrowRight className={styles.guiaCtaIcon} />
-              </span>
-            </div>
-          </a>
-        </div>
-      </section>
-
       <section id="faqs" className={styles.sectionFaq}>
         <div className={styles.innerContainer}>
           <div className={styles.sectionHeader}>
