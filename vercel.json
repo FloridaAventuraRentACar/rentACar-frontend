@@ -25,6 +25,11 @@
       ],
       "destination": "https://www.floridaaventura.com/admin",
       "permanent": true
+    },
+    {
+      "source": "/guia-miami",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [
